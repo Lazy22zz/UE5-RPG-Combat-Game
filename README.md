@@ -50,7 +50,7 @@
   ![Screenshot 2025-01-07 103243](https://github.com/user-attachments/assets/03a5a1ba-d070-4fa8-b3f8-6c3645a17bc0)
 
 # 1, Set Up Hero Character
-- 1, Base Class Structure
+- 1, Base Class Structure \
   GameMode -> character -> characterController ;
 - 2, DebugHelperFunction
   ```c++
