@@ -134,4 +134,54 @@
     ```c++
     PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "GameplayTags" });
     ```
+ - 5, Input Data condig Assest
+   Create a new c++ dataasset renames DataAsset_InputConfig\
+   In .h
+   ```c++
+   USTRUCT(BlueprintType)
+   struct FWarriorInputActionConfig
+   {
+   	GENERATED_BODY()
+   
+   public:
+   	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta = (Categories = "InputTag"))
+   	FGameplayTag InputTag;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta = (Categories = "InputTag"))
+	UInputAction* InputAction;
+   };
+  
+   UCLASS()
+   class WARRIOR_API UDataAsset_InputConfig : public UDataAsset
+   {
+   	GENERATED_BODY()
+   
+   public:
+   	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+   	UInputMappingContext* DefaultMappingContext;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta = (TitleProperty = "InputTag"))
+	TArray<FWarriorInputActionConfig> NativeInputActions;
+
+	UInputAction* FindNativeInputActionByTag(const FGameplayTag& InInputTag);
+   };
+   ```
+   In .cpp
+   ```c++
+   UInputAction *UDataAsset_InputConfig::FindNativeInputActionByTag(const FGameplayTag &InInputTag)
+   {
+       for (const FWarriorInputActionConfig& InputActionConfig : NativeInputActions)
+   	{
+   		if (InputActionConfig.InputTag == InInputTag && InputActionConfig.InputAction)
+   		{
+   			return InputActionConfig.InputAction;
+   		}
+   	}
+       return nullptr;
+   }
+   ```
+  After compilling, in character folder, goes to miscellaneous -> dataasset -> Data Asset InputConfig, rename it DA_InputConfig, \
+  Then using the default thirdperson provided by ue's Input folders' IMC_Default, set up the DA_InputConfig:
+  ![Screenshot 2025-01-12 212251](https://github.com/user-attachments/assets/fec354c2-9419-4725-8446-d431265eafbc)
+
+  
