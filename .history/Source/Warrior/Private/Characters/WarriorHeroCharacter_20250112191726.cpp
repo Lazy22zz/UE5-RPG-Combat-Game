@@ -2,12 +2,8 @@
 
 
 #include "Characters/WarriorHeroCharacter.h"
-#include "Components/CapsuleComponent.h"
-#include "GameFramework/SpringArmComponent.h"
-#include "Camera/CameraComponent.h"
-#include "GameFramework/CharacterMovementComponent.h"
 #include "WarriorDebugHelper.h"
-
+#include "WarriorHeroCharacter.h"
 
 
 void AWarriorHeroCharacter::BeginPlay()
