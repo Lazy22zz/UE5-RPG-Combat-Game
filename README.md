@@ -98,3 +98,40 @@
    	GetCharacterMovement()->MaxWalkSpeed = 400.f;
    	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
     ```
+  - 4, Create a Gameplay Tags
+    WHY: In small project, we can use traditional action binding in .h and callback. However, if in a big project, it will be complicated to handle bunches of decared actions.
+  - Edit -> Project Settings -> GameplayTags
+    ![Screenshot 2025-01-12 195446](https://github.com/user-attachments/assets/cb0f33fd-6ad3-4500-8227-7b127c0f6c9f)
+  - create an empty c++ names WarriorGameplayTags\
+    In .h\
+    ```c++
+    #pragma once
+
+    #include "NativeGameplayTags.h"
+    
+    namespace WarriorGameplayTags
+    {
+    	WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_Move)
+    	WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_Look)
+    }
+    ```
+    In .cpp\
+    ```c++
+    #include "WarriorGameplayTags.h"
+
+    namespace WarriorGameplayTags
+    {
+        UE_DEFINE_GAMEPLAY_TAG(InputTag_Move,"InputTag.Move")
+    	UE_DEFINE_GAMEPLAY_TAG(InputTag_Look,"InputTag.Look")
+    }
+    ```
+    However, you will find an error on ue compiler:
+    ```c++
+    WarriorGameplayTags.cpp.obj : error LNK2019: unresolved external symbol "__declspec(dllimport) public: __cdecl FNativeGameplayTag::FNativeGameplayTag(class FName,class FName,class FName,class FString const &,enum ENativeGameplayTagToken)" (__imp_??0FNativeGameplayTag@@QEAA@VFName@@00AEBVFString@@W4ENativeGameplayTagToken@@@Z) referenced in function "void __cdecl WarriorGameplayTags::`dynamic initializer for 'InputTag_Look''(void)" (??__EInputTag_Look@WarriorGameplayTags@@YAXXZ)
+    ```
+  - fix the error\
+    Go to Warrior.build.cs file:
+    ```c++
+    PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "GameplayTags" });
+    ```
+
