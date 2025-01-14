@@ -98,7 +98,7 @@
    	GetCharacterMovement()->MaxWalkSpeed = 400.f;
    	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
     ```
-  - 4, Create a Gameplay Tags
+  - 4, Create a Gameplay Tags\
     WHY: In small project, we can use traditional action binding in .h and callback. However, if in a big project, it will be complicated to handle bunches of decared actions.
   - Edit -> Project Settings -> GameplayTags
     ![Screenshot 2025-01-12 195446](https://github.com/user-attachments/assets/cb0f33fd-6ad3-4500-8227-7b127c0f6c9f)
@@ -134,7 +134,7 @@
     ```c++
     PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "GameplayTags" });
     ```
- - 5, Input Data condig Assest
+ - 5, Input Data config Assest\
    Create a new c++ dataasset renames DataAsset_InputConfig\
    In .h
    ```c++
@@ -183,5 +183,56 @@
   After compilling, in character folder, goes to miscellaneous -> dataasset -> Data Asset InputConfig, rename it DA_InputConfig, \
   Then using the default thirdperson provided by ue's Input folders' IMC_Default, set up the DA_InputConfig:
   ![Screenshot 2025-01-12 212251](https://github.com/user-attachments/assets/fec354c2-9419-4725-8446-d431265eafbc)
+- 6, Custom Enhanced Input Component\
+  Create a new enhanceinputcomponent c++ under public/Componments/input folder, names WarriorInputComponent\
+  In DataAsset_InputConfig.h, add const for the FindNativeInputActionByTag
+  ```c++
+  UInputAction* FindNativeInputActionByTag(const FGameplayTag& InInputTag) const;
+  ```
+  In WarriorInputComponent.h, using `BindAction()` function:
+  ```c++
+  FEnhancedInputActionEventBinding& BindAction(const UInputAction* Action, ETriggerEvent TriggerEvent, UObject* Object, FName FunctionName)
+  ```
+  For UInputAction, using FindNativeInputActionByTag() from DataAsset_InputConfig.h
+  ```c++
+  UInputAction* FoundAction = InInputConfig->FindNativeInputActionByTag(InInputTag)
+  ```
+  For ETriggerEvent, declare a new ETriggerEvent TriggerEvent by EnhancedInputComponent.h
+  ```c++
+  ETriggerEvent TriggerEvent
+  ```
+  For variable: Object, FunctionName, declare their types by template
+  ```c++
+  template<class UserObject, typename CallbackFunc>
+  ```
+  For Optimization to avoid Multi Definitions, using
+  `inline`
+  implementing a function in .h file\
+  Then, compile void `BindNativeInputAction()` for the `BindAction`
+  ```c++
+  UCLASS()
+	class WARRIOR_API UWarriorInputComponent : public UEnhancedInputComponent
+	{
+		GENERATED_BODY()
+		
+	public:
+		template<class UserObject, typename CallbackFunc> 
+		void BindNativeInputAction(const UDataAsset_InputConfig* InInputConfig, const FGameplayTag& InInputTag, ETriggerEvent TriggerEvent, UserObject* ContextObject, CallbackFunc Func); 
+	};
+	
+	template<class UserObject, typename CallbackFunc> 
+	inline void UWarriorInputComponent::BindNativeInputAction(const UDataAsset_InputConfig* InInputConfig, const FGameplayTag& InInputTag, ETriggerEvent TriggerEvent, UserObject* ContextObject, CallbackFunc Func)
+	{
+		checkf(InInputConfig,TEXT("Input config data asset is null,can not proceed with binding"));
+		if (UInputAction* FoundAction = InInputConfig->FindNativeInputActionByTag(InInputTag))
+		{
+			BindAction(FoundAction,TriggerEvent,ContextObject,Func);
+		}
+	}
+  ```
+  After UE compiling, go to project setting, search inputcomponent\
+  ![Screenshot 2025-01-13 204758](https://github.com/user-attachments/assets/06029077-f321-4ce2-8ade-2698de863e80)
+  Changes to WarriorInputComponent.
+
 
   
