@@ -233,6 +233,23 @@
   After UE compiling, go to project setting, search inputcomponent\
   ![Screenshot 2025-01-13 204758](https://github.com/user-attachments/assets/06029077-f321-4ce2-8ade-2698de863e80)
   Changes to WarriorInputComponent.
+- 6, binding input\
+  In step 5, we created a new input component, then we need to attach it into warriorherocharacter. If do so, we need `SetupPlayerInputComponent` in Character.h
+  ```c++
+  virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+  ```
+  When we start to implement the `Setupplayercomponent`, remember to check does `UDataAsset_InputConfig` exist (and attach to `WarriorInputComponent`)
+  ```c++
+  checkf(InputConfigDataAsset, TEXT("Forgot to assign a valid data asset as input config."))
+  ```
+  Step1, implement the `AddMappingContext()` in `EnhancedInputSubsystemInterface.h`
+  ```c++
+  virtual void AddMappingContext(const UInputMappingContext* MappingContext, int32 Priority, const FModifyContextOptions& Options = FModifyContextOptions());
+  ```
+  By looking its class, it is `class ENHANCEDINPUT_API IEnhancedInputSubsystemInterface`, because it is `interface`, so using global search for `public IEnhancedInputSubsystemInterface`, we get `class ENHANCEDINPUT_API UEnhancedInputLocalPlayerSubsystem : public ULocalPlayerSubsystem, public IEnhancedInputSubsystemInterface`, As we can see, only ULocalPlayerSubsystem is not interface, so go to its definition, we can see `class ULocalPlayerSubsystem : public USubsystem`, inside the public, i can see it is under the `template <LocalPlayer>`, so go to LocalPlayer.h, search `Subsytem`,
+  ```c++
+  static FORCEINLINE TSubsystemClass* GetSubsystem(const ULocalPlayer* LocalPlayer)
+  ```
 
 
   
