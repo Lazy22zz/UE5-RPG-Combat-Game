@@ -305,3 +305,6 @@ inline void UWarriorInputComponent::BindNativeInputAction(const UDataAsset_Input
 WarriorInputComponent->BindNativeInputAction(InputConfigDataAsset,WarriorGameplayTags::InputTag_Move,ETriggerEvent::Triggered,this,&ThisClass::Input_Move);
 WarriorInputComponent->BindNativeInputAction(InputConfigDataAsset,WarriorGameplayTags::InputTag_Look,ETriggerEvent::Triggered,this,&ThisClass::Input_Look);
 ```
+Step5, Enable Walking\
+[Watch the video](media/DataAccess.mp4)
+
