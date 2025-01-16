@@ -9,7 +9,6 @@
 class USpringArmComponent;
 class UCameraComponent;
 class UDataAsset_InputConfig;
-struct FInputActionValue;
 
 /**
  * 

@@ -12,6 +12,7 @@
 #include "WarriorGameplayTags.h"
 
 #include "WarriorDebugHelper.h"
+#include "WarriorHeroCharacter.h"
 
 
 void AWarriorHeroCharacter::BeginPlay()

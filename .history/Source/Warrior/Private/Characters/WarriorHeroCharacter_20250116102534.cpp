@@ -7,11 +7,12 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "EnhancedInputSubsystems.h"
-#include "DataAssets/Input/DataAsset_InputConfig.h"
+#include "DataAssets/Input/DataAssetInputConfig.h"
 #include "Components/Input/WarriorInputComponent.h"
 #include "WarriorGameplayTags.h"
 
 #include "WarriorDebugHelper.h"
+#include "WarriorHeroCharacter.h"
 
 
 void AWarriorHeroCharacter::BeginPlay()
