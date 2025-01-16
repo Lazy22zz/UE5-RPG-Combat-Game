@@ -234,7 +234,7 @@
   ![Screenshot 2025-01-13 204758](https://github.com/user-attachments/assets/06029077-f321-4ce2-8ade-2698de863e80)
   Changes to WarriorInputComponent.
 - 6, binding input\
-  In step 5, we created a new input component, then we need to attach it to warriorherocharacter. If we do so, we need `SetupPlayerInputComponent` in Character.h
+  In step 5, we created a new input component, then we needed to attach it to warriorherocharacter. If we do so, we need `SetupPlayerInputComponent` in Character.h
   ```c++
   virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
   ```
@@ -307,4 +307,33 @@ WarriorInputComponent->BindNativeInputAction(InputConfigDataAsset,WarriorGamepla
 ```
 Step5, Enable Walking\
 [Watch the video](Media/DataAccess.mp4)
+- 7, Character Anime Instance
+![Screenshot_20250116_112246_Samsung capture](https://github.com/user-attachments/assets/f60d9401-aeca-4aeb-917d-53d97313bcae)
+[Watch the Video](Media/AnimeInstance.mp4)
+`NativeInitializeAnimation`: set up any required data or references for the animation to work properly.\
+`NativeThreadSafeUpdateAnimation(float DeltaSeconds)`: safely update animation-related data every frame in a thread-safe and performance-optimized way.\
+In `WarriorCharacterAnimInstance.cpp`, we need to get the character's speed, and then update the animation based on the speed.
+```c++
+void UWarriorCharacterAnimInstance::NativeInitializeAnimation()
+{
+    OwningCharacter = Cast<AWarriorBaseCharacter>(TryGetPawnOwner());
+	if (OwningCharacter)
+	{
+		OwningMovementComponent = OwningCharacter->GetCharacterMovement();
+	}
+}
+
+void UWarriorCharacterAnimInstance::NativeThreadSafeUpdateAnimation(float DeltaSeconds)
+{
+    if (!OwningCharacter || !OwningMovementComponent)
+	{
+		return;
+	}
+	GroundSpeed = OwningCharacter->GetVelocity().Size2D();
+	bHasAcceleration = OwningMovementComponent->GetCurrentAcceleration().SizeSquared2D()>0.f;
+}
+```
+Then, create a new blueprint animation.
+[Watch the Video](Media/ABP_HERO.mp4)
+
 
