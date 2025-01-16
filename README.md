@@ -1,8 +1,8 @@
 # UE5-RPG-Combat-Game
- creating a combat action rpg game
+ creating a combat action RPG game
 # EXTRA
 - 1, hard reference :\
-  A hard reference is a direct pointer to another object or asset. When an object A hard-references object B, both objects are loaded into memory together. \
+  A hard reference is a direct pointer to another object or asset. When object A hard-references object B, both objects are loaded into memory together. \
   pros:\
   Simplicity: Easier to work with since everything is loaded and accessible.\
   Guaranteed Availability: Ensures the referenced asset is loaded into memory when needed.\
@@ -10,7 +10,7 @@
   cons:\
   High Memory Usage: All referenced objects are loaded into memory, even if some are not needed immediately.\
   Longer Load Times: Increases initial loading time as all hard-referenced objects must be loaded upfront.\
-  Potential for Circular Dependencies: Can lead to complex dependency chains, making debugging and optimization harder.\
+  Potential for Circular Dependencies: This can lead to complex dependency chains, making debugging and optimization harder.\
   code:
   ```c++
   UPROPERTY()
@@ -99,10 +99,10 @@
    	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
     ```
   - 4, Create a Gameplay Tags\
-    WHY: In small project, we can use traditional action binding in .h and callback. However, if in a big project, it will be complicated to handle bunches of decared actions.
+    WHY: In a small project, we can use traditional action binding in .h and callback. However, if in a big project, it will be complicated to handle bunches of declared actions.
   - Edit -> Project Settings -> GameplayTags
     ![Screenshot 2025-01-12 195446](https://github.com/user-attachments/assets/cb0f33fd-6ad3-4500-8227-7b127c0f6c9f)
-  - create an empty c++ names WarriorGameplayTags\
+  - create an empty C++ names WarriorGameplayTags\
     In .h\
     ```c++
     #pragma once
@@ -170,7 +170,7 @@
    ```c++
    UInputAction *UDataAsset_InputConfig::FindNativeInputActionByTag(const FGameplayTag &InInputTag)
    {
-       for (const FWarriorInputActionConfig& InputActionConfig : NativeInputActions)
+       for (const FWarriorInputActionConfig& InputActionConfig: NativeInputActions)
    	{
    		if (InputActionConfig.InputTag == InInputTag && InputActionConfig.InputAction)
    		{
@@ -180,11 +180,11 @@
        return nullptr;
    }
    ```
-  After compilling, in character folder, goes to miscellaneous -> dataasset -> Data Asset InputConfig, rename it DA_InputConfig, \
-  Then using the default thirdperson provided by ue's Input folders' IMC_Default, set up the DA_InputConfig:
+  After compiling, in character folder, goes to miscellaneous -> dataasset -> Data Asset InputConfig, rename it DA_InputConfig, \
+  Then using the default third-person provided by ue's Input folders' IMC_Default, set up the DA_InputConfig:
   ![Screenshot 2025-01-12 212251](https://github.com/user-attachments/assets/fec354c2-9419-4725-8446-d431265eafbc)
 - 6, Custom Enhanced Input Component\
-  Create a new enhanceinputcomponent c++ under public/Componments/input folder, names WarriorInputComponent\
+  Create a new enhanceinputcomponent c++ under public/Components/input folder, named WarriorInputComponent\
   In DataAsset_InputConfig.h, add const for the FindNativeInputActionByTag
   ```c++
   UInputAction* FindNativeInputActionByTag(const FGameplayTag& InInputTag) const;
@@ -211,7 +211,7 @@
   Then, compile void `BindNativeInputAction()` for the `BindAction`
   ```c++
   UCLASS()
-	class WARRIOR_API UWarriorInputComponent : public UEnhancedInputComponent
+	class WARRIOR_API UWarriorInputComponent: public UEnhancedInputComponent
 	{
 		GENERATED_BODY()
 		
@@ -233,6 +233,75 @@
   After UE compiling, go to project setting, search inputcomponent\
   ![Screenshot 2025-01-13 204758](https://github.com/user-attachments/assets/06029077-f321-4ce2-8ade-2698de863e80)
   Changes to WarriorInputComponent.
+- 6, binding input\
+  In step 5, we created a new input component, then we need to attach it to warriorherocharacter. If we do so, we need `SetupPlayerInputComponent` in Character.h
+  ```c++
+  virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+  ```
+  When we start to implement the `Setupplayercomponent`, remember to check if `UDataAsset_InputConfig` exists (and attach it to `WarriorInputComponent`)
+  ```c++
+  checkf(InputConfigDataAsset, TEXT("Forgot to assign a valid data asset as input config."))
+  ```
+  Step1, implement the `AddMappingContext()` in `EnhancedInputSubsystemInterface.h`
+  ```c++
+  virtual void AddMappingContext(const UInputMappingContext* MappingContext, int32 Priority, const FModifyContextOptions& Options = FModifyContextOptions());
+  ```
+  By looking at its class, it is `class ENHANCEDINPUT_API IEnhancedInputSubsystemInterface`, because it is `interface`, so using a global search for `public IEnhancedInputSubsystemInterface`, we get `class ENHANCEDINPUT_API UEnhancedInputLocalPlayerSubsystem: public ULocalPlayerSubsystem, public IEnhancedInputSubsystemInterface`, As we can see, only ULocalPlayerSubsystem is not interface, so go to its definition, we can see `class ULocalPlayerSubsystem: public USubsystem`, inside the public, I can see it is under the `template <LocalPlayer>`, so go to LocalPlayer.h, search `Subsystem`,
+  ```c++
+  static FORCEINLINE TSubsystemClass* GetSubsystem(const ULocalPlayer* LocalPlayer)
+  ```
+Then the rest is easy, we need to find `LocalPlayer` by `GetController<> -> GetLocalPlayer()`
+```c++
+ULocalPlayer* LocalPlayer = GetController<APlayerController>() -> GetLocalPlayer();
+UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(LocalPlayer);                                                                                                       
 
+check(Subsystem);
 
-  
+Subsystem -> AddMappingContext(InputConfigDataAsset -> DefaultMappingContext, 0);
+```
+Step2, Cast `WarriorInputComponent` to `PlayerInputComponent` by using `CastChecked<>`
+```c++
+UWarriorInputComponent* WarriorInputComponent = CastChecked<UWarriorInputComponent>(PlayerInputComponent);
+```
+![Screenshot 2025-01-16 101052](https://github.com/user-attachments/assets/99afdbbb-efeb-4d7c-bf37-1d5acd315de9)
+\
+Step3, create the Input_Move and Input_Look functions\
+`AddMovementInput()` is used to enable the controller's value access.
+```c++
+void AWarriorHeroCharacter::Input_Move(const FInputActionValue &InputActionValue)
+{
+    const FVector2D MovementVector = InputActionValue.Get<FVector2D>();
+	const FRotator MovementRotation(0.f,Controller->GetControlRotation().Yaw,0.f);
+	if (MovementVector.Y != 0.f)
+	{
+		const FVector ForwardDirection = MovementRotation.RotateVector(FVector::ForwardVector);
+		AddMovementInput(ForwardDirection,MovementVector.Y);
+	}
+	if (MovementVector.X != 0.f)
+	{
+		const FVector RightDirection = MovementRotation.RotateVector(FVector::RightVector);
+		AddMovementInput(RightDirection,MovementVector.X);
+	}
+}
+void AWarriorHeroCharacter::Input_Look(const FInputActionValue &InputActionValue)
+{
+    const FVector2D LookAxisVector = InputActionValue.Get<FVector2D>();
+	
+	if (LookAxisVector.X != 0.f)
+	{
+		AddControllerYawInput(LookAxisVector.X);
+	}
+	if (LookAxisVector.Y != 0.f)
+	{
+		AddControllerPitchInput(LookAxisVector.Y);
+	}
+}
+```
+Step4, BindNativeInputAction
+```c++
+inline void UWarriorInputComponent::BindNativeInputAction(const UDataAsset_InputConfig* InInputConfig, const FGameplayTag& InInputTag, ETriggerEvent TriggerEvent, UserObject* ContextObject, CallbackFunc Func)
+```
+```c++
+WarriorInputComponent->BindNativeInputAction(InputConfigDataAsset,WarriorGameplayTags::InputTag_Move,ETriggerEvent::Triggered,this,&ThisClass::Input_Move);
+WarriorInputComponent->BindNativeInputAction(InputConfigDataAsset,WarriorGameplayTags::InputTag_Look,ETriggerEvent::Triggered,this,&ThisClass::Input_Look);
+```
