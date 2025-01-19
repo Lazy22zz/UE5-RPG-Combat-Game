@@ -335,5 +335,10 @@ void UWarriorCharacterAnimInstance::NativeThreadSafeUpdateAnimation(float DeltaS
 ```
 Then, create a new blueprint animation.
 [Watch the Video](Media/ABP_HERO.mp4)
+- 8, Hero idle to Walk Anim
+  Step1, create a new folder names BlendSpace, and create a new blendspace 1d call BS_UnarmedLocolmotion;\
+  Step2, ![Screenshot 2025-01-19 110612](https://github.com/user-attachments/assets/2f982797-cbea-4418-b199-b2f5099cc155)\
+  Step3, ![Screenshot 2025-01-19 112736](https://github.com/user-attachments/assets/fe0ad523-9298-4619-85e7-bab465f62ee4)\
+  Step4, ![Screenshot 2025-01-19 112728](https://github.com/user-attachments/assets/8cfb0d47-19b7-41b0-afc9-d9c66c0b4f63)
 
 
