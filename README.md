@@ -342,5 +342,37 @@ Then, create a new blueprint animation.
   Step3, ![Screenshot 2025-01-19 112736](https://github.com/user-attachments/assets/fe0ad523-9298-4619-85e7-bab465f62ee4)\
   Step4, ![Screenshot 2025-01-19 112728](https://github.com/user-attachments/assets/8cfb0d47-19b7-41b0-afc9-d9c66c0b4f63)
 
+- 9, Hero relax Anim Instan
+  Step1, ![Screenshot 2025-01-19 120812](https://github.com/user-attachments/assets/cbf43887-83a3-417f-ab73-f77e3a7ce981)\
+  Step2, create a new random sequence, add two new entities, and change their change to play is 0.5\
+  ![Screenshot 2025-01-19 120830](https://github.com/user-attachments/assets/96b0c1cc-11ed-44ea-b585-9a2982d0d1bf)\
+  Step3, In `WarriorHeroAnimInstance.h`, use `NativeInitializeAnimation()` to initial data and update status by different deltaTime to enable/disable relax in `NativeThreadSafeUpdateAnimation`
+  ```c++
+  void UWarriorHeroAnimInstance::NativeInitializeAnimation()
+	{
+	    Super::NativeInitializeAnimation();
+
+    		if (OwningCharacter)
+		{
+			OwningHeroCharacter = Cast<AWarriorHeroCharacter>(OwningCharacter);
+		}
+	}
+  void UWarriorHeroAnimInstance::NativeThreadSafeUpdateAnimation(float DeltaSeconds)
+	{
+	    Super::NativeThreadSafeUpdateAnimation(DeltaSeconds);
+	
+		if (bHasAcceleration)
+		{
+			IdleElpasedTime = 0.f;
+			bShouldEnterRelaxState = false;
+		}
+		else
+		{
+			IdleElpasedTime += DeltaSeconds;
+			bShouldEnterRelaxState = (IdleElpasedTime >= EnterRelaxtStateThreshold);
+		}
+	}
+```
+
 
 
