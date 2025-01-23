@@ -1,5 +1,21 @@
 [
 	{
+		"file": "D:\\UE5-RPG-Combat-Game\\Source\\Warrior\\Private\\AbilitySystem\\WarriorAbilitySystemComponent.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\UE5-RPG-Combat-Game\\.vscode\\compileCommands_Warrior\\Warrior.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.4\\Engine\\Source"
+	},
+	{
+		"file": "D:\\UE5-RPG-Combat-Game\\Source\\Warrior\\Private\\AbilitySystem\\WarriorAttributeSet.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\UE5-RPG-Combat-Game\\.vscode\\compileCommands_Warrior\\Warrior.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.4\\Engine\\Source"
+	},
+	{
 		"file": "D:\\UE5-RPG-Combat-Game\\Source\\Warrior\\Private\\AnimInstances\\Hero\\WarriorHeroAnimInstance.cpp",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
@@ -81,6 +97,22 @@
 	},
 	{
 		"file": "D:\\UE5-RPG-Combat-Game\\Source\\Warrior\\Private\\WarriorGameplayTags.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\UE5-RPG-Combat-Game\\.vscode\\compileCommands_Warrior\\Warrior.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.4\\Engine\\Source"
+	},
+	{
+		"file": "D:\\UE5-RPG-Combat-Game\\Source\\Warrior\\Public\\AbilitySystem\\WarriorAbilitySystemComponent.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
+			"@D:\\UE5-RPG-Combat-Game\\.vscode\\compileCommands_Warrior\\Warrior.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.4\\Engine\\Source"
+	},
+	{
+		"file": "D:\\UE5-RPG-Combat-Game\\Source\\Warrior\\Public\\AbilitySystem\\WarriorAttributeSet.h",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.38.33130\\bin\\Hostx64\\x64\\cl.exe",
 			"@D:\\UE5-RPG-Combat-Game\\.vscode\\compileCommands_Warrior\\Warrior.1.rsp"
