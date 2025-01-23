@@ -372,7 +372,106 @@ Then, create a new blueprint animation.
 			bShouldEnterRelaxState = (IdleElpasedTime >= EnterRelaxtStateThreshold);
 		}
 	}
-```
+- 10, Gameplay Ability System\
+  Purpose: designed to handle gameplay mechanics like abilities, effects, and attributes.\
+  ![Screenshot_20250123_093537_Samsung capture](https://github.com/user-attachments/assets/6bca1ea9-3580-4ef5-9166-1a6cf327955c)\
+  Step1, enable the gamplay system plugin\
+  ![Screenshot 2025-01-23 093439](https://github.com/user-attachments/assets/87399900-6750-4345-87a6-d59fe74aeed5)\
+  In Warrior.Build.cs file, add `"GameplayTasks"` inside the code `PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject",...`
+  Step2, create AbilitySystem in c++\
+  Create a new public name `WarriorGameplayAbilityComponent` in new folder `AbilitySystem`\
+  Step3, create a new c++ AttibuteSet\
+  Create a new public name `WarriorAttributeSet` in new folder `AbilitySystem`\
+  Step4, Add these new c++ class into `WarriorBaseCharacter.h`\
+  ```c++
+  protected:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AbilitySystem")
+	UWarriorAbilitySystemComponent* WarriorAbilitySystemComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AbilitySystem")
+	UWarriorAttributeSet* WarriorAttributeSet;
+  public:
+	FORCEINLINE UWarriorAbilitySystemComponent* GetWarriorAbilitySystemComponent() const {return WarriorAbilitySystemComponent;}
+	FORCEINLINE UWarriorAttributeSet* GetWarriorAttributeSet() const {return WarriorAttributeSet;}
+  ```
+  Step5, Attach them in the `WarriorBaseCharacter.cpp`\
+  ```c++
+  #include "AbilitySystem/WarriorAbilitySystemComponent.h"
+  #include "AbilitySystem/WarriorAttributeSet.h"
+
+  AWarriorBaseCharacter::AWarriorBaseCharacter()
+  { ...
+  	WarriorAbilitySystemComponent = CreateDefaultSubobject<UWarriorAbilitySystemComponent>(TEXT("WarriorAbilitySystemComponent"));
+	WarriorAttributeSet = CreateDefaultSubobject<UWarriorAttributeSet>(TEXT("WarriorAttributeSet"));
+  ```
+  Step6, Initialize GAS in PossessedBy()\
+  In Character.h, `ENGINE_API virtual void PossessedBy(AController* NewController) override;` sets their default values\
+  In WarriorBaseCharacter.h\
+  ```c++
+  protected:
+	//~ Begin APawn Interface.
+	virtual void PossessedBy(AController* NewController) override;
+	//~ End APawn Interface
+  ```
+  In WarriorBaseCharacter.cpp\
+  Using `InitAbilityActorInfo()` to set The logical "owner" of the AbilitySystemComponent and he "physical" actor that performs actions\
+  ```c++
+  void AWarriorBaseCharacter::PossessedBy(AController *NewController)
+  {
+	Super::PossessedBy(NewController);
+
+	if(WarriorAbilitySystemComponent)
+	{
+		WarriorAbilitySystemComponent -> InitAbilityActorInfo(this, this);
+	}
+   }
+  ```
+  Step7, Implementing IAbilitySystemInterface\
+  The IAbilitySystemInterface is an interface provided by Unreal Engine's Gameplay Ability System (GAS) that acts as a bridge to let other systems know that an actor has an associated UAbilitySystemComponent, Without this interface, you'd need to manually cast 
+  your actor class (e.g., AWarriorBaseCharacter) every time you want to access its AbilitySystemComponent, which is less modular and less extensible.\
+  In AbilityInterface.h, `class GAMEPLAYABILITIES_API IAbilitySystemInterface{ `, we need its `virtual UAbilitySystemComponent* GetAbilitySystemComponent() const = 0;`
+  So in WarriorBaseCharacter.h\
+  ```c++
+  class WARRIOR_API AWarriorBaseCharacter : public ACharacter, public IAbilitySystemInterface
+  { ...
+  public:
+	AWarriorBaseCharacter();
+
+	//~ Begin IAbilitySystemInterface Interface.
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const;
+	//~ End APawn Interface Interface
+  ```
+  In warriorBaseCharacter.cpp\
+  ```c++
+  UAbilitySystemComponent *AWarriorBaseCharacter::GetAbilitySystemComponent() const
+  {
+    return GetAbilitySystemComponent();
+  }
+  ```
+  Step8, Detect does the GAS work in main character\
+  In warriorHeroCharacter.h
+  ```c++
+  protected:
+	//~ Begin APawn Interface.
+	virtual void PossessedBy(AController* NewController) override;
+	//~ End APawn Interface
+  ```
+  In WarriorHeroCharacter.cpp
+  ```c++
+  #include "AbilitySystem/WarriorAbilitySystemComponent.h"
+  ...
+  void AWarriorHeroCharacter::PossessedBy(AController* NewController)
+  {
+	Super::PossessedBy(NewController);
+	if (WarriorAbilitySystemComponent && WarriorAttributeSet)
+	{	
+		const FString ASCText = FString::Printf(TEXT("Owner Actor: %s, AvatarActor: %s"),*WarriorAbilitySystemComponent->GetOwnerActor()->GetName(),*WarriorAbilitySystemComponent->GetAvatarActor()->GetName());
+		
+		Debug::Print(TEXT("Ability system component valid. ") + ASCText,FColor::Green);
+		Debug::Print(TEXT("AttributeSet valid. ") + ASCText,FColor::Green);
+	}
+  }
+  ```
 
 
 
