@@ -375,13 +375,13 @@ Then, create a new blueprint animation.
 - 10, Gameplay Ability System\
   Purpose: designed to handle gameplay mechanics like abilities, effects, and attributes.\
   ![Screenshot_20250123_093537_Samsung capture](https://github.com/user-attachments/assets/6bca1ea9-3580-4ef5-9166-1a6cf327955c)\
-  Step1, enable the gamplay system plugin\
+  Step1, enable the gameplay system plugin\
   ![Screenshot 2025-01-23 093439](https://github.com/user-attachments/assets/87399900-6750-4345-87a6-d59fe74aeed5)\
   In Warrior.Build.cs file, add `"GameplayTasks"` inside the code `PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject",...`
   Step2, create AbilitySystem in c++\
-  Create a new public name `WarriorGameplayAbilityComponent` in new folder `AbilitySystem`\
+  Create a new public name `WarriorGameplayAbilityComponent` in the new folder `AbilitySystem`\
   Step3, create a new c++ AttibuteSet\
-  Create a new public name `WarriorAttributeSet` in new folder `AbilitySystem`\
+  Create a new public name `WarriorAttributeSet` in the new folder `AbilitySystem`\
   Step4, Add these new c++ class into `WarriorBaseCharacter.h`\
   ```c++
   protected:
@@ -448,7 +448,7 @@ Then, create a new blueprint animation.
     return GetAbilitySystemComponent();
   }
   ```
-  Step8, Detect does the GAS work in main character\
+  Step8, Detect does the GAS work in the main character\
   In warriorHeroCharacter.h
   ```c++
   protected:
@@ -472,6 +472,63 @@ Then, create a new blueprint animation.
 	}
   }
   ```
+- 11, Build the gameplay Ability\
+  From step 10, we build the abilitysystemcomponent, in here, we need to give the ability to the character, which requires new stuff to attach into abilitysystemcomponent\
+  ![Screenshot_20250124_102133_Samsung capture](https://github.com/user-attachments/assets/5e1f738a-5e0c-40b0-812f-bbdb7fd91251)
+  Step1, create a new c++ `gameplayability` name `warriorgameplayability` in a new folder `abilities`\
+  Step2, compiler the GameplayAbility policy
+  ```c++
+  UENUM(Blueprint)
+  UENUM(Blueprint)
+  enum class EWarriorAbilityActivationPolicy : uint8
+  {
+	OnTriggered,
+	OnGiven
+  };
+  UCLASS()
+  class WARRIOR_API UWarriorGameplayAbility : public UGameplayAbility
+  {
+	GENERATED_BODY()
+	
+  protected:
+
+	UPROPERTY(EditDefaultOnly, Category = "WarriorAbility")
+	EWarriorAbilityActivationPolicy AbilityActivationPolicy = EWarriorAbilityActivationPolicy::OnTriggered;
+  ```
+  Step3, Given Ability to Character and End Ability\
+  In GameplayAbility.h, we need two functions `OnGiveAbility` and `EndAbility`.\
+  Step4, Implement these two functions\
+  ```c++
+  void UWarriorGameplayAbility::OnGiveAbility(const FGameplayAbilityActorInfo *ActorInfo, const FGameplayAbilitySpec &Spec)
+  {
+    Super::OnGiveAbility(ActorInfo, Spec);
+    
+    if (AbilityActivationPolicy == EWarriorAbilityActivationPolicy::OnGiven)
+    {
+        if (ActorInfo && !Spec.IsActive())
+        {
+            ActorInfo -> AbilitySystemComponent -> TryActivateAbility(Spec.Handle);
+        }
+    }
+  }
+  void UWarriorGameplayAbility::EndAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo *ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, bool bReplicateEndAbility, bool bWasCancelled)
+  {
+    Super::EndAbility(Handle, ActorInfo, ActivationInfo, bReplicateEndAbility, bWasCancelled);
+
+    if (AbilityActivationPolicy == EWarriorAbilityActivationPolicy::OnGiven)
+    {
+        if (ActorInfo)
+        {
+            ActorInfo -> AbilitySystemComponent -> ClearAbility(Handle);
+        }
+    }
+  }
+  ```
+  Step5, Create a new blueprint\
+  go to ue's content, created Shared/GameplayAbility folder, then select gameplay/gameplayability blueprint, rename GA_Shared_SpawnWeapon.\
+  change the Warrior Ability|Ability Activation Policy to `On Given`.
+  
+
 
 
 
