@@ -48,6 +48,13 @@
   "T" in UE5, means the Type, such like TArray, TMap; \
   TObjectPtr is *hard* reference in UObject pointer; \
   ![Screenshot 2025-01-07 103243](https://github.com/user-attachments/assets/03a5a1ba-d070-4fa8-b3f8-6c3645a17bc0)
+- 5, TSubclassof\
+  Wrap up the required class type\
+  Example:
+  ```c++
+  TArray< TSubclassOf < UWarriorGameplayAbility > > ActivateOnGivenAbilities;	
+  ```
+  We wrap up any types under `UWarriorGameplayAbility` that satisfies required of `TArray<UClass *>`
 
 # 1, Set Up Hero Character
 - 1, Base Class Structure \
@@ -579,7 +586,51 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-01-26 104356](https://github.com/user-attachments/assets/37213573-bf37-4fd9-9f53-3a898a249847) \
   change the socket name \
   ![Screenshot 2025-01-26 104545](https://github.com/user-attachments/assets/7e4a3256-8bb9-4623-95cc-759ff04964ee)
+- 14, Strat Up Data\
+  ![Screenshot_20250126_111728_Samsung capture](https://github.com/user-attachments/assets/f8b865a8-ea8b-4d04-9f35-7c50e95d1f90) \
+  Create a new DataAsset c++ class into DataAssets/StartupData, named `DataAsset_StartupDataBase`\
+  In DataAsset_StartupDataBase.h
+  ```c++
+  	GENERATED_BODY()
+  public:
+	virtual void GiveToAbilitySystemComponent(UWarriorAbilitySystemComponent* InASCToGive,int32 ApplyLevel = 1);
+  protected:
+	UPROPERTY(EditDefaultsOnly, Category = "StartUpData")
+	TArray< TSubclassOf < UWarriorGameplayAbility > > ActivateOnGivenAbilities;	
+	UPROPERTY(EditDefaultsOnly, Category = "StartUpData")
+	TArray< TSubclassOf < UWarriorGameplayAbility > > ReactiveAbilities;
+	void GrantAbilities(const TArray< TSubclassOf < UWarriorGameplayAbility > >& InAbilitiesToGive,UWarriorAbilitySystemComponent* InASCToGive,int32 ApplyLevel = 1);
+  ```
+  In DataAsset_StartupDataBase.cpp
+  ```c++
+  void UDataAsset_StartupDataBase::GiveToAbilitySystemComponent(UWarriorAbilitySystemComponent *InASCToGive, int32 ApplyLevel)
+  {
+    check(InASCToGive);
 
+    GrantAbilities(ActivateOnGivenAbilities,InASCToGive,ApplyLevel);
+	GrantAbilities(ReactiveAbilities,InASCToGive,ApplyLevel); 
+  }
+  void UDataAsset_StartupDataBase::GrantAbilities(const TArray<TSubclassOf<UWarriorGameplayAbility>> &InAbilitiesToGive, UWarriorAbilitySystemComponent *InASCToGive, int32 ApplyLevel)
+  {
+    if (InAbilitiesToGive.IsEmpty())
+	{
+		return;
+	}
+
+	for (const TSubclassOf<UWarriorGameplayAbility>& Ability : InAbilitiesToGive)
+	{
+		if(!Ability) continue;
+
+		FGameplayAbilitySpec AbilitySpec(Ability);
+        
+		AbilitySpec.SourceObject = InASCToGive->GetAvatarActor();
+		AbilitySpec.Level = ApplyLevel;
+		InASCToGive->GiveAbility(AbilitySpec);
+	}
+  }
+  ```
+  Create a derived class name `DataAsset_HeroStartUpData`, and create a new dataset blueprint name `DA_Hero` in the PlayerCharacter folder.\
+  ![Screenshot 2025-01-26 120915](https://github.com/user-attachments/assets/c5af4a38-cfd9-4ffb-a928-f62f4944bc95)
 
 
   
