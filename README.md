@@ -525,10 +525,38 @@ Then, create a new blueprint animation.
   }
   ```
   Step5, Create a new blueprint\
-  go to ue's content, created Shared/GameplayAbility folder, then select gameplay/gameplayability blueprint, rename GA_Shared_SpawnWeapon.\
+  go to ue's content, create Shared/GameplayAbility folder, then select gameplay/gameplayability blueprint, rename GA_Shared_SpawnWeapon.\
   change the Warrior Ability|Ability Activation Policy to `On Given`.
-  
-
+- 12, Create weapon Class\
+  In the process of setting up weapon class, we need to understand the weapon class structure:\
+  `WarriorWeaponBase`(Handles damage detection) -> `WarriorHeroWeapon`(Weapon data unique to player)\
+  In C++, create a new class Actor called `WarriorWeaponBase` under the folder items/weapons\
+  Then, create a child class `WarriorHeroWeapon`\
+  In WarriorWeaponBase.h
+  ```c++
+  protected:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weapons")
+	UStaticMeshComponent* WeaponMesh;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Weapons")
+	UBoxComponent* WeaponCollisionBox;
+  public:
+	FORCEINLINE UBoxComponent* GetWeaponCollisionBox() const { return WeaponCollisionBox;}
+  ```
+  In WarriorWeaponBase.cpp
+  ```c++
+  AWarriorWeaponBase::AWarriorWeaponBase()
+  {
+ 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = false;
+	WeaponMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("WeaponMesh"));
+	SetRootComponent(WeaponMesh);
+	WeaponCollisionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("WeaponCollisionBox"));
+	WeaponCollisionBox->SetupAttachment(GetRootComponent());
+	WeaponCollisionBox->SetBoxExtent(FVector(20.f));
+	WeaponCollisionBox->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+  ```
+  After compiling that, create a blueprint base on `WarriorHeroWeapon`, called `BP_HeroWeapon` under the folder playercharacter/HeroWeapon\
+  Then create a child class name `BP_HeroAxe`, and attach the static mesh and adjust its size.\
 
 
 
