@@ -528,7 +528,7 @@ Then, create a new blueprint animation.
   go to ue's content, create Shared/GameplayAbility folder, then select gameplay/gameplayability blueprint, rename GA_Shared_SpawnWeapon.\
   change the Warrior Ability|Ability Activation Policy to `On Given`.
 - 12, Create weapon Class\
-  In the process of setting up weapon class, we need to understand the weapon class structure:\
+  In the process of setting up the weapon class, we need to understand the weapon class structure:\
   `WarriorWeaponBase`(Handles damage detection) -> `WarriorHeroWeapon`(Weapon data unique to player)\
   In C++, create a new class Actor called `WarriorWeaponBase` under the folder items/weapons\
   Then, create a child class `WarriorHeroWeapon`\
@@ -555,8 +555,36 @@ Then, create a new blueprint animation.
 	WeaponCollisionBox->SetBoxExtent(FVector(20.f));
 	WeaponCollisionBox->SetCollisionEnabled(ECollisionEnabled::NoCollision);
   ```
-  After compiling that, create a blueprint base on `WarriorHeroWeapon`, called `BP_HeroWeapon` under the folder playercharacter/HeroWeapon\
-  Then create a child class name `BP_HeroAxe`, and attach the static mesh and adjust its size.\
+  After compiling that, create a blueprint based on `WarriorHeroWeapon`, called `BP_HeroWeapon` under the folder playercharacter/HeroWeapon\
+  Then create a child class name `BP_HeroAxe`, attach the static mesh, and adjust its size.\
+- 13, Set Up Hero Weapon\
+  Step 1,\
+  In shared/GA_Shared_GameplayAbility, right-click, in blueprint, `Spawn Actor from class`, \
+  create a new variable, named `WeaponClassToSpawn`, then changes its type to `Warrior Weapon Base`, and its `Change to:` should be `Class Reference`\
+  Spilt the `Spawn Transformation`\
+  Collision Handling should be `Try to adjust, but always spawn`\
+  Attempt the `Spawn Actor from class`. Create `Get Avatar from actor info`, connect it to `Owner`, and use `cast to pawn`(convert to pure), to connect to investigator\
+  Connect `Event ActivateAbility` to `SpawnActor`\
+  create `Is Valid`, drag `return value`, create `Attach Actor To Component`\
+  Connect `GetSkeletalMeshComponentFromActorInfo` to `Parent`\
+  Promote a new variable for `Socket`, names `Socket Name Attach To`\
+  Change `Location Rule` to `Snap to Target`\
+  Change `Scale Rule` to `Keep World`\
+  Connect `Attach Actor To Component` to `End Ability`(Need to be created)\
+  ![Screenshot 2025-01-26 103047](https://github.com/user-attachments/assets/6c1ce246-0a2f-46d4-917e-43db819d7197) \
+  Step 2,
+  create the child of `GA_Hero_Weapon_Axe`, move it to PlayerCharacter/GameplayAbility.\
+  Click the new child, change its `weapon class to spawn` to `AXE`\
+  Create a new socket \
+  ![Screenshot 2025-01-26 104356](https://github.com/user-attachments/assets/37213573-bf37-4fd9-9f53-3a898a249847) \
+  change the socket name \
+  ![Screenshot 2025-01-26 104545](https://github.com/user-attachments/assets/7e4a3256-8bb9-4623-95cc-759ff04964ee)
 
 
+
+  
+
+  
+
+  
 
