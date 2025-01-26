@@ -4,7 +4,7 @@
 #include "Characters/WarriorBaseCharacter.h"
 #include "AbilitySystem/WarriorAbilitySystemComponent.h"
 #include "AbilitySystem/WarriorAttributeSet.h"
-
+#include "DataAssets/StartupData/DataAsset_StartupDataBase.h"
 
 
 

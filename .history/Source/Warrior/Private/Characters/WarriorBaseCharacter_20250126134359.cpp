@@ -7,7 +7,6 @@
 
 
 
-
 // Sets default values
 AWarriorBaseCharacter::AWarriorBaseCharacter()
 {

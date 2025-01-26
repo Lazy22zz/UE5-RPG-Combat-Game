@@ -82,7 +82,7 @@ void AWarriorHeroCharacter::PossessedBy(AController* NewController)
 
 	if (!CharacterStartUpData.IsNull())
 	{
-		if (UDataAsset_StartupDataBase* LoadedData = CharacterStartUpData.LoadSynchronous())
+		if (UDataAsset_StartUpDataBase* LoadedData = CharacterStartUpData.LoadSynchronous())
 		{
 			LoadedData->GiveToAbilitySystemComponent(WarriorAbilitySystemComponent);
 		}

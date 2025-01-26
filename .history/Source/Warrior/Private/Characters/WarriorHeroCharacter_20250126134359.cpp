@@ -11,7 +11,7 @@
 #include "Components/Input/WarriorInputComponent.h"
 #include "WarriorGameplayTags.h"
 #include "AbilitySystem/WarriorAbilitySystemComponent.h"
-#include "DataAssets/StartupData/DataAsset_HeroStartupData.h"
+#include "DataAssets/StartUpData/DataAsset_HeroStartUpData.h"
 
 #include "WarriorDebugHelper.h"
 
@@ -82,7 +82,7 @@ void AWarriorHeroCharacter::PossessedBy(AController* NewController)
 
 	if (!CharacterStartUpData.IsNull())
 	{
-		if (UDataAsset_StartupDataBase* LoadedData = CharacterStartUpData.LoadSynchronous())
+		if (UDataAsset_StartUpDataBase* LoadedData = CharacterStartUpData.LoadSynchronous())
 		{
 			LoadedData->GiveToAbilitySystemComponent(WarriorAbilitySystemComponent);
 		}

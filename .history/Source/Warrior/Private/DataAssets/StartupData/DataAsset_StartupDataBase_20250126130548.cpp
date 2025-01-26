@@ -14,7 +14,7 @@ void UDataAsset_StartupDataBase::GiveToAbilitySystemComponent(UWarriorAbilitySys
 	GrantAbilities(ReactiveAbilities,InASCToGive,ApplyLevel); 
 }
 
-void UDataAsset_StartupDataBase::GrantAbilities(const TArray<TSubclassOf<UWarriorGameplayAbility>> &InAbilitiesToGive, UWarriorAbilitySystemComponent *InASCToGive, int32 ApplyLevel)
+void UDataAsset_StartupDataBase::GrantAbilities(const TArray<TSubclassOf<UWarriorGameplayAbility>> &InAbilitiesToGive, UWarriorAbilitySystemComponent *InToGive, int32 ApplyLevel)
 {
     if (InAbilitiesToGive.IsEmpty())
 	{
