@@ -631,9 +631,46 @@ Then, create a new blueprint animation.
   ```
   Create a derived class name `DataAsset_HeroStartUpData`, and create a new dataset blueprint name `DA_Hero` in the PlayerCharacter folder.\
   ![Screenshot 2025-01-26 120915](https://github.com/user-attachments/assets/c5af4a38-cfd9-4ffb-a928-f62f4944bc95)
+- 15, Synchronous Loading \
+  In WarriorBaseCharacter.h, we use soft reference to enable the DataAsset usage.
+  ```c++
+  protected:
+  	...
+  	UWarriorAttributeSet* WarriorAttributeSet;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "CharacterData")
+	TSoftObjectPtr<UDataAsset_StartUpDataBase> CharacterStartUpData;
+  ```
+  ![Screenshot_20250126_132904_Samsung capture](https://github.com/user-attachments/assets/e1c39258-a79d-4548-a8b2-be3d3f332b71) \
+  In WarriorHeroCharacter.cpp, we need to load this soft reference into the `poessessedby()`,
+  ```c++
+  void AWarriorHeroCharacter::PossessedBy(AController* NewController)
+  {
+	Super::PossessedBy(NewController);
 
-  
+	if (!CharacterStartUpData.IsNull())
+	{
+		if (UDataAsset_StartUpDataBase* LoadedData = CharacterStartUpData.LoadSynchronous())
+		{
+			LoadedData->GiveToAbilitySystemComponent(WarriorAbilitySystemComponent);
+		}
+	}
+  }
+  ```
+  Then, we need a Marco to highlight if the `poessessedby()` does not run successfully. So in WarriorBaseCharacter.cpp,
+  ```c++
+  void AWarriorBaseCharacter::PossessedBy(AController *NewController)
+  {
+    ...
+    if (WarriorAbilitySystemComponent)
+	{
+		WarriorAbilitySystemComponent->InitAbilityActorInfo(this,this);
+		ensureMsgf(!CharacterStartUpData.IsNull(),TEXT("Forgot to assign start up data to %s"),*GetName());
+	}
+  ```
+  After that, \
+  ![Screenshot 2025-01-26 135934](https://github.com/user-attachments/assets/aae2a8e4-70dd-41ef-92b4-e866f2e3ff60)
+
 
   
 
