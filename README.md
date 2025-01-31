@@ -671,7 +671,51 @@ Then, create a new blueprint animation.
   After that, \
   ![Screenshot 2025-01-26 135934](https://github.com/user-attachments/assets/aae2a8e4-70dd-41ef-92b4-e866f2e3ff60)
 
+# 2, Combo System
+ - In this part, majorly we will do things: Weapon Equiping and Combo System
+ - Weapon Equipping: Retrieve the spawned weapon, A new Gameplay Ability, Ability Input Action, Armed Locomotion, Unequip
+ - Combo System: Moves can be easily added or removed, Animation Indepent, Light/Heavy Attack, Communication, Damaged scaled by combo count
+ - 1, Create hero combat component\
+   ![Screenshot_20250130_090317_Samsung capture](https://github.com/user-attachments/assets/85094517-76aa-4e8a-bdc4-3a361ab03223)
+   create a new c++ Actor Component class names `PawnExtenComponentBase`
+   ```c++
+   UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+   class WARRIOR_API UPawnExtensionComponentBase : public UActorComponent
+   {
+	GENERATED_BODY()
 
+   protected:
+	template <class T>
+	T* GetOwningPawn() const
+	{
+		static_assert(TPointerIsConvertibleFromTo<T, APawn>::Value, "'T' Template Parameter to GetPawn must be derived from APawn");
+		return CastChecked<T>(GetOwner());
+	}
+	APawn* GetOwningPawn() const
+	{
+		return GetOwningPawn<APawn>();
+	}
+
+	template <class T>
+	T* GetOwningController() const
+	{
+		static_assert(TPointerIsConvertibleFromTo<T, AController>::Value, "'T' Template Parameter to GetController must be derived from AController");
+		return GetOwningPawn<APawn>()->GetController<T>();
+	}		
+   };
+   ```
+   Then, create a new child c++ class `PawnCombatComponent` in components/Combat\
+   and create a new child base on c++ class `PawnCombatComponent`, name `HeroCombatComponent`\
+   First, add this `#include "Components/Combat/HeroCombatComponent.h"` in `WarriorHeroCharacter.cpp`\
+   Secondly, add `class UHeroCombatComponent;` in `WarriorHeroCharacter.h`\
+   Third, add the rest in `WarriorHeroCharacter.h`
+   ```c++
+   UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat", meta = (AllowPrivateAccess = "true"))
+   UHeroCombatComponent* HeroCombatComponent;	
+   public:
+   FORCEINLINE UHeroCombatComponent* GetHeroCombatComponent() const { return HeroCombatComponent; }
+   ``` 
+   Fourth, add `HeroCombatComponent = CreateDefaultSubobject<UHeroCombatComponent>(TEXT("HeroCombatComponent"));` in the  `WarriorHeroCharacter.cpp`\
   
 
   
