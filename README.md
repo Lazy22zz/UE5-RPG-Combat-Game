@@ -677,7 +677,7 @@ Then, create a new blueprint animation.
  - Combo System: Moves can be easily added or removed, Animation Indepent, Light/Heavy Attack, Communication, Damaged scaled by combo count
  - 1, Create hero combat component\
    ![Screenshot_20250130_090317_Samsung capture](https://github.com/user-attachments/assets/85094517-76aa-4e8a-bdc4-3a361ab03223)
-   create a new c++ Actor Component class names `PawnExtenComponentBase`
+   create a new c++ Actor Component class named `PawnExtenComponentBase`
    ```c++
    UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
    class WARRIOR_API UPawnExtensionComponentBase : public UActorComponent
@@ -716,6 +716,104 @@ Then, create a new blueprint animation.
    FORCEINLINE UHeroCombatComponent* GetHeroCombatComponent() const { return HeroCombatComponent; }
    ``` 
    Fourth, add `HeroCombatComponent = CreateDefaultSubobject<UHeroCombatComponent>(TEXT("HeroCombatComponent"));` in the  `WarriorHeroCharacter.cpp`\
+- 2, Registered weapons by its tags\
+  In the first step, we must create a data structure to store `Required registered ` weapons. In PawnCombatComponent.h, we use `TMap<typename A, tyname B,...>` to store weapons.\
+  For A, we need tags, which come form `FGameplayTag`, by checking the `WarriorGameplayTags.h`, we can use its header `#include "NativeGameplayTags.h"`,\
+  For B, we need WeaponActor, which comes from `AWarriorWeaponBase* `, by `WarriorWeaponBase.cpp`, we need to class its type and include its header .h.
+  ```c++
+  TMap<FGameplayTag,AWarriorWeaponBase*> CharacterCarriedWeaponMap;
+  ```
+  Second step, we need to register spawned weapons with the character, retrieve carried or equipped weapons based on their Gameplay Tags, and manage the character's weapon inventory.\
+  `RegisterSpawnedWeapon`: register the weapon matched with its tag.\
+  `GetCharacterCarriedWeaponByTag`: retrieve the specific weapon by characters.\
+  `CurrentEquippedWeaponTag`: Keep track of the current weapon.\
+  `GetCharacterCurrentEquippedWeapon`: Get the current weapon.\
+  ```c++
+  public:
+	UFUNCTION(BlueprintCallable, Category = Category = "Warrior|Combat")
+	void RegisterSpawnedWeapon(FGameplayTag InWeaponTagToRegister, AWarriorWeaponBase* InWeaponToRegister, bool bRegisterAsEquippedWeapon = false); // fasle for hero, true for enemy
+
+	UFUNCTION(BlueprintCallable, Category = "Warrior|Combat")
+	AWarriorWeaponBase* GetCharacterCarriedWeaponByTag(FGameplayTag InWeaponTagToGet) const;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Warrior|Combat")
+	FGameplayTag CurrentEquippedWeaponTag;
+
+	UFUNCTION(BlueprintCallable, Category = "Warrior|Combat")
+	AWarriorWeaponBase* GetCharacterCurrentEquippedWeapon() const;
+  ```
+  The third step, implement those UFunctions.\
+  In `RegisterSpawnedWeapon`, 
+  we need `checkf()` and `check()` to clarify whether these tags and weapon actor exists, and use `.Emplace()` to register them to the `CharacterCarriedWeaponMap`, last check if this is a required equipped weapon for the main character, if so, then do.
+  ```c++
+  void UPawnCombatComponent::RegisterSpawnedWeapon(FGameplayTag InWeaponTagToRegister, AWarriorWeaponBase* InWeaponToRegister, bool bRegisterAsEquippedWeapon)
+  {
+	checkf(!CharacterCarriedWeaponMap.Contains(InWeaponTagToRegister), TEXT("A named named %s has already been added as carried weapon"), *InWeaponTagToRegister.ToString());
+	check(InWeaponToRegister);
+
+	CharacterCarriedWeaponMap.Emplace(InWeaponTagToRegister, InWeaponToRegister);
+
+	if (bRegisterAsEquippedWeapon)
+	{
+		CurrentEquippedWeaponTag = InWeaponTagToRegister;
+	}
+  }
+  ```
+  In `GetCharacterCarriedWeaponByTag`,
+  we use two functions to seek the required weapon actor, `.conatins()` and `.find()`
+  ```c++
+  if (CharacterCarriedWeaponMap.Contains(InWeaponTagToGet))
+  {
+	if (AWarriorWeaponBase* const* FoundWeapon = CharacterCarriedWeaponMap.Find(InWeaponTagToGet))
+	{
+		return *FoundWeapon;
+	}
+  }
+  return nullptr;
+  ```
+  In  `GetCharacterCurrentEquippedWeapon`:,
+  we need to use `GetCharacterCarriedWeaponByTag`, if the tag does not exist, then it can't get the weapon actor, if it does, return that actor
+  ```c++
+  if (!CurrentEquippedWeaponTag.IsValid())
+  {
+	return nullptr;
+  }
+  return GetCharacterCarriedWeaponByTag(CurrentEquippedWeaponTag);
+  ```
+  The fourth step, create a tag for the weapon\
+  In `WarriorGameplayTags` .h and .cpp, add `WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Weapon_Axe)` , `UE_DEFINE_GAMEPLAY_TAG(Player_Weapon_Axe, "Player.Weapon.Axe")`.\
+  The fifth step, debugging if the tag or weapon actor has an issue.\
+  In `PawnCombatComponent.cpp`,
+  ```c++
+  #include "WarriorDebugHelper.h"
+  ...
+  const FString WeaponString = FString::Printf(TEXT("A weapon named: %s has been registered using the tag %s"), *InWeaponToRegister->GetName(), *InWeaponTagToRegister.ToString());
+  Debug::Print(WeaponString);
+  ```
+  Last Step, call out this ability in `WarriorGamePlayability`\
+  In .h,
+  ```c++
+  UFUNCTION(BlueprintPure, Category = "Warrior|Ability")
+  UPawnCombatComponent* GetPawnCombatComponentFromActorInfo() const;
+  ```
+  In .cpp,
+  ```c++
+  UPawnCombatComponent* UWarriorGameplayAbility::GetPawnCombatComponentFromActorInfo() const
+  {
+    return GetAvatarActorFromActorInfo()->FindComponentByClass<UPawnCombatComponent>();
+  }
+  ```
+  Purpose: allowing the caller to access the combat-related data or functionality provided by this component.\
+  Connect the blueprint in GamePlayAbility/GA_Shared_SpawnWeapon, \
+  ![Screenshot 2025-01-31 113226](https://github.com/user-attachments/assets/3ab3e1c8-d55a-4968-a023-bd26b36a2d2e)\
+  ![Screenshot 2025-01-31 113632](https://github.com/user-attachments/assets/4b5e3828-561e-4a30-9bfb-7ec97e031f77)
+
+  
+
+  
+  
+  
+  
   
 
   
