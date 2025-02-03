@@ -909,7 +909,59 @@ Then, create a new blueprint animation.
   ```
   Fifth, change the name of `IE_Jump` to `IE_EquipAxe`, in the Data_InputCofig, do it\
   ![Screenshot 2025-02-02 171203](https://github.com/user-attachments/assets/26fc7ff4-c82d-498c-b174-a976e2987fe8)
+- 5, Hero Ability Set in Startup_Data\
+  ![Screenshot_20250203_092221_Samsung capture](https://github.com/user-attachments/assets/71c13949-ccff-4f20-b8bf-b94f5e4e8d72)
+  First, To allow the character to gain this startup_ability, we need to add this in `DataAsset_HeroStartupData.h`\
+  To do that, we require struct `FGameplayTag` from `GameplayTagContainer.h`\
+  Then, we need a subclass of the WarriorGameplayAbility, because it is under the public UGameplayAbility\
+  After that, a valid function is required.
+  ```c++
+  USTRUCT(BlueprintType)
+  struct FWarriorHeroAbilitySet
+  {
+	GENERATED_BODY()
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta = (Categories = "InputTag"))
+	FGameplayTag InputTag;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	TSubclassOf<UWarriorGameplayAbility> AbilityToGrant;
+
+	bool IsValid() const;
+  };
+  ```
+  Second, implement the `IsValid()`\
+  ```c++
+  bool FWarriorHeroAbilitySet::IsValid() const
+  {
+	return InputTag.IsValid() && AbilityToGrant;
+  }
+  ```
+  Third, create an array to sort the warriorabilities, FWarriorHeroAbilitySet struct has two parts: tags and the ability matched to the tag.
+  ```c++
+  private:
+	UPROPERTY(EditDefaultsOnly, Category = "StartUpData", meta = (TitleProperty = "InputTag"))
+	TArray<FWarriorHeroAbilitySet> HeroStartUpAbilitySets;
+  ```
+  Fourth, recall dataasset_startup's attaching function `GiveToAbilitySystemComponent`
+  ```c++
+  virtual void GiveToAbilitySystemComponent(UWarriorAbilitySystemComponent* InASCToGive, int32 ApplyLevel = 1) override;
+  ```
+  Fifth, implement it.
+  ```c++
+  Super::GiveToAbilitySystemComponent(InASCToGive, ApplyLevel);
+
+  for (const FWarriorHeroAbilitySet& AbilitySet : HeroStartUpAbilitySets)
+  {
+    if (!AbilitySet.IsValid()) continue;
+
+    FGameplayAbilitySpec AbilitySpec(AbilitySet.AbilityToGrant);
+    AbilitySpec.SourceObject = InASCToGive->GetAvatarActor();
+    AbilitySpec.Level = ApplyLevel;
+    AbilitySpec.DynamicAbilityTags.AddTag(AbilitySet.InputTag);
+    InASCToGive->GiveAbility(AbilitySpec);
+  }
+  ```
 
   
 
