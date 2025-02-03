@@ -718,7 +718,7 @@ Then, create a new blueprint animation.
    Fourth, add `HeroCombatComponent = CreateDefaultSubobject<UHeroCombatComponent>(TEXT("HeroCombatComponent"));` in the  `WarriorHeroCharacter.cpp`\
 - 2, Registered weapons by its tags\
   In the first step, we must create a data structure to store `Required registered ` weapons. In PawnCombatComponent.h, we use `TMap<typename A, tyname B,...>` to store weapons.\
-  For A, we need tags, which come form `FGameplayTag`, by checking the `WarriorGameplayTags.h`, we can use its header `#include "NativeGameplayTags.h"`,\
+  For A, we need tags, which come from `FGameplayTag`, by checking the `WarriorGameplayTags.h`, we can use its header `#include "NativeGameplayTags.h"`,\
   For B, we need WeaponActor, which comes from `AWarriorWeaponBase* `, by `WarriorWeaponBase.cpp`, we need to class its type and include its header .h.
   ```c++
   TMap<FGameplayTag,AWarriorWeaponBase*> CharacterCarriedWeaponMap;
@@ -782,7 +782,7 @@ Then, create a new blueprint animation.
   ```
   The fourth step, create a tag for the weapon\
   In `WarriorGameplayTags` .h and .cpp, add `WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Weapon_Axe)` , `UE_DEFINE_GAMEPLAY_TAG(Player_Weapon_Axe, "Player.Weapon.Axe")`.\
-  The fifth step, debugging if the tag or weapon actor has an issue.\
+  The fifth step is debugging if the tag or weapon actor has an issue.\
   In `PawnCombatComponent.cpp`,
   ```c++
   #include "WarriorDebugHelper.h"
@@ -790,7 +790,7 @@ Then, create a new blueprint animation.
   const FString WeaponString = FString::Printf(TEXT("A weapon named: %s has been registered using the tag %s"), *InWeaponToRegister->GetName(), *InWeaponTagToRegister.ToString());
   Debug::Print(WeaponString);
   ```
-  Last Step, call out this ability in `WarriorGamePlayability`\
+  In the last step, call out this ability in `WarriorGamePlayability`\
   In .h,
   ```c++
   UFUNCTION(BlueprintPure, Category = "Warrior|Ability")
@@ -807,11 +807,66 @@ Then, create a new blueprint animation.
   Connect the blueprint in GamePlayAbility/GA_Shared_SpawnWeapon, \
   ![Screenshot 2025-01-31 113226](https://github.com/user-attachments/assets/3ab3e1c8-d55a-4968-a023-bd26b36a2d2e)\
   ![Screenshot 2025-01-31 113632](https://github.com/user-attachments/assets/4b5e3828-561e-4a30-9bfb-7ec97e031f77)
+- 3, Add a new GameplayAbility for the spawned equipped weapon\
+  ![Screenshot_20250202_154801_Samsung capture](https://github.com/user-attachments/assets/baf29f0b-820a-4ad4-b02f-6e8a114b58fb)
+  Purpose: Creating helper function for `GA_Hero_EquipedAxe blueprint`.\
+  In `WarriorGameplayAbility.h`
+  ```c++
+  class UWarriorAbilitySystemComponent;
+  ...
+  UFUNCTION(BlueprintPure, Category = "Warrior|Ability")
+  UWarriorAbilitySystemComponent* GetWarriorAbilitySystemComponentFromActorInfo() const;
+  ```
+  In `WarriorGameplayAbility.cpp`, we use `CurrentActorInfo` in `GameplayAbility.h` and `GameplayAbilityTypes.h`
+  ```c++
+  UWarriorAbilitySystemComponent* UWarriorGameplayAbility::GetWarriorAbilitySystemComponentFromActorInfo() const
+  {
+    return Cast<UWarriorAbilitySystemComponent>(CurrentActorInfo->AbilitySystemComponent);
+  }
+  ```
+  First Step, create a child class of `WarriorGameplayAbility`,\
+  Second Step, implement them. (The TweakObjectPtr struct contains a pointer to an AWarriorHeroCharacter object and provides methods to tweak the character's health and strength.)\
+  In .h,
+  ```c++
+  public:
+	UFUNCTION(BlueprintPure, Category = "Warrior|Ability")
+	AWarriorHeroCharacter* GetHeroCharacterFromActorInfo();
+	UFUNCTION(BlueprintPure, Category = "Warrior|Ability")
+	AWarriorHeroController* GetHeroControllerFromActorInfo();
+	UFUNCTION(BlueprintPure, Category = "Warrior|Ability")
+	UHeroCombatComponent* GetHeroCombatComponentFromActorInfo();
+  private:
+	TWeakObjectPtr<AWarriorHeroCharacter> CachedWarriorHeroCharacter;
+	TWeakObjectPtr<AWarriorHeroController> CachedWarriorHeroController;
+  ```
+  In .cpp,
+  ```c++
+  AWarriorHeroCharacter* UWarriorHeroGameplayAbility::GetHeroCharacterFromActorInfo()
+  {
+	if (!CachedWarriorHeroCharacter.IsValid())
+	{
+		CachedWarriorHeroCharacter = Cast<AWarriorHeroCharacter>(CurrentActorInfo->AvatarActor);
+	}
 
-  
+	return CachedWarriorHeroCharacter.IsValid() ? CachedWarriorHeroCharacter.Get() : nullptr;
+  }
+  AWarriorHeroController* UWarriorHeroGameplayAbility::GetHeroControllerFromActorInfo()
+  {
+	if (!CachedWarriorHeroController.IsValid())
+	{
+		CachedWarriorHeroController = Cast<AWarriorHeroController>(CurrentActorInfo->PlayerController);
+	}
 
-  
-  
+	return CachedWarriorHeroController.IsValid() ? CachedWarriorHeroController.Get() : nullptr;
+  }
+  UHeroCombatComponent* UWarriorHeroGameplayAbility::GetHeroCombatComponentFromActorInfo()
+  {
+	return GetHeroCharacterFromActorInfo()->GetHeroCombatComponent();
+  }
+  ```
+  Third step, create the blueprint.\
+  ![Screenshot 2025-02-02 162851](https://github.com/user-attachments/assets/d511f3d0-c90a-416d-96ca-6a283c14d14e)
+
   
   
   
