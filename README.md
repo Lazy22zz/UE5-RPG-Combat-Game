@@ -864,12 +864,52 @@ Then, create a new blueprint animation.
 	return GetHeroCharacterFromActorInfo()->GetHeroCombatComponent();
   }
   ```
-  Third step, create the blueprint.\
+  The third step, create the blueprint.\
   ![Screenshot 2025-02-02 162851](https://github.com/user-attachments/assets/d511f3d0-c90a-416d-96ca-6a283c14d14e)
+- 4, create equip/unequip weapon tags, mapping data structure, and attach them to the map\
+  First, in `WarriorGameplayTags.h`
+  ```c++
+  WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_EquipAxe);
+  WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(InputTag_UnequipAxe);
+  ```
+  In `WarriorGameplayTags.cpp`
+  ```c++
+  UE_DEFINE_GAMEPLAY_TAG(InputTag_EquipAxe, "InputTag.EquipAxe");
+  UE_DEFINE_GAMEPLAY_TAG(InputTag_UnequipAxe, "InputTag.UnequipAxe");
+  ```
+  Second, in `DataAsset_Inputconfig.h`
+  ```c++
+  UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta = (TitleProperty = "InputTag"))
+	TArray<FWarriorInputActionConfig> AbilityInputActions;
+  ```
+  Third, Go to `WarriorInputComponent.h`
+  ```c++
+  template<class UserObject,typename CallbackFunc>
+	void BindAbilityInputAction(const UDataAsset_InputConfig* InInputConfig,UserObject* ContextObject,CallbackFunc InputPressedFunc,CallbackFunc InputRelasedFunc);
+  ```
+  In `WarriorInputComponent.cpp`, use struct FWarriorInputActionConfig's reference: AbilityInputActionConfig's map
+  ```c++
+  template<class UserObject, typename CallbackFunc>
+  inline void UWarriorInputComponent::BindAbilityInputAction(const UDataAsset_InputConfig* InInputConfig, UserObject* ContextObject, CallbackFunc InputPressedFunc, CallbackFunc InputRelasedFunc)
+  {
+	for (const FWarriorInputActionConfig& AbilityInputActionConfig : InInputConfig->AbilityInputActions)
+	{
+		if (!AbilityInputActionConfig.IsValid()) continue;
+		BindAction(AbilityInputActionConfig.InputAction, ETriggerEvent::Started, ContextObject, InputPressedFunc, AbilityInputActionConfig.InputTag);
+		BindAction(AbilityInputActionConfig.InputAction, ETriggerEvent::Completed, ContextObject, InputRelasedFunc, AbilityInputActionConfig.InputTag);
+	}
+  }
+  ```
+  Fourth, in `WarriorInputComponent.h`, create a helper function to identify valid, checks the tag and tag action is valid or not
+  ```c++
+  bool IsValid() const
+	{
+		return InputTag.IsValid() && InputAction;
+	}
+  ```
+  Fifth, change the name of `IE_Jump` to `IE_EquipAxe`, in the Data_InputCofig, do it\
+  ![Screenshot 2025-02-02 171203](https://github.com/user-attachments/assets/26fc7ff4-c82d-498c-b174-a976e2987fe8)
 
-  
-  
-  
 
   
 
