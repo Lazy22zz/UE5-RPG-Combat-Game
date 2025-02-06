@@ -9,6 +9,7 @@
 
 class UInputAction;
 class UInputMappingContext;
+
 /**
  * 
  */
@@ -22,7 +23,7 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta = (Categories = "InputTag"))
 	FGameplayTag InputTag;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta = (Categories = "InputTag"))
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UInputAction* InputAction;
 
 	bool IsValid() const
