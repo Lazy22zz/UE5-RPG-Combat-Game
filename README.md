@@ -951,7 +951,7 @@ Then, create a new blueprint animation.
   ```c++
   Super::GiveToAbilitySystemComponent(InASCToGive, ApplyLevel);
 
-  for (const FWarriorHeroAbilitySet& AbilitySet : HeroStartUpAbilitySets)
+  for (const FWarriorHeroAbilitySet& AbilitySet: HeroStartUpAbilitySets)
   {
     if (!AbilitySet.IsValid()) continue;
 
@@ -962,6 +962,44 @@ Then, create a new blueprint animation.
     InASCToGive->GiveAbility(AbilitySpec);
   }
   ```
+- 6, Binding ability input\
+  First, In WarriorHeroCharacter.h
+  ```c++
+  void Input_AbilityInputPressed(FGameplayTag InInputTag);
+  void Input_AbilityInputReleased(FGameplayTag InInputTag);
+  ```
+  Second, In Warriorabilitysystemcomponent.h
+  ```c++
+  public:
+	void OnAbilityInputPressed(const FGameplayTag& InInputTag);
+	void OnAbilityInputReleased(const FGameplayTag& InInputTag);
+  ```
+  Third, Implement the `OnAbilityInputPressed()`, using `HasTagExact` for the exact check, and `TryActivateAbility()` for activate activity. 
+  ```c++
+  void UWarriorAbilitySystemComponent::OnAbilityInputPressed(const FGameplayTag& InInputTag)
+  {
+	if (!InInputTag.IsValid())
+	{
+		return;
+	}
+	for (const FGameplayAbilitySpec& AbilitySpec : GetActivatableAbilities())
+	{
+		if (!AbilitySpec.DynamicAbilityTags.HasTagExact(InInputTag)) continue;
+		TryActivateAbility(AbilitySpec.Handle);
+	}
+  }
+  ```
+  Fourth, Implement in WarriorHeroCharacter.cpp
+  ```c++
+  void AWarriorHeroCharacter::Input_AbilityInputPressed(FGameplayTag InInputTag)
+  {
+	WarriorAbilitySystemComponent->OnAbilityInputPressed(InInputTag);
+  }
 
-  
-
+  void AWarriorHeroCharacter::Input_AbilityInputReleased(FGameplayTag InInputTag)
+  {
+	WarriorAbilitySystemComponent->OnAbilityInputReleased(InInputTag);
+  }
+  ...
+  WarriorInputComponent->BindAbilityInputAction(InputConfigDataAsset, this, &ThisClass::Input_AbilityInputPressed, &ThisClass::Input_AbilityInputReleased);
+  ```
