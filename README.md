@@ -1012,6 +1012,29 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-02-07 174248](https://github.com/user-attachments/assets/4da4825e-fbd1-4b23-a234-36f096890bdf)\
   In GA_Hero_Equip_Axe,\
   ![Screenshot 2025-02-07 174255](https://github.com/user-attachments/assets/6b554eb1-0684-4944-a980-85e84211bc34)
+- 8, wait for gameplay event
+  First, Create a new blueprint names `AN_SendGamePlayToOwner` from AnimeNotify\
+  ![Screenshot 2025-02-07 181830](https://github.com/user-attachments/assets/697fdeaa-43ca-44bf-a66f-4e259ae71639)\
+  And then,\
+  In WarriorGameplayTags.h,
+  ```c++
+  WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Event_Equip_Axe);
+  WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Event_Unequip_Axe);
+  ```
+  In WarriorGameplay.cpp,
+  ```c++
+  UE_DEFINE_GAMEPLAY_TAG(Player_Event_Equip_Axe, "Player.Event.Equip.Axe");
+  UE_DEFINE_GAMEPLAY_TAG(Player_Event_Unequip_Axe, "Player.Event.Unequip.Axe");
+  ```
+  Second, In AM_Hero_Equip_Axe, add that notify
+  ![Screenshot 2025-02-07 181957](https://github.com/user-attachments/assets/0b3f0ea4-9a88-455b-b237-ae39ad7238d8)\
+  Third, In GA_Hero_Equiped_Axe
+  ![Screenshot 2025-02-07 182124](https://github.com/user-attachments/assets/38a3b3a5-af50-4eff-83ce-87f0cdf0b982)\
+  Test\
+  Forth, 
+  
+
+
 
 
 
