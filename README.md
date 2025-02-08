@@ -1003,3 +1003,16 @@ Then, create a new blueprint animation.
   ...
   WarriorInputComponent->BindAbilityInputAction(InputConfigDataAsset, this, &ThisClass::Input_AbilityInputPressed, &ThisClass::Input_AbilityInputReleased);
   ```
+- 7, Play Montage And Wait
+  Goal: Create a upperBody Montage and attach it.
+  In Hero_Axe_Equip,\
+  ![Screenshot 2025-02-07 174316](https://github.com/user-attachments/assets/b24971cd-ca82-4a89-a964-bcf17a25d96a)\
+  ![Screenshot 2025-02-07 174352](https://github.com/user-attachments/assets/dc54e0ac-3579-44ae-a34c-9ad9e3f14f85)\
+  In ABP_Hero, remeber add a new layer branch bone\
+  ![Screenshot 2025-02-07 174248](https://github.com/user-attachments/assets/4da4825e-fbd1-4b23-a234-36f096890bdf)\
+  In GA_Hero_Equip_Axe,\
+  ![Screenshot 2025-02-07 174255](https://github.com/user-attachments/assets/6b554eb1-0684-4944-a980-85e84211bc34)
+
+
+
+
