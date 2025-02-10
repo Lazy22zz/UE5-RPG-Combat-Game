@@ -1031,7 +1031,7 @@ Then, create a new blueprint animation.
   Third, In GA_Hero_Equiped_Axe
   ![Screenshot 2025-02-07 182124](https://github.com/user-attachments/assets/38a3b3a5-af50-4eff-83ce-87f0cdf0b982)\
   Test\
-  Fourth, Add a new socket in the hand_r and finish the rest Gameplay Ability Graph\
+  Fourth, Add a new socket in the hand_r and finish the rest of the Gameplay Ability Graph\
   ![Screenshot 2025-02-10 090328](https://github.com/user-attachments/assets/640427de-69aa-49ad-8991-1f15e2f10759)\
   ![Screenshot 2025-02-10 090340](https://github.com/user-attachments/assets/57672762-ce26-46be-aedb-e0267cf2ef44)
 - 9, Animation Layer Interface
@@ -1039,7 +1039,11 @@ Then, create a new blueprint animation.
   Create a new Animation Layer Interface named ALI_Hero, and rename the node `ArmedLocomotionState`\
   Next, In ABP_hero, select the class setting, and add the new interface in it.\
   using blueprint: blend poses by bool, property assets(combat component -> weapon tag), is valid\
-  ![Screenshot 2025-02-10 093943](https://github.com/user-attachments/assets/2e432fce-e480-4a7c-9504-6d2f8cb781ed)
+  ![Screenshot 2025-02-10 093943](https://github.com/user-attachments/assets/2e432fce-e480-4a7c-9504-6d2f8cb781ed)\
+  Last, set the combat component gameplay tag after the character equips his weapon.\
+  ![Screenshot 2025-02-10 095124](https://github.com/user-attachments/assets/27b5d420-508f-47c8-bf87-1bcfca6d417b)
+- 10, 
+
 
 
   
