@@ -1004,16 +1004,16 @@ Then, create a new blueprint animation.
   WarriorInputComponent->BindAbilityInputAction(InputConfigDataAsset, this, &ThisClass::Input_AbilityInputPressed, &ThisClass::Input_AbilityInputReleased);
   ```
 - 7, Play Montage And Wait
-  Goal: Create a upperBody Montage and attach it.
+  Goal: Create a upper body Montage and attach it.
   In Hero_Axe_Equip,\
   ![Screenshot 2025-02-07 174316](https://github.com/user-attachments/assets/b24971cd-ca82-4a89-a964-bcf17a25d96a)\
   ![Screenshot 2025-02-07 174352](https://github.com/user-attachments/assets/dc54e0ac-3579-44ae-a34c-9ad9e3f14f85)\
-  In ABP_Hero, remeber add a new layer branch bone\
+  In ABP_Hero, remember add a new layer of branch bone\
   ![Screenshot 2025-02-07 174248](https://github.com/user-attachments/assets/4da4825e-fbd1-4b23-a234-36f096890bdf)\
   In GA_Hero_Equip_Axe,\
   ![Screenshot 2025-02-07 174255](https://github.com/user-attachments/assets/6b554eb1-0684-4944-a980-85e84211bc34)
 - 8, wait for gameplay event
-  First, Create a new blueprint names `AN_SendGamePlayToOwner` from AnimeNotify\
+  First, Create a new blueprint named `AN_SendGamePlayToOwner` from AnimeNotify\
   ![Screenshot 2025-02-07 181830](https://github.com/user-attachments/assets/697fdeaa-43ca-44bf-a66f-4e259ae71639)\
   And then,\
   In WarriorGameplayTags.h,
@@ -1031,7 +1031,20 @@ Then, create a new blueprint animation.
   Third, In GA_Hero_Equiped_Axe
   ![Screenshot 2025-02-07 182124](https://github.com/user-attachments/assets/38a3b3a5-af50-4eff-83ce-87f0cdf0b982)\
   Test\
-  Forth, 
+  Fourth, Add a new socket in the hand_r and finish the rest Gameplay Ability Graph\
+  ![Screenshot 2025-02-10 090328](https://github.com/user-attachments/assets/640427de-69aa-49ad-8991-1f15e2f10759)\
+  ![Screenshot 2025-02-10 090340](https://github.com/user-attachments/assets/57672762-ce26-46be-aedb-e0267cf2ef44)
+- 9, Animation Layer Interface
+  In this part, we need to satisfy Armed Locomotion. So we need to understand how to use the Animation Layer for different weapons.\
+  Create a new Animation Layer Interface named ALI_Hero, and rename the node `ArmedLocomotionState`\
+  Next, In ABP_hero, select the class setting, and add the new interface in it.\
+  using blueprint: blend poses by bool, property assets(combat component -> weapon tag), is valid\
+  ![Screenshot 2025-02-10 093943](https://github.com/user-attachments/assets/2e432fce-e480-4a7c-9504-6d2f8cb781ed)
+
+
+  
+
+
   
 
 
