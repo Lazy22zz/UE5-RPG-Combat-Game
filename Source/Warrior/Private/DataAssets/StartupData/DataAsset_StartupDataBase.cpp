@@ -26,9 +26,9 @@ void UDataAsset_StartupDataBase::GrantAbilities(const TArray<TSubclassOf<UWarrio
 		if(!Ability) continue;
 
 		FGameplayAbilitySpec AbilitySpec(Ability);
-
 		AbilitySpec.SourceObject = InASCToGive->GetAvatarActor();
 		AbilitySpec.Level = ApplyLevel;
+
 		InASCToGive->GiveAbility(AbilitySpec);
 	}
 }

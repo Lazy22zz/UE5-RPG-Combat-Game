@@ -78,7 +78,7 @@ AWarriorHeroCharacter::AWarriorHeroCharacter()
     CameraBoom -> bUsePawnControlRotation = true;
 
     FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
-    FollowCamera -> SetupAttachment(CameraBoom);
+    FollowCamera -> SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
     FollowCamera->bUsePawnControlRotation = false;
 
     GetCharacterMovement()->bOrientRotationToMovement = true;
