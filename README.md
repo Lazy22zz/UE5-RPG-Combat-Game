@@ -1042,7 +1042,28 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-02-10 093943](https://github.com/user-attachments/assets/2e432fce-e480-4a7c-9504-6d2f8cb781ed)\
   Last, set the combat component gameplay tag after the character equips his weapon.\
   ![Screenshot 2025-02-10 095124](https://github.com/user-attachments/assets/27b5d420-508f-47c8-bf87-1bcfca6d417b)
-- 10, 
+- 10, Master Anim Layer
+  Purpose: create a major hero locomotion animation layer, and split it into different with/without weapon locomotions.\
+  The first step, create a new blueprint animation, named Master_AnimLayer_Hero, the parent class is WarriorHeroLinkedAnimLayer. Click on it, class setting, and add the ALI_Hero interface. \
+  Then double click the Armed Locomotion State, add blendspace player, click this new node, let coordinates-> y -> expose as a pin is unchecked, and settings-> blend space -> expose as a pin is checked.\
+  Promote the blend space to a new variable: Default Locomotion Blend Space, Because ABP_hero class is `Warrior Hero Anim Instance`, but Master_AnimLayer_Hero class is `Warrior Hero Linked Anim Layer`, so we need to fix in the c++\
+  In WarriorAnimLinkedLayer.h
+  ```c++
+  public:
+	UFUNCTION(BlueprintPure, meta = (BlueprintThreadSafe))
+	UWarriorHeroAnimInstance* GetHeroAnimInstance() const;
+  ```
+  and implement it
+  ```c++
+  UWarriorHeroAnimInstance* UWarriorHeroLinkedAnimLayer::GetHeroAnimInstance() const
+  {
+	return Cast<UWarriorHeroAnimInstance>(GetOwningComponent()->GetAnimInstance());
+  }
+  ```
+  Go back to the Master_AnimLayer_Hero, add a new property asset, and choose GetHeroComponent->GroundSpeed.
+  The second step, create a new child blueprint based on the Master_AnimLayer_Hero, we need to add a new 1d animation blend space for it.\
+  Third step, create a new blendspace, named Default_Locomotion_Axe, Then attach it to the `Master_AnimLayer_Hero`.
+  ![Screenshot 2025-02-10 103443](https://github.com/user-attachments/assets/36a4b72e-17ec-4005-95a9-222b5df8a336)
 
 
 
