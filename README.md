@@ -1003,16 +1003,16 @@ Then, create a new blueprint animation.
   ...
   WarriorInputComponent->BindAbilityInputAction(InputConfigDataAsset, this, &ThisClass::Input_AbilityInputPressed, &ThisClass::Input_AbilityInputReleased);
   ```
-- 7, Play Montage And Wait
-  Goal: Create a upper body Montage and attach it.
+- 7, Play Montage And Wait\
+  Goal: Create an upper body Montage and attach it.
   In Hero_Axe_Equip,\
   ![Screenshot 2025-02-07 174316](https://github.com/user-attachments/assets/b24971cd-ca82-4a89-a964-bcf17a25d96a)\
   ![Screenshot 2025-02-07 174352](https://github.com/user-attachments/assets/dc54e0ac-3579-44ae-a34c-9ad9e3f14f85)\
-  In ABP_Hero, remember add a new layer of branch bone\
+  In ABP_Hero, remember to add a new layer of branch bone\
   ![Screenshot 2025-02-07 174248](https://github.com/user-attachments/assets/4da4825e-fbd1-4b23-a234-36f096890bdf)\
   In GA_Hero_Equip_Axe,\
   ![Screenshot 2025-02-07 174255](https://github.com/user-attachments/assets/6b554eb1-0684-4944-a980-85e84211bc34)
-- 8, wait for gameplay event
+- 8, wait for gameplay event\
   First, Create a new blueprint named `AN_SendGamePlayToOwner` from AnimeNotify\
   ![Screenshot 2025-02-07 181830](https://github.com/user-attachments/assets/697fdeaa-43ca-44bf-a66f-4e259ae71639)\
   And then,\
@@ -1034,7 +1034,7 @@ Then, create a new blueprint animation.
   Fourth, Add a new socket in the hand_r and finish the rest of the Gameplay Ability Graph\
   ![Screenshot 2025-02-10 090328](https://github.com/user-attachments/assets/640427de-69aa-49ad-8991-1f15e2f10759)\
   ![Screenshot 2025-02-10 090340](https://github.com/user-attachments/assets/57672762-ce26-46be-aedb-e0267cf2ef44)
-- 9, Animation Layer Interface
+- 9, Animation Layer Interface\
   In this part, we need to satisfy Armed Locomotion. So we need to understand how to use the Animation Layer for different weapons.\
   Create a new Animation Layer Interface named ALI_Hero, and rename the node `ArmedLocomotionState`\
   Next, In ABP_hero, select the class setting, and add the new interface in it.\
@@ -1042,9 +1042,9 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-02-10 093943](https://github.com/user-attachments/assets/2e432fce-e480-4a7c-9504-6d2f8cb781ed)\
   Last, set the combat component gameplay tag after the character equips his weapon.\
   ![Screenshot 2025-02-10 095124](https://github.com/user-attachments/assets/27b5d420-508f-47c8-bf87-1bcfca6d417b)
-- 10, Master Anim Layer
+- 10, Master Anim Layer\
   Purpose: create a major hero locomotion animation layer, and split it into different with/without weapon locomotions.\
-  The first step, create a new blueprint animation, named Master_AnimLayer_Hero, the parent class is WarriorHeroLinkedAnimLayer. Click on it, class setting, and add the ALI_Hero interface. \
+  The first step is to create a new blueprint animation, named Master_AnimLayer_Hero, the parent class is WarriorHeroLinkedAnimLayer. Click on it, class setting, and add the ALI_Hero interface. \
   Then double click the Armed Locomotion State, add blendspace player, click this new node, let coordinates-> y -> expose as a pin is unchecked, and settings-> blend space -> expose as a pin is checked.\
   Promote the blend space to a new variable: Default Locomotion Blend Space, Because ABP_hero class is `Warrior Hero Anim Instance`, but Master_AnimLayer_Hero class is `Warrior Hero Linked Anim Layer`, so we need to fix in the c++\
   In WarriorAnimLinkedLayer.h
@@ -1061,9 +1061,56 @@ Then, create a new blueprint animation.
   }
   ```
   Go back to the Master_AnimLayer_Hero, add a new property asset, and choose GetHeroComponent->GroundSpeed.
-  The second step, create a new child blueprint based on the Master_AnimLayer_Hero, we need to add a new 1d animation blend space for it.\
+  The second step is to create a new child blueprint based on the Master_AnimLayer_Hero, we need to add a new 1d animation blend space for it.\
   Third step, create a new blendspace, named Default_Locomotion_Axe, Then attach it to the `Master_AnimLayer_Hero`.
   ![Screenshot 2025-02-10 103443](https://github.com/user-attachments/assets/36a4b72e-17ec-4005-95a9-222b5df8a336)
+- 11, Link Anim Layer\
+  Create a new None C++, called WarriorstructTypes, purpose: neatly packages all warrior-related data. The use of UPROPERTY with appropriate specifiers ensures that these properties are editable and accessible in Blueprints.\
+  In WarriorStructTypes.h,
+  ```c++
+  #include "WarriorStructTypes.generated.h"
+
+  class UWarriorHeroLinkedAnimLayer;
+
+  USTRUCT(BlueprintType)
+  struct FWarriorHeroWeaponData
+  {
+	GENERATED_BODY()
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	TSubclassOf<UWarriorHeroLinkedAnimLayer> WeaponAnimLayerToLink;
+  };
+  ```
+  In HeroCombatComponent.h,
+  ```c++
+  class AWarriorHeroWeapon;
+  ...
+  public:
+	UFUNCTION(BlueprintCallable, Category = "Warrior|Combat")
+	AWarriorHeroWeapon* GetHeroCarriedWeaponByTag(FGameplayTag InWeaponTag) const;
+  ```
+  In WarriorHeroWeapon.h,
+  ```c++
+  #include "WarriorTypes/WarriorStructTypes.h"
+  ...
+  public:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "WeaponData")
+	FWarriorHeroWeaponData HeroWeaponData;
+  ```
+  In HeroCombatComponent.cpp,
+  ```c++
+  #include "Items/Weapons/WarriorHeroWeapon.h"
+
+  AWarriorHeroWeapon* UHeroCombatComponent::GetHeroCarriedWeaponByTag(FGameplayTag InWeaponTag) const
+  {   
+    return Cast<AWarriorHeroWeapon>(GetCharacterCarriedWeaponByTag(InWeaponTag));
+  }
+  ```
+  Then, click on the BP_Hero_Axe, and add the AnimLayer_Axe to the Hero Weapon Data.\
+  ![Screenshot 2025-02-11 095133](https://github.com/user-attachments/assets/c9a1e3d6-5ddc-436f-8dac-4d5b384ac7bf)
+  Later, link the animlayer,\
+  ![Screenshot 2025-02-11 100006](https://github.com/user-attachments/assets/71bffd0e-9e99-403e-8067-a71cb743c543)
+  
 
 
 
