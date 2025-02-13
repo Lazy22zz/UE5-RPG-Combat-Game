@@ -1061,11 +1061,11 @@ Then, create a new blueprint animation.
   }
   ```
   Go back to the Master_AnimLayer_Hero, add a new property asset, and choose GetHeroComponent->GroundSpeed.
-  The second step is to create a new child blueprint based on the Master_AnimLayer_Hero, we need to add a new 1d animation blend space for it.\
+  The second step is to create a new child blueprint based on the Master_AnimLayer_Hero, we need to add a new 1D animation blend space for it.\
   Third step, create a new blendspace, named Default_Locomotion_Axe, Then attach it to the `Master_AnimLayer_Hero`.
   ![Screenshot 2025-02-10 103443](https://github.com/user-attachments/assets/36a4b72e-17ec-4005-95a9-222b5df8a336)
 - 11, Link Anim Layer\
-  Create a new None C++, called WarriorstructTypes, purpose: neatly packages all warrior-related data. The use of UPROPERTY with appropriate specifiers ensures that these properties are editable and accessible in Blueprints.\
+  Create a new None C++ called WarriorstructTypes. The purpose is to neatly package all warrior-related data. The use of UPROPERTY with appropriate specifiers ensures that these properties are editable and accessible in Blueprints.\
   In WarriorStructTypes.h,
   ```c++
   #include "WarriorStructTypes.generated.h"
@@ -1107,10 +1107,36 @@ Then, create a new blueprint animation.
   }
   ```
   Then, click on the BP_Hero_Axe, and add the AnimLayer_Axe to the Hero Weapon Data.\
-  ![Screenshot 2025-02-11 095133](https://github.com/user-attachments/assets/c9a1e3d6-5ddc-436f-8dac-4d5b384ac7bf)
+  ![Screenshot 2025-02-11 095133](https://github.com/user-attachments/assets/c9a1e3d6-5ddc-436f-8dac-4d5b384ac7bf)\
   Later, link the animlayer,\
   ![Screenshot 2025-02-11 100006](https://github.com/user-attachments/assets/71bffd0e-9e99-403e-8067-a71cb743c543)
-  
+- 12, Default Weapon Ability For Unequip weapons\
+  First, add new ability tags to WarriorGameplayTags.\
+  In .h, 
+  ```c++
+  /** Player tags **/
+  WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Equip_Axe);
+  WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_Unequip_Axe);
+  ```
+  In .cpp,
+  ```c++
+  /** Player tags **/
+  UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Equip_Axe, "Player.Ability.Equip.Axe");
+  UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Unequip_Axe, "Player.Ability.Unequip.Axe");
+  ```
+  In GA_Equipped_Axe, uses all tags.\
+  ![Screenshot 2025-02-12 181318](https://github.com/user-attachments/assets/5dfaae17-232e-4e77-97d4-3f306d10024a)\
+  Create a new GameplayAbility based on WarriorHerGampleAbility, named GA_Hero_Unequipped_Axe.\
+  ![Screenshot 2025-02-12 181756](https://github.com/user-attachments/assets/e2f898d3-99c7-4e81-a003-ca71e36e15c5)\
+  Then find an unequipped axe animation, and create a new blueprint montage. 
+  The next step is similar to adding a blueprint in the GA_Unequiped_Axe, add a new input, add the new input action to the DA_InputConfig.\
+  Second Thing: where should I grand this unequiped weapon axe ability to? We can add it when the game starts or after the weapon is attached.\
+  In this case, we let this ability set into the weapon.\
+  ![Screenshot_20250212_185731_Samsung capture](https://github.com/user-attachments/assets/63c5f89d-0ccd-4d5b-9327-0a9778b2db3a)\
+  ![Screenshot 2025-02-12 191316](https://github.com/user-attachments/assets/1685796d-9287-467e-ac21-2dd5cb5f13d9)\
+  ![Screenshot 2025-02-12 191322](https://github.com/user-attachments/assets/07d4f8ff-6c70-49dd-b333-cf79a166588d)
+
+
 
 
 
