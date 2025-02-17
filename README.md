@@ -1170,7 +1170,57 @@ Then, create a new blueprint animation.
   ```
   In the last step, attach the link.\
   ![Screenshot 2025-02-16 182859](https://github.com/user-attachments/assets/489d69a5-d348-4c25-b3c7-42817c87ee62)
+- 14, Handle unequip axe\
+  First Step, do the same as the equipped axe\
+  ![Screenshot 2025-02-16 190530](https://github.com/user-attachments/assets/e654d655-96c2-49c1-93d1-71a45d835c28)\
+  Second, In WarriorHeroWeapon.h
+  ```c++
+  	UFUNCTION(BlueprintCallable)
+	void AssignGrantedAbilitySpecHandles(const TArray<FGameplayAbilitySpecHandle>& InSpecHandles);
 
+	UFUNCTION(BlueprintPure)
+	TArray<FGameplayAbilitySpecHandle> GetGrantedAbilitySpecHandles() const;
+
+  private:
+	TArray<FGameplayAbilitySpecHandle> GrantedAbilitySpecHandles;
+  ```
+  In .cpp
+  ```c++
+  void AWarriorHeroWeapon::AssignGrantedAbilitySpecHandles(const TArray<FGameplayAbilitySpecHandle>& InSpecHandles)
+  {
+	GrantedAbilitySpecHandles = InSpecHandles;
+  }
+
+  TArray<FGameplayAbilitySpecHandle> AWarriorHeroWeapon::GetGrantedAbilitySpecHandles() const
+  {
+	return GrantedAbilitySpecHandles;
+  }
+  ```
+  Third, In WarriorAbilityComponent.h
+  ```c++
+  UFUNCTION(BlueprintCallable, Category = "Warrior|Ability")
+  void RemovedGrantedHeroWeaponAbilities(UPARAM(ref) TArray<FGameplayAbilitySpecHandle>& InSpecHandlesToRemove);
+  ```
+  In .cpp,
+  ```c++
+  void UWarriorAbilitySystemComponent::RemovedGrantedHeroWeaponAbilities(UPARAM(ref)TArray<FGameplayAbilitySpecHandle>& InSpecHandlesToRemove)
+  {
+	if (InSpecHandlesToRemove.IsEmpty())
+	{
+		return;
+	}
+
+	for (const FGameplayAbilitySpecHandle& SpecHandle : InSpecHandlesToRemove)
+	{
+		if (SpecHandle.IsValid())
+		{
+			ClearAbility(SpecHandle);
+		}
+	}
+
+	InSpecHandlesToRemove.Empty();
+  }
+  ```
 
 
 
