@@ -1130,11 +1130,47 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-02-12 181756](https://github.com/user-attachments/assets/e2f898d3-99c7-4e81-a003-ca71e36e15c5)\
   Then find an unequipped axe animation, and create a new blueprint montage. 
   The next step is similar to adding a blueprint in the GA_Unequiped_Axe, add a new input, add the new input action to the DA_InputConfig.\
-  Second Thing: where should I grand this unequiped weapon axe ability to? We can add it when the game starts or after the weapon is attached.\
+  Second Thing: Where should I grant this unequipped weapon axe ability? We can add it when the game starts or after the weapon is attached.\
   In this case, we let this ability set into the weapon.\
   ![Screenshot_20250212_185731_Samsung capture](https://github.com/user-attachments/assets/63c5f89d-0ccd-4d5b-9327-0a9778b2db3a)\
   ![Screenshot 2025-02-12 191316](https://github.com/user-attachments/assets/1685796d-9287-467e-ac21-2dd5cb5f13d9)\
   ![Screenshot 2025-02-12 191322](https://github.com/user-attachments/assets/07d4f8ff-6c70-49dd-b333-cf79a166588d)
+- 13, Grant Weapon Ability\
+  In this part, we only do three things: 1, Play the Animation; 2, Attach the Input Mapping; 3, Grant the exact ability.\
+  The first step, enable the play animation function and input mapping:\
+  In GA_Hero_Equipped_Axe, create a new function and add a new Warrior Weapon Base object interface\
+  ![Screenshot 2025-02-16 181555](https://github.com/user-attachments/assets/3a760c13-25c5-4fd5-a00f-c280e43ea805)\
+  ![Screenshot 2025-02-16 181604](https://github.com/user-attachments/assets/9fa581bd-0952-471a-8119-1a0a88b8c410)\
+  The second step, fill up the WarriorAbilityComponentSystem,\
+  In .h,
+  ```c++
+  UFUNCTION(BlueprintCallable, Category = "Warrior|Ability", meta = (ApplyLevel = "1"))
+  void GrantHeroWeaponAbilities(const TArray<FWarriorHeroAbilitySet>& InDefaultWeaponAbilities, int32 ApplyLevel, TArray<FGameplayAbilitySpecHandle>& OutGrantedAbilitySpecHandles);
+  ```
+  In .cpp,
+  ```c++
+  void UWarriorAbilitySystemComponent::GrantHeroWeaponAbilities(const TArray<FWarriorHeroAbilitySet>& InDefaultWeaponAbilities, int32 ApplyLevel, TArray<FGameplayAbilitySpecHandle>& OutGrantedAbilitySpecHandles)
+  {
+	if (InDefaultWeaponAbilities.IsEmpty())
+	{
+		return;
+	}
+
+	for (const FWarriorHeroAbilitySet& AbilitySet : InDefaultWeaponAbilities)
+	{
+		if (!AbilitySet.IsValid()) continue;
+
+		FGameplayAbilitySpec AbilitySpec(AbilitySet.AbilityToGrant);
+		AbilitySpec.SourceObject = GetAvatarActor();
+		AbilitySpec.Level = ApplyLevel;
+		AbilitySpec.DynamicAbilityTags.AddTag(AbilitySet.InputTag);
+		OutGrantedAbilitySpecHandles.AddUnique(GiveAbility(AbilitySpec));
+	}
+  }
+  ```
+  In the last step, attach the link.\
+  ![Screenshot 2025-02-16 182859](https://github.com/user-attachments/assets/489d69a5-d348-4c25-b3c7-42817c87ee62)
+
 
 
 
