@@ -1223,6 +1223,7 @@ Then, create a new blueprint animation.
   ```
   ![Screenshot 2025-02-20 084653](https://github.com/user-attachments/assets/c8a48fa7-86f5-46ff-93bb-378816d0c442)
 - 15, Light Attack Ability\
+  In here, we need to do the same steps: `Ability Tags`, `GameplayAbility Blueprint`, `Anim Montage`(skip it right now), `Ability Action`, `Grant Ability`.\
   
 
 
