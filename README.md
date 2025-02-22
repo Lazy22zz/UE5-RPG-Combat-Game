@@ -1227,6 +1227,7 @@ Then, create a new blueprint animation.
 - 16, Light Attack Combo\
   In GA_LightAttack_Master,\
   ![Screenshot 2025-02-21 174706](https://github.com/user-attachments/assets/2aaec406-1620-44a5-a13c-8aaf7ecf7d32)\
+  Create a new variable `AttackMontageMap`, which is a integer, map, montage - object interference;\
   Make sure the `CurrentLightAttackCount`, `CombotCountRestTimeHandle` is private;\
   Enable the Instancing policy to `Instanced per Actor`\
   In GA_LightAttack_Axe,\
@@ -1234,9 +1235,10 @@ Then, create a new blueprint animation.
   We need to use a new slot, `Fullbody`, for these montages, and change their rate scale;\
   And add this new slot into ABP_Hero.\
   ![Screenshot 2025-02-21 175101](https://github.com/user-attachments/assets/11f5d1c7-7ac0-4cbe-a921-c8c216ab29a3)
-- 17, Heavy Attack Logic\
+- 17, Heavy Attack Ability\
   Same as 15, Light Attack Logic. But please dont forget to attach the heavy attack ability to the weapon.
-
+- 18, Heavy Attack Logic\
+  Same as 16.
 
 
 
