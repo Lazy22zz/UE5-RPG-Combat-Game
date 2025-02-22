@@ -1323,6 +1323,18 @@ Then, create a new blueprint animation.
   } 
   ```
   ![Screenshot 2025-02-21 191616](https://github.com/user-attachments/assets/1b47a9ec-ee5a-48ba-a364-8a4abf9d6354)
+- 20, Jump To Finisher\
+  Purpose: After the light attack combo, create a Jump To Finisher Tag; In the Heavy Attack, Check if exist the Jump To Finisher Tag.\
+  ```c++
+  UE_DEFINE_GAMEPLAY_TAG(Player_Status_JumpToFinisher,"Player.Status.JumpToFinisher");
+  ```
+  ```c++
+  WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Status_JumpToFinisher);
+  ```
+  ![Screenshot 2025-02-21 194343](https://github.com/user-attachments/assets/d9d4f737-beef-4f00-b26a-f1e1ed932016)\
+  ![Screenshot 2025-02-21 194420](https://github.com/user-attachments/assets/406d41b3-49e7-46dd-92d6-7732d7288f7d)
+  
+
 
 
 
