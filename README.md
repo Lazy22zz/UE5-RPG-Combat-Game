@@ -1237,9 +1237,92 @@ Then, create a new blueprint animation.
   And add this new slot into ABP_Hero.\
   ![Screenshot 2025-02-21 175101](https://github.com/user-attachments/assets/11f5d1c7-7ac0-4cbe-a921-c8c216ab29a3)
 - 17, Heavy Attack Ability\
-  Same as 15, Light Attack Logic. But please dont forget to attach the heavy attack ability to the weapon.
+  Same as 15, Light Attack Logic. But please don't forget to attach the heavy attack ability to the weapon.
 - 18, Heavy Attack Logic\
   Same as 16.
+- 19, BP Function Library\
+  In this part, We need to create a combo link to enable the maximum damage, which means after 4 light attacks with 1 heavy attack can do more damage'\
+  To do that, we need a Tag to show whether this link is finished or not.\
+  Create a new BlueprintLibaray c++, names `WarriorFunctionLibrary`
+  ```c++
+  class UWarriorAbilitySystemComponent;
+
+  UENUM()
+  enum class EWarriorConfirmType : uint8
+  {
+	Yes,
+	No
+  };
+
+  /**
+   * 
+   */
+  UCLASS()
+  class WARRIOR_API UWarriorFunctionLibrary : public UBlueprintFunctionLibrary
+  {
+	GENERATED_BODY()
+
+  public:
+	static UWarriorAbilitySystemComponent* NativeGetWarriorASCFromActor(AActor* InActor);
+
+	UFUNCTION(BlueprintCallable, Category = "Warrior|FunctionLibrary")
+	static void AddGameplayTagToActorIfNone(AActor* InActor, FGameplayTag TagToAdd);
+
+	UFUNCTION(BlueprintCallable, Category = "Warrior|FunctionLibrary")
+	static void RemoveGameplayFromActorIfFound(AActor* InActor, FGameplayTag TagToRemove);
+
+	static bool NativeDoesActorHaveTag(AActor* InActor, FGameplayTag TagToCheck);
+
+	UFUNCTION(BlueprintCallable, Category = "Warrior|FunctionLibrary", meta = (DisplayName = "Does Actor Have Tag", ExpandEnumAsExecs = "OutConfirmType"))
+	static void BP_DoesActorHaveTag(AActor* InActor, FGameplayTag TagToCheck, EWarriorConfirmType& OutConfirmType);
+  };
+  ```
+  In .cpp
+  ```c++
+  #include "WarriorFunctionLibrary.h"
+  #include "AbilitySystemBlueprintLibrary.h"
+  #include "AbilitySystem/WarriorAbilitySystemComponent.h"
+
+  UWarriorAbilitySystemComponent* UWarriorFunctionLibrary::NativeGetWarriorASCFromActor(AActor* InActor)
+  {
+	check(InActor);
+
+	return CastChecked<UWarriorAbilitySystemComponent>(UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(InActor));
+  }
+
+  void UWarriorFunctionLibrary::AddGameplayTagToActorIfNone(AActor* InActor, FGameplayTag TagToAdd)
+  {
+	UWarriorAbilitySystemComponent* ASC = NativeGetWarriorASCFromActor(InActor);
+
+	if (!ASC->HasMatchingGameplayTag(TagToAdd))
+	{
+		ASC->AddLooseGameplayTag(TagToAdd);
+	}
+  }
+
+  void UWarriorFunctionLibrary::RemoveGameplayFromActorIfFound(AActor* InActor, FGameplayTag TagToRemove)
+  {
+	UWarriorAbilitySystemComponent* ASC = NativeGetWarriorASCFromActor(InActor);
+
+	if (ASC->HasMatchingGameplayTag(TagToRemove))
+	{
+		ASC->RemoveLooseGameplayTag(TagToRemove);
+	}
+  }
+
+  bool UWarriorFunctionLibrary::NativeDoesActorHaveTag(AActor* InActor, FGameplayTag TagToCheck)
+  {
+	UWarriorAbilitySystemComponent* ASC = NativeGetWarriorASCFromActor(InActor);
+
+	return ASC->HasMatchingGameplayTag(TagToCheck);
+  }
+
+  void UWarriorFunctionLibrary::BP_DoesActorHaveTag(AActor* InActor, FGameplayTag TagToCheck, EWarriorConfirmType& OutConfirmType)
+  {
+	OutConfirmType = NativeDoesActorHaveTag(InActor, TagToCheck) ? EWarriorConfirmType::Yes : EWarriorConfirmType::No;
+  } 
+  ```
+  ![Screenshot 2025-02-21 191616](https://github.com/user-attachments/assets/1b47a9ec-ee5a-48ba-a364-8a4abf9d6354)
 
 
 
