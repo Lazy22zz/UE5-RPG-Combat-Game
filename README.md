@@ -1224,7 +1224,19 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-02-20 084653](https://github.com/user-attachments/assets/c8a48fa7-86f5-46ff-93bb-378816d0c442)
 - 15, Light Attack Ability\
   In here, we need to do the same steps: `Ability Tags`, `GameplayAbility Blueprint`, `Anim Montage`(skip it right now), `Ability Action`, `Grant Ability`.\
-  
+- 16, Light Attack Combo\
+  In GA_LightAttack_Master,\
+  ![Screenshot 2025-02-21 174706](https://github.com/user-attachments/assets/2aaec406-1620-44a5-a13c-8aaf7ecf7d32)\
+  Make sure the `CurrentLightAttackCount`, `CombotCountRestTimeHandle` is private;\
+  Enable the Instancing policy to `Instanced per Actor`\
+  In GA_LightAttack_Axe,\
+  ![Screenshot 2025-02-21 174819](https://github.com/user-attachments/assets/e5bb9b6f-7ffa-4104-89be-8c93e56e59d8)\
+  We need to use a new slot, `Fullbody`, for these montages, and change their rate scale;\
+  And add this new slot into ABP_Hero.\
+  ![Screenshot 2025-02-21 175101](https://github.com/user-attachments/assets/11f5d1c7-7ac0-4cbe-a921-c8c216ab29a3)
+
+
+
 
 
 
