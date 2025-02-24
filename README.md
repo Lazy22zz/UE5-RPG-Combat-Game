@@ -1333,7 +1333,15 @@ Then, create a new blueprint animation.
   ```
   ![Screenshot 2025-02-21 194343](https://github.com/user-attachments/assets/d9d4f737-beef-4f00-b26a-f1e1ed932016)\
   ![Screenshot 2025-02-21 194420](https://github.com/user-attachments/assets/406d41b3-49e7-46dd-92d6-7732d7288f7d)
-  
+- 21, Slow Motion And Sound FX\
+  Create a new blueprint AnimNotiftState, Add two functions: `Received_NotifyBegin` and `Received_NotifyEnd`\
+  ![Screenshot 2025-02-23 182136](https://github.com/user-attachments/assets/9a5aa625-d377-42da-bd14-cddec0091a03)\
+  ![Screenshot 2025-02-23 182141](https://github.com/user-attachments/assets/f3d0658f-f142-4750-abc5-7b0c085dca36)\
+  And Then in those AM_montages, add your preferred sound FX and the time slow animnotify\
+  ![Screenshot 2025-02-23 182212](https://github.com/user-attachments/assets/9571a183-90dc-4c72-a9e8-a6d5b2151ab7)
+
+
+
 
 
 
