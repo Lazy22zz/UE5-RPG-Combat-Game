@@ -1337,8 +1337,106 @@ Then, create a new blueprint animation.
   Create a new blueprint AnimNotiftState, Add two functions: `Received_NotifyBegin` and `Received_NotifyEnd`\
   ![Screenshot 2025-02-23 182136](https://github.com/user-attachments/assets/9a5aa625-d377-42da-bd14-cddec0091a03)\
   ![Screenshot 2025-02-23 182141](https://github.com/user-attachments/assets/f3d0658f-f142-4750-abc5-7b0c085dca36)\
-  And Then in those AM_montages, add your preferred sound FX and the time slow animnotify\
+  Then in those AM_montages, add your preferred sound FX and the time slow animnotify\
   ![Screenshot 2025-02-23 182212](https://github.com/user-attachments/assets/9571a183-90dc-4c72-a9e8-a6d5b2151ab7)
+- Part 3\
+  Summary:\
+  ![Screenshot_20250224_085558_Samsung capture](https://github.com/user-attachments/assets/53aafe95-c576-4b3f-b533-1557dd02a349)\
+- 22, Set Up Enemy Character\
+  ![Screenshot_20250224_085951_Samsung capture](https://github.com/user-attachments/assets/c30f2110-30d5-4259-b0fd-f44e2c3abc12)\
+  1, create a new C++ child based on `WarriorbaseonCharacter`, named WarriorEnemyCharacter\
+  2, create a new C++ child based on `DataAsset_StartupDataBase`, named DataAsset_EnemyStartupDataBase\
+  3, create a new C++ child based on `WarriorGameplayAbility`, named WarriorEnemyGameplayAbility\
+  4, create a new C++ child based on `PawnCombatComponent`, named EnemyCombatComponent\
+  5, In WarriorEnemyCharacter.h
+  ```c++
+  class UEnemyCombatComponent;
+  /**
+   * 
+   */
+  UCLASS()
+  class WARRIOR_API AWarriorEnemyCharacter : public AWarriorBaseCharacter
+  {
+	GENERATED_BODY()
+
+  public:
+	AWarriorEnemyCharacter();
+
+  protected:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat")
+	UEnemyCombatComponent* EnemyCombatComponent;
+
+  public:
+	FORCEINLINE UEnemyCombatComponent* GetEnemyCombatComponent() const { return EnemyCombatComponent; }
+  };
+  ```
+  In .cpp.
+  ```c++
+  #include "Characters/WarriorEnemyCharacter.h"
+  #include "GameFramework/CharacterMovementComponent.h"
+  #include "Components/Combat/EnemyCombatComponent.h"
+
+  AWarriorEnemyCharacter::AWarriorEnemyCharacter()
+  {
+	AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
+
+	bUseControllerRotationPitch = false;
+	bUseControllerRotationRoll = false;
+	bUseControllerRotationYaw = false;
+
+	GetCharacterMovement()->bUseControllerDesiredRotation = false;
+	GetCharacterMovement()->bOrientRotationToMovement = true;
+	GetCharacterMovement()->RotationRate = FRotator(0.f, 180.f, 0.f);
+	GetCharacterMovement()->MaxWalkSpeed = 300.f;
+	GetCharacterMovement()->BrakingDecelerationWalking = 1000.f;
+
+	EnemyCombatComponent = CreateDefaultSubobject<UEnemyCombatComponent>("EnemyCombatComponent");
+  }
+  ```
+  6, In WarriorEnemyGameplayAbility.h
+  ```c++
+  class AWarriorEnemyCharacter;
+  class UEnemyCombatComponent;
+  /**
+   * 
+   */
+  UCLASS()
+  class WARRIOR_API UWarriorEnemyGameplayAbility : public UWarriorGameplayAbility
+  {
+	GENERATED_BODY()
+
+  public:
+	UFUNCTION(BlueprintPure, Category = "Warrior|Ability")
+	AWarriorEnemyCharacter* GetEnemyCharacterFromActorInfo();
+
+	UFUNCTION(BlueprintPure, Category = "Warrior|Ability")
+	UEnemyCombatComponent* GetEnemyCombatComponentFromActorInfo();
+
+  private:
+	TWeakObjectPtr<AWarriorEnemyCharacter> CachedWarriorEnemyCharacter;
+  ```
+  In .cpp,
+  ```c++
+  #include "Characters/WarriorEnemyCharacter.h"
+
+  AWarriorEnemyCharacter* UWarriorEnemyGameplayAbility::GetEnemyCharacterFromActorInfo()
+  {
+	if (!CachedWarriorEnemyCharacter.IsValid())
+	{
+		CachedWarriorEnemyCharacter = Cast<AWarriorEnemyCharacter>(CurrentActorInfo->AvatarActor);
+	}
+
+	return CachedWarriorEnemyCharacter.IsValid() ? CachedWarriorEnemyCharacter.Get() : nullptr;
+  }
+
+  UEnemyCombatComponent* UWarriorEnemyGameplayAbility::GetEnemyCombatComponentFromActorInfo()
+  {
+	return GetEnemyCharacterFromActorInfo()->GetEnemyCombatComponent();
+  }
+  ```
+  7, Create a new blueprint based on the WarriorEnemyCharacter.\
+  
+
 
 
 
