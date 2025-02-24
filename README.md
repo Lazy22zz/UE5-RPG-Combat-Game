@@ -1435,6 +1435,19 @@ Then, create a new blueprint animation.
   }
   ```
   7, Create a new blueprint based on the WarriorEnemyCharacter.\
+- 23, Gruntling Guardian\
+  1, Create a new child blueprint based on `BP_EnemyCharacter_Base` named BP_Gruntling_Base\
+  2, Create a new child blueprint based on `BP_Gruntling_Base` named BP_Gruntling_Guardian\
+  3, add mesh, adjust the capsule component(change it in BP_EnemyCharacter_Base can avoid later adjustment)\
+  4, create a new animation blueprint, named ABP_Enemy_Base: template -> WarriorCharacterAnimstance\
+  5, ![Screenshot 2025-02-24 100026](https://github.com/user-attachments/assets/e2acbf4d-f2f0-4f89-a9cd-05cea852a076)\
+  6, Create a new animation blueprint child based on `ABP_Enemy_Base`, named ABP_Guadrain\
+  7, create a new blend space for ABP_Guadrain using legacy -> blend space 1D, named BS_Guardian_Default\
+  8, ![Screenshot 2025-02-24 100829](https://github.com/user-attachments/assets/42473028-072c-4f44-8f9c-3514f4b76602)\
+  9, In BP_Gruntling_Guardian, attach the new ABP into anim class\
+  
+
+
   
 
 
