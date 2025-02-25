@@ -56,7 +56,7 @@
   ```
   We wrap up any types under `UWarriorGameplayAbility` that satisfies the required of `TArray<UClass *>`
 - 6, Synchronous and  Asynchronous loading\
-  In Unreal Engine C++, synchronous loading uses LoadObject() to load assets immediately, ensuring they are available before gameplay starts, while asynchronous loading uses FStreamableManager::RequestAsyncLoad() to load assets in the background without 
+  In Unreal Engine C++, synchronous loading uses `LoadObject()` to load assets immediately, ensuring they are available before gameplay starts, while asynchronous loading uses `FStreamableManager::RequestAsyncLoad()` to load assets in the background without 
   blocking the main thread. Synchronous loading is ideal for critical assets like the player's character, ensuring smooth startup, whereas asynchronous loading is best for non-critical assets like enemies, optimizing performance and reducing initial load times.
 
 # 1, Set Up Hero Character
