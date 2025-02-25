@@ -45,7 +45,7 @@
 - 3, conclusion: \
   ![Screenshot 2025-01-07 100832](https://github.com/user-attachments/assets/4895bb3b-7242-45c5-a380-8f636d9ba03f)
 - 4, TObjectPtr: \
-  "T" in UE5, means the Type, such like TArray, TMap; \
+  "T" in UE5, means the Type, such as TArray, TMap; \
   TObjectPtr is *hard* reference in UObject pointer; \
   ![Screenshot 2025-01-07 103243](https://github.com/user-attachments/assets/03a5a1ba-d070-4fa8-b3f8-6c3645a17bc0)
 - 5, TSubclassof\
@@ -54,7 +54,10 @@
   ```c++
   TArray< TSubclassOf < UWarriorGameplayAbility > > ActivateOnGivenAbilities;	
   ```
-  We wrap up any types under `UWarriorGameplayAbility` that satisfies required of `TArray<UClass *>`
+  We wrap up any types under `UWarriorGameplayAbility` that satisfies the required of `TArray<UClass *>`
+- 6, Synchronous and  Asynchronous loading\
+  In Unreal Engine C++, synchronous loading uses LoadObject() to load assets immediately, ensuring they are available before gameplay starts, while asynchronous loading uses FStreamableManager::RequestAsyncLoad() to load assets in the background without 
+  blocking the main thread. Synchronous loading is ideal for critical assets like the player's character, ensuring smooth startup, whereas asynchronous loading is best for non-critical assets like enemies, optimizing performance and reducing initial load times.
 
 # 1, Set Up Hero Character
 - 1, Base Class Structure \
@@ -142,7 +145,7 @@
     PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "GameplayTags" });
     ```
  - 5, Input Data config Assest\
-   Create a new c++ dataasset renames DataAsset_InputConfig\
+   Create a new c++ data asset renames DataAsset_InputConfig\
    In .h
    ```c++
    USTRUCT(BlueprintType)
@@ -187,11 +190,11 @@
        return nullptr;
    }
    ```
-  After compiling, in character folder, goes to miscellaneous -> dataasset -> Data Asset InputConfig, rename it DA_InputConfig, \
+  After compiling, in character folder, goes to miscellaneous -> data asset -> Data Asset InputConfig, rename it DA_InputConfig, \
   Then using the default third-person provided by ue's Input folders' IMC_Default, set up the DA_InputConfig:
   ![Screenshot 2025-01-12 212251](https://github.com/user-attachments/assets/fec354c2-9419-4725-8446-d431265eafbc)
 - 6, Custom Enhanced Input Component\
-  Create a new enhanceinputcomponent c++ under public/Components/input folder, named WarriorInputComponent\
+  Create a new enhance input component c++ under the public/Components/input folder, named WarriorInputComponent\
   In DataAsset_InputConfig.h, add const for the FindNativeInputActionByTag
   ```c++
   UInputAction* FindNativeInputActionByTag(const FGameplayTag& InInputTag) const;
@@ -344,12 +347,12 @@ Then, create a new blueprint animation.
 [Watch the Video](Media/ABP_HERO.mp4)
 
 - 8, Hero idle to Walk Anim
-  Step1, create a new folder names BlendSpace, and create a new blendspace 1d call BS_UnarmedLocolmotion;\
+  Step1, create a new folder named BlendSpace, and create a new blendspace 1d called BS_UnarmedLocolmotion;\
   Step2, ![Screenshot 2025-01-19 110612](https://github.com/user-attachments/assets/2f982797-cbea-4418-b199-b2f5099cc155)\
   Step3, ![Screenshot 2025-01-19 112736](https://github.com/user-attachments/assets/fe0ad523-9298-4619-85e7-bab465f62ee4)\
   Step4, ![Screenshot 2025-01-19 112728](https://github.com/user-attachments/assets/8cfb0d47-19b7-41b0-afc9-d9c66c0b4f63)
 
-- 9, Hero relax Anim Instan
+- 9, Hero relax Anim Instant
   Step1, ![Screenshot 2025-01-19 120812](https://github.com/user-attachments/assets/cbf43887-83a3-417f-ab73-f77e3a7ce981)\
   Step2, create a new random sequence, add two new entities, and change their change to play is 0.5\
   ![Screenshot 2025-01-19 120830](https://github.com/user-attachments/assets/96b0c1cc-11ed-44ea-b585-9a2982d0d1bf)\
@@ -1445,6 +1448,90 @@ Then, create a new blueprint animation.
   7, create a new blend space for ABP_Guadrain using legacy -> blend space 1D, named BS_Guardian_Default\
   8, ![Screenshot 2025-02-24 100829](https://github.com/user-attachments/assets/42473028-072c-4f44-8f9c-3514f4b76602)\
   9, In BP_Gruntling_Guardian, attach the new ABP into anim class\
+- 24, Asynchronous Loading\
+  1, Create the DataAsset_EnemyStartupData\
+  In DataAsset_EnemyStartupDataBase.h
+  ```c++
+  public:
+	virtual void GiveToAbilitySystemComponent(UWarriorAbilitySystemComponent* InASCToGive, int32 ApplyLevel = 1) override;
+
+  private:
+	UPROPERTY(EditDefaultsOnly, Category = "StartUpData")
+	TArray< TSubclassOf < UWarriorEnemyGameplayAbility > > EnemyCombatAbilities;
+  ```
+  In DataAsset_EnemyStartupDataBase.cpp
+  ```c++
+  void UDataAsset_EnemyStartupDataBase::GiveToAbilitySystemComponent(UWarriorAbilitySystemComponent* InASCToGive, int32 ApplyLevel)
+  {
+	Super::GiveToAbilitySystemComponent(InASCToGive, ApplyLevel);
+
+	if (!EnemyCombatAbilities.IsEmpty())
+	{
+		for (const TSubclassOf < UWarriorEnemyGameplayAbility >& AbilityClass : EnemyCombatAbilities)
+		{
+			if (!AbilityClass) continue;
+
+			FGameplayAbilitySpec AbilitySpec(AbilityClass);
+			AbilitySpec.SourceObject = InASCToGive->GetAvatarActor();
+			AbilitySpec.Level = ApplyLevel;
+
+			InASCToGive->GiveAbility(AbilitySpec);
+		}
+  }
+  ```
+  2, create a new data asset based on Data Asset Enemy Startup Data Base named DA_Guardian\
+  3, Apply the Asynchronous Loading to the DA_Guardian\
+  In Unreal Engine, synchronous loading is used for hero data to ensure the player's character and essential gameplay elements are fully loaded before the game starts, preventing delays or missing assets. In contrast, asynchronous loading is used for enemy data 
+  to optimize performance by loading assets in the background, reducing initial load times, and allowing dynamic spawning without causing gameplay interruptions.\
+  4, In WarriorEnemyCharacter.h
+  ```c++
+  protected:
+	//~ Begin APawn Interface.
+	virtual void PossessedBy(AController* NewController) override;
+	//~ End APawn Interface
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat")
+	UEnemyCombatComponent* EnemyCombatComponent;
+
+  private:
+	void InitEnemyStartUpData();
+
+
+  ```
+  5, In WarriorEnemyCharacter.cpp
+  ```c++
+  void AWarriorEnemyCharacter::PossessedBy(AController* NewController)
+  {
+	Super::PossessedBy(NewController);
+
+	InitEnemyStartUpData();
+  }
+
+  void AWarriorEnemyCharacter::InitEnemyStartUpData()
+  {
+	if (CharacterStartUpData.IsNull())
+	{
+		return;
+	}
+
+	UAssetManager::GetStreamableManager().RequestAsyncLoad(
+		CharacterStartUpData.ToSoftObjectPath(),
+		FStreamableDelegate::CreateLambda(
+			[this]()
+			{
+				if (UDataAsset_StartupDataBase* LoadedData = CharacterStartUpData.Get())
+				{
+					LoadedData->GiveToAbilitySystemComponent(WarriorAbilitySystemComponent);
+
+					Debug::Print(TEXT("Enemy Start Up Data Loaded"), FColor::Green);
+				}
+			}
+		)
+	);
+  }
+  ```
+  6, attach this new DA_Guardian in the BP_Gruntling_Guardian\
+  
   
 
 
