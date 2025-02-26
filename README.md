@@ -1531,6 +1531,28 @@ Then, create a new blueprint animation.
   }
   ```
   6, attach this new DA_Guardian in the BP_Gruntling_Guardian\
+- 25, Spawn Enemy Weapon\
+  1, rename `GA_Shared_SpawnWeapon` to `GA_Shared_SpawnWeapon_Base`\
+  2, create a new child named `GA_Guadrain_SpawnWeapon`\
+  3, In this new GA_Guadrain_SpawnWeapon, we have to fill up \
+  ![Screenshot 2025-02-26 123823](https://github.com/user-attachments/assets/43a53cb4-6472-4002-ac9e-1b6d94a00a62)\
+  4, create a new tag, in warriorGameplayTags.h
+  ```c++
+  	/** Enemy tags **/
+	WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Weapon);
+  ```
+  5, In warriorGameplayTags.cpp
+  ```c++
+  	/** Enemy tags **/
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Weapon,"Enemy.Weapon");
+  ```
+  6, Create a new BP_EnemyWeapon_Base based on blueprint WarriorWeaponBase\
+  7, Create a new child BP_Guadrain_Weapon based on BP_EnemyWeapon_Base\
+  8, Adjust the weapon and its collision box\
+  9, add the new GA in the DA\
+  ![Screenshot 2025-02-26 124900](https://github.com/user-attachments/assets/4a03dae9-eb41-4d13-b696-99331bce8644)
+
+
   
   
 
