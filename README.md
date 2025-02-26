@@ -1551,6 +1551,76 @@ Then, create a new blueprint animation.
   8, Adjust the weapon and its collision box\
   9, add the new GA in the DA\
   ![Screenshot 2025-02-26 124900](https://github.com/user-attachments/assets/4a03dae9-eb41-4d13-b696-99331bce8644)
+- 26, Attribute Set\
+  ![Screenshot_20250226_131117_Samsung_capture](https://github.com/user-attachments/assets/1ce8b034-9a6d-44c7-8ed5-6287211c6b9d)\
+  ![Screenshot_20250226_131141_Samsung_capture](https://github.com/user-attachments/assets/787d97e3-c566-4de7-a25c-139e8ad74afa)\
+  1, In prevoius, We have created the gameplaytags, Gameplayability, and the next part is creating the attributeSet\
+  2, In WarriorAttribute.h
+  ```c++
+  #include "CoreMinimal.h"
+  #include "AttributeSet.h"
+  #include "AbilitySystem/WarriorAbilitySystemComponent.h"
+  #include "WarriorAttributeSet.generated.h"
+
+  #define ATTRIBUTE_ACCESSORS(ClassName, PropertyName) \
+  GAMEPLAYATTRIBUTE_PROPERTY_GETTER(ClassName, PropertyName) \
+  GAMEPLAYATTRIBUTE_VALUE_GETTER(PropertyName) \
+  GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName) \
+  GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
+
+  /**
+   * 
+   */
+  UCLASS()
+  class WARRIOR_API UWarriorAttributeSet : public UAttributeSet
+  {
+	GENERATED_BODY()
+
+  public:
+	UWarriorAttributeSet();
+
+	UPROPERTY(BlueprintReadOnly, Category = "Health")
+	FGameplayAttributeData CurrentHealth;
+	ATTRIBUTE_ACCESSORS(UWarriorAttributeSet, CurrentHealth)
+
+	UPROPERTY(BlueprintReadOnly, Category = "Health")
+	FGameplayAttributeData MaxHealth;
+	ATTRIBUTE_ACCESSORS(UWarriorAttributeSet, MaxHealth)
+
+	UPROPERTY(BlueprintReadOnly, Category = "Rage")
+	FGameplayAttributeData CurrentRage;
+	ATTRIBUTE_ACCESSORS(UWarriorAttributeSet, CurrentRage)
+
+	UPROPERTY(BlueprintReadOnly, Category = "Rage")
+	FGameplayAttributeData MaxRage;
+	ATTRIBUTE_ACCESSORS(UWarriorAttributeSet, MaxRage)
+
+	UPROPERTY(BlueprintReadOnly, Category = "Damage")
+	FGameplayAttributeData AttackPower;
+	ATTRIBUTE_ACCESSORS(UWarriorAttributeSet, AttackPower)
+
+	UPROPERTY(BlueprintReadOnly, Category = "Damage")
+	FGameplayAttributeData DefensePower;
+	ATTRIBUTE_ACCESSORS(UWarriorAttributeSet, DefensePower)
+  };
+  ```
+  3, In WarriorAttribute.cpp
+  ```c++
+  UWarriorAttributeSet::UWarriorAttributeSet()
+  {
+	InitCurrentHealth(1.f);
+	InitMaxHealth(1.f);
+	InitCurrentRage(1.f);
+	InitMaxRage(1.f);
+	InitAttackPower(1.f);
+	InitDefensePower(1.f);
+  }
+  ```
+  4, run it, play the game, press `, type `showdebug abilitysystem`\
+  ![Screenshot 2025-02-26 133431](https://github.com/user-attachments/assets/42fe30da-6b41-4568-ab43-0f4ba234d5b3)
+
+
+
 
 
   
