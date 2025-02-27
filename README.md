@@ -1618,6 +1618,22 @@ Then, create a new blueprint animation.
   ```
   4, run it, play the game, press `, type `showdebug abilitysystem`\
   ![Screenshot 2025-02-26 133431](https://github.com/user-attachments/assets/42fe30da-6b41-4568-ab43-0f4ba234d5b3)
+- 27, GameplayEffect\
+  Purpose: Required to change attributes\
+  1, Create a new blueprint based on GameplayEffect named GE_Hero_StartUp\
+  2, Add the modifiers for each attribute that needs to be modified\
+  3, Create a new Miscellaneous -> Curve Table, named `DT_HeroStatus`, for dynamic control modifier magnitute\
+  4, Design the curve\
+  ![Screenshot 2025-02-26 192813](https://github.com/user-attachments/assets/e8f759c0-60d8-406a-b15c-4b3c549871ab)\
+  5, Attach those curves\
+  ![Screenshot 2025-02-26 193046](https://github.com/user-attachments/assets/90e40efb-3791-42cb-8e9d-7036758c5b08)\
+  6, Create a new blueprint based on GamePlayEffect named `GE_Hero_Status`\
+  7, In this part, we must use `Attribute Based` for the Magnitude Calculation Type, add attribute to capture, and the attribute source.\
+  ![Screenshot 2025-02-26 193452](https://github.com/user-attachments/assets/61b63f65-ced1-4c89-80e4-5eba71d842c8)\
+  8, Just add maxhealth and maxrage.
+
+
+
 
 
 
