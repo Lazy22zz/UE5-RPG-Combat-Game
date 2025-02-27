@@ -1554,7 +1554,7 @@ Then, create a new blueprint animation.
 - 26, Attribute Set\
   ![Screenshot_20250226_131117_Samsung_capture](https://github.com/user-attachments/assets/1ce8b034-9a6d-44c7-8ed5-6287211c6b9d)\
   ![Screenshot_20250226_131141_Samsung_capture](https://github.com/user-attachments/assets/787d97e3-c566-4de7-a25c-139e8ad74afa)\
-  1, In prevoius, We have created the gameplaytags, Gameplayability, and the next part is creating the attributeSet\
+  1, In previous, We have created the gameplaytags, Gameplayability, and the next part is creating the attributeSet\
   2, In WarriorAttribute.h
   ```c++
   #include "CoreMinimal.h"
@@ -1631,6 +1631,35 @@ Then, create a new blueprint animation.
   7, In this part, we must use `Attribute Based` for the Magnitude Calculation Type, add attribute to capture, and the attribute source.\
   ![Screenshot 2025-02-26 193452](https://github.com/user-attachments/assets/61b63f65-ced1-4c89-80e4-5eba71d842c8)\
   8, Just add maxhealth and maxrage.
+- 28, Apply Gameplay Effect To Self\
+  Purpose: apply those gameplay effects in the StartUp Data\
+  1, In DataAssetStartUpDataBase.h
+  ```c++
+  
+  UPROPERTY(EditDefaultsOnly, Category = "StartUpData")
+  TArray< TSubclassOf < UGameplayEffect > > StartUpGameplayEffects;
+  ```
+  2, in cpp
+  ```c++
+  if (!StartUpGameplayEffects.IsEmpty())
+  {
+	for (const TSubclassOf < UGameplayEffect >& EffectClass : StartUpGameplayEffects)
+	{
+		if (!EffectClass) continue;
+
+		UGameplayEffect* EffectCDO = EffectClass->GetDefaultObject<UGameplayEffect>();
+
+		InASCToGive->ApplyGameplayEffectToSelf(
+			EffectCDO,
+			ApplyLevel,
+			InASCToGive->MakeEffectContext()
+		);
+	}
+  }
+  ```
+  3, Add those GameplayEffect in DA_Hero\
+  ![Screenshot 2025-02-26 195538](https://github.com/user-attachments/assets/2434604d-2293-4a95-80ab-55dfab1f0ef1)
+
 
 
 
