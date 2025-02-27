@@ -1659,6 +1659,17 @@ Then, create a new blueprint animation.
   ```
   3, Add those GameplayEffect in DA_Hero\
   ![Screenshot 2025-02-26 195538](https://github.com/user-attachments/assets/2434604d-2293-4a95-80ab-55dfab1f0ef1)
+- 29, Init Enemy Attributes\
+  similar AS step 27, 28\
+  1, use the command `showdebug abilitysystem`, and use button page down\
+  ![Screenshot 2025-02-27 093601](https://github.com/user-attachments/assets/694dfcf7-dc6e-4f80-97fd-05b3d4d4e112)\
+  2, go to config/DefaultGame.ini\
+  ```c++
+  [/Script/GameplayAbilities.AbilitySystemGlobals]
+  bUseDebugTargetFromHud = true
+  ```
+  ![Screenshot 2025-02-27 094417](https://github.com/user-attachments/assets/a447ef95-45a7-471c-a319-3e1888d764e6)
+
 
 
 
