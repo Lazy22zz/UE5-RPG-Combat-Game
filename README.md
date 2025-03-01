@@ -1661,7 +1661,7 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-02-26 195538](https://github.com/user-attachments/assets/2434604d-2293-4a95-80ab-55dfab1f0ef1)
 - 29, Init Enemy Attributes\
   similar AS step 27, 28\
-  1, use the command `showdebug abilitysystem`, and use button page down\
+  1, use the command `showdebug abilitysystem`, and use the button page down\
   ![Screenshot 2025-02-27 093601](https://github.com/user-attachments/assets/694dfcf7-dc6e-4f80-97fd-05b3d4d4e112)\
   2, go to config/DefaultGame.ini\
   ```c++
@@ -1669,6 +1669,100 @@ Then, create a new blueprint animation.
   bUseDebugTargetFromHud = true
   ```
   ![Screenshot 2025-02-27 094417](https://github.com/user-attachments/assets/a447ef95-45a7-471c-a319-3e1888d764e6)
+- 30, Pawn Combat Interface\
+  Purpose: let BaseCharacter implement the Interface's pure virtual function `GetPawnCombatComponent()`, and its children: HeroCharacter and EnemyCharacter to overwrite this Interface\
+  ![Screenshot_20250228_201129_Samsung_capture](https://github.com/user-attachments/assets/89e00ad7-b562-4ab1-aa19-54cbb888efda)\
+  1, Create a new C++ based on unrealinterface named PawnCombatInterface\
+  2, In PawnCombatInterface.h
+  ```c++
+  public:
+	virtual UPawnCombatComponent* GetPawnCombatComponent() const = 0;
+  ```
+  3, Add this interface into WarriorBaseCharacter.h
+  ```c++
+  //~ Begin PawnCombatInterface Interface.
+  virtual UPawnCombatComponent* GetPawnCombatComponent() const override;
+  //~ End PawnCombatInterface Interface
+  ```
+  Implement it in .cpp
+  ```c++
+  UPawnCombatComponent* AWarriorBaseCharacter::GetPawnCombatComponent() const
+  {
+	return nullptr;
+  }
+  ```
+  4, In WarriorHeroCharacter.h
+  ```c++
+  //~ Begin PawnCombatInterface Interface.
+  virtual UPawnCombatComponent* GetPawnCombatComponent() const override;
+  //~ End PawnCombatInterface Interface
+  ```
+  In .cpp
+  ```c++
+  UPawnCombatComponent* AWarriorHeroCharacter::GetPawnCombatComponent() const
+  {
+	return HeroCombatComponent;
+  }
+  ```
+  5, In WarriorEnemyCharacter, do the same as WarriorHeroCharacter.\
+  6, Create a blueprint callable function to detect whether the actor  is valid or not in WarriorFunctionLibrary\
+  In .h
+  ```c++
+  static UPawnCombatComponent* NativeGetPawnCombatComponentFromActor(AActor* InActor);
+  UFUNCTION(BlueprintCallable, Category = "Warrior|FunctionLibrary", meta = (DisplayName = "Get Pawn Combat Component From Actor", ExpandEnumAsExecs = "OutValidType"))
+  static UPawnCombatComponent* BP_GetPawnCombatComponentFromActor(AActor* InActor, EWarriorValidType& OutValidType);
+  ```
+  In .cpp
+  ```c++
+  UPawnCombatComponent* UWarriorFunctionLibrary::NativeGetPawnCombatComponentFromActor(AActor* InActor)
+  {
+	check(InActor);
+
+	if (IPawnCombatInterface* PawnCombatInterface = Cast<IPawnCombatInterface>(InActor))
+	{
+		return PawnCombatInterface->GetPawnCombatComponent();
+	}
+
+	return nullptr;
+  }
+
+  UPawnCombatComponent* UWarriorFunctionLibrary::BP_GetPawnCombatComponentFromActor(AActor* InActor, EWarriorValidType& OutValidType)
+  {
+	UPawnCombatComponent* CombatComponent = NativeGetPawnCombatComponentFromActor(InActor);
+
+	OutValidType = CombatComponent ? EWarriorValidType::Valid : EWarriorValidType::Invalid;
+
+	return CombatComponent;
+  }
+  ```
+  7, For code quality, need to place all enum types in the same file\
+  Create a new file named WarriorEnumTypes.h
+  ![Screenshot 2025-02-28 203419](https://github.com/user-attachments/assets/285d2576-6e6a-49cf-b5a4-6de48aecb3c7)\
+  8, In WarriorEnumTypes.h
+  ```c++
+  UENUM()
+  enum class EWarriorConfirmType : uint8
+  {
+	Yes,
+	No
+  };
+
+  UENUM()
+  enum class EWarriorValidType : uint8
+  {
+	Valid,
+	Invalid
+  };
+  ```
+  9, Create a new AnimNotifyState named ANS_ToggleWeaponCombatCollision\
+  ![Screenshot 2025-02-28 203819](https://github.com/user-attachments/assets/b24f6c35-c955-4025-986d-0243390cc3a7)\
+  10, Add the new Notify\
+  ![Screenshot 2025-02-28 203839](https://github.com/user-attachments/assets/5cc81738-4741-4ee9-a917-ca5a1e541d56)\
+  11, test.
+
+
+
+
 
 
 
