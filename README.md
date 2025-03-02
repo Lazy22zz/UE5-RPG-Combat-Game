@@ -1758,7 +1758,51 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-02-28 203819](https://github.com/user-attachments/assets/b24f6c35-c955-4025-986d-0243390cc3a7)\
   10, Add the new Notify\
   ![Screenshot 2025-02-28 203839](https://github.com/user-attachments/assets/5cc81738-4741-4ee9-a917-ca5a1e541d56)\
-  11, test.
+  11, test.\
+- 31, Toggle Weapon Collison\
+  Purpose: Previous part, I have clarified the owner of combatcomponent. In here, we need to add notify when should the collision starts.\
+  1, In PawnCombatComponent.h
+  ```c++
+  UENUM(BlueprintType)
+  enum class EToggleDamageType : uint8
+  {
+	CurrentEquippedWeapon,
+	LeftHand,
+	RightHand
+  };
+  ....
+  UFUNCTION(BlueprintCallable, Category = "Warrior|Combat")
+  void ToggleWeaponCollision(bool bShouldEnable,EToggleDamageType ToggleDamageType = EToggleDamageType::CurrentEquippedWeapon);
+  ```
+  2, In .cpp
+  ```c++
+  void UPawnCombatComponent::ToggleWeaponCollision(bool bShouldEnable, EToggleDamageType ToggleDamageType)
+  {
+	if (ToggleDamageType == EToggleDamageType::CurrentEquippedWeapon)
+	{
+		AWarriorWeaponBase* WeaponToToggle = GetCharacterCurrentEquippedWeapon();
+
+		check(WeaponToToggle);
+
+		if (bShouldEnable)
+		{
+			WeaponToToggle->GetWeaponCollisionBox()->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+			Debug::Print(WeaponToToggle->GetName() + TEXT(" collision enabled"),FColor::Green);
+		}
+		else
+		{
+			WeaponToToggle->GetWeaponCollisionBox()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+			Debug::Print(WeaponToToggle->GetName() + TEXT(" collision disabled"),FColor::Red);
+		}		
+	}
+  }
+  ```
+  3, In ANS_ToggleWeaponCollision\
+  ![Screenshot 2025-03-02 123406](https://github.com/user-attachments/assets/25b49f9c-b9aa-4542-bd6c-2aecf1e0a429)\
+  ![Screenshot 2025-03-02 123450](https://github.com/user-attachments/assets/17afa450-3069-496c-901b-da2450d1ffa3)
+
+
+
 
 
 
