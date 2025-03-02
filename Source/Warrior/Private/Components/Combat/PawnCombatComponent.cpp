@@ -61,3 +61,5 @@ void UPawnCombatComponent::ToggleWeaponCollision(bool bShouldEnable, EToggleDama
 		}
 	}
 }
+
+//TODO:Handle body collision boxes
