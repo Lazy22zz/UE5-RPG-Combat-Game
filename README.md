@@ -1800,6 +1800,52 @@ Then, create a new blueprint animation.
   3, In ANS_ToggleWeaponCollision\
   ![Screenshot 2025-03-02 123406](https://github.com/user-attachments/assets/25b49f9c-b9aa-4542-bd6c-2aecf1e0a429)\
   ![Screenshot 2025-03-02 123450](https://github.com/user-attachments/assets/17afa450-3069-496c-901b-da2450d1ffa3)
+- 32, OnWeaponBeginOverlapDone\
+  Purpose: using delegate to determine when collision overlap happened.\
+  1, In WarriorWeaponBase.h, using `OnCollisionBoxBeginOverlap`, `OnCollisionBoxEndOverlap` to identify the begin and end of collision overlap.
+  ```c++
+  UFUNCTION()
+  virtual void OnCollisionBoxBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+  UFUNCTION()
+  virtual void OnCollisionBoxEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+  ```
+  2, In WarriorWeaponBase.cpp, using `GetInstigator<APawn>()` to retrieve the pawn that spawned or owns the weapon.
+  ```C++
+  void AWarriorWeaponBase::OnCollisionBoxBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+  {
+	APawn* WeaponOwningPawn = GetInstigator<APawn>();
+
+	checkf(WeaponOwningPawn, TEXT("Forgot to assign an instiagtor as the owning pawn of the weapon: %s"), *GetName());
+
+	if (APawn* HitPawn = Cast<APawn>(OtherActor))
+	{
+		if (WeaponOwningPawn != HitPawn)
+		{
+			Debug::Print(GetName() + TEXT(" begin overlap with ") + HitPawn->GetName(), FColor::Green);
+		}
+
+		//TODO:Implement hit check for enemy characters
+	}
+  }
+
+  void AWarriorWeaponBase::OnCollisionBoxEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+  {
+	APawn* WeaponOwningPawn = GetInstigator<APawn>();
+
+	checkf(WeaponOwningPawn, TEXT("Forgot to assign an instiagtor as the owning pawn of the weapon: %s"), *GetName());
+
+	if (APawn* HitPawn = Cast<APawn>(OtherActor))
+	{
+		if (WeaponOwningPawn != HitPawn)
+		{
+			Debug::Print(GetName() + TEXT(" end overlap with ") + HitPawn->GetName(), FColor::Red);
+		}
+
+		//TODO:Implement hit check for enemy characters
+	}
+  }
+  ```
 
 
 
