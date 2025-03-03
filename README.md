@@ -1933,6 +1933,12 @@ Then, create a new blueprint animation.
   6, In GA_lightAttackMaster\
   ![Screenshot 2025-03-02 200644](https://github.com/user-attachments/assets/d8801bd3-5ff3-45da-a50e-98a684e176f7)\
   ![Screenshot 2025-03-02 200700](https://github.com/user-attachments/assets/17016c04-13fd-4d98-98ee-ed4d0f232906)
+- 35, finish all montages\
+  1, set the `UsedComboCount` to private\
+  2, fill all montage's notify state and finish the heavy attack blueprint\
+  https://github.com/user-attachments/assets/132b6fa9-72db-4ec0-85f9-f8565c935d85
+
+
 
 
 
