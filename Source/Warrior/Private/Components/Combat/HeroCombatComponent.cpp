@@ -35,5 +35,5 @@ void UHeroCombatComponent::OnHitTargetActor(AActor* HitActor)
 
 void UHeroCombatComponent::OnWeaponPulledFromTargetActor(AActor* InteractedActor)
 {
-	Debug::Print(GetOwningPawn()->GetActorNameOrLabel() + TEXT("'s weapon pulled from ") + InteractedActor->GetActorNameOrLabel(), FColor::Red);
+	
 }
