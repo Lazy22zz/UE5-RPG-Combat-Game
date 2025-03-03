@@ -7,6 +7,9 @@
 #include "WarriorWeaponBase.generated.h"
 
 class UBoxComponent;
+
+DECLARE_DELEGATE_OneParam(FOnTargetInteractedDelegate, AActor*)
+
 UCLASS()
 class WARRIOR_API AWarriorWeaponBase : public AActor
 {
@@ -15,6 +18,9 @@ class WARRIOR_API AWarriorWeaponBase : public AActor
 public:	
 	// Sets default values for this actor's properties
 	AWarriorWeaponBase();
+
+	FOnTargetInteractedDelegate OnWeaponHitTarget;
+	FOnTargetInteractedDelegate OnWeaponPulledFromTarget;
 
 protected:
 
