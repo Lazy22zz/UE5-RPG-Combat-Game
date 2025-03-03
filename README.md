@@ -1760,7 +1760,7 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-02-28 203839](https://github.com/user-attachments/assets/5cc81738-4741-4ee9-a917-ca5a1e541d56)\
   11, test.\
 - 31, Toggle Weapon Collison\
-  Purpose: Previous part, I have clarified the owner of combatcomponent. In here, we need to add notify when should the collision starts.\
+  Purpose: In the previous part, I clarified the combatcomponent owner. Here, we need to add a notification when should the collision start.\
   1, In PawnCombatComponent.h
   ```c++
   UENUM(BlueprintType)
@@ -1801,8 +1801,8 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-03-02 123406](https://github.com/user-attachments/assets/25b49f9c-b9aa-4542-bd6c-2aecf1e0a429)\
   ![Screenshot 2025-03-02 123450](https://github.com/user-attachments/assets/17afa450-3069-496c-901b-da2450d1ffa3)
 - 32, OnWeaponBeginOverlapDone\
-  Purpose: using delegate to determine when collision overlap happened.\
-  1, In WarriorWeaponBase.h, using `OnCollisionBoxBeginOverlap`, `OnCollisionBoxEndOverlap` to identify the begin and end of collision overlap.
+  Purpose: using a delegate to determine when collision overlap happened.\
+  1, In WarriorWeaponBase.h, use `OnCollisionBoxBeginOverlap`, `OnCollisionBoxEndOverlap` to identify the beginning and end of collision overlap.
   ```c++
   UFUNCTION()
   virtual void OnCollisionBoxBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
@@ -1810,7 +1810,7 @@ Then, create a new blueprint animation.
   UFUNCTION()
   virtual void OnCollisionBoxEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
   ```
-  2, In WarriorWeaponBase.cpp, using `GetInstigator<APawn>()` to retrieve the pawn that spawned or owns the weapon.
+  2, In WarriorWeaponBase.cpp, use `GetInstigator<APawn>()` to retrieve the pawn that spawned or owns the weapon.
   ```C++
   void AWarriorWeaponBase::OnCollisionBoxBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
   {
@@ -1846,7 +1846,37 @@ Then, create a new blueprint animation.
 	}
   }
   ```
+- 33, ShowUp Action Activities\
+  Purpose: show up which actor gets hit, which weapon gets pulled, and who is the attacker.\
+  1, In WarriorweaponBase.h, declare two variables `OnWeaponHitTarget`, `OnWeaponPulledFromTarget`, by using delegate for multi-call out.
+  ```C++
+  DECLARE_DELEGATE_OneParam(FOnTargetInteractedDelegate,AActor*)
+  ...
+  FOnTargetInteractedDelegate OnWeaponHitTarget;
+  FOnTargetInteractedDelegate OnWeaponPulledFromTarget;
+  ```
+  2, In .cpp, excute the delegate.
+  ```c++
+  OnWeaponHitTarget.ExecuteIfBound(OtherActor);
+  ```
+  3, In PawnCombatComponent.h, enable these notification functions
+  ```c++
+  virtual void OnHitTargetActor(AActor* HitActor);
+  virtual void OnWeaponPulledFromTargetActor(AActor* InteractedActor);
+  ```
+  4, In HeroCombatCompoenet.h, override it\
+  In .cpp
+  ```c++
+  void UHeroCombatComponent::OnHitTargetActor(AActor* HitActor)
+  {
+	Debug::Print(GetOwningPawn()->GetActorNameOrLabel() + TEXT(" hit ") + HitActor->GetActorNameOrLabel(), FColor::Green);
+  }
 
+  void UHeroCombatComponent::OnWeaponPulledFromTargetActor(AActor* InteractedActor)
+  {
+	Debug::Print(GetOwningPawn()->GetActorNameOrLabel() + TEXT("'s weapon pulled from ") + InteractedActor->GetActorNameOrLabel(), FColor::Red);
+  }
+  ```
 
 
 
