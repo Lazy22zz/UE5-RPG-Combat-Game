@@ -46,4 +46,7 @@ public:
 
 private:
 	TMap< FGameplayTag, AWarriorWeaponBase* >CharacterCarriedWeaponMap;
+
+protected:
+	TArray<AActor*> OverlappedActors;
 };
