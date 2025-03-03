@@ -1877,6 +1877,63 @@ Then, create a new blueprint animation.
 	Debug::Print(GetOwningPawn()->GetActorNameOrLabel() + TEXT("'s weapon pulled from ") + InteractedActor->GetActorNameOrLabel(), FColor::Red);
   }
   ```
+- 34, Notify Melee Hit\
+  Purpose: In previous Steps, we can detect which one is the attacker, which one is being attacked, and the weapon types.\
+  Here, we need to use a notify tag to enable the applied damage.\
+  ![Screenshot_20250302_193451_Samsung_capture](https://github.com/user-attachments/assets/7d46f606-e0b3-4b41-bcce-9ad035d53954)\
+  1, In WarriorGameplayTags.h
+  ```c++
+  /** Shared tags **/
+  WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_MeleeHit);
+  ```
+  2, In .cpp
+  ```c++
+  /** Shared tags **/
+  UE_DEFINE_GAMEPLAY_TAG(Shared_Event_MeleeHit,"Shared.Event.MeleeHit");
+  ```
+  3, In PawnCombatComponent.h, we need a Tarray to store the get-hit actor.
+  ```c++
+  protected:
+	TArray<AActor*> OverlappedActors;
+  ```
+  4, In .cpp
+  ```c++
+  else
+  {
+	WeaponToToggle->GetWeaponCollisionBox()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+	OverlappedActors.Empty();
+  }
+  ```
+  5, In HeroCombatComponent.cpp, we need to detect if the get-hit actor exists, then push the gameplayevent.
+  ```c++
+  #include "AbilitySystemBlueprintLibrary.h"
+  #include "WarriorGameplayTags.h"
+  ...
+  void UHeroCombatComponent::OnHitTargetActor(AActor* HitActor)
+  {
+	if (OverlappedActors.Contains(HitActor))
+	{
+		return;
+	}
+
+	OverlappedActors.AddUnique(HitActor);
+
+	FGameplayEventData Data;
+	Data.Instigator = GetOwningPawn();
+	Data.Target = HitActor;
+
+	UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(
+		GetOwningPawn(),
+		WarriorGameplayTags::Shared_Event_MeleeHit,
+		Data
+	);
+  }
+  ```
+  6, In GA_lightAttackMaster\
+  ![Screenshot 2025-03-02 200644](https://github.com/user-attachments/assets/d8801bd3-5ff3-45da-a50e-98a684e176f7)\
+  ![Screenshot 2025-03-02 200700](https://github.com/user-attachments/assets/17016c04-13fd-4d98-98ee-ed4d0f232906)
+
 
 
 
