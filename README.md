@@ -57,7 +57,30 @@
   We wrap up any types under `UWarriorGameplayAbility` that satisfies the required of `TArray<UClass *>`
 - 6, Synchronous and  Asynchronous loading\
   In Unreal Engine C++, synchronous loading uses `LoadObject()` to load assets immediately, ensuring they are available before gameplay starts, while asynchronous loading uses `FStreamableManager::RequestAsyncLoad()` to load assets in the background without 
-  blocking the main thread. Synchronous loading is ideal for critical assets like the player's character, ensuring smooth startup, whereas asynchronous loading is best for non-critical assets like enemies, optimizing performance and reducing initial load times.
+  blocking the main thread. Synchronous loading is ideal for critical assets like the player's character, ensuring smooth startup. In contrast, asynchronous loading is best for non-critical assets like enemies, optimizing performance and reducing initial load times.\
+- 7 Basic GamplayEffectHandle code:
+  ```c++
+  // Create context
+  FGameplayEffectContextHandle ContextHandle = AbilitySystemComponent->MakeEffectContext();
+  // Set up context with relevant info
+  ContextHandle.SetAbility(this);
+  ContextHandle.AddSourceObject(SourceActor);
+  // etc...
+
+  // Create spec using that context
+  FGameplayEffectSpecHandle EffectSpecHandle = AbilitySystemComponent->MakeOutgoingSpec(
+    EffectClass,
+    Level,
+    ContextHandle
+  );
+
+  // Configure spec as needed
+  EffectSpecHandle.Data->SetSetByCallerMagnitude(...);
+  // etc...
+
+  // Then eventually apply the effect
+  AbilitySystemComponent->ApplyGameplayEffectSpecToTarget(EffectSpecHandle, TargetASC);
+  ```
 
 # 1, Set Up Hero Character
 - 1, Base Class Structure \
@@ -1937,6 +1960,64 @@ Then, create a new blueprint animation.
   1, set the `UsedComboCount` to private\
   2, fill all montage's notify state and finish the heavy attack blueprint\
   https://github.com/user-attachments/assets/132b6fa9-72db-4ec0-85f9-f8565c935d85
+- 36, Make Gameplay Effect Spec Handle\
+  ![Image_1741020850349](https://github.com/user-attachments/assets/b437d010-7068-4278-96be-253b63577d7f)\
+  Purpose: create a damage effect that will be applied to targets in the game. \
+  It sets up all the necessary context (who's dealing the damage, what ability is being used, etc.) \
+  and configures the damage parameters (base damage, attack type, combo count). \
+  1, In WarriorHeroGameplayAbility.h
+  ```c++
+  UFUNCTION(BlueprintPure, Category = "Warrior|Ability")
+  FGameplayEffectSpecHandle MakeHeroDamageEffectSpecHandle(TSubclassOf<UGameplayEffect> EffectClass,float InWeaponBaseDamage,FGameplayTag InCurrentAttackTypeTag,int32 InCurrentComboCount);
+  ```
+  2, In.cpp, In here, we need to create two FGameplayEffectContextHandle, `ContextHandle` and `EffectSpecHandle`\
+  The first one provides all the necessary information about "who" and "how" an effect is being applied :\
+  Who is causing the effect (the instigator)\
+  What ability is applying the effect\
+  What actor is the source of the effect\
+  Any additional source objects\
+  The second one combines the context with the actual effect class and details\
+  Which gameplay effect class to use\
+  What level should the effect be applied at\
+  What the magnitudes of the effect should be\
+  The context (it contains the ContextHandle you created earlier)
+  ```c++
+  FGameplayEffectSpecHandle UWarriorHeroGameplayAbility::MakeHeroDamageEffectSpecHandle(TSubclassOf<UGameplayEffect> EffectClass, float InWeaponBaseDamage, FGameplayTag InCurrentAttackTypeTag, int32 InCurrentComboCount)
+  {	
+	check(EffectClass);
+
+	FGameplayEffectContextHandle ContextHandle = GetWarriorAbilitySystemComponentFromActorInfo()->MakeEffectContext();
+	ContextHandle.SetAbility(this);
+	ContextHandle.AddSourceObject(GetAvatarActorFromActorInfo());
+	ContextHandle.AddInstigator(GetAvatarActorFromActorInfo(),GetAvatarActorFromActorInfo());
+
+	FGameplayEffectSpecHandle EffectSpecHandle = GetWarriorAbilitySystemComponentFromActorInfo()->MakeOutgoingSpec(
+		EffectClass,
+		GetAbilityLevel(),
+		ContextHandle
+	);
+
+	EffectSpecHandle.Data->SetSetByCallerMagnitude(
+		WarriorGameplayTags::Shared_SetByCaller_BaseDamage,
+		InWeaponBaseDamage
+	);
+
+	if (InCurrentAttackTypeTag.IsValid())
+	{
+		EffectSpecHandle.Data->SetSetByCallerMagnitude(InCurrentAttackTypeTag,InCurrentComboCount);
+	}
+
+	return EffectSpecHandle;
+  }
+  ```
+  3, In WarriorGamplayTags.h
+  ```c++
+  WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_SetByCaller_BaseDamage);
+  ```
+  4, In .cpp
+  ```c++
+  UE_DEFINE_GAMEPLAY_TAG(Shared_SetByCaller_BaseDamage,"Shared.SetByCaller.BaseDamage");
+  ```
 
 
 
