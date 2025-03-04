@@ -1960,9 +1960,9 @@ Then, create a new blueprint animation.
   1, set the `UsedComboCount` to private\
   2, fill all montage's notify state and finish the heavy attack blueprint\
   https://github.com/user-attachments/assets/132b6fa9-72db-4ec0-85f9-f8565c935d85
-- 36, Make Gameplay Effect Spec Handle\
+- 36,HeroDamageInfoDone\
   ![Image_1741020850349](https://github.com/user-attachments/assets/b437d010-7068-4278-96be-253b63577d7f)\
-  Purpose: create a damage effect that will be applied to targets in the game. \
+  Purpose: create a damaging effect that will be applied to targets in the game. \
   It sets up all the necessary context (who's dealing the damage, what ability is being used, etc.) \
   and configures the damage parameters (base damage, attack type, combo count). \
   1, In WarriorHeroGameplayAbility.h
@@ -2018,6 +2018,55 @@ Then, create a new blueprint animation.
   ```c++
   UE_DEFINE_GAMEPLAY_TAG(Shared_SetByCaller_BaseDamage,"Shared.SetByCaller.BaseDamage");
   ```
+  5, In GA_LightAttackMaster, create this new blueprint `Make Outgoing Gameplay Effect Spec`
+  ![Screenshot 2025-03-04 090844](https://github.com/user-attachments/assets/7c449d89-b8f5-424a-86cf-857397ecb59b)
+- 37, HeroDamageInfoDone - HeroDamage\
+  Purpose: In 36, We created a new blueprint `Make Outgoing Gameplay Effect Spec`, in this part, we have to fill up \
+  EffectClass, InWeaponBaseDamage, InCurrentTypeTag, InCurrentComboCount\
+  1, Create a new gameplayEffect named `GE_Shared_DealDamage`\
+  2, Create a new calculation class to fill in Excusion -> calculation class, so that, create a new c++ based on gameplayeffectexecution name 
+  3, ![Screenshot 2025-03-04 090739](https://github.com/user-attachments/assets/9d5ce056-a48c-461f-bcad-0c2867d623f5)\
+     ![Screenshot 2025-03-04 091000](https://github.com/user-attachments/assets/ab2a62a5-47b2-4a63-b9ad-1e1d7aa64f41)\
+  4, In WarriorStructTypes.h, we need to add `WeaponBaseDamage` in FWarriorHeroWeaponData
+  ```c++
+  UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+  FScalableFloat WeaponBaseDamage;
+  ```
+  5, In HeroCombatComponent.h
+  ```c++
+  UFUNCTION(BlueprintCallable, Category = "Warrior|Combat")
+  AWarriorHeroWeapon* GetHeroCurrentEquippedWeapon() const;
+
+  UFUNCTION(BlueprintCallable, Category = "Warrior|Combat")
+  float GetHeroCurrentEquippWeaponDamageAtLevel(float InLevel) const;
+  ```
+  6, In .cpp
+  ```c++
+  AWarriorHeroWeapon* UHeroCombatComponent::GetHeroCurrentEquippedWeapon() const
+  {
+	return Cast<AWarriorHeroWeapon>(GetCharacterCurrentEquippedWeapon());
+  }
+
+  float UHeroCombatComponent::GetHeroCurrentEquippWeaponDamageAtLevel(float InLevel) const
+  {
+	return GetHeroCurrentEquippedWeapon()->HeroWeaponData.WeaponBaseDamage.GetValueAtLevel(InLevel);
+  }
+  ```
+  7, In BP_HeroAxe, search for hero, and create a new data curve table to store weapon damage by different levels\
+  ![Screenshot 2025-03-04 092609](https://github.com/user-attachments/assets/9bf13529-05d7-4faf-9f3d-cf2e45e83041)\
+  8, Create a new Curve Table named CT_HeroWeaponStats and attach it into BP_HeroAxe\
+  9, ![Screenshot 2025-03-04 093324](https://github.com/user-attachments/assets/1025d515-5238-4182-8318-041b54583edd)\
+  10, Create the attack type tag, in WarriorGameplayTags.h
+  ```c++
+  WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_SetByCaller_AttackType_Light);
+  WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_SetByCaller_AttackType_Heavy);
+  ```
+  11, fill the .cpp
+  12, ![Screenshot 2025-03-04 094151](https://github.com/user-attachments/assets/edf6a816-bdba-4206-8a3f-ecb31ed6014d)
+
+
+
+
 
 
 
