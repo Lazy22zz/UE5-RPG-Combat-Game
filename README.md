@@ -1960,7 +1960,7 @@ Then, create a new blueprint animation.
   1, set the `UsedComboCount` to private\
   2, fill all montage's notify state and finish the heavy attack blueprint\
   https://github.com/user-attachments/assets/132b6fa9-72db-4ec0-85f9-f8565c935d85
-- 36,HeroDamageInfoDone\
+- 36, HeroDamageInfoDone\
   ![Image_1741020850349](https://github.com/user-attachments/assets/b437d010-7068-4278-96be-253b63577d7f)\
   Purpose: create a damaging effect that will be applied to targets in the game. \
   It sets up all the necessary context (who's dealing the damage, what ability is being used, etc.) \
@@ -2024,8 +2024,8 @@ Then, create a new blueprint animation.
   Purpose: In 36, We created a new blueprint `Make Outgoing Gameplay Effect Spec`, in this part, we have to fill up \
   EffectClass, InWeaponBaseDamage, InCurrentTypeTag, InCurrentComboCount\
   1, Create a new gameplayEffect named `GE_Shared_DealDamage`\
-  2, Create a new calculation class to fill in Excusion -> calculation class, so that, create a new c++ based on gameplayeffectexecution name 
-  3, ![Screenshot 2025-03-04 090739](https://github.com/user-attachments/assets/9d5ce056-a48c-461f-bcad-0c2867d623f5)\
+  2, Create a new calculation class to fill in Excusion -> calculation class, so that, create a new C++ based on gameplayeffectexecution name 
+  3,![Screenshot 2025-03-04 090739](https://github.com/user-attachments/assets/9d5ce056-a48c-461f-bcad-0c2867d623f5)\
      ![Screenshot 2025-03-04 091000](https://github.com/user-attachments/assets/ab2a62a5-47b2-4a63-b9ad-1e1d7aa64f41)\
   4, In WarriorStructTypes.h, we need to add `WeaponBaseDamage` in FWarriorHeroWeaponData
   ```c++
@@ -2052,17 +2052,62 @@ Then, create a new blueprint animation.
 	return GetHeroCurrentEquippedWeapon()->HeroWeaponData.WeaponBaseDamage.GetValueAtLevel(InLevel);
   }
   ```
-  7, In BP_HeroAxe, search for hero, and create a new data curve table to store weapon damage by different levels\
+  7, In BP_HeroAxe, search for the hero, and create a new data curve table to store weapon damage by different levels\
   ![Screenshot 2025-03-04 092609](https://github.com/user-attachments/assets/9bf13529-05d7-4faf-9f3d-cf2e45e83041)\
   8, Create a new Curve Table named CT_HeroWeaponStats and attach it into BP_HeroAxe\
-  9, ![Screenshot 2025-03-04 093324](https://github.com/user-attachments/assets/1025d515-5238-4182-8318-041b54583edd)\
+  9,![Screenshot 2025-03-04 093324](https://github.com/user-attachments/assets/1025d515-5238-4182-8318-041b54583edd)\
   10, Create the attack type tag, in WarriorGameplayTags.h
   ```c++
   WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_SetByCaller_AttackType_Light);
   WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_SetByCaller_AttackType_Heavy);
   ```
-  11, fill the .cpp
-  12, ![Screenshot 2025-03-04 094151](https://github.com/user-attachments/assets/edf6a816-bdba-4206-8a3f-ecb31ed6014d)
+  11, fill in the .cpp
+  12,![Screenshot 2025-03-04 094151](https://github.com/user-attachments/assets/edf6a816-bdba-4206-8a3f-ecb31ed6014d)
+- 38, Applied the `Make Hero Damage Effect Spec Handle` To Target\
+  Purpose: Applied this handle to target hero\
+  1, In WarriorEnumTypes.h
+  ```c++
+  UENUM()
+  enum class EWarriorSuccessType : uint8
+  {
+	Successful,
+	Failed
+  };
+  ```
+  2, In WarriorGameplayAbility.h, create a new function NativeApplyEffectSpecHandleToTarget to handle this action.
+  ```c++
+  FActiveGameplayEffectHandle NativeApplyEffectSpecHandleToTarget(AActor* TargetActor,const FGameplayEffectSpecHandle& InSpecHandle);
+
+  UFUNCTION(BlueprintCallable, Category = "Warrior|Ability", meta = (DisplayName = "Apply Gameplay Effect Spec Handle To Target Actor", ExpandEnumAsExecs = "OutSuccessType"))
+  FActiveGameplayEffectHandle BP_ApplyEffectSpecHandleToTarget(AActor* TargetActor,const FGameplayEffectSpecHandle& InSpecHandle,EWarriorSuccessType& OutSuccessType);
+  ```
+  3, In .cpp, using `ApplyGameplayEffectSpecToTarget()` in Abilitysystemcomponent to do that.
+  ```c++
+  FActiveGameplayEffectHandle UWarriorGameplayAbility::NativeApplyEffectSpecHandleToTarget(AActor* TargetActor, const FGameplayEffectSpecHandle& InSpecHandle)
+  {	
+	UAbilitySystemComponent* TargetASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(TargetActor);
+
+	check(TargetASC && InSpecHandle.IsValid());
+
+	return GetWarriorAbilitySystemComponentFromActorInfo()->ApplyGameplayEffectSpecToTarget(
+		*InSpecHandle.Data,
+		TargetASC
+	);
+  }
+
+  FActiveGameplayEffectHandle UWarriorGameplayAbility::BP_ApplyEffectSpecHandleToTarget(AActor* TargetActor, const FGameplayEffectSpecHandle& InSpecHandle, EWarriorSuccessType& OutSuccessType)
+  {
+	FActiveGameplayEffectHandle ActiveGameplayEffectHandle = NativeApplyEffectSpecHandleToTarget(TargetActor,InSpecHandle);
+
+	OutSuccessType = ActiveGameplayEffectHandle.WasSuccessfullyApplied()? EWarriorSuccessType::Successful : EWarriorSuccessType::Failed;
+
+	return ActiveGameplayEffectHandle;
+  }
+  ```
+  4, link the blueprint\
+  ![Screenshot 2025-03-05 090946](https://github.com/user-attachments/assets/f3ef915b-37be-4491-ae7b-2a5bf385c1fd)\
+  
+
 
 
 
