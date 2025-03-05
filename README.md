@@ -2106,7 +2106,54 @@ Then, create a new blueprint animation.
   ```
   4, link the blueprint\
   ![Screenshot 2025-03-05 090946](https://github.com/user-attachments/assets/f3ef915b-37be-4491-ae7b-2a5bf385c1fd)\
-  
+- 39, Gameplay Effect Execution Calculation - Capture attributes for calculation
+  Purpose: Capture attributes for calculation\
+  1, In GEExecuteCal_DamageTaken.h
+  ```c++
+  public:
+	
+	UGEExecuteCal_DamageTaken();
+  ```
+  2, In .cpp
+  ```c++
+  struct FWarriorDamageCapture
+  {
+	DECLARE_ATTRIBUTE_CAPTUREDEF(AttackPower)
+	DECLARE_ATTRIBUTE_CAPTUREDEF(DefensePower)
+
+	FWarriorDamageCapture()
+	{
+		DEFINE_ATTRIBUTE_CAPTUREDEF(UWarriorAttributeSet, AttackPower, Source, false)
+		DEFINE_ATTRIBUTE_CAPTUREDEF(UWarriorAttributeSet, DefensePower, Target, false)
+	}
+  };
+
+  static const FWarriorDamageCapture& GetWarriorDamageCapture()
+  {
+	static FWarriorDamageCapture WarriorDamageCapture;
+	return WarriorDamageCapture;
+  }
+
+  UGEExecuteCal_DamageTaken::UGEExecuteCal_DamageTaken()
+  {
+	/*Slow way of doing capture*/
+	//FProperty* AttackPowerProperty = FindFieldChecked<FProperty>(
+	//	UWarriorAttributeSet::StaticClass(),
+	//	GET_MEMBER_NAME_CHECKED(UWarriorAttributeSet,AttackPower)
+	//);
+
+	//FGameplayEffectAttributeCaptureDefinition AttackPowerCaptureDefinition(
+	//	AttackPowerProperty,
+	//	EGameplayEffectAttributeCaptureSource::Source,
+	//	false
+	//);
+
+	//RelevantAttributesToCapture.Add(AttackPowerCaptureDefinition);
+
+	RelevantAttributesToCapture.Add(GetWarriorDamageCapture().AttackPowerDef);
+	RelevantAttributesToCapture.Add(GetWarriorDamageCapture().DefensePowerDef);
+  }
+  ```
 
 
 
