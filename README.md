@@ -2258,8 +2258,61 @@ Then, create a new blueprint animation.
 		);
 	}
   ```
-  42, Set Up Heavy Attack Blueprint\
+- 42, Set Up Heavy Attack Blueprint\
   ![Screenshot 2025-03-05 190938](https://github.com/user-attachments/assets/a8107401-8cd0-45ca-aafd-d03d15af38ce)\
+- 43, Modify Health Attribute\
+  Purpose: Using the FinalDamage in the Health Attribute.\
+  1,  In warriorAttributeSets.h
+  ```c++
+  protected:
+	virtual void PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData& Data) override;
+  ```
+  2, In .cpp
+  ```c++
+  void UWarriorAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
+  {
+	if (Data.EvaluatedData.Attribute == GetCurrentHealthAttribute())
+	{
+		const float NewCurrentHealth = FMath::Clamp(GetCurrentHealth(), 0.f, GetMaxHealth());
+
+		SetCurrentHealth(NewCurrentHealth);
+	}
+
+	if (Data.EvaluatedData.Attribute == GetCurrentRageAttribute())
+	{
+		const float NewCurrentRage = FMath::Clamp(GetCurrentRage(), 0.f, GetMaxRage());
+
+		SetCurrentRage(NewCurrentRage);
+	}
+
+	if (Data.EvaluatedData.Attribute == GetDamageTakenAttribute())
+	{
+		const float OldHealth = GetCurrentHealth();
+		const float DamageDone = GetDamageTaken();
+
+		const float NewCurrentHealth = FMath::Clamp(OldHealth - DamageDone, 0.f, GetMaxHealth());
+
+		SetCurrentHealth(NewCurrentHealth);
+
+		const FString DebugString = FString::Printf(
+			TEXT("Old Health: %f, Damage Done: %f, NewCurrentHealth: %f"),
+			OldHealth,
+			DamageDone,
+			NewCurrentHealth
+		);
+
+		Debug::Print(DebugString, FColor::Green);
+
+		//TODO::Notify the UI 
+
+		//TODO::Handle character death
+		if (NewCurrentHealth == 0.f)
+		{
+
+		}
+	}
+    }
+```
   
 
 
