@@ -2202,7 +2202,7 @@ Then, create a new blueprint animation.
   float TargetDefensePower = 0.f;
   ExecutionParams.AttemptCalculateCapturedAttributeMagnitude(GetWarriorDamageCapture().DefensePowerDef, EvaluateParameters, TargetDefensePower);
   ```
-- 41. CalculateFinalDamageDone\
+- 41, CalculateFinalDamageDone\
   Purpose: In 39, 40, we capture the required attributes, and get the required data from the data table based on gameplayeffecttag. this step we need to calc the DamageTaken\
   1, In warriorattributrset.h
   ```c++
@@ -2258,6 +2258,10 @@ Then, create a new blueprint animation.
 		);
 	}
   ```
+  42, Set Up Heavy Attack Blueprint\
+  ![Screenshot 2025-03-05 190938](https://github.com/user-attachments/assets/a8107401-8cd0-45ca-aafd-d03d15af38ce)\
+  
+
 
 
 
