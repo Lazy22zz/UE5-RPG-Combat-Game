@@ -2107,7 +2107,7 @@ Then, create a new blueprint animation.
   4, link the blueprint\
   ![Screenshot 2025-03-05 090946](https://github.com/user-attachments/assets/f3ef915b-37be-4491-ae7b-2a5bf385c1fd)\
 - 39, Gameplay Effect Execution Calculation - Capture attributes for calculation
-  Purpose: Capture attributes for calculation\
+  Purpose: Capture which attributes for calculation\
   1, In GEExecuteCal_DamageTaken.h
   ```c++
   public:
@@ -2153,6 +2153,54 @@ Then, create a new blueprint animation.
 	RelevantAttributesToCapture.Add(GetWarriorDamageCapture().AttackPowerDef);
 	RelevantAttributesToCapture.Add(GetWarriorDamageCapture().DefensePowerDef);
   }
+  ```
+- 40, Retrieve Hero Damage Info\
+  Purpose: using `Execute_Implementation`allows gameplay effects to calculate results based on attributes captured in 39\
+  1, GEExecuteCal_DamageTaken.h
+  ```c++
+  virtual void Execute_Implementation(const FGameplayEffectCustomExecutionParameters& ExecutionParams, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const override;
+  ```
+  2, In .cpp\
+  `const TPair<FGameplayTag, float>& TagMagnitude : EffectSpec.SetByCallerTagMagnitudes` checks the data curve table.\
+  ```c++
+  const FGameplayEffectSpec& EffectSpec = ExecutionParams.GetOwningSpec();
+
+  /*EffectSpec.GetContext().GetSourceObject();
+  EffectSpec.GetContext().GetAbility();
+  EffectSpec.GetContext().GetInstigator();
+  EffectSpec.GetContext().GetEffectCauser();*/
+
+  FAggregatorEvaluateParameters EvaluateParameters;
+  EvaluateParameters.SourceTags = EffectSpec.CapturedSourceTags.GetAggregatedTags();
+  EvaluateParameters.TargetTags = EffectSpec.CapturedTargetTags.GetAggregatedTags();
+
+  float SourceAttackPower = 0.f;
+  ExecutionParams.AttemptCalculateCapturedAttributeMagnitude(GetWarriorDamageCapture().AttackPowerDef, EvaluateParameters, SourceAttackPower);
+
+  float BaseDamage = 0.f;
+  int32 UsedLightAttckComboCount = 0;
+  int32 UsedHeavyAttackComboCount = 0;
+
+  for (const TPair<FGameplayTag, float>& TagMagnitude : EffectSpec.SetByCallerTagMagnitudes)
+  {
+	if (TagMagnitude.Key.MatchesTagExact(WarriorGameplayTags::Shared_SetByCaller_BaseDamage))
+	{
+		BaseDamage = TagMagnitude.Value;
+	}
+
+	if (TagMagnitude.Key.MatchesTagExact(WarriorGameplayTags::Player_SetByCaller_AttackType_Light))
+	{
+		UsedLightAttckComboCount = TagMagnitude.Value;
+	}
+
+	if (TagMagnitude.Key.MatchesTagExact(WarriorGameplayTags::Player_SetByCaller_AttackType_Heavy))
+	{
+		UsedHeavyAttackComboCount = TagMagnitude.Value;
+	}
+  }
+
+  float TargetDefensePower = 0.f;
+  ExecutionParams.AttemptCalculateCapturedAttributeMagnitude(GetWarriorDamageCapture().DefensePowerDef, EvaluateParameters, TargetDefensePower);
   ```
 
 
