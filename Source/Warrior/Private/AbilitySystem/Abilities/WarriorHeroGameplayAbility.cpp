@@ -6,7 +6,7 @@
 #include "GameControllers/WarriorHeroController.h"
 #include "AbilitySystem/WarriorAbilitySystemComponent.h"
 #include "WarriorGameplayTags.h"
-#include "AbilitySystemBlueprintLibrary.h"
+
 
 AWarriorHeroCharacter* UWarriorHeroGameplayAbility::GetHeroCharacterFromActorInfo()
 {
@@ -61,23 +61,4 @@ FGameplayEffectSpecHandle UWarriorHeroGameplayAbility::MakeHeroDamageEffectSpecH
 	return EffectSpecHandle;
 }
 
-FActiveGameplayEffectHandle UWarriorHeroGameplayAbility::NativeApplyEffectSpecHandleToTarget(AActor* TargetActor, const FGameplayEffectSpecHandle& InSpecHandle)
-{
-	UAbilitySystemComponent* TargetASC = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(TargetActor);
 
-	check(TargetASC && InSpecHandle.IsValid());
-
-	return GetWarriorAbilitySystemComponentFromActorInfo()->ApplyGameplayEffectSpecToTarget(
-		*InSpecHandle.Data,
-		TargetASC
-	);
-}
-
-FActiveGameplayEffectHandle UWarriorHeroGameplayAbility::BP_ApplyEffectSpecHandleToTarget(AActor* TargetActor, const FGameplayEffectSpecHandle& InSpecHandle, EWarriorSuccessType& OutSuccessType)
-{
-	FActiveGameplayEffectHandle ActiveGameplayEffectHandle = NativeApplyEffectSpecHandleToTarget(TargetActor, InSpecHandle);
-
-	OutSuccessType = ActiveGameplayEffectHandle.WasSuccessfullyApplied() ? EWarriorSuccessType::Successful : EWarriorSuccessType::Failed;
-
-	return ActiveGameplayEffectHandle;
-}
