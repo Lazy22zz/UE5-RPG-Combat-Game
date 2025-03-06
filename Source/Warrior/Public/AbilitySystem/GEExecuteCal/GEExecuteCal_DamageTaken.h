@@ -18,4 +18,6 @@ public:
 	
 	UGEExecuteCal_DamageTaken();
 
+	virtual void Execute_Implementation(const FGameplayEffectCustomExecutionParameters& ExecutionParams, FGameplayEffectCustomExecutionOutput& OutExecutionOutput) const override;
+
 };
