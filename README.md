@@ -2202,6 +2202,62 @@ Then, create a new blueprint animation.
   float TargetDefensePower = 0.f;
   ExecutionParams.AttemptCalculateCapturedAttributeMagnitude(GetWarriorDamageCapture().DefensePowerDef, EvaluateParameters, TargetDefensePower);
   ```
+- 41. CalculateFinalDamageDone\
+  Purpose: In 39, 40, we capture the required attributes, and get the required data from the data table based on gameplayeffecttag. this step we need to calc the DamageTaken\
+  1, In warriorattributrset.h
+  ```c++
+  UPROPERTY(BlueprintReadOnly, Category = "Damage")
+  FGameplayAttributeData DamageTaken;
+  ATTRIBUTE_ACCESSORS(UWarriorAttributeSet,DamageTaken)
+  ```
+  2, In DebugHelper.h, we need to see the final damagetaken\
+  ```c++
+  static void Print(const FString& FloatTitle, float FloatValueToPrint, int32 InKey = -1, const FColor& Color = FColor::MakeRandomColor())
+	{
+		if (GEngine)
+		{
+			const FString FinalMsg = FloatTitle + TEXT(": ") + FString::SanitizeFloat(FloatValueToPrint);
+
+			GEngine->AddOnScreenDebugMessage(InKey,7.f,Color,FinalMsg);
+
+			UE_LOG(LogTemp,Warning,TEXT("%s"),*FinalMsg);
+		}
+	}
+  ```
+  3, In GEExecuteCal_DamageTaken.cpp
+  ```c++
+  Debug::Print(TEXT("TargetDefensePower"),TargetDefensePower);
+
+	if (UsedLightAttckComboCount != 0)
+	{
+		const float DamageIncreasePercentLight = (UsedLightAttckComboCount - 1) * 0.05 + 1.f;
+
+		BaseDamage *= DamageIncreasePercentLight;
+		Debug::Print(TEXT("ScaledBaseDamageLight"),BaseDamage);
+	}
+
+	if (UsedHeavyAttackComboCount != 0)
+	{
+		const float DamageIncreasePercentHeavy = UsedHeavyAttackComboCount * 0.15f + 1.f;
+
+		BaseDamage *= DamageIncreasePercentHeavy;
+		Debug::Print(TEXT("ScaledBaseDamageHeavy"),BaseDamage);
+	}
+
+	const float FinalDamageDone = BaseDamage * SourceAttackPower / TargetDefensePower;
+	Debug::Print(TEXT("FinalDamageDone"),FinalDamageDone);
+
+	if (FinalDamageDone > 0.f)
+	{
+		OutExecutionOutput.AddOutputModifier(
+			FGameplayModifierEvaluatedData(
+				GetWarriorDamageCapture().DamageTakenProperty,
+				EGameplayModOp::Override,
+				FinalDamageDone
+			)
+		);
+	}
+  ```
 
 
 
