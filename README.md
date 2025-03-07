@@ -104,10 +104,10 @@
   - create springarm and camera
     ```c++
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera", meta = (AllowPrivateAccess = "true"))
-   	USpringArmComponent* CameraBoom;
+    USpringArmComponent* CameraBoom;
    
-   	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera", meta = (AllowPrivateAccess = "true"))
-   	UCameraComponent* FollowCamera;
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera", meta = (AllowPrivateAccess = "true"))
+    UCameraComponent* FollowCamera;
     ```
     ```c++
     GetCapsuleComponent() -> InitCapsuleSize(42.f, 96.f);
@@ -127,9 +127,9 @@
     FollowCamera->bUsePawnControlRotation = false;
 
     GetCharacterMovement()->bOrientRotationToMovement = true;
-   	GetCharacterMovement()->RotationRate = FRotator(0.f,500.f,0.f);
-   	GetCharacterMovement()->MaxWalkSpeed = 400.f;
-   	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
+    GetCharacterMovement()->RotationRate = FRotator(0.f,500.f,0.f);
+    GetCharacterMovement()->MaxWalkSpeed = 400.f;
+    GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
     ```
   - 4, Create a Gameplay Tags\
     WHY: In a small project, we can use traditional action binding in .h and callback. However, if in a big project, it will be complicated to handle bunches of declared actions.
@@ -2312,7 +2312,32 @@ Then, create a new blueprint animation.
 		}
 	}
     }
-```
+  ```
+- 44, Enemy HitReact ability done\
+  Purpose: Create enemy Ability Tags, gameplay ability blueprint, anim montage, grant ability\
+  1, In WarriorGameplayTags.h
+  ```c++
+  WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Ability_Melee);
+  WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Enemy_Ability_Ranged);
+  ...
+  WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Ability_HitReact);
+  WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Event_HitReact);
+  ```
+  2, fill the .cpp\
+  3, Create a new gameplay blueprint based on warriorenemygameplayability named `GA_Enemy_HitReact_Base`\
+  4, ![Screenshot 2025-03-07 085425](https://github.com/user-attachments/assets/489bbcac-f3aa-4c52-9c54-2c27b3172436)\
+  5, ![Screenshot 2025-03-07 085450](https://github.com/user-attachments/assets/473fd844-d412-490c-9910-10d9b09651ca)\
+  6, ![Screenshot 2025-03-07 090149](https://github.com/user-attachments/assets/69d59914-f7ce-431d-bcfa-a93794445304)\
+  7, create a new child of GA_Enemy_HitReact_Base, named `GA_Guadrain_HitReact`\
+  8, create two new anim montage and attach it in GA_Guadrain_HitReact\
+  ![Screenshot 2025-03-07 090128](https://github.com/user-attachments/assets/204066ac-8156-4cc1-b509-bad18972e8e0)\
+  9, In DA_Guardian\
+  ![Screenshot 2025-03-07 090254](https://github.com/user-attachments/assets/8f283c54-d852-4f53-9908-49a2f0ef483d)
+
+
+
+
+
   
 
 
