@@ -58,7 +58,7 @@
 - 6, Synchronous and  Asynchronous loading\
   In Unreal Engine C++, synchronous loading uses `LoadObject()` to load assets immediately, ensuring they are available before gameplay starts, while asynchronous loading uses `FStreamableManager::RequestAsyncLoad()` to load assets in the background without 
   blocking the main thread. Synchronous loading is ideal for critical assets like the player's character, ensuring smooth startup. In contrast, asynchronous loading is best for non-critical assets like enemies, optimizing performance and reducing initial load times.\
-- 7 Basic GamplayEffectHandle code:
+- 7, Basic GamplayEffectHandle code:
   ```c++
   // Create context
   FGameplayEffectContextHandle ContextHandle = AbilitySystemComponent->MakeEffectContext();
@@ -81,6 +81,11 @@
   // Then eventually apply the effect
   AbilitySystemComponent->ApplyGameplayEffectSpecToTarget(EffectSpecHandle, TargetASC);
   ```
+- 8, Automatic Storage, Static Storage,  Dynamic Storage:\
+  Automatic storage: variables defined inside a function use `automatic storage`, which means the variables existence automatically when the function containing them is invoked, and expire when function terminated\
+  Static Storage: exists throughout the execution of an entire program. Two ways to make a variable static: 1, define it externally, outside a function; 2, using a keyword `static` when declaring a variable\
+  Dynamic Storage: 
+  
 
 # 1, Set Up Hero Character
 - 1, Base Class Structure \
