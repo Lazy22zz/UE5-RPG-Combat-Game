@@ -2345,7 +2345,23 @@ Then, create a new blueprint animation.
   2, In GA_HitReact_Base, we need to enable the enemy to automatically face the instigator when it gets hit.\
   ![Screenshot 2025-03-09 112513](https://github.com/user-attachments/assets/f422cab1-7c35-4ed9-ba7d-4ff9e2190969)\
   ![Screenshot 2025-03-09 112437](https://github.com/user-attachments/assets/3bb6e863-2200-4473-9310-aadc38b33010)
--46, 
+- 46, Hit Fix -Material Hit FX\
+  Purpose: enable the hit material FX effect when getting hit\
+  1, find the material of the enemy\
+  ![Screenshot 2025-03-09 115851](https://github.com/user-attachments/assets/a92b7633-eda4-406f-869e-75cbd42ce14f)\
+  2, Create material instance\
+  ![Screenshot 2025-03-09 120002](https://github.com/user-attachments/assets/f2be06d1-f8ba-4b41-9111-499a2466ff8d)\
+  3， Design the color and add it to the skeleton\
+  ![Screenshot 2025-03-09 122123](https://github.com/user-attachments/assets/7cba818a-7ec0-44f9-a9e1-fb48144a0236)\
+  4, Add the material color change in GA_HitReact\
+  ![Screenshot 2025-03-09 122734](https://github.com/user-attachments/assets/b2762753-e3c2-4a52-847d-9d7df2bd3a8b)\
+  ![Screenshot 2025-03-09 122724](https://github.com/user-attachments/assets/371797e1-1173-4f01-b609-5b8a82549c1a)
+- 47,
+
+
+
+
+
 
 
   
