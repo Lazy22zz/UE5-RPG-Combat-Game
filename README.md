@@ -2330,15 +2330,25 @@ Then, create a new blueprint animation.
   ```
   2, fill the .cpp\
   3, Create a new gameplay blueprint based on warriorenemygameplayability named `GA_Enemy_HitReact_Base`\
-  4, ![Screenshot 2025-03-07 085425](https://github.com/user-attachments/assets/489bbcac-f3aa-4c52-9c54-2c27b3172436)\
-  5, ![Screenshot 2025-03-07 085450](https://github.com/user-attachments/assets/473fd844-d412-490c-9910-10d9b09651ca)\
-  6, ![Screenshot 2025-03-07 090149](https://github.com/user-attachments/assets/69d59914-f7ce-431d-bcfa-a93794445304)\
+  4,![Screenshot 2025-03-07 085425](https://github.com/user-attachments/assets/489bbcac-f3aa-4c52-9c54-2c27b3172436)\
+  5,![Screenshot 2025-03-07 085450](https://github.com/user-attachments/assets/473fd844-d412-490c-9910-10d9b09651ca)\
+  6,![Screenshot 2025-03-07 090149](https://github.com/user-attachments/assets/69d59914-f7ce-431d-bcfa-a93794445304)\
   7, create a new child of GA_Enemy_HitReact_Base, named `GA_Guadrain_HitReact`\
-  8, create two new anim montage and attach it in GA_Guadrain_HitReact\
+  8, create two new anim montages and attach them in GA_Guadrain_HitReact\
   ![Screenshot 2025-03-07 090128](https://github.com/user-attachments/assets/204066ac-8156-4cc1-b509-bad18972e8e0)\
   9, In DA_Guardian\
   ![Screenshot 2025-03-07 090254](https://github.com/user-attachments/assets/8f283c54-d852-4f53-9908-49a2f0ef483d)
+- 45, Trigger Hit React Ability\
+  ![Screenshot_20250309_111417_Samsung_capture](https://github.com/user-attachments/assets/c49b05de-a738-419c-9139-788bc77f7c6c)\
+  Purpose: Enable the hot react action\
+  1, In GA_LightAttack, we need to send the gameplay event to the actor, and this gameplay event is stored in gameplay event data(the actor is being hit)\
+  2, In GA_HitReact_Base, we need to enable the enemy to automatically face the instigator when it gets hit.\
+  ![Screenshot 2025-03-09 112513](https://github.com/user-attachments/assets/f422cab1-7c35-4ed9-ba7d-4ff9e2190969)\
+  ![Screenshot 2025-03-09 112437](https://github.com/user-attachments/assets/3bb6e863-2200-4473-9310-aadc38b33010)
+-46, 
 
+
+  
 
 
 
