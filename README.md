@@ -2390,7 +2390,13 @@ Then, create a new blueprint animation.
 	);
   }
   ```
-- 48
+- 48, Camera Shake\
+  Puropse: add camera shake by using blueprint\
+  1, create a new camershake blueprint named `Camerashake_HeroMelle`
+  2, In GA_Hero_Hitpasuse, add this camerashake blueprint\
+  ![Screenshot 2025-03-09 182844](https://github.com/user-attachments/assets/91a87182-1a4e-4e17-aeba-a3f10e80e9b5)\
+  3, customize your camera shake.
+- 49,
 
 
 
