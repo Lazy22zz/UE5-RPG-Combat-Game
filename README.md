@@ -2396,7 +2396,16 @@ Then, create a new blueprint animation.
   2, In GA_Hero_Hitpasuse, add this camerashake blueprint\
   ![Screenshot 2025-03-09 182844](https://github.com/user-attachments/assets/91a87182-1a4e-4e17-aeba-a3f10e80e9b5)\
   3, customize your camera shake.
-- 49,
+- 49, Sound FX - Hit React Sound\
+  Purpose: Enable the the hit React Sound play and use courrency to allow only one sound to play.\
+  1, Give a new notify sound effect into the AM_enemy\
+  2, Create a new blueprint concurrency named `Concurrency_OneAtATime`\
+  ![Screenshot 2025-03-09 194301](https://github.com/user-attachments/assets/46d572dc-76b9-489d-ba28-0b649f14ef33)\
+  3, Find that attach sound , attach the concurrency \
+  ![Screenshot 2025-03-09 194514](https://github.com/user-attachments/assets/83b4ae54-560d-4c23-a525-67c097ab17cc)\
+- 50, 
+
+
 
 
 
