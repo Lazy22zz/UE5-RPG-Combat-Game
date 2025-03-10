@@ -2403,7 +2403,29 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-03-09 194301](https://github.com/user-attachments/assets/46d572dc-76b9-489d-ba28-0b649f14ef33)\
   3, Find that attach sound , attach the concurrency \
   ![Screenshot 2025-03-09 194514](https://github.com/user-attachments/assets/83b4ae54-560d-4c23-a525-67c097ab17cc)\
-- 50, 
+- 50, Sound FX - Melee Hit Sound\
+  Purpose: In this situtation, we can not use add notify to play this sound, because it only happened when we hit somethings.\
+  So, we need to use `GameplayCues` to play that sound when hit this action happened.\
+  1, Create a new folder named `GameplayCues` under folder Content\
+  2, Create a new buleprint based on GameplycueNotify_Static named `GC_Hero_AxeHit`\
+  3, In GameplayCueTag, create a new gameplayTag.\
+  ![Screenshot 2025-03-09 200709](https://github.com/user-attachments/assets/c210d7a8-2e26-4cbe-b2fb-adaa1f681c35)\
+  4, In GC_Hero_AxeHit, create a new execution blueprint.\
+  ![Screenshot 2025-03-09 201108](https://github.com/user-attachments/assets/06845515-57a0-434e-b114-f214fce9009e)\
+  5, In GA_Hero_LightAttackMaster,\
+  ![Screenshot 2025-03-09 201258](https://github.com/user-attachments/assets/78f3f37a-1edf-4a4e-8cb4-0b4f92934e7a)\
+  6, In Config/DefaultGame.ini
+  ```c++
+  GameplayCueNotifyPaths = "/Game/GameplayCues"
+  ```
+  7, Add the execute gamplaycue on Owner, let the WeaponSoundGameplayCueTag to be null(same as light attack)\
+  ![Screenshot 2025-03-09 202228](https://github.com/user-attachments/assets/3c7d5689-6784-4afe-8198-cfafd2ab5a1a)\
+  8, Then change all child buleprint of heavy/light attack, make sure sure their WeaponSoundGameplayCueTag is gameplaycue.meleehit.axehit
+- 51,
+
+
+
+
 
 
 
