@@ -2356,7 +2356,45 @@ Then, create a new blueprint animation.
   4, Add the material color change in GA_HitReact\
   ![Screenshot 2025-03-09 122734](https://github.com/user-attachments/assets/b2762753-e3c2-4a52-847d-9d7df2bd3a8b)\
   ![Screenshot 2025-03-09 122724](https://github.com/user-attachments/assets/371797e1-1173-4f01-b609-5b8a82549c1a)
-- 47,
+- 47, Hit Fix - Hit Pause\
+  Purpose: Add a hit pause to enhance hit react feeling.\
+  1, In WarriorGameplayTags.h
+  ```c++
+  WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Ability_HitPause);
+  ...
+  WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Player_Event_HitPause);
+  ```
+  2, fill the .cpp\
+  3, Create a new gameplay ability blueprint named `GA_Hero_Hitpasuse`\
+  4, Change the class seetings.\
+  ![Screenshot 2025-03-09 180418](https://github.com/user-attachments/assets/f04e1972-793a-4426-8364-b81843394716)\
+  ![Screenshot 2025-03-09 180423](https://github.com/user-attachments/assets/e2b3679a-4e31-4f95-bda1-13faae0cd2c6)\
+  ![Screenshot 2025-03-09 180428](https://github.com/user-attachments/assets/bb17c3d7-4aee-42fa-9a57-726dd7f03a06)\
+  5, ![Screenshot 2025-03-09 180653](https://github.com/user-attachments/assets/9c022533-4f1e-4e40-b9c4-045d040c0501)\
+  6, Add it to the DA_Hero\
+  ![Screenshot 2025-03-09 180748](https://github.com/user-attachments/assets/bc5cc43a-a5b1-45a2-aa6f-498f8ede2102)\
+  7, In HeroCombatComponent.cpp
+  ```c++
+  UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(
+		GetOwningPawn(),
+		WarriorGameplayTags::Player_Event_HitPause,
+		FGameplayEventData()
+	);
+  ...
+  void UHeroCombatComponent::OnWeaponPulledFromTargetActor(AActor* InteractedActor)
+  {
+	UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(
+		GetOwningPawn(),
+		WarriorGameplayTags::Player_Event_HitPause,
+		FGameplayEventData()
+	);
+  }
+  ```
+- 48
+
+
+
+
 
 
 
