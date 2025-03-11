@@ -2421,7 +2421,49 @@ Then, create a new blueprint animation.
   7, Add the execute gamplaycue on Owner, let the WeaponSoundGameplayCueTag to be null(same as light attack)\
   ![Screenshot 2025-03-09 202228](https://github.com/user-attachments/assets/3c7d5689-6784-4afe-8198-cfafd2ab5a1a)\
   8, Then change all child buleprint of heavy/light attack, make sure sure their WeaponSoundGameplayCueTag is gameplaycue.meleehit.axehit
-- 51,
+- 51, Enemy Death Ability\
+  Purpose: Add a tag to the actor, and use it to trigger the play death montage.\
+  1, In WarriorTags.h
+  ```c++
+  WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Ability_Death);
+  ...
+  WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Status_Dead);
+  ```
+  2, Do in the .cpp\
+  3, In WarriorAttributeSet.h
+  ```c++
+  if (NewCurrentHealth == 0.f)
+	{	
+		UWarriorFunctionLibrary::AddGameplayTagToActorIfNone(Data.Target.GetAvatarActor(),WarriorGameplayTags::Shared_Status_Dead);
+			
+	}
+  ```
+  4, create a new blueprint based on Gameplay Blueprint, named GA_Enemy_Death_Base\
+  5, ![Screenshot 2025-03-10 191009](https://github.com/user-attachments/assets/1a1ef7ba-3793-454a-ac58-a85d44c8ffed)\
+  ![Screenshot 2025-03-10 191012](https://github.com/user-attachments/assets/ffebaf7d-6aa8-4853-a6c0-84246a7622c8)\
+  ![Screenshot 2025-03-10 191015](https://github.com/user-attachments/assets/9261381e-e357-4cb7-9ad5-61fbf6e28ca9)\
+  6, Create a new child class named GA_Guadrain_Death\
+  7, In DA_Guadrain\
+  ![Screenshot 2025-03-10 191246](https://github.com/user-attachments/assets/632c7836-3c99-4817-a5f2-84886498b195)\
+  8, Create a new gameplaysound blueprint named `GC_Guadrain_DeathSound`\
+  9, ![Screenshot 2025-03-10 192131](https://github.com/user-attachments/assets/2fd585b8-a061-401f-ba6c-c85fd33eadea)\
+  ![Screenshot 2025-03-10 192302](https://github.com/user-attachments/assets/43beb726-5005-4154-9f73-4425abc17261)\
+  10, In GA_Guadrain_Death, add the new tag to sound play\
+  ![Screenshot 2025-03-10 192412](https://github.com/user-attachments/assets/f575723d-e72c-404e-9b5c-1a1280bb034b)
+  11, make sure all animation's enablemotion is checked.\
+  ![Screenshot 2025-03-10 192543](https://github.com/user-attachments/assets/11bdfe32-4ced-49b5-9fc4-9eb564539a39)\
+  ![Screenshot 2025-03-10 192638](https://github.com/user-attachments/assets/c311e87e-8622-4bce-ae53-ecabaa9bcddb)\
+  12, After create the animation montage, add them all\
+  ![Screenshot 2025-03-10 192847](https://github.com/user-attachments/assets/42c20146-1b91-4a43-b65f-b0c808e5cd88)\
+- 52,
+
+
+
+
+
+
+
+
 
 
 
