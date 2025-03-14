@@ -2455,7 +2455,23 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-03-10 192638](https://github.com/user-attachments/assets/c311e87e-8622-4bce-ae53-ecabaa9bcddb)\
   12, After create the animation montage, add them all\
   ![Screenshot 2025-03-10 192847](https://github.com/user-attachments/assets/42c20146-1b91-4a43-b65f-b0c808e5cd88)\
-- 52,
+- 52, BP Death Interface\
+  Purpose: Instead of using cast to, using interface to enable some specific function happend.\
+  1,
+
+- 53, DIssolve Material FX\
+  Purpose: enable the dissolve material disappear.\
+  1, In BP_Warriorenemy_base, create a new timeline, using set play rate to decide the speed of displaying.\
+   ![Screenshot 2025-03-13 195937](https://github.com/user-attachments/assets/c64a60f3-d567-4d44-8aa8-8fc387e4263b)\
+  2, for weapon, go to its color material,\
+  ![Screenshot 2025-03-13 200546](https://github.com/user-attachments/assets/2ca888b3-c03a-4503-b148-2b8fc260f994)\
+  3, create a material instance, named `MI_GuadrainWeapon`, go to static mesh of BP_Guadrainweapon, change its material slot to the new material instance.\
+  4, copy all color data from MI_guardian to the MI_GuadrainWeapon, change the bp_weapon material, enable the dissolve in mi_guardain.\
+  5, in warriorgameplayenemybase,
+  ![Screenshot 2025-03-13 204353](https://github.com/user-attachments/assets/d203b02e-24b8-49ed-96b1-37d1ec26a687)
+
+
+
 
 
 
