@@ -2445,30 +2445,46 @@ Then, create a new blueprint animation.
   6, Create a new child class named GA_Guadrain_Death\
   7, In DA_Guadrain\
   ![Screenshot 2025-03-10 191246](https://github.com/user-attachments/assets/632c7836-3c99-4817-a5f2-84886498b195)\
-  8, Create a new gameplaysound blueprint named `GC_Guadrain_DeathSound`\
-  9, ![Screenshot 2025-03-10 192131](https://github.com/user-attachments/assets/2fd585b8-a061-401f-ba6c-c85fd33eadea)\
+  8, Create a new gameplay sound blueprint named `GC_Guadrain_DeathSound`\
+  9,![Screenshot 2025-03-10 192131](https://github.com/user-attachments/assets/2fd585b8-a061-401f-ba6c-c85fd33eadea)\
   ![Screenshot 2025-03-10 192302](https://github.com/user-attachments/assets/43beb726-5005-4154-9f73-4425abc17261)\
   10, In GA_Guadrain_Death, add the new tag to sound play\
   ![Screenshot 2025-03-10 192412](https://github.com/user-attachments/assets/f575723d-e72c-404e-9b5c-1a1280bb034b)
   11, make sure all animation's enablemotion is checked.\
   ![Screenshot 2025-03-10 192543](https://github.com/user-attachments/assets/11bdfe32-4ced-49b5-9fc4-9eb564539a39)\
   ![Screenshot 2025-03-10 192638](https://github.com/user-attachments/assets/c311e87e-8622-4bce-ae53-ecabaa9bcddb)\
-  12, After create the animation montage, add them all\
+  12, After creating the animation montage, add them all\
   ![Screenshot 2025-03-10 192847](https://github.com/user-attachments/assets/42c20146-1b91-4a43-b65f-b0c808e5cd88)\
 - 52, BP Death Interface\
-  Purpose: Instead of using cast to, using interface to enable some specific function happend.\
+  Purpose: Instead of using cast to, use an interface to enable some specific function.\
   1,
 
 - 53, DIssolve Material FX\
-  Purpose: enable the dissolve material disappear.\
-  1, In BP_Warriorenemy_base, create a new timeline, using set play rate to decide the speed of displaying.\
+  Purpose: enable the dissolved material to disappear.\
+  1, In BP_Warriorenemy_base, create a new timeline, using a set play rate to decide the display speed.\
    ![Screenshot 2025-03-13 195937](https://github.com/user-attachments/assets/c64a60f3-d567-4d44-8aa8-8fc387e4263b)\
   2, for weapon, go to its color material,\
   ![Screenshot 2025-03-13 200546](https://github.com/user-attachments/assets/2ca888b3-c03a-4503-b148-2b8fc260f994)\
-  3, create a material instance, named `MI_GuadrainWeapon`, go to static mesh of BP_Guadrainweapon, change its material slot to the new material instance.\
+  3, create a material instance, named `MI_GuadrainWeapon`, go to static mesh of BP_Guadrainweapon, and change its material slot to the new material instance.\
   4, copy all color data from MI_guardian to the MI_GuadrainWeapon, change the bp_weapon material, enable the dissolve in mi_guardain.\
   5, in warriorgameplayenemybase,
   ![Screenshot 2025-03-13 204353](https://github.com/user-attachments/assets/d203b02e-24b8-49ed-96b1-37d1ec26a687)
+- 54, Dissolve Niagaraga FX\
+  Purpose: enable the dissolved Niagara to appear.\
+  1, in BPI_Enemy_Death, create new inputs: DissolveNiagaraSystem, type is soft reference, Niagara system\
+  2, in GA_Enemy_Death_Base, \
+  ![Screenshot 2025-03-14 102005](https://github.com/user-attachments/assets/eecdd20e-9345-4b25-8742-c1b27c99e109)\
+  3, in GA_Guadrain_Death, attach the new Niagara FX,\
+  ![Screenshot 2025-03-14 102347](https://github.com/user-attachments/assets/417cfeab-dac0-4e49-8e93-f21270567b19)\
+  4, in BP_WarriorEnemyCharacter_Base, using soft reference, dynamic get enemy color, change niagara FX color\
+  ![Screenshot 2025-03-14 105340](https://github.com/user-attachments/assets/a6232f0e-d779-4956-847d-4ea142730139)\
+  ![Screenshot 2025-03-14 105348](https://github.com/user-attachments/assets/0f9d0302-ece1-4f38-aae9-aeac710a4d6f)\
+  ![Screenshot 2025-03-14 105353](https://github.com/user-attachments/assets/ee410259-670c-471a-bc1a-cc8f0ca400bd)
+- 55, 
+
+
+
+
 
 
 
