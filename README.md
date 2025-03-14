@@ -2480,7 +2480,13 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-03-14 105340](https://github.com/user-attachments/assets/a6232f0e-d779-4956-847d-4ea142730139)\
   ![Screenshot 2025-03-14 105348](https://github.com/user-attachments/assets/0f9d0302-ece1-4f38-aae9-aeac710a4d6f)\
   ![Screenshot 2025-03-14 105353](https://github.com/user-attachments/assets/ee410259-670c-471a-bc1a-cc8f0ca400bd)
-- 55, 
+- 55, Pawn UI Interface\
+  Purpose: Using an interface to accept attribute change (Hero/Enemy)\
+  1, Create a new child PawnUIcomponent based on PawnExtensionComponent\
+  2, Create hero, and enemy ui components based on  PawnUIcomponent\
+  3, Create a new unreal interface, PawnUIInterface\
+  4, add those interface, uicomponnet into the files.\
+- 56, 
 
 
 
