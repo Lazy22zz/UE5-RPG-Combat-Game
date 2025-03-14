@@ -21,6 +21,11 @@ AWarriorBaseCharacter::AWarriorBaseCharacter()
 	WarriorAttributeSet = CreateDefaultSubobject<UWarriorAttributeSet>(TEXT("WarriorAttributeSet"));
 }
 
+UPawnUIComponent* AWarriorBaseCharacter::GetPawnUIComponent() const
+{
+	return nullptr;
+}
+
 void AWarriorBaseCharacter::PossessedBy(AController *NewController)
 {
 	Super::PossessedBy(NewController);

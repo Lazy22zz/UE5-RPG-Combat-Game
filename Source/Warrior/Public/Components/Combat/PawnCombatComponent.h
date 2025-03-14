@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Components/PawnExtenComponentBase.h"
+#include "Components/PawnExtensionComponentBase.h"
 #include "NativeGameplayTags.h"
 #include "PawnCombatComponent.generated.h"
 
@@ -21,7 +21,7 @@ enum class EToggleDamageType : uint8
 };
 
 UCLASS()
-class WARRIOR_API UPawnCombatComponent : public UPawnExtenComponentBase
+class WARRIOR_API UPawnCombatComponent : public UPawnExtensionComponentBase
 {
 	GENERATED_BODY()
 
