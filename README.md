@@ -2492,7 +2492,8 @@ Then, create a new blueprint animation.
   Purpose: 1, using `DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam` enable multi call back specific value\
   2, using `boardcast()` allows call back the delegate\
   3, using `weak_ptr` to use less memory.\
-  `https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c6d4c04163d4cad9b754951abb0278bcf21f6c5e`
+  [`https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c6d4c04163d4cad9b754951abb0278bcf21f6c5e`](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c6d4c04163d4cad9b754951abb0278bcf21f6c5e
+)
 - 57,
 
 
