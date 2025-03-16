@@ -13,5 +13,8 @@ UCLASS()
 class WARRIOR_API UHeroUIComponent : public UPawnUIComponent
 {
 	GENERATED_BODY()
-	
+
+public:
+	UPROPERTY(BlueprintAssignable)
+	FOnPercentChangedDelegate OnCurrentRageChanged;
 };
