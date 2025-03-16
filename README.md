@@ -2487,14 +2487,23 @@ Then, create a new blueprint animation.
   1, Create a new child PawnUIcomponent based on PawnExtensionComponent\
   2, Create hero, and enemy ui components based on  PawnUIcomponent\
   3, Create a new unreal interface, PawnUIInterface\
-  4, add those interface, uicomponnet into the files.\
+  4, add those interfaces, component into the files.\
 - 56, BroadCast Value Change\
   Purpose: 1, using `DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam` enable multi call back specific value\
   2, using `boardcast()` allows call back the delegate\
   3, using `weak_ptr` to use less memory.\
-  [`https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c6d4c04163d4cad9b754951abb0278bcf21f6c5e`](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c6d4c04163d4cad9b754951abb0278bcf21f6c5e
+  [`Code`](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c6d4c04163d4cad9b754951abb0278bcf21f6c5e
 )
-- 57,
+- 57, Listen For BoardCast\
+  Purpose: Create a new widget base, using it to enable processing the uiinterface's uicomponents\
+  [`code`](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/6e9f7c381170ec3c3cefe4fc09fa901e17ca0f36)\
+  1, create a new C++ based on the userwidget, named `WarriorWidgetBase`, and make the font size bigger\
+  2, ![Screenshot 2025-03-16 140228](https://github.com/user-attachments/assets/93c1ab9b-84c2-49b4-941e-8e981dbc8df6)\
+  3, In BP_WarriorPlayerCharacter,\
+  ![Screenshot 2025-03-16 140507](https://github.com/user-attachments/assets/bef57cb1-7410-49f4-be8b-6223aa88b5f8)
+- 58, 
+
+
 
 
 
