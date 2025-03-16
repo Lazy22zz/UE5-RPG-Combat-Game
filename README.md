@@ -86,7 +86,9 @@
   Static Storage: exists throughout the execution of an entire program. Two ways to make a variable static: 1, define it externally, outside a function; 2, using a keyword `static` when declaring a variable\
   Dynamic Storage: 
   
-
+- 9, `dynamic_cast` and `weak_ptr`:\
+  ✅ Use std::weak_ptr when managing object lifetime safely without increasing reference counts.
+  ✅ Use dynamic_cast only when you need to safely check and convert polymorphic types at runtime.
 # 1, Set Up Hero Character
 - 1, Base Class Structure \
   GameMode -> character -> characterController ;
@@ -2486,7 +2488,12 @@ Then, create a new blueprint animation.
   2, Create hero, and enemy ui components based on  PawnUIcomponent\
   3, Create a new unreal interface, PawnUIInterface\
   4, add those interface, uicomponnet into the files.\
-- 56, 
+- 56, BroadCast Value Change\
+  Purpose: 1, using `DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam` enable multi call back specific value\
+  2, using `boardcast()` allows call back the delegate\
+  3, using `weak_ptr` to use less memory.\
+  `https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c6d4c04163d4cad9b754951abb0278bcf21f6c5e`
+- 57,
 
 
 
