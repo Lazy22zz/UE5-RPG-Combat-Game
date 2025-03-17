@@ -82,15 +82,18 @@
   AbilitySystemComponent->ApplyGameplayEffectSpecToTarget(EffectSpecHandle, TargetASC);
   ```
 - 8, Automatic Storage, Static Storage,  Dynamic Storage:\
-  Automatic storage: variables defined inside a function use `automatic storage`, which means the variables existence automatically when the function containing them is invoked, and expire when function terminated\
-  Static Storage: exists throughout the execution of an entire program. Two ways to make a variable static: 1, define it externally, outside a function; 2, using a keyword `static` when declaring a variable\
+  Automatic storage: variables defined inside a function use `automatic storage`, which means the variables exist automatically when the function containing them is invoked, and expire when the function is terminated\
+  Static Storage: exists throughout the execution of an entire program. Two ways to make a variable static: 1, define it externally, outside a function; 2, use a keyword `static` when declaring a variable\
   Dynamic Storage: 
   
 - 9, `dynamic_cast` and `weak_ptr`:\
   ✅ Use std::weak_ptr when managing object lifetime safely without increasing reference counts.
   ✅ Use dynamic_cast only when you need to safely check and convert polymorphic types at runtime.
 - 10, `checkf()`\
-  Purpose: the game crash and get a report when it is false.\
+  Purpose: the game crashes and gets a report when it is false.\
+- 11, pre constrcut and construct:\
+  Pre Construct → Runs before the widget is fully created and can be previewed in the editor.\
+  Construct → Runs after the widget is created and is used for regular initialization at runtime.
   
 # 1, Set Up Hero Character
 - 1, Base Class Structure \
@@ -2518,11 +2521,19 @@ Then, create a new blueprint animation.
   1, ![Screenshot 2025-03-16 183439](https://github.com/user-attachments/assets/2d156e61-7fa6-46b8-93d9-a015c3d64696)\
   2, ![Screenshot 2025-03-16 183525](https://github.com/user-attachments/assets/61bbaa60-d073-46e9-9fab-49513eb5111c)\
 - 60, Set Status Bar Fill Color\
-  Purpose: enable different health percent shows diff colors\
+  Purpose: enable different health percent show different colors\
   1, ![Screenshot 2025-03-16 190759](https://github.com/user-attachments/assets/46ae8d75-5edd-474c-ad05-4136369483fe)\
   2, ![Screenshot 2025-03-16 190804](https://github.com/user-attachments/assets/1743be5d-418f-4162-835f-a0f3c7867eaf)\
-  3, ![Screenshot 2025-03-16 190828](https://github.com/user-attachments/assets/1094753f-9779-4daf-9205-3b41dc35f191)\
-- 61, 
+  3, ![Screenshot 2025-03-16 190828](https://github.com/user-attachments/assets/1094753f-9779-4daf-9205-3b41dc35f191)
+- 61, Template icon slot widget\
+  Purpose: create an icon slot widget.\
+  1, ![Screenshot 2025-03-17 094648](https://github.com/user-attachments/assets/e7a9fa31-0bc7-41a6-b507-e94ddc55b1a3)\
+  2, ![Screenshot 2025-03-17 094710](https://github.com/user-attachments/assets/f38f9bb5-0288-42c4-a865-2aaa804e72d7)\
+  3, ![Screenshot 2025-03-17 094719](https://github.com/user-attachments/assets/e32dc902-3c3b-43d7-b738-23b0d589124d)
+- 62, 
+
+
+
 
 
 
