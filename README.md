@@ -89,6 +89,9 @@
 - 9, `dynamic_cast` and `weak_ptr`:\
   ✅ Use std::weak_ptr when managing object lifetime safely without increasing reference counts.
   ✅ Use dynamic_cast only when you need to safely check and convert polymorphic types at runtime.
+- 10, `checkf()`\
+  Purpose: the game crash and get a report when it is false.\
+  
 # 1, Set Up Hero Character
 - 1, Base Class Structure \
   GameMode -> character -> characterController ;
@@ -2494,14 +2497,23 @@ Then, create a new blueprint animation.
   3, using `weak_ptr` to use less memory.\
   [`Code`](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c6d4c04163d4cad9b754951abb0278bcf21f6c5e
 )
-- 57, Listen For BoardCast\
+- 57, Listen For BoardCast - Create a hero UI widget\
   Purpose: Create a new widget base, using it to enable processing the uiinterface's uicomponents\
   [`code`](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/6e9f7c381170ec3c3cefe4fc09fa901e17ca0f36)\
   1, create a new C++ based on the userwidget, named `WarriorWidgetBase`, and make the font size bigger\
   2, ![Screenshot 2025-03-16 140228](https://github.com/user-attachments/assets/93c1ab9b-84c2-49b4-941e-8e981dbc8df6)\
   3, In BP_WarriorPlayerCharacter,\
   ![Screenshot 2025-03-16 140507](https://github.com/user-attachments/assets/bef57cb1-7410-49f4-be8b-6223aa88b5f8)
-- 58, 
+- 58, Enemy Init Created Widget\
+  Purpose: Allow widget created for enemy\
+  [`code`](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/41f69f11907011872ca6dfca7d187786f0af0f81)\
+  1, NativeOnInitialized() doesn’t crash because missing HeroUIComponent is okay, but InitEnemyCreatedWidget() expects EnemyUIComponent to always exist, so it forces a crash when missing.\
+  2, so For the hero ui component, it can be shown or not shown; but for the enemy ui component, it should always be shown.
+  3, In WBP_Test,\
+  ![Screenshot 2025-03-16 174736](https://github.com/user-attachments/assets/309a46c3-99af-4651-b8fc-b3f82e4b2d7c)\
+  4, In BP_WarriorEnemy_Base,\
+  ![Screenshot 2025-03-16 175104](https://github.com/user-attachments/assets/3c681e67-48e1-49a1-a773-8f6f33e05016)
+- 59,
 
 
 
