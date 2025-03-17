@@ -2517,7 +2517,15 @@ Then, create a new blueprint animation.
   Purpose: create the health bar\
   1, ![Screenshot 2025-03-16 183439](https://github.com/user-attachments/assets/2d156e61-7fa6-46b8-93d9-a015c3d64696)\
   2, ![Screenshot 2025-03-16 183525](https://github.com/user-attachments/assets/61bbaa60-d073-46e9-9fab-49513eb5111c)\
-- 60, 
+- 60, Set Status Bar Fill Color\
+  Purpose: enable different health percent shows diff colors\
+  1, ![Screenshot 2025-03-16 190759](https://github.com/user-attachments/assets/46ae8d75-5edd-474c-ad05-4136369483fe)\
+  2, ![Screenshot 2025-03-16 190804](https://github.com/user-attachments/assets/1743be5d-418f-4162-835f-a0f3c7867eaf)\
+  3, ![Screenshot 2025-03-16 190828](https://github.com/user-attachments/assets/1094753f-9779-4daf-9205-3b41dc35f191)\
+- 61, 
+
+
+
 
 
   
