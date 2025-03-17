@@ -2513,7 +2513,14 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-03-16 174736](https://github.com/user-attachments/assets/309a46c3-99af-4651-b8fc-b3f82e4b2d7c)\
   4, In BP_WarriorEnemy_Base,\
   ![Screenshot 2025-03-16 175104](https://github.com/user-attachments/assets/3c681e67-48e1-49a1-a773-8f6f33e05016)
-- 59,
+- 59, Template Widgets\
+  Purpose: create the health bar\
+  1, ![Screenshot 2025-03-16 183439](https://github.com/user-attachments/assets/2d156e61-7fa6-46b8-93d9-a015c3d64696)\
+  2, ![Screenshot 2025-03-16 183525](https://github.com/user-attachments/assets/61bbaa60-d073-46e9-9fab-49513eb5111c)\
+- 60, 
+
+
+  
 
 
 
