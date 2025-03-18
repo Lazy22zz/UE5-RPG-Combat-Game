@@ -2530,7 +2530,22 @@ Then, create a new blueprint animation.
   1, ![Screenshot 2025-03-17 094648](https://github.com/user-attachments/assets/e7a9fa31-0bc7-41a6-b507-e94ddc55b1a3)\
   2, ![Screenshot 2025-03-17 094710](https://github.com/user-attachments/assets/f38f9bb5-0288-42c4-a865-2aaa804e72d7)\
   3, ![Screenshot 2025-03-17 094719](https://github.com/user-attachments/assets/e32dc902-3c3b-43d7-b738-23b0d589124d)
-- 62, 
+- 62, Hero Overlay Widget\
+  Purpose: create a hero overlay widget.\
+  1, ![Screenshot 2025-03-18 095650](https://github.com/user-attachments/assets/075e5280-3b22-4595-a7af-c66d603a0d9d)\
+  2, ![Screenshot 2025-03-18 095659](https://github.com/user-attachments/assets/6671c161-9564-42a9-a999-1bc88e45522a)\
+  3, Create a new gameplayability, choose its gameplay ability to on Given, and add it on DA_Hero's ON Given.\
+  4, ![Screenshot 2025-03-18 095921](https://github.com/user-attachments/assets/26876aa5-949c-4610-9b9f-914e8cce5ddf)\
+  5, change the value to test overlay in GameplayEffect/GE_Hero_Static.\
+  ![Screenshot 2025-03-18 100033](https://github.com/user-attachments/assets/d339e864-2d24-4cd2-8c2d-7b07583213ae)\
+  ![Screenshot 2025-03-18 100038](https://github.com/user-attachments/assets/e01da1f9-cc57-4147-b1c0-c4ade428f891)
+- 63, 
+
+
+  
+
+
+
 
 
 
