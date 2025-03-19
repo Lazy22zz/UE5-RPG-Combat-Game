@@ -2539,7 +2539,13 @@ Then, create a new blueprint animation.
   5, change the value to test overlay in GameplayEffect/GE_Hero_Static.\
   ![Screenshot 2025-03-18 100033](https://github.com/user-attachments/assets/d339e864-2d24-4cd2-8c2d-7b07583213ae)\
   ![Screenshot 2025-03-18 100038](https://github.com/user-attachments/assets/e01da1f9-cc57-4147-b1c0-c4ade428f891)
-- 63, 
+- 63, Enemy Health Widget Component\
+  Purpose: using c++ attach the widget component slot in bp_guadrain.\
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/2d1433764b0bb15d5cf6ab9adf67db55690f0dd2)\
+  1, attach the new enemy ui widget to the component slot, and select the space to screen. (In User Interface)\
+  2, ![Screenshot 2025-03-19 111520](https://github.com/user-attachments/assets/a47ac062-366a-4b00-b2b1-234a6eb634ce)\
+- 64,
+
 
 
   
