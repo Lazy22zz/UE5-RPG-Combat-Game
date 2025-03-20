@@ -2544,7 +2544,10 @@ Then, create a new blueprint animation.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/2d1433764b0bb15d5cf6ab9adf67db55690f0dd2)\
   1, attach the new enemy ui widget to the component slot, and select the space to screen. (In User Interface)\
   2, ![Screenshot 2025-03-19 111520](https://github.com/user-attachments/assets/a47ac062-366a-4b00-b2b1-234a6eb634ce)\
-- 64,
+- 64, Hide Enemy Health Bar\
+  ![Screenshot 2025-03-20 094331](https://github.com/user-attachments/assets/ad812c7d-b44d-4788-9c1d-85020485dfff)\
+- 65, 
+
 
 
 
