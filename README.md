@@ -2552,7 +2552,13 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-03-24 114103](https://github.com/user-attachments/assets/3cc82a3d-4cb9-4cef-ba76-5fb893019b6d)\
   ![Screenshot 2025-03-24 114219](https://github.com/user-attachments/assets/98cc59a1-cbcd-467a-a0e6-44bf39434249)\
   ![Screenshot 2025-03-24 114228](https://github.com/user-attachments/assets/f90c5631-e746-4c16-93de-cfe3558334fa)\
-- 66,
+- 66, Twaeking\
+  1, when the icon is loading, it will pop up a blank picture, because this image is loading.\
+  ![Screenshot 2025-03-24 135736](https://github.com/user-attachments/assets/bebcadcc-be43-46f6-84d3-1369539c9e0f)\
+  ![Screenshot 2025-03-24 135743](https://github.com/user-attachments/assets/bc269219-cd2d-40ef-ad2c-f48409a57f61)\
+  2, change the health bar status style.\
+
+
 
 
 
