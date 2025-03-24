@@ -16,7 +16,7 @@ class UWidgetComponent;
 UCLASS()
 class WARRIOR_API AWarriorEnemyCharacter : public AWarriorBaseCharacter
 {
-	aGENERATED_BODY()
+	GENERATED_BODY()
 
 public:
 	AWarriorEnemyCharacter();
