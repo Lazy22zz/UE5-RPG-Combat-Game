@@ -2546,7 +2546,16 @@ Then, create a new blueprint animation.
   2, ![Screenshot 2025-03-19 111520](https://github.com/user-attachments/assets/a47ac062-366a-4b00-b2b1-234a6eb634ce)\
 - 64, Hide Enemy Health Bar\
   ![Screenshot 2025-03-20 094331](https://github.com/user-attachments/assets/ad812c7d-b44d-4788-9c1d-85020485dfff)\
-- 65, 
+- 65, Update Weapon Icon\
+  Purpose: Enable the show-up/no-show-up weapon icon when the weapon is equipped/unequipped.\
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/0bcfd1f5353bdddedc8fe8e0db1ed67da9c90078)\
+  ![Screenshot 2025-03-24 114103](https://github.com/user-attachments/assets/3cc82a3d-4cb9-4cef-ba76-5fb893019b6d)\
+  ![Screenshot 2025-03-24 114219](https://github.com/user-attachments/assets/98cc59a1-cbcd-467a-a0e6-44bf39434249)\
+  ![Screenshot 2025-03-24 114228](https://github.com/user-attachments/assets/f90c5631-e746-4c16-93de-cfe3558334fa)\
+- 66,
+
+
+
 
 
 
