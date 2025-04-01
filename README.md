@@ -2571,7 +2571,20 @@ Then, create a new blueprint animation.
 - 1, preparing enemy for the combat\
   Purpose: For the avodiance work accurately, we need the capsule component should fit the enemy size.\
   resize the capsule to 1.0, multiply the Capsule Half Height, Capsule Radius by 1.5, and multiply the scale of bp_Guntling_Guadrain to 1.5\
-- 2, 
+- 2, Crowd Following Component\
+  ⚠️ For AI Avoidance: We have two methods to implement it: `AVO Avoidance` and `Detour Crowd Avoidance`\
+  RVO (Reciprocal Velocity Obstacles) Avoidance\
+  ✅ Best for small groups (5–10 AI).\
+  ✅ Works without a NavMesh, adjusts velocity dynamically.\
+  ❌ Struggles with large crowds, can get stuck in congestion.\
+  Detour Crowd Avoidance\
+  ✅ Best for large crowds (10+ AI).\
+  ✅ Uses NavMesh, adjusts paths smoothly.\
+  ❌ Higher CPU cost, slower reaction to sudden obstacles.\
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/828d4b72d07d485daa17504cbae49d1067221c83)\
+  1, Create a aicontroller c++ and create a blueprint.\
+  2, create a child AIC_enemy and attach it to the BP_Gruntling_Guadrain.\
+- 3, 
 
 
 
