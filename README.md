@@ -303,7 +303,7 @@
   ```c++
   static FORCEINLINE TSubsystemClass* GetSubsystem(const ULocalPlayer* LocalPlayer)
   ```
-Then the rest is easy, we need to find `LocalPlayer` by `GetController<> -> GetLocalPlayer()`
+Then, the rest is easy, we need to find `LocalPlayer` by `GetController<> -> GetLocalPlayer()`
 ```c++
 ULocalPlayer* LocalPlayer = GetController<APlayerController>() -> GetLocalPlayer();
 UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(LocalPlayer);                                                                                                       
@@ -312,7 +312,7 @@ check(Subsystem);
 
 Subsystem -> AddMappingContext(InputConfigDataAsset -> DefaultMappingContext, 0);
 ```
-Step2, Cast `WarriorInputComponent` to `PlayerInputComponent` by using `CastChecked<>`
+Step 2, Cast `WarriorInputComponent` to `PlayerInputComponent` by using `CastChecked<>`
 ```c++
 UWarriorInputComponent* WarriorInputComponent = CastChecked<UWarriorInputComponent>(PlayerInputComponent);
 ```
@@ -428,14 +428,14 @@ Then, create a new blueprint animation.
 - 10, Gameplay Ability System\
   Purpose: designed to handle gameplay mechanics like abilities, effects, and attributes.\
   ![Screenshot_20250123_093537_Samsung capture](https://github.com/user-attachments/assets/6bca1ea9-3580-4ef5-9166-1a6cf327955c)\
-  Step1, enable the gameplay system plugin\
+  Step 1, enable the gameplay system plugin\
   ![Screenshot 2025-01-23 093439](https://github.com/user-attachments/assets/87399900-6750-4345-87a6-d59fe74aeed5)\
-  In Warrior.Build.cs file, add `"GameplayTasks"` inside the code `PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject",...`
+  In Warrior.Build.cs file, add "GameplayTasks" inside the code `PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject",...`
   Step2, create AbilitySystem in c++\
   Create a new public name `WarriorGameplayAbilityComponent` in the new folder `AbilitySystem`\
   Step3, create a new c++ AttibuteSet\
-  Create a new public name `WarriorAttributeSet` in the new folder `AbilitySystem`\
-  Step4, Add these new c++ class into `WarriorBaseCharacter.h`\
+  Create a new public name, `WarriorAttributeSet`, in the new folder `AbilitySystem`\
+  Step 4, Add these new c++ classes into `WarriorBaseCharacter.h`\
   ```c++
   protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AbilitySystem")
@@ -467,7 +467,7 @@ Then, create a new blueprint animation.
 	//~ End APawn Interface
   ```
   In WarriorBaseCharacter.cpp\
-  Using `InitAbilityActorInfo()` to set The logical "owner" of the AbilitySystemComponent and he "physical" actor that performs actions\
+  Using `InitAbilityActorInfo()` to set the logical "owner" of the AbilitySystemComponent and he "physical" actor that performs actions\
   ```c++
   void AWarriorBaseCharacter::PossessedBy(AController *NewController)
   {
@@ -501,7 +501,7 @@ Then, create a new blueprint animation.
     return GetAbilitySystemComponent();
   }
   ```
-  Step8, Detect does the GAS work in the main character\
+  Step 8, Detect whether the GAS works in the main character\
   In warriorHeroCharacter.h
   ```c++
   protected:
@@ -526,10 +526,10 @@ Then, create a new blueprint animation.
   }
   ```
 - 11, Build the gameplay Ability\
-  From step 10, we build the abilitysystemcomponent, in here, we need to give the ability to the character, which requires new stuff to attach into abilitysystemcomponent\
+  From step 10, we build the abilitysystemcomponent, In here, we need to give the ability to the character, which requires new stuff to attach into abilitysystemcomponent\
   ![Screenshot_20250124_102133_Samsung capture](https://github.com/user-attachments/assets/5e1f738a-5e0c-40b0-812f-bbdb7fd91251)
-  Step1, create a new c++ `gameplayability` name `warriorgameplayability` in a new folder `abilities`\
-  Step2, compiler the GameplayAbility policy
+  Step 1, create a new c++ `gameplayability` name `warriorgameplayability` in a new folder `abilities`\
+  Step 2, compiler the GameplayAbility policy
   ```c++
   UENUM(Blueprint)
   UENUM(Blueprint)
@@ -577,13 +577,13 @@ Then, create a new blueprint animation.
     }
   }
   ```
-  Step5, Create a new blueprint\
-  go to ue's content, create Shared/GameplayAbility folder, then select gameplay/gameplayability blueprint, rename GA_Shared_SpawnWeapon.\
-  change the Warrior Ability|Ability Activation Policy to `On Given`.
+  Step 5, Create a new blueprint\
+  Go to ue's content, create a Shared/GameplayAbility folder, then select gameplay/gameplayability blueprint, rename GA_Shared_SpawnWeapon.\
+  Change the Warrior Ability|Ability Activation Policy to `On Given`.
 - 12, Create weapon Class\
   In the process of setting up the weapon class, we need to understand the weapon class structure:\
   `WarriorWeaponBase`(Handles damage detection) -> `WarriorHeroWeapon`(Weapon data unique to player)\
-  In C++, create a new class Actor called `WarriorWeaponBase` under the folder items/weapons\
+  In C++, create a new class called `WarriorWeaponBase` under the folder items/weapons\
   Then, create a child class `WarriorHeroWeapon`\
   In WarriorWeaponBase.h
   ```c++
@@ -612,7 +612,7 @@ Then, create a new blueprint animation.
   Then create a child class name `BP_HeroAxe`, attach the static mesh, and adjust its size.\
 - 13, Set Up Hero Weapon\
   Step 1,\
-  In shared/GA_Shared_GameplayAbility, right-click, in blueprint, `Spawn Actor from class`, \
+  In shared/GA_Shared_GameplayAbility, right-click in blueprint, `Spawn Actor from class`, \
   create a new variable, named `WeaponClassToSpawn`, then changes its type to `Warrior Weapon Base`, and its `Change to:` should be `Class Reference`\
   Spilt the `Spawn Transformation`\
   Collision Handling should be `Try to adjust, but always spawn`\
@@ -620,7 +620,7 @@ Then, create a new blueprint animation.
   Connect `Event ActivateAbility` to `SpawnActor`\
   create `Is Valid`, drag `return value`, create `Attach Actor To Component`\
   Connect `GetSkeletalMeshComponentFromActorInfo` to `Parent`\
-  Promote a new variable for `Socket`, names `Socket Name Attach To`\
+  Promote a new variable for `Socket`, name `Socket Name Attach To`\
   Change `Location Rule` to `Snap to Target`\
   Change `Scale Rule` to `Keep World`\
   Connect `Attach Actor To Component` to `End Ability`(Need to be created)\
@@ -2564,7 +2564,14 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-03-24 135736](https://github.com/user-attachments/assets/bebcadcc-be43-46f6-84d3-1369539c9e0f)\
   ![Screenshot 2025-03-24 135743](https://github.com/user-attachments/assets/bc269219-cd2d-40ef-ad2c-f48409a57f61)\
   2, change the health bar status style.\
-
+# 4, Enemy AI
+- Summary: In this part, we do two things: `Enemy AI Controller` and `Behavior Tree`\
+  `Enemy AI Controller`: AI Avoidance, perception, Generic Team ID;\
+  `Behavior Tree`: BTTask/Service/Decorator, EQS, Straifing, Attack;
+- 1, preparing enemy for the combat\
+  Purpose: For the avodiance work accurately, we need the capsule component should fit the enemy size.\
+  resize the capsule to 1.0, multiply the Capsule Half Height, Capsule Radius by 1.5, and multiply the scale of bp_Guntling_Guadrain to 1.5\
+- 2, 
 
 
 
