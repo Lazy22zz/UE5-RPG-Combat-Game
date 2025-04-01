@@ -2584,7 +2584,11 @@ Then, create a new blueprint animation.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/828d4b72d07d485daa17504cbae49d1067221c83)\
   1, Create a aicontroller c++ and create a blueprint.\
   2, create a child AIC_enemy and attach it to the BP_Gruntling_Guadrain.\
-- 3, 
+- 3, AI Perception Component\
+  Purpose: Create Perception Component.
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/e38be6f63c9b5e2afd2d508bfeef6ad88da5928b)\
+  For this Perception component, we require the AI sign as the domain sense because we need TwoParams to update the sense detect status and use UFunction to state the required `AActor* Actor, FAIStimulus Stimulus` variables.\
+- 4, 
 
 
 
