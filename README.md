@@ -2588,6 +2588,8 @@ Then, create a new blueprint animation.
   Purpose: Create Perception Component.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/e38be6f63c9b5e2afd2d508bfeef6ad88da5928b)\
   For this Perception component, we require the AI sign as the domain sense because we need TwoParams to update the sense detect status and use UFunction to state the required `AActor* Actor, FAIStimulus Stimulus` variables.\
+  ![Screenshot 2025-04-01 114018](https://github.com/user-attachments/assets/4fb7f7cb-13ee-4280-aa50-f2b63147b847)\
+
 - 4, 
 
 
