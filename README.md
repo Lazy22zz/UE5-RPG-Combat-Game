@@ -82,15 +82,22 @@
   AbilitySystemComponent->ApplyGameplayEffectSpecToTarget(EffectSpecHandle, TargetASC);
   ```
 - 8, Automatic Storage, Static Storage,  Dynamic Storage:\
-  Automatic storage: variables defined inside a function use `automatic storage`, which means the variables exist automatically when the function containing them is invoked, and expire when the function is terminated\
-  Static Storage: exists throughout the execution of an entire program. Two ways to make a variable static: 1, define it externally, outside a function; 2, use a keyword `static` when declaring a variable\
-  Dynamic Storage: 
-  
+  Automatic storage: variables defined inside a function use `automatic storage`, which means the variables exist automatically when the function containing them is invoked and expire when the function is terminated\
+  Static Storage: exists throughout the execution of an entire program. Two ways to make a variable static: 1, define it externally, outside a function; 2, use the keyword `static` when declaring a variable\
+  Dynamic Storage: Do dynamic data work.\
+  +-------------------+  <- High memory address  \
+  | Static / Global  |  (Global & static variables)  \
+  +-------------------+  \
+  |      Heap        |  (Grows upwards with `new` / `malloc()`)  \
+  +-------------------+  \
+  |      Stack       |  (Grows downwards with function calls)  \
+  +-------------------+  <- Low memory address  \
+
 - 9, `dynamic_cast` and `weak_ptr`:\
   ✅ Use std::weak_ptr when managing object lifetime safely without increasing reference counts.
-  ✅ Use dynamic_cast only when you need to safely check and convert polymorphic types at runtime.
+  ✅ Use dynamic_cast only to check and convert polymorphic types at runtime safely.
 - 10, `checkf()`\
-  Purpose: the game crashes and gets a report when it is false.\
+  Purpose: The game crashes and gets a report when it is false.\
 - 11, pre constrcut and construct:\
   Pre Construct → Runs before the widget is fully created and can be previewed in the editor.\
   Construct → Runs after the widget is created and is used for regular initialization at runtime.
