@@ -2589,7 +2589,13 @@ Then, create a new blueprint animation.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/e38be6f63c9b5e2afd2d508bfeef6ad88da5928b)\
   For this Perception component, we require the AI sign as the domain sense because we need TwoParams to update the sense detect status and use UFunction to state the required `AActor* Actor, FAIStimulus Stimulus` variables.\
   ![Screenshot 2025-04-01 114018](https://github.com/user-attachments/assets/4fb7f7cb-13ee-4280-aa50-f2b63147b847)\
-- 4, 
+- 4, Generic Team ID\
+  Purpose: Generic Team ID for identification in perception.\
+  ⚠️ Hint: WarriorAIcontroller is under AAIController, which is an Inheritance of `IGenericTeamAgentInterface`;
+  However, WarriorHeroController is Direct Implementation, which needs a header file, `#include "GenericTeamAgentInterface.h"`.\
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/214b7a167a2fe5546244697e012d976763cb1474)\
+  [video](https://github.com/user-attachments/assets/e466c1c6-6048-48b1-b5ef-2552a51db696)\
+- 5, 
 
 
 
