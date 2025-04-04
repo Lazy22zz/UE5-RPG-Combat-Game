@@ -2560,10 +2560,10 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-03-24 114219](https://github.com/user-attachments/assets/98cc59a1-cbcd-467a-a0e6-44bf39434249)\
   ![Screenshot 2025-03-24 114228](https://github.com/user-attachments/assets/f90c5631-e746-4c16-93de-cfe3558334fa)\
 - 66, Twaeking\
-  1, when the icon is loading, it will pop up a blank picture, because this image is loading.\
+  1, When the icon is loading, it will pop up a blank picture because this image is loading.\
   ![Screenshot 2025-03-24 135736](https://github.com/user-attachments/assets/bebcadcc-be43-46f6-84d3-1369539c9e0f)\
   ![Screenshot 2025-03-24 135743](https://github.com/user-attachments/assets/bc269219-cd2d-40ef-ad2c-f48409a57f61)\
-  2, change the health bar status style.\
+  2. Change the health bar status style.\
 # 4, Enemy AI
 - Summary: In this part, we do two things: `Enemy AI Controller` and `Behavior Tree`\
   `Enemy AI Controller`: AI Avoidance, perception, Generic Team ID;\
@@ -2595,7 +2595,19 @@ Then, create a new blueprint animation.
   However, WarriorHeroController is Direct Implementation, which needs a header file, `#include "GenericTeamAgentInterface.h"`.\
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/214b7a167a2fe5546244697e012d976763cb1474)\
   [video](https://github.com/user-attachments/assets/e466c1c6-6048-48b1-b5ef-2552a51db696)\
-- 5, 
+- 5, Behavior Tree\
+  Purpose: Use the blackboard and behavior tree to enable enemy movement.\
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/147177d2c9a53a2fa85e7010b639a558deefe2c0)\
+  1, Create a new variable in Blackboard and a new behavior tree.\
+  ![Screenshot 2025-04-03 195525](https://github.com/user-attachments/assets/ecc4a5e0-539b-4ed9-8bc9-ffc91db98138)\
+  2, In AIC_Enemy, enable its blueprint for activating the behavior tree.\
+  ![Screenshot 2025-04-03 195835](https://github.com/user-attachments/assets/cf651880-6dfa-404d-a7dd-fe8719a986f0)\
+  3, Add a new nav mesh.\
+- 6, 
+
+  
+
+  
 
 
 
