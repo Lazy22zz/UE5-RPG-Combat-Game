@@ -2603,7 +2603,15 @@ Then, create a new blueprint animation.
   2, In AIC_Enemy, enable its blueprint for activating the behavior tree.\
   ![Screenshot 2025-04-03 195835](https://github.com/user-attachments/assets/cf651880-6dfa-404d-a7dd-fe8719a986f0)\
   3, Add a new nav mesh.\
-- 6, 
+- 6, Configure AI Advoience\
+  Purpose: Customize your crowd Advoience, using terminal `AI.Crowd.DebugSelectActors 1` and F8 to check\
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/ba94557dc4c89cc9313316a9b7f54de98c04af7f)\
+  ![Screenshot 2025-04-06 101116](https://github.com/user-attachments/assets/73fc9f3a-b8da-4603-808b-617ec3ebd80f)\
+  ![Screenshot 2025-04-06 101314](https://github.com/user-attachments/assets/6e080450-1fb8-4a31-8ac0-86c2eb7cfb54)\
+- 7,
+
+  
+
 
   
 
