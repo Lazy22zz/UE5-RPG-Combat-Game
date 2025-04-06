@@ -2608,7 +2608,17 @@ Then, create a new blueprint animation.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/ba94557dc4c89cc9313316a9b7f54de98c04af7f)\
   ![Screenshot 2025-04-06 101116](https://github.com/user-attachments/assets/73fc9f3a-b8da-4603-808b-617ec3ebd80f)\
   ![Screenshot 2025-04-06 101314](https://github.com/user-attachments/assets/6e080450-1fb8-4a31-8ac0-86c2eb7cfb54)\
-- 7,
+- ⚠️7, Behavior Tree Nodes Type\
+  Purpose: basic crowd avodiance and easy behavior tree `move to` cannot solve multi enemies attack main character ina same time.\
+  1, Composite Node: Engage Target\
+  2, Decorate Node: Determination\
+  3, Service Node: Servicing\
+  4, Task Node: Tasking\
+  ![Screenshot 2025-04-06 105056](https://github.com/user-attachments/assets/37ae5cd4-59b0-41af-a008-8b92159a4e94)\
+  ![Screenshot 2025-04-06 105110](https://github.com/user-attachments/assets/40760c70-a1b2-46e4-bf14-4fd7ad128644)\
+- 8, 
+
+
 
   
 
