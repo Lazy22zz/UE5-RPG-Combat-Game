@@ -2609,14 +2609,25 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-04-06 101116](https://github.com/user-attachments/assets/73fc9f3a-b8da-4603-808b-617ec3ebd80f)\
   ![Screenshot 2025-04-06 101314](https://github.com/user-attachments/assets/6e080450-1fb8-4a31-8ac0-86c2eb7cfb54)\
 - ⚠️7, Behavior Tree Nodes Type\
-  Purpose: basic crowd avodiance and easy behavior tree `move to` cannot solve multi enemies attack main character ina same time.\
+  Purpose: Basic crowd avodiance and easy behavior tree `move to` cannot solve multiple enemies attacking the main character simultaneously.\
   1, Composite Node: Engage Target\
   2, Decorate Node: Determination\
   3, Service Node: Servicing\
   4, Task Node: Tasking\
   ![Screenshot 2025-04-06 105056](https://github.com/user-attachments/assets/37ae5cd4-59b0-41af-a008-8b92159a4e94)\
   ![Screenshot 2025-04-06 105110](https://github.com/user-attachments/assets/40760c70-a1b2-46e4-bf14-4fd7ad128644)\
-- 8, 
+- 8, Observer Aborts\
+  Purpose: Understand `Notify Observer` and `Observer Abort`\
+ 🔔 Notify Observer\
+    On Value Change: Triggers when the blackboard key changes.\
+    On Result Change: Triggers when the condition's result (true/false) changes.\
+ 🚫 Observer Abort\
+    None: No abort.\
+    Self: Abort this branch.\
+    Lower Priority: Abort lower branches.\
+    Both: Abort self and lower branches.\
+ ![Screenshot 2025-04-06 175910](https://github.com/user-attachments/assets/0d7a4ba1-1bc3-43ff-8e4d-8b553faac755)\
+- 9, 
 
 
 
