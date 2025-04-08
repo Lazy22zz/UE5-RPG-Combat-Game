@@ -2627,7 +2627,9 @@ Then, create a new blueprint animation.
     Lower Priority: Abort lower branches.\
     Both: Abort self and lower branches.\
  ![Screenshot 2025-04-06 175910](https://github.com/user-attachments/assets/0d7a4ba1-1bc3-43ff-8e4d-8b553faac755)\
-- 9, 
+- ⚠️9, Customize your BTService\
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/0a3bad3c73e6f83ee1037a3a62667a77638e589d)\
+- 10,  
 
 
 
