@@ -2629,7 +2629,19 @@ Then, create a new blueprint animation.
  ![Screenshot 2025-04-06 175910](https://github.com/user-attachments/assets/0d7a4ba1-1bc3-43ff-8e4d-8b553faac755)\
 - ⚠️9, Customize your BTService\
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/0a3bad3c73e6f83ee1037a3a62667a77638e589d)\
-- 10,  
+- 10,  Custom EQS\
+  Purpose: Enable the guardain walk around the hostile.\
+  1, create a new `EQS_FindStarfingLocation` and `EQS_TestPawn`, enable to attach the eqs to testpawn.\
+  2, create a new `EQSContext_TargetActor` to enable the circle center of `Points: circle`\
+  ![Screenshot 2025-04-09 115042](https://github.com/user-attachments/assets/b3a6a0bb-bd43-41a1-99b0-841194e8ce98)\
+  ![Screenshot 2025-04-09 115122](https://github.com/user-attachments/assets/bb8304d1-03e5-4e25-94f3-115383392394)\
+  ![Screenshot 2025-04-09 115130](https://github.com/user-attachments/assets/398a6ebe-b31f-4ecd-adff-ab6ab1e0d32d)\
+  3, debug the visiob issue.\
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/b9e0ce54e183890cfd744a9f396a56c7a7a757bb)\
+- 11,
+
+
+
 
 
 
