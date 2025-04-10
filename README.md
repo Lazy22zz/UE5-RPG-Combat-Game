@@ -2630,15 +2630,24 @@ Then, create a new blueprint animation.
 - ⚠️9, Customize your BTService\
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/0a3bad3c73e6f83ee1037a3a62667a77638e589d)\
 - 10,  Custom EQS\
-  Purpose: Enable the guardain walk around the hostile.\
-  1, create a new `EQS_FindStarfingLocation` and `EQS_TestPawn`, enable to attach the eqs to testpawn.\
+  Purpose: Enable the guardian to walk around the hostile.\
+  1, create a new `EQS_FindStarfingLocation` and `EQS_TestPawn`, enabling the attachment of the eqs to testpawn.\
   2, create a new `EQSContext_TargetActor` to enable the circle center of `Points: circle`\
   ![Screenshot 2025-04-09 115042](https://github.com/user-attachments/assets/b3a6a0bb-bd43-41a1-99b0-841194e8ce98)\
   ![Screenshot 2025-04-09 115122](https://github.com/user-attachments/assets/bb8304d1-03e5-4e25-94f3-115383392394)\
   ![Screenshot 2025-04-09 115130](https://github.com/user-attachments/assets/398a6ebe-b31f-4ecd-adff-ab6ab1e0d32d)\
-  3, debug the visiob issue.\
+  3, Debug the vision issue.\
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/b9e0ce54e183890cfd744a9f396a56c7a7a757bb)\
-- 11,
+- 11, Toggle Strafing State\
+  Purpose: Enable the guadrain to have different walk speeds when it does strafing.\
+  1, In AIC_Enemy_Base, catch the walk speed.\
+  ![Screenshot 2025-04-10 085248](https://github.com/user-attachments/assets/170bcfd2-7a9f-43d1-9c63-a160366e19d3)\
+  2, Create a new BTTask_ToggleStrafingState, and detect if the walk speed should change.\
+  ![Screenshot 2025-04-10 085248](https://github.com/user-attachments/assets/ab1705e1-2f2a-4a6a-8508-4ca24294251e)\
+  3, Add the new BTTask service into BT_Guadrain/\
+- 12, 
+
+
 
 
 
