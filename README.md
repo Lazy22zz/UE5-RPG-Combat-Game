@@ -2645,7 +2645,13 @@ Then, create a new blueprint animation.
   2, Create a new BTTask_ToggleStrafingState, and detect if the walk speed should change.\
   ![Screenshot 2025-04-10 085248](https://github.com/user-attachments/assets/ab1705e1-2f2a-4a6a-8508-4ca24294251e)\
   3, Add the new BTTask service into BT_Guadrain/\
-- 12, 
+- 12, Calculate Direction\
+  Purpose: using kismet to catch up the guadrain moving direction, and using a helper function does have gameplay tag as bool.\
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/8c94b203880ddbbb0f23d7f2682a5430967f3f96)\
+  1, enable the switch different animation.\
+  ![Screenshot 2025-04-10 092356](https://github.com/user-attachments/assets/6fc58176-c447-4e37-acfa-267ce4fbc9f3)\
+- 13, 
+
 
 
 
