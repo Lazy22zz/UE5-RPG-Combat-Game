@@ -2650,7 +2650,11 @@ Then, create a new blueprint animation.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/8c94b203880ddbbb0f23d7f2682a5430967f3f96)\
   1, enable the switch different animation.\
   ![Screenshot 2025-04-10 092356](https://github.com/user-attachments/assets/6fc58176-c447-4e37-acfa-267ce4fbc9f3)\
-- 13, 
+- 13, Starfing Blend Space\
+  Purpose: Enable based on different locomtiondirection, walk speed to change its blend space.\
+  ![Screenshot 2025-04-10 094536](https://github.com/user-attachments/assets/996c2c7b-e541-4709-977c-2d4dd3808a76)\
+- 14,
+
 
 
 
