@@ -2646,14 +2646,21 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-04-10 085248](https://github.com/user-attachments/assets/ab1705e1-2f2a-4a6a-8508-4ca24294251e)\
   3, Add the new BTTask service into BT_Guadrain/\
 - 12, Calculate Direction\
-  Purpose: using kismet to catch up the guadrain moving direction, and using a helper function does have gameplay tag as bool.\
+  Purpose: Using kismet to catch up the guadrain moving direction and using a helper function that has a gameplay tag as bool.\
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/8c94b203880ddbbb0f23d7f2682a5430967f3f96)\
-  1, enable the switch different animation.\
+  1, Enable the switch's different animations.\
   ![Screenshot 2025-04-10 092356](https://github.com/user-attachments/assets/6fc58176-c447-4e37-acfa-267ce4fbc9f3)\
 - 13, Starfing Blend Space\
   Purpose: Enable based on different locomtiondirection, walk speed to change its blend space.\
   ![Screenshot 2025-04-10 094536](https://github.com/user-attachments/assets/996c2c7b-e541-4709-977c-2d4dd3808a76)\
-- 14,
+- 14, Compute Success Chance\
+  Purpose: create a new decortae\
+  ![Screenshot 2025-04-14 090935](https://github.com/user-attachments/assets/7904afd6-daaa-49c6-8318-1189d96f4c81)\
+  ![Screenshot 2025-04-14 090940](https://github.com/user-attachments/assets/a6844dd4-f840-498f-bc5c-808fcb0dd667)\
+- 15, 
+
+
+  
 
 
 
