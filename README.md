@@ -2657,7 +2657,20 @@ Then, create a new blueprint animation.
   Purpose: create a new decortae\
   ![Screenshot 2025-04-14 090935](https://github.com/user-attachments/assets/7904afd6-daaa-49c6-8318-1189d96f4c81)\
   ![Screenshot 2025-04-14 090940](https://github.com/user-attachments/assets/a6844dd4-f840-498f-bc5c-808fcb0dd667)\
-- 15, 
+- 15, Dot Product Test\
+  Purpose: Use dot product to decide where the enemy does strafing location movement\
+  ![Screenshot 2025-04-15 085837](https://github.com/user-attachments/assets/e1f9f578-213e-4d81-b87e-c46012da2e88)\
+- 16, Enemy Melee Ability\
+  Purpose: Enable two new gameplayability for meele attack.\
+  1, Create a gameplaybility melee base, and create two new childs.\
+  ![Screenshot 2025-04-15 090827](https://github.com/user-attachments/assets/545328c3-491c-4c52-92ee-2b7f7d5e11b6)\
+  2, Create two new montages based on melee animation and attach them to the gameplayability.\
+  3, Attach this new gameplayability to the DA_Guadrain.\
+   ![Screenshot 2025-04-15 091012](https://github.com/user-attachments/assets/4f025fe0-de05-4766-9a6c-83aba46145eb)\
+- 17, 
+
+
+
 
 
   
