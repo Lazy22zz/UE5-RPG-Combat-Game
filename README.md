@@ -2646,28 +2646,35 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-04-10 085248](https://github.com/user-attachments/assets/ab1705e1-2f2a-4a6a-8508-4ca24294251e)\
   3, Add the new BTTask service into BT_Guadrain/\
 - 12, Calculate Direction\
-  Purpose: Using kismet to catch up the guadrain moving direction and using a helper function that has a gameplay tag as bool.\
+  Purpose: Using kismet to catch up the guadrain's moving direction and using a helper function that has a gameplay tag as bool.\
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/8c94b203880ddbbb0f23d7f2682a5430967f3f96)\
   1, Enable the switch's different animations.\
   ![Screenshot 2025-04-10 092356](https://github.com/user-attachments/assets/6fc58176-c447-4e37-acfa-267ce4fbc9f3)\
 - 13, Starfing Blend Space\
-  Purpose: Enable based on different locomtiondirection, walk speed to change its blend space.\
+  Purpose: Enable based on different locomotion direction, walk speed to change its blend space.\
   ![Screenshot 2025-04-10 094536](https://github.com/user-attachments/assets/996c2c7b-e541-4709-977c-2d4dd3808a76)\
 - 14, Compute Success Chance\
-  Purpose: create a new decortae\
+  Purpose: create a new decorate\
   ![Screenshot 2025-04-14 090935](https://github.com/user-attachments/assets/7904afd6-daaa-49c6-8318-1189d96f4c81)\
   ![Screenshot 2025-04-14 090940](https://github.com/user-attachments/assets/a6844dd4-f840-498f-bc5c-808fcb0dd667)\
 - 15, Dot Product Test\
   Purpose: Use dot product to decide where the enemy does strafing location movement\
   ![Screenshot 2025-04-15 085837](https://github.com/user-attachments/assets/e1f9f578-213e-4d81-b87e-c46012da2e88)\
 - 16, Enemy Melee Ability\
-  Purpose: Enable two new gameplayability for meele attack.\
-  1, Create a gameplaybility melee base, and create two new childs.\
+  Purpose: Enable two new gameplayability for melee attack.\
+  1, Create a gameplayability melee base, and create two new children.\
   ![Screenshot 2025-04-15 090827](https://github.com/user-attachments/assets/545328c3-491c-4c52-92ee-2b7f7d5e11b6)\
   2, Create two new montages based on melee animation and attach them to the gameplayability.\
   3, Attach this new gameplayability to the DA_Guadrain.\
    ![Screenshot 2025-04-15 091012](https://github.com/user-attachments/assets/4f025fe0-de05-4766-9a6c-83aba46145eb)\
-- 17, 
+- 17, Activate ability by tag\
+  Purpose: Create a new dummy enemy to test tag activation by tag. In this case, we need a new bttask_activatebytag.\
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/cbf2ee238986af016e3baefe88505fd0a7009384)\
+  1, Create a new BTTask_ActivateByTag.\
+  2, create a child bp of BP_Guadrain, and copy the AIController, BehaviorTree.\
+  3, reset the AI behavior setting.\
+  ![Screenshot 2025-04-16 110532](https://github.com/user-attachments/assets/5b8bddc9-0e87-4f39-84d0-b766685ee48d)\
+- 18, 
 
 
 
