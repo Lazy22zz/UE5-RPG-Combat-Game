@@ -2674,9 +2674,12 @@ Then, create a new blueprint animation.
   2, create a child bp of BP_Guadrain, and copy the AIController, BehaviorTree.\
   3, reset the AI behavior setting.\
   ![Screenshot 2025-04-16 110532](https://github.com/user-attachments/assets/5b8bddc9-0e87-4f39-84d0-b766685ee48d)\
-- 18, 
-
-
+- 18, Is Target Hostile\
+  Purpose: In WarriorWeaponBase, we just detect the hitbox detect basic relationship between attacker and target, which means enemies can attack each other.
+  To solve that, we need team members to avoid that from happening.\
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/1d8317a890642005b1f9e80c628206fc0c97f894)\
+  1, Add ANS_Notif in melee attack montages.\
+- 19, 
 
 
 
