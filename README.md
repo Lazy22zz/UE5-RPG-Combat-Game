@@ -2679,7 +2679,12 @@ Then, create a new blueprint animation.
   To solve that, we need team members to avoid that from happening.\
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/1d8317a890642005b1f9e80c628206fc0c97f894)\
   1, Add ANS_Notif in melee attack montages.\
-- 19, 
+- 19, Notify the Melee Attack\
+  Purpose: using `SendGameplayEventToActor` to trigger the ability on the actor.\
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/1f51771efaa66e278ad9697670547a04d42a89df)\
+  1, In GA_EnemyMeleeAttack, enable the play string.\
+  ![Screenshot 2025-04-16 165653](https://github.com/user-attachments/assets/6e5ebc71-b837-4197-87d6-4634cb411be9)\
+- 20, 
 
 
 
