@@ -2700,7 +2700,13 @@ Then, create a new blueprint animation.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/39d45258b1ab4125150b9736567ae7664ab12c2f)\
   1, add the `Motion Warping` as notify into the montages.\
   ![Screenshot 2025-04-17 100307](https://github.com/user-attachments/assets/67a7b50e-9097-4d45-a8f3-347531565bfc)\
-- 23, 
+- 23, Update Motion Warping Target\
+  Purpose: Update the blackboard key's actor location and enable `add or update warp target from location`.\
+  1, add a new btservice, called `BTService_UpdateMotionWrapTarget`.\
+  ![Screenshot 2025-04-17 104202](https://github.com/user-attachments/assets/4a28216f-1dd1-4f10-8383-e760bae49cbc)\
+  2, add this new btservice to the bt_dummy and change the blackboard key to targetactor.\
+- 24, 
+
 
 
 
