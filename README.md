@@ -2684,7 +2684,15 @@ Then, create a new blueprint animation.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/1f51771efaa66e278ad9697670547a04d42a89df)\
   1, In GA_EnemyMeleeAttack, enable the play string.\
   ![Screenshot 2025-04-16 165653](https://github.com/user-attachments/assets/6e5ebc71-b837-4197-87d6-4634cb411be9)\
-- 20, 
+- ⚠️20, MakeEnemyDamageEffectSpecHandle\
+  Purpose: Enable the Enemy to Get Damage info. It is similar to the hostile, but it needs `FScalableFloat& InDamageScalableFloat` to show different damage in dynamic level changes.
+  Remember that the hero damage is const, it gets changed by combo.\
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/215a1f69bbb7ce4a69ca02d55c65a9a3d6ab59a8)\
+  1, Create a new function `Handle Apply Damage` in GA_EnemyMeleeAttack_Base.\
+  2, Add a new input called `InPlayLoad` in the `Handle Apply Damage`\
+  ![Screenshot 2025-04-16 174217](https://github.com/user-attachments/assets/6f71459f-2232-463f-9b60-9fcf493de740)\
+- 21, 
+
 
 
 
