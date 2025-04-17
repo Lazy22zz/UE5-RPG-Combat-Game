@@ -2671,11 +2671,11 @@ Then, create a new blueprint animation.
   Purpose: Create a new dummy enemy to test tag activation by tag. In this case, we need a new bttask_activatebytag.\
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/cbf2ee238986af016e3baefe88505fd0a7009384)\
   1, Create a new BTTask_ActivateByTag.\
-  2, create a child bp of BP_Guadrain, and copy the AIController, BehaviorTree.\
-  3, reset the AI behavior setting.\
+  2, Create a child bp of BP_Guadrain, and copy the AIController, BehaviorTree.\
+  3, Reset the AI behavior setting.\
   ![Screenshot 2025-04-16 110532](https://github.com/user-attachments/assets/5b8bddc9-0e87-4f39-84d0-b766685ee48d)\
 - 18, Is Target Hostile\
-  Purpose: In WarriorWeaponBase, we just detect the hitbox detect basic relationship between attacker and target, which means enemies can attack each other.
+  Purpose: In WarriorWeaponBase, we detect the hitbox-detect basic relationship between attacker and target, which means enemies can attack each other.
   To solve that, we need team members to avoid that from happening.\
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/1d8317a890642005b1f9e80c628206fc0c97f894)\
   1, Add ANS_Notif in melee attack montages.\
@@ -2686,12 +2686,16 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-04-16 165653](https://github.com/user-attachments/assets/6e5ebc71-b837-4197-87d6-4634cb411be9)\
 - ⚠️20, MakeEnemyDamageEffectSpecHandle\
   Purpose: Enable the Enemy to Get Damage info. It is similar to the hostile, but it needs `FScalableFloat& InDamageScalableFloat` to show different damage in dynamic level changes.
-  Remember that the hero damage is const, it gets changed by combo.\
+  Remember that the hero damage is constant; it gets changed by combo.\
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/215a1f69bbb7ce4a69ca02d55c65a9a3d6ab59a8)\
   1, Create a new function `Handle Apply Damage` in GA_EnemyMeleeAttack_Base.\
   2, Add a new input called `InPlayLoad` in the `Handle Apply Damage`\
   ![Screenshot 2025-04-16 174217](https://github.com/user-attachments/assets/6f71459f-2232-463f-9b60-9fcf493de740)\
-- 21, 
+- 21, Apply Empty Damage\
+  Purpose: Add damage data to the game effect curve table.\
+  1, Go to the GT_GuadrainStatus, add `Guardian.LightAttackDamage`, `Guardian.HeavyAttackDamage`.\
+  2, attach them in `GA_Enemy_MeleeAttack_1` and `GA_Enemy_MeleeAttack_2`\
+- 22, 
 
 
 
