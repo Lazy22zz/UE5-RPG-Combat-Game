@@ -2695,7 +2695,12 @@ Then, create a new blueprint animation.
   Purpose: Add damage data to the game effect curve table.\
   1, Go to the GT_GuadrainStatus, add `Guardian.LightAttackDamage`, `Guardian.HeavyAttackDamage`.\
   2, attach them in `GA_Enemy_MeleeAttack_1` and `GA_Enemy_MeleeAttack_2`\
-- 22, 
+- 22, ⚠️Motion Warping\
+  Purpose: Using Motion Warping: Dynamically adjust a character's root motion to align to targets.\
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/39d45258b1ab4125150b9736567ae7664ab12c2f)\
+  1, add the `Motion Warping` as notify into the montages.\
+  ![Screenshot 2025-04-17 100307](https://github.com/user-attachments/assets/67a7b50e-9097-4d45-a8f3-347531565bfc)\
+- 23, 
 
 
 
