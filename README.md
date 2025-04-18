@@ -2631,82 +2631,84 @@ Then, create a new blueprint animation.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/0a3bad3c73e6f83ee1037a3a62667a77638e589d)\
 - 10,  Custom EQS\
   Purpose: Enable the guardian to walk around the hostile.\
-  1, create a new `EQS_FindStarfingLocation` and `EQS_TestPawn`, enabling the attachment of the eqs to testpawn.\
+  1. Create a new `EQS_FindStarfingLocation` and `EQS_TestPawn`, enabling the attachment of the EQS to testpawn.\
   2, create a new `EQSContext_TargetActor` to enable the circle center of `Points: circle`\
   ![Screenshot 2025-04-09 115042](https://github.com/user-attachments/assets/b3a6a0bb-bd43-41a1-99b0-841194e8ce98)\
   ![Screenshot 2025-04-09 115122](https://github.com/user-attachments/assets/bb8304d1-03e5-4e25-94f3-115383392394)\
   ![Screenshot 2025-04-09 115130](https://github.com/user-attachments/assets/398a6ebe-b31f-4ecd-adff-ab6ab1e0d32d)\
-  3, Debug the vision issue.\
+  3. Debug the vision issue.\
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/b9e0ce54e183890cfd744a9f396a56c7a7a757bb)\
 - 11, Toggle Strafing State\
-  Purpose: Enable the guadrain to have different walk speeds when it does strafing.\
-  1, In AIC_Enemy_Base, catch the walk speed.\
+  Purpose: Enable the guardian to have different walking speeds when it does strafing.\
+  1. In AIC_Enemy_Base, catch the walk speed.\
   ![Screenshot 2025-04-10 085248](https://github.com/user-attachments/assets/170bcfd2-7a9f-43d1-9c63-a160366e19d3)\
-  2, Create a new BTTask_ToggleStrafingState, and detect if the walk speed should change.\
+  2. Create a new BTTask_ToggleStrafingState, and detect if the walk speed should change.\
   ![Screenshot 2025-04-10 085248](https://github.com/user-attachments/assets/ab1705e1-2f2a-4a6a-8508-4ca24294251e)\
-  3, Add the new BTTask service into BT_Guadrain/\
+  3. Add the new BTTask service into BT_Guadrain/\
 - 12, Calculate Direction\
-  Purpose: Using kismet to catch up the guadrain's moving direction and using a helper function that has a gameplay tag as bool.\
+  Purpose: Using Kismet to catch up the guardian's moving direction and using a helper function that has a gameplay tag as a bool.\
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/8c94b203880ddbbb0f23d7f2682a5430967f3f96)\
-  1, Enable the switch's different animations.\
+  1. Enable the switch's different animations.\
   ![Screenshot 2025-04-10 092356](https://github.com/user-attachments/assets/6fc58176-c447-4e37-acfa-267ce4fbc9f3)\
 - 13, Starfing Blend Space\
-  Purpose: Enable based on different locomotion direction, walk speed to change its blend space.\
+  Purpose: Enable based on different locomotion direction and walking speed, to change its blend space.\
   ![Screenshot 2025-04-10 094536](https://github.com/user-attachments/assets/996c2c7b-e541-4709-977c-2d4dd3808a76)\
 - 14, Compute Success Chance\
-  Purpose: create a new decorate\
+  Purpose: create a new decorator \
   ![Screenshot 2025-04-14 090935](https://github.com/user-attachments/assets/7904afd6-daaa-49c6-8318-1189d96f4c81)\
   ![Screenshot 2025-04-14 090940](https://github.com/user-attachments/assets/a6844dd4-f840-498f-bc5c-808fcb0dd667)\
 - 15, Dot Product Test\
-  Purpose: Use dot product to decide where the enemy does strafing location movement\
+  Purpose: Use the dot product to decide where the enemy does strafing location movement\
   ![Screenshot 2025-04-15 085837](https://github.com/user-attachments/assets/e1f9f578-213e-4d81-b87e-c46012da2e88)\
 - 16, Enemy Melee Ability\
-  Purpose: Enable two new gameplayability for melee attack.\
-  1, Create a gameplayability melee base, and create two new children.\
+  Purpose: Enable two new gameplayability for melee attacks.\
+  1. Create a gameplayability melee base, and create two new children.\
   ![Screenshot 2025-04-15 090827](https://github.com/user-attachments/assets/545328c3-491c-4c52-92ee-2b7f7d5e11b6)\
-  2, Create two new montages based on melee animation and attach them to the gameplayability.\
-  3, Attach this new gameplayability to the DA_Guadrain.\
+  2. Create two new montages based on melee animation and attach them to the gameplayability.\
+  3. Attach this new gameplayability to the DA_Guadrain.\
    ![Screenshot 2025-04-15 091012](https://github.com/user-attachments/assets/4f025fe0-de05-4766-9a6c-83aba46145eb)\
 - 17, Activate ability by tag\
   Purpose: Create a new dummy enemy to test tag activation by tag. In this case, we need a new bttask_activatebytag.\
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/cbf2ee238986af016e3baefe88505fd0a7009384)\
-  1, Create a new BTTask_ActivateByTag.\
+  1. Create a new BTTask_ActivateByTag.\
   2, Create a child bp of BP_Guadrain, and copy the AIController, BehaviorTree.\
-  3, Reset the AI behavior setting.\
+  3. Reset the AI behavior setting.\
   ![Screenshot 2025-04-16 110532](https://github.com/user-attachments/assets/5b8bddc9-0e87-4f39-84d0-b766685ee48d)\
 - 18, Is Target Hostile\
   Purpose: In WarriorWeaponBase, we detect the hitbox-detect basic relationship between attacker and target, which means enemies can attack each other.
-  To solve that, we need team members to avoid that from happening.\
+  To solve that, we need team members to avoid it from happening.\
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/1d8317a890642005b1f9e80c628206fc0c97f894)\
-  1, Add ANS_Notif in melee attack montages.\
+  1. Add ANS_Notif in melee attack montages.\
 - 19, Notify the Melee Attack\
   Purpose: using `SendGameplayEventToActor` to trigger the ability on the actor.\
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/1f51771efaa66e278ad9697670547a04d42a89df)\
-  1, In GA_EnemyMeleeAttack, enable the play string.\
+  1. In GA_EnemyMeleeAttack, enable the play string.\
   ![Screenshot 2025-04-16 165653](https://github.com/user-attachments/assets/6e5ebc71-b837-4197-87d6-4634cb411be9)\
 - ⚠️20, MakeEnemyDamageEffectSpecHandle\
   Purpose: Enable the Enemy to Get Damage info. It is similar to the hostile, but it needs `FScalableFloat& InDamageScalableFloat` to show different damage in dynamic level changes.
   Remember that the hero damage is constant; it gets changed by combo.\
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/215a1f69bbb7ce4a69ca02d55c65a9a3d6ab59a8)\
-  1, Create a new function `Handle Apply Damage` in GA_EnemyMeleeAttack_Base.\
-  2, Add a new input called `InPlayLoad` in the `Handle Apply Damage`\
+  1. Create a new function `Handle Apply Damage` in GA_EnemyMeleeAttack_Base.\
+  2. Add a new input called `InPlayLoad` in the `Handle Apply Damage`\
   ![Screenshot 2025-04-16 174217](https://github.com/user-attachments/assets/6f71459f-2232-463f-9b60-9fcf493de740)\
 - 21, Apply Empty Damage\
   Purpose: Add damage data to the game effect curve table.\
-  1, Go to the GT_GuadrainStatus, add `Guardian.LightAttackDamage`, `Guardian.HeavyAttackDamage`.\
+  1. Go to the GT_GuadrainStatus, add `Guardian.LightAttackDamage`, `Guardian.HeavyAttackDamage`.\
   2, attach them in `GA_Enemy_MeleeAttack_1` and `GA_Enemy_MeleeAttack_2`\
 - 22, ⚠️Motion Warping\
   Purpose: Using Motion Warping: Dynamically adjust a character's root motion to align to targets.\
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/39d45258b1ab4125150b9736567ae7664ab12c2f)\
-  1, add the `Motion Warping` as notify into the montages.\
+  1. Add the `Motion Warping` as a notification to the montages.\
   ![Screenshot 2025-04-17 100307](https://github.com/user-attachments/assets/67a7b50e-9097-4d45-a8f3-347531565bfc)\
 - 23, Update Motion Warping Target\
   Purpose: Update the blackboard key's actor location and enable `add or update warp target from location`.\
-  1, add a new btservice, called `BTService_UpdateMotionWrapTarget`.\
+  1. Add a new btservice, called `BTService_UpdateMotionWrapTarget`.\
   ![Screenshot 2025-04-17 104202](https://github.com/user-attachments/assets/4a28216f-1dd1-4f10-8383-e760bae49cbc)\
-  2, add this new btservice to the bt_dummy and change the blackboard key to targetactor.\
-- 24, 
-
+  2, Add this new btservice to the bt_dummy and change the blackboard key to targetactor.\
+- 24, ⚠️Construct Native BTTask\
+  Purpose: Similar to the `9, customize the BTService`, we create a new C++ BTTask.\
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/367dc6462129704d3ca76b9a4973420225196fc7)\
+- 25, 
 
 
 
