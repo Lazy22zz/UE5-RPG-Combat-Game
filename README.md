@@ -2406,26 +2406,26 @@ Then, create a new blueprint animation.
   }
   ```
 - 48, Camera Shake\
-  Puropse: add camera shake by using blueprint\
-  1, create a new camershake blueprint named `Camerashake_HeroMelle`
+  Purpose: add camera shake by using blueprint\
+  1. Create a new camerashake blueprint named `Camerashake_HeroMelle`
   2, In GA_Hero_Hitpasuse, add this camerashake blueprint\
   ![Screenshot 2025-03-09 182844](https://github.com/user-attachments/assets/91a87182-1a4e-4e17-aeba-a3f10e80e9b5)\
-  3, customize your camera shake.
+  3. Customize your camera shake.
 - 49, Sound FX - Hit React Sound\
-  Purpose: Enable the the hit React Sound play and use courrency to allow only one sound to play.\
-  1, Give a new notify sound effect into the AM_enemy\
-  2, Create a new blueprint concurrency named `Concurrency_OneAtATime`\
+  Purpose: Enable the hit React Sound play and use currency to allow only one sound to play.\
+  1. Give a new notify sound effect to the AM_enemy\
+  2. Create a new blueprint concurrency named `Concurrency_OneAtATime`\
   ![Screenshot 2025-03-09 194301](https://github.com/user-attachments/assets/46d572dc-76b9-489d-ba28-0b649f14ef33)\
-  3, Find that attach sound , attach the concurrency \
+  3. Find that attached sound, attach the concurrency \
   ![Screenshot 2025-03-09 194514](https://github.com/user-attachments/assets/83b4ae54-560d-4c23-a525-67c097ab17cc)\
 - 50, Sound FX - Melee Hit Sound\
-  Purpose: In this situtation, we can not use add notify to play this sound, because it only happened when we hit somethings.\
-  So, we need to use `GameplayCues` to play that sound when hit this action happened.\
-  1, Create a new folder named `GameplayCues` under folder Content\
-  2, Create a new buleprint based on GameplycueNotify_Static named `GC_Hero_AxeHit`\
-  3, In GameplayCueTag, create a new gameplayTag.\
+  Purpose: In this situation, we can not use addNotify to play this sound, because it only happens when we hit something.\
+  So, we need to use `GameplayCues` to play that sound when this action happens.\
+  1. Create a new folder named `GameplayCues` under the folder Content\
+  2. Create a new blueprint based on GameplycueNotify_Static named `GC_Hero_AxeHit`\
+  3. In GameplayCueTag, create a new gameplayTag.\
   ![Screenshot 2025-03-09 200709](https://github.com/user-attachments/assets/c210d7a8-2e26-4cbe-b2fb-adaa1f681c35)\
-  4, In GC_Hero_AxeHit, create a new execution blueprint.\
+  4. In GC_Hero_AxeHit, create a new execution blueprint.\
   ![Screenshot 2025-03-09 201108](https://github.com/user-attachments/assets/06845515-57a0-434e-b114-f214fce9009e)\
   5, In GA_Hero_LightAttackMaster,\
   ![Screenshot 2025-03-09 201258](https://github.com/user-attachments/assets/78f3f37a-1edf-4a4e-8cb4-0b4f92934e7a)\
@@ -2433,11 +2433,11 @@ Then, create a new blueprint animation.
   ```c++
   GameplayCueNotifyPaths = "/Game/GameplayCues"
   ```
-  7, Add the execute gamplaycue on Owner, let the WeaponSoundGameplayCueTag to be null(same as light attack)\
+  7, Add the execute gamplaycue on Owner, let the WeaponSoundGameplayCueTag be null(same as light attack)\
   ![Screenshot 2025-03-09 202228](https://github.com/user-attachments/assets/3c7d5689-6784-4afe-8198-cfafd2ab5a1a)\
-  8, Then change all child buleprint of heavy/light attack, make sure sure their WeaponSoundGameplayCueTag is gameplaycue.meleehit.axehit
+  8, Then change all child blueprint of heavy/light attack, make sure their WeaponSoundGameplayCueTag is gameplaycue.meleehit.axehit
 - 51, Enemy Death Ability\
-  Purpose: Add a tag to the actor, and use it to trigger the play death montage.\
+  Purpose: Add a tag to the actor and use it to trigger the play death montage.\
   1, In WarriorTags.h
   ```c++
   WARRIOR_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Shared_Ability_Death);
@@ -2453,8 +2453,8 @@ Then, create a new blueprint animation.
 			
 	}
   ```
-  4, create a new blueprint based on Gameplay Blueprint, named GA_Enemy_Death_Base\
-  5, ![Screenshot 2025-03-10 191009](https://github.com/user-attachments/assets/1a1ef7ba-3793-454a-ac58-a85d44c8ffed)\
+  4. Create a new blueprint based on Gameplay Blueprint, named GA_Enemy_Death_Base\
+  5,![Screenshot 2025-03-10 191009](https://github.com/user-attachments/assets/1a1ef7ba-3793-454a-ac58-a85d44c8ffed)\
   ![Screenshot 2025-03-10 191012](https://github.com/user-attachments/assets/ffebaf7d-6aa8-4853-a6c0-84246a7622c8)\
   ![Screenshot 2025-03-10 191015](https://github.com/user-attachments/assets/9261381e-e357-4cb7-9ad5-61fbf6e28ca9)\
   6, Create a new child class named GA_Guadrain_Death\
@@ -2465,10 +2465,10 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-03-10 192302](https://github.com/user-attachments/assets/43beb726-5005-4154-9f73-4425abc17261)\
   10, In GA_Guadrain_Death, add the new tag to sound play\
   ![Screenshot 2025-03-10 192412](https://github.com/user-attachments/assets/f575723d-e72c-404e-9b5c-1a1280bb034b)
-  11, make sure all animation's enablemotion is checked.\
+  11, make sure all animations' enable motion is checked.\
   ![Screenshot 2025-03-10 192543](https://github.com/user-attachments/assets/11bdfe32-4ced-49b5-9fc4-9eb564539a39)\
   ![Screenshot 2025-03-10 192638](https://github.com/user-attachments/assets/c311e87e-8622-4bce-ae53-ecabaa9bcddb)\
-  12, After creating the animation montage, add them all\
+  12. After creating the animation montage, add them all\
   ![Screenshot 2025-03-10 192847](https://github.com/user-attachments/assets/42c20146-1b91-4a43-b65f-b0c808e5cd88)\
 - 52, BP Death Interface\
   Purpose: Instead of using cast to, use an interface to enable some specific function.\
@@ -2708,8 +2708,10 @@ Then, create a new blueprint animation.
 - 24, ⚠️Construct Native BTTask\
   Purpose: Similar to the `9, customize the BTService`, we create a new C++ BTTask.\
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/367dc6462129704d3ca76b9a4973420225196fc7)\
-- 25, 
-
+- 25, Rotate to Target And Attack\
+  Purpose: `ExecutedTask`, `TickTask`, `HasReachedAnglePrecision` to detect the rotation situation and decision.\
+  [code view] (https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/0cd50778410fd6de527198b3fa1f590f6cbce28c)\
+- 26, 
 
 
 
