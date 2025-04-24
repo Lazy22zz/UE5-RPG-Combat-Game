@@ -1,5 +1,5 @@
-# UE5-RPG-Combat-Game
- creating a combat action RPG game
+# UE5-RPG-Combat-Game (Using GAS, Gameplay Ability System)
+ Creating a combat action RPG game
 # EXTRA
 - 1, hard reference :\
   A hard reference is a direct pointer to another object or asset. When object A hard-references object B, both objects are loaded into memory together. \
