@@ -123,9 +123,13 @@
   // std::unique_ptr<int> ptr2 = ptr; // ❌ compile error
   std::unique_ptr<int> ptr2 = std::move(ptr); // ✅ ownership transferred
   ```
+- 9.1, memory leak, smart pointer\
+  📦 Memory leak: When a program allocates memory but fails to release it, even though it’s no longer needed. \
+  📦 Smart Pointer: using RAII (Resource Acquisition Is Initialization). That means memory is automatically released when the pointer goes out of scope.[you can think it has build-in new, delete functions in the references.]\
   
 - 10, `checkf()`\
   Purpose: The game crashes and generates a report when it is false.\
+  
 - 11, pre-construction and construction :\
   Pre-Construct → Runs before the widget is fully created and can be previewed in the editor.\
   Construct → Runs after the widget is created and is used for regular initialization at runtime.
@@ -148,8 +152,8 @@
       }
   }
   ```
-  - 3, Set up Camera Component
-  - create springarm and camera
+- 3, Set up Camera Component
+  - Create a spring arm and camera
     ```c++
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera", meta = (AllowPrivateAccess = "true"))
     USpringArmComponent* CameraBoom;
@@ -180,10 +184,10 @@
     GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
     ```
   - 4, Create a Gameplay Tags\
-    WHY: In a small project, we can use traditional action binding in .h and callback. However, if in a big project, it will be complicated to handle bunches of declared actions.
+    WHY: In a small project, we can use traditional action binding in .h and a callback. However, if in a big project, it will be complicated to handle a bunch of declared actions.
   - Edit -> Project Settings -> GameplayTags
     ![Screenshot 2025-01-12 195446](https://github.com/user-attachments/assets/cb0f33fd-6ad3-4500-8227-7b127c0f6c9f)
-  - create an empty C++ names WarriorGameplayTags\
+  - create an empty C++ named WarriorGameplayTags\
     In .h\
     ```c++
     #pragma once
