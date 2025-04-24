@@ -2467,7 +2467,7 @@ Then, create a new blueprint animation.
   ```
   7, Add the execute gamplaycue on Owner, let the WeaponSoundGameplayCueTag be null(same as light attack)\
   ![Screenshot 2025-03-09 202228](https://github.com/user-attachments/assets/3c7d5689-6784-4afe-8198-cfafd2ab5a1a)\
-  8, Then change all child blueprint of heavy/light attack, make sure their WeaponSoundGameplayCueTag is gameplaycue.meleehit.axehit
+  8, Then change all child blueprints of heavy/light attack, make sure their WeaponSoundGameplayCueTag is gameplaycue.meleehit.axehit
 - 51, Enemy Death Ability\
   Purpose: Add a tag to the actor and use it to trigger the play death montage.\
   1, In WarriorTags.h
@@ -2506,7 +2506,7 @@ Then, create a new blueprint animation.
   Purpose: Instead of using cast to, use an interface to enable some specific function.\
   1,
 
-- 53, DIssolve Material FX\
+- 53, Dissolve Material FX\
   Purpose: enable the dissolved material to disappear.\
   1, In BP_Warriorenemy_base, create a new timeline, using a set play rate to decide the display speed.\
    ![Screenshot 2025-03-13 195937](https://github.com/user-attachments/assets/c64a60f3-d567-4d44-8aa8-8fc387e4263b)\
@@ -2693,7 +2693,7 @@ Then, create a new blueprint animation.
   Purpose: Use the dot product to decide where the enemy does strafing location movement\
   ![Screenshot 2025-04-15 085837](https://github.com/user-attachments/assets/e1f9f578-213e-4d81-b87e-c46012da2e88)\
 - 16, Enemy Melee Ability\
-  Purpose: Enable two new gameplayability for melee attacks.\
+  Purpose: Enable two new gameplay features for melee attacks.\
   1. Create a gameplayability melee base, and create two new children.\
   ![Screenshot 2025-04-15 090827](https://github.com/user-attachments/assets/545328c3-491c-4c52-92ee-2b7f7d5e11b6)\
   2. Create two new montages based on melee animation and attach them to the gameplayability.\
@@ -2743,7 +2743,28 @@ Then, create a new blueprint animation.
 - 25, Rotate to Target And Attack\
   Purpose: `ExecutedTask`, `TickTask`, `HasReachedAnglePrecision` to detect the rotation situation and decision.\
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/0cd50778410fd6de527198b3fa1f590f6cbce28c)\
-- 26, 
+- 26, Melee Attack Branch\
+  ![Screenshot 2025-04-24 102108](https://github.com/user-attachments/assets/9ad6584f-c94b-4c0f-bf32-4c8e4246ff11)\
+- 27, Does Actor Have Under Attack Decorater\
+  Purpose: Create a new Decorater to detect whether it is under attack.\
+  ![Screenshot 2025-04-24 102354](https://github.com/user-attachments/assets/740f36dc-2ac5-47d6-8104-40841b98430b)\
+  ![Screenshot 2025-04-24 102736](https://github.com/user-attachments/assets/ff481a82-f4b9-400c-a849-c903e387bed4)\
+- 28, Duration GameplayEffect\
+  Purpose: Customize the GE_UnderAttack based on the Duration in duration, and apply it in the GA_HitReact\
+  ![Screenshot 2025-04-24 103042](https://github.com/user-attachments/assets/80f4c225-4804-42ed-983e-a1fe919f3d2e)\
+  ![Screenshot 2025-04-24 103214](https://github.com/user-attachments/assets/19a31532-8f8d-4a8b-9fb3-b05b0fb5c3b0)\
+- 29, Should Abort All Logic And Assign the HitSound.\
+  Purpose: Add a new decorator to abort all other logic when hp is lower than 0.\
+  ![Screenshot 2025-04-24 103649](https://github.com/user-attachments/assets/28e6bf7c-02e4-4545-a227-a844d62d9993)\
+  1. Attach it to the new sequence.\
+  2. Customize the Guardian sound FX based on which sound effect you prefer. same as `49, Sound FX - Hit React Sound`\
+
+
+
+
+
+
+  
 
 
 
