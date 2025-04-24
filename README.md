@@ -45,7 +45,7 @@
 - 3, conclusion: \
   ![Screenshot 2025-01-07 100832](https://github.com/user-attachments/assets/4895bb3b-7242-45c5-a380-8f636d9ba03f)
 - 4, TObjectPtr: \
-  "T" in UE5, means the Type, such as TArray, TMap; \
+  "T" in UE5 means the Type, such as TArray, TMap; \
   TObjectPtr is *hard* reference in UObject pointer; \
   ![Screenshot 2025-01-07 103243](https://github.com/user-attachments/assets/03a5a1ba-d070-4fa8-b3f8-6c3645a17bc0)
 - 5, TSubclassof\
@@ -54,11 +54,11 @@
   ```c++
   TArray< TSubclassOf < UWarriorGameplayAbility > > ActivateOnGivenAbilities;	
   ```
-  We wrap up any types under `UWarriorGameplayAbility` that satisfies the required of `TArray<UClass *>`
+  We wrap up any types under `UWarriorGameplayAbility` that satisfy the requirements of `TArray<UClass *>`
 - 6, Synchronous and  Asynchronous loading\
   In Unreal Engine C++, synchronous loading uses `LoadObject()` to load assets immediately, ensuring they are available before gameplay starts, while asynchronous loading uses `FStreamableManager::RequestAsyncLoad()` to load assets in the background without 
   blocking the main thread. Synchronous loading is ideal for critical assets like the player's character, ensuring smooth startup. In contrast, asynchronous loading is best for non-critical assets like enemies, optimizing performance and reducing initial load times.\
-- 7, Basic GamplayEffectHandle code:
+- 7, Basic GameplayEffectHandle code:
   ```c++
   // Create context
   FGameplayEffectContextHandle ContextHandle = AbilitySystemComponent->MakeEffectContext();
@@ -78,7 +78,7 @@
   EffectSpecHandle.Data->SetSetByCallerMagnitude(...);
   // etc...
 
-  // Then eventually apply the effect
+  // Then, eventually, you apply the effect
   AbilitySystemComponent->ApplyGameplayEffectSpecToTarget(EffectSpecHandle, TargetASC);
   ```
 - 8, Automatic Storage, Static Storage,  Dynamic Storage:\
@@ -93,13 +93,41 @@
   |      Stack       |  (Grows downwards with function calls)  \
   +-------------------+  <- Low memory address  \
 
-- 9, `dynamic_cast` and `weak_ptr`:\
-  ✅ Use std::weak_ptr when managing object lifetime safely without increasing reference counts.
-  ✅ Use dynamic_cast only to check and convert polymorphic types at runtime safely.
+- 9, `dynamic_cast`, `shared_ptr`, `weak_ptr`, `unique_ptr`:\
+  ✅ Use dynamic_cast only to check and convert polymorphic types at runtime safely.\
+  ✅ Use shared_ptr when you need multiple pointers for the same object.\
+  ```
+  #include <memory>
+
+  std::shared_ptr<int> a = std::make_shared<int>(10);
+  std::shared_ptr<int> b = a; // both a and b share ownership of the same int
+
+  ```
+  ✅ Use weak_ptr Works with shared_ptr only, and break the circular references.(cyclic references)\
+  ```
+  #include <memory>
+
+  std::shared_ptr<int> shared = std::make_shared<int>(42);
+  std::weak_ptr<int> weak = shared;
+
+  if (auto locked = weak.lock()) {
+    // locked is a shared_ptr
+    std::cout << *locked << std::endl;
+  }
+  ```
+  ✅ Use unique_ptr when owning the object at a time, and can not be copied.\
+  ```
+  #include <memory>
+
+  std::unique_ptr<int> ptr = std::make_unique<int>(10);
+  // std::unique_ptr<int> ptr2 = ptr; // ❌ compile error
+  std::unique_ptr<int> ptr2 = std::move(ptr); // ✅ ownership transferred
+  ```
+  
 - 10, `checkf()`\
-  Purpose: The game crashes and gets a report when it is false.\
-- 11, pre constrcut and construct:\
-  Pre Construct → Runs before the widget is fully created and can be previewed in the editor.\
+  Purpose: The game crashes and generates a report when it is false.\
+- 11, pre-construction and construction :\
+  Pre-Construct → Runs before the widget is fully created and can be previewed in the editor.\
   Construct → Runs after the widget is created and is used for regular initialization at runtime.
   
 # 1, Set Up Hero Character
