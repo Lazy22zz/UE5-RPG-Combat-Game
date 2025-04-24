@@ -2739,10 +2739,10 @@ Then, create a new blueprint animation.
   2, Add this new btservice to the bt_dummy and change the blackboard key to targetactor.\
 - 24, ⚠️Construct Native BTTask\
   Purpose: Similar to the `9, customize the BTService`, we create a new C++ BTTask.\
-  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/367dc6462129704d3ca76b9a4973420225196fc7)\
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/6261ddbb8aec01749381fec42d6a484244c4aee9)\
 - 25, Rotate to Target And Attack\
   Purpose: `ExecutedTask`, `TickTask`, `HasReachedAnglePrecision` to detect the rotation situation and decision.\
-  [code view] (https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/0cd50778410fd6de527198b3fa1f590f6cbce28c)\
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/0cd50778410fd6de527198b3fa1f590f6cbce28c)\
 - 26, 
 
 
