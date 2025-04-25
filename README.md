@@ -1447,7 +1447,7 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-02-23 182141](https://github.com/user-attachments/assets/f3d0658f-f142-4750-abc5-7b0c085dca36)\
   Then in those AM_montages, add your preferred sound FX and the time slow animnotify\
   ![Screenshot 2025-02-23 182212](https://github.com/user-attachments/assets/9571a183-90dc-4c72-a9e8-a6d5b2151ab7)
-- Part 3\
+# 3, Hero Combat
   Summary:\
   ![Screenshot_20250224_085558_Samsung capture](https://github.com/user-attachments/assets/53aafe95-c576-4b3f-b533-1557dd02a349)\
 - 22, Set Up Enemy Character\
