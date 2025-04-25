@@ -1,5 +1,28 @@
 # UE5-RPG-Combat-Game (Using GAS, Gameplay Ability System)
  Creating a combat action RPG game
+
+ # Table of Contents
+
+- [UE5-RPG-Combat-Game (Using GAS, Gameplay Ability System)](#ue5-rpg-combat-game-using-gas-gameplay-ability-system)
+- [EXTRA](#extra)
+  - [1. Hard Reference](#1-hard-reference)
+  - [2. Soft Reference](#2-soft-reference)
+  - [3. Conclusion](#3-conclusion)
+  - [4. TObjectPtr](#4-tobjectptr)
+  - [5. TSubclassof](#5-tsubclassof)
+  - [6. Synchronous and Asynchronous Loading](#6-synchronous-and-asynchronous-loading)
+  - [7. Basic GameplayEffectHandle Code](#7-basic-gameplayeffecthandle-code)
+  - [8. Automatic Storage, Static Storage, Dynamic Storage](#8-automatic-storage-static-storage-dynamic-storage)
+  - [9. dynamic_cast, shared_ptr, weak_ptr, unique_ptr](#9-dynamic_cast-shared_ptr-weak_ptr-unique_ptr)
+  - [10. checkf()](#10-checkf)
+  - [11. Pre-construction and Construction](#11-pre-construction-and-construction)
+  - [12. New Ability Process](#12-new-ability-process)
+- [1. Set Up Hero Character](#1-set-up-hero-character)
+- [2. Combo System](#2-combo-system)
+- [3. Hero Combat](#3-hero-combat)
+- [4. Enemy AI](#4-enemy-ai)
+- [5. Hero Combat Ability](#5-hero-combat-ability)
+
 # EXTRA
 - 1, hard reference :\
   A hard reference is a direct pointer to another object or asset. When object A hard-references object B, both objects are loaded into memory together. \
@@ -160,7 +183,7 @@
   }
   ```
 - 3, Set up Camera Component
-  - Create a spring arm and camera
+  - Create a spring arm and a camera
     ```c++
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera", meta = (AllowPrivateAccess = "true"))
     USpringArmComponent* CameraBoom;
