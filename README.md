@@ -133,6 +133,13 @@
 - 11, pre-construction and construction :\
   Pre-Construct → Runs before the widget is fully created and can be previewed in the editor.\
   Construct → Runs after the widget is created and is used for regular initialization at runtime.
+
+- 12, New Ability Process:\
+  1. Create Ability Tags.\
+  2. Create Ability Blueprint.\
+  3. Anim Montage.\
+  4. Ability Input Action.\
+  5. Grant Ability.\ 
   
 # 1, Set Up Hero Character
 - 1, Base Class Structure \
@@ -2757,7 +2764,10 @@ Then, create a new blueprint animation.
   Purpose: Add a new decorator to abort all other logic when hp is lower than 0.\
   ![Screenshot 2025-04-24 103649](https://github.com/user-attachments/assets/28e6bf7c-02e4-4545-a227-a844d62d9993)\
   1. Attach it to the new sequence.\
-  2. Customize the Guardian sound FX based on which sound effect you prefer. same as `49, Sound FX - Hit React Sound`\
+  2. Customize the Guardian sound FX based on your preferred sound effect. same as `49, Sound FX - Hit React Sound`\
+# 5, Hero Combat Ability
+- Summary: In this part, we do 5 things: Directional Rolling,  Directional Hit React, Block, Target Lock, Hero Death\
+  1, 
 
 
 
