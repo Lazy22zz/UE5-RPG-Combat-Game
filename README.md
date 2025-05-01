@@ -2807,8 +2807,16 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-05-01 094338](https://github.com/user-attachments/assets/33e49012-1ca8-4509-b699-e10b775d8ca4)
   2. Finish the last blueprint.
   ![Screenshot 2025-05-01 094301](https://github.com/user-attachments/assets/acb42d44-f13a-4240-98bc-5c02ed1602cb)\
-  ![Screenshot 2025-05-01 094308](https://github.com/user-attachments/assets/b626bbb3-72c0-4892-99da-810a852b4f14)\
-- 3, 
+  ![Screenshot 2025-05-01 094308](https://github.com/user-attachments/assets/b626bbb3-72c0-4892-99da-810a852b4f14)
+- 3, Get Last Movement Distance
+  Purpose: In 2, we have updated the Rotation. Here, we need to customize the distance by using `Line Trace By Objects`
+  1. Add a new notifystate motionwarping
+  ![Screenshot 2025-05-01 094338](https://github.com/user-attachments/assets/3432442c-6fdc-48f3-a8ad-7e1f4bc669cd)
+  2. Fill up the `Line Trace By Objects`
+  ![Screenshot 2025-05-01 101828](https://github.com/user-attachments/assets/41b2370d-dc8f-4d81-9628-9f7b6666724c)
+- 4, 
+
+  
 
 
 
