@@ -2790,18 +2790,28 @@ Then, create a new blueprint animation.
   2. Customize the Guardian sound FX based on your preferred sound effect. same as `49, Sound FX - Hit React Sound`\
 # 5, Hero Combat Ability
 - Summary: In this part, we do 5 things: Directional Rolling,  Directional Hit React, Block, Target Lock, Hero Death\
-- 1, Two Key Input Action\
-  Purpose: Enable to use of two key input actions, for example, hostile can do directional rolling based on two keys pressed [w + space bar]\
-  1. Create the gameplay ability tags.\
-  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/a9fdd22eba08848cbbe71e34126c64a42a3176bc)\
-  2. Create the Gameplayability blueprint[based on the warriorHerogameplayability]\
+- 1, Two Key Input Action
+  Purpose: Enable the use of two key input actions, for example, hostile can do directional rolling based on two keys pressed [w + space bar]\
+  1. Create the gameplay ability tags.
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/a9fdd22eba08848cbbe71e34126c64a42a3176bc)
+  2. Create the Gameplayability blueprint[based on the warriorHerogameplayability]
   3. Create the new input action, bind it to the IMC [Trigger should be chored Actions]
-  ![Screenshot 2025-04-25 102836](https://github.com/user-attachments/assets/c56b75e6-3a37-403c-ab91-728793449095)\
+  ![Screenshot 2025-04-25 102836](https://github.com/user-attachments/assets/c56b75e6-3a37-403c-ab91-728793449095)
   4. Add this new input action to DA_InputConfig
   5. Add the new tag inside the DA_Hero
   6. Grant the Gameplayability blueprint
-  ![Screenshot 2025-04-25 102740](https://github.com/user-attachments/assets/893b165b-f688-490d-aa35-d13f171936c0)\
-- 2, 
+  ![Screenshot 2025-04-25 102740](https://github.com/user-attachments/assets/893b165b-f688-490d-aa35-d13f171936c0)
+- 2, Get Last Movement Input
+  Purpose: using the blueprint `Add Or Update Wrap Target Location and Rotation` to update the last input direction based on the new Add MotionNotify state on the montage.\
+  1. In GA_Roll, enable the play montage and wait. (Required a new montage AM_Hero_Roll)
+  ![Screenshot 2025-05-01 094338](https://github.com/user-attachments/assets/33e49012-1ca8-4509-b699-e10b775d8ca4)
+  2. Finish the last blueprint.
+  ![Screenshot 2025-05-01 094301](https://github.com/user-attachments/assets/acb42d44-f13a-4240-98bc-5c02ed1602cb)\
+  ![Screenshot 2025-05-01 094308](https://github.com/user-attachments/assets/b626bbb3-72c0-4892-99da-810a852b4f14)\
+- 3, 
+
+
+
 
 
 
