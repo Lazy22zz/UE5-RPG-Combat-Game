@@ -2835,7 +2835,13 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-05-01 094338](https://github.com/user-attachments/assets/3432442c-6fdc-48f3-a8ad-7e1f4bc669cd)
   2. Fill up the `Line Trace By Objects`
   ![Screenshot 2025-05-01 101828](https://github.com/user-attachments/assets/41b2370d-dc8f-4d81-9628-9f7b6666724c)
-- 4, 
+- 4, Get Value At Level\
+  Purpose: Customize the rolling distance based on different hero levels.\
+  1. Enable the get level function, created in C++.
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/0a3009ac93a4acc7a77abddff5f737683c73df37)\
+  2. Create a new `Scalable Float` variable, using `Get ability level` to catch the required level and rebuild the blueprint.\
+  ![Screenshot 2025-05-02 104330](https://github.com/user-attachments/assets/445e5a56-cc9a-4d25-98fb-19bd168ef955)
+- 5, 
 
   
 
