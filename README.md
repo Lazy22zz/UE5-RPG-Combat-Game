@@ -17,6 +17,7 @@
   - [10. checkf()](#10-checkf)
   - [11. Pre-construction and Construction](#11-pre-construction-and-construction)
   - [12. New Ability Process](#12-new-ability-process)
+  - [13. World Of the UE](#13-World-Of-the-UE)
 - [1. Set Up Hero Character](#1-set-up-hero-character)
 - [2. Combo System](#2-combo-system)
 - [3. Hero Combat](#3-hero-combat)
@@ -148,7 +149,7 @@
   ```
 - 9.1, memory leak, smart pointer\
   📦 Memory leak: When a program allocates memory but fails to release it, even though it’s no longer needed. \
-  📦 Smart Pointer: using RAII (Resource Acquisition Is Initialization). That means memory is automatically released when the pointer goes out of scope.[you can think it has build-in new, delete functions in the references.]\
+  📦 Smart Pointer: using RAII (Resource Acquisition Is Initialization). That means memory is automatically released when the pointer goes out of scope.[You can think it has built-in new, delete functions in the references.]\
   
 - 10, `checkf()`\
   Purpose: The game crashes and generates a report when it is false.\
@@ -162,7 +163,26 @@
   2. Create Ability Blueprint.\
   3. Anim Montage.\
   4. Ability Input Action.\
-  5. Grant Ability.\ 
+  5. Grant Ability.\
+
+- 13, World Of the UE  
+  1. UObject: Mother of the World, which is under the class.  
+     ![UObject](https://github.com/user-attachments/assets/a1098c12-d867-475d-a3b7-8643eb6b0e7f)  
+  2. AActor: Are birth from UObject.  
+     Its Major functions: `Replication`, `Spawn`, `Tick`  
+     Its Major types: `staticMeshActor`, `CameraActor`, `PlayerStarterActor`  
+     🤔 Why Doesn't Actor Have a Built-in Transform Like Unity's GameObject?  
+     
+     <details>
+       <summary>Click to reveal</summary>
+
+      To make development easier, Unreal Engine provides convenient methods like GetActorLocation() and SetActorLocation(), which internally delegate to the RootComponent. In the same way, the ability of an Actor to receive and process input events is actually forwarded to the internal UInputComponent* InputComponent; facilitation is also provided to access it directly through the Actor. Why this design? Because UE follows a C++ philosophy: "Never pay for what you don't need." In Unreal’s view, an Actor isn’t just a visible or physical object in the 3D world. Some Actors are completely invisible and serve only to represent information or control logic—like AInfo and its derived classes (AWorldSettings, AGameMode, AGameSession, APlayerState, AGameState, etc.), as well as AHUD and APlayerCameraManager. These Actors embody various rules, states, and systems that govern the game world. 
+     </details>
+     ![ActorAndComponent](https://github.com/user-attachments/assets/57035e66-b0be-4aaf-aef9-badb97aab06b)
+  3. 
+
+
+
   
 # 1, Set Up Hero Character
 - 1, Base Class Structure \
