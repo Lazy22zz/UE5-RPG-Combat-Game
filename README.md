@@ -178,7 +178,8 @@
 
       To make development easier, Unreal Engine provides convenient methods like GetActorLocation() and SetActorLocation(), which internally delegate to the RootComponent. In the same way, the ability of an Actor to receive and process input events is actually forwarded to the internal UInputComponent* InputComponent; facilitation is also provided to access it directly through the Actor. Why this design? Because UE follows a C++ philosophy: "Never pay for what you don't need." In Unreal’s view, an Actor isn’t just a visible or physical object in the 3D world. Some Actors are completely invisible and serve only to represent information or control logic—like AInfo and its derived classes (AWorldSettings, AGameMode, AGameSession, APlayerState, AGameState, etc.), as well as AHUD and APlayerCameraManager. These Actors embody various rules, states, and systems that govern the game world. 
      </details>
-     ![ActorAndComponent](https://github.com/user-attachments/assets/57035e66-b0be-4aaf-aef9-badb97aab06b)
+
+     ![ActorAndComponent](https://github.com/user-attachments/assets/f934ca7c-4772-4c00-8112-c756976eaccc)
   3. 
 
 
