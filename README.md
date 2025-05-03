@@ -168,21 +168,27 @@
 - 13, World Of the UE  
   1. UObject: Mother of the World, which is under the class.  
      ![UObject](https://github.com/user-attachments/assets/a1098c12-d867-475d-a3b7-8643eb6b0e7f)  
-  2. AActor: Are birth from UObject.  
+  2. AActor: Is birth from UObject.  
      Its Major functions: `Replication`, `Spawn`, `Tick`  
      Its Major types: `staticMeshActor`, `CameraActor`, `PlayerStarterActor`  
-     🤔 Why Doesn't Actor Have a Built-in Transform Like Unity's GameObject?  
-     
+     Think: Why Doesn't Actor Have a Built-in Transform Like Unity's GameObject?  
      <details>
        <summary>Click to reveal</summary>
-
       To make development easier, Unreal Engine provides convenient methods like GetActorLocation() and SetActorLocation(), which internally delegate to the RootComponent. In the same way, the ability of an Actor to receive and process input events is actually forwarded to the internal UInputComponent* InputComponent; facilitation is also provided to access it directly through the Actor. Why this design? Because UE follows a C++ philosophy: "Never pay for what you don't need." In Unreal’s view, an Actor isn’t just a visible or physical object in the 3D world. Some Actors are completely invisible and serve only to represent information or control logic—like AInfo and its derived classes (AWorldSettings, AGameMode, AGameSession, APlayerState, AGameState, etc.), as well as AHUD and APlayerCameraManager. These Actors embody various rules, states, and systems that govern the game world. 
      </details>
-
-     ![ActorAndComponent](https://github.com/user-attachments/assets/f934ca7c-4772-4c00-8112-c756976eaccc)
-  3. 
-
-
+  3. Component: Actor's skills\
+     ![ActorAndComponent](https://github.com/user-attachments/assets/f934ca7c-4772-4c00-8112-c756976eaccc)\
+     `TSet<UActorComponent*> OwnedComponents` holds all the Components owned by the Actor, usually one of which will be a SceneComponent as a RootComponent.\
+     `TArray<UActorComponent*> InstanceComponents` holds instantiated Components. What does instantiation mean is the Component that you define in the Details in Blueprint, and when the Actor is instantiated, these attached Components will also be instantiated.
+     For an Actor to be able to be placed in a Level, it must instantiate `USceneComponent* RootComponent`\
+     `SceneComponents` provide two major capabilities: Transforms and nesting SceneComponents\
+     ![Components](https://github.com/user-attachments/assets/4381032e-f880-4016-b757-4d21a487bcc5)\
+     Major Components: `UActorComponent`, `USceneComponent`, `UPrimitiveComponent`\
+     Think: Why can't ActorComponents nest within each other? And nesting is only available at the SceneComponent level?
+     <details>
+       <summary>Click to reveal</summary>
+      First, an Actor doesn't just have a single USceneComponent—it can also include components like UMovementComponent, AIComponent, and any custom components we design. Second, when it comes to implementing game logic, Unreal Engine generally advises against placing core logic directly in Components.
+     </details>
 
   
 # 1, Set Up Hero Character
