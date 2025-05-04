@@ -2842,12 +2842,17 @@ Then, create a new blueprint animation.
   2. Fill up the `Line Trace By Objects`
   ![Screenshot 2025-05-01 101828](https://github.com/user-attachments/assets/41b2370d-dc8f-4d81-9628-9f7b6666724c)
 - 4, Get Value At Level\
-  Purpose: Customize the rolling distance based on different hero levels.\
+  Purpose: Customize the rolling distance based on different hero levels.
   1. Enable the get level function, created in C++.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/0a3009ac93a4acc7a77abddff5f737683c73df37)\
   2. Create a new `Scalable Float` variable, using `Get ability level` to catch the required level and rebuild the blueprint.\
   ![Screenshot 2025-05-02 104330](https://github.com/user-attachments/assets/445e5a56-cc9a-4d25-98fb-19bd168ef955)
-- 5, 
+- 5, Hero Hit React Ability\
+  Purpose: enable the directional hit react\
+  1. Build the Hit React Ability Blueprint
+  ![Screenshot 2025-05-04 163035](https://github.com/user-attachments/assets/f1d016e9-8202-46a8-8cd6-f7e0b3caa810)\
+  2. Create the HitReact Montage, remember to change the slot name to `upbodyslot`.
+- 6, 
 
   
 
