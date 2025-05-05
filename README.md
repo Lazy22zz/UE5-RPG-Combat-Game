@@ -2861,7 +2861,16 @@ Then, create a new blueprint animation.
   3. Enable the DummyEnemy can attack, fix the behavior tree.\
   4. After the enemy's Melee attack, catch up the gameplay event tag from the enemy.\
   ![Screenshot 2025-05-04 170714](https://github.com/user-attachments/assets/638ea840-927c-4068-b7fc-9d5f099f6abe)
-- 7, 
+- 7, Hero Hit FX\
+  Purpose: enable the Hit react FX\
+  1. Add the ComputFX into the material, and get its child\
+  ![Screenshot 2025-05-04 183841](https://github.com/user-attachments/assets/f98ae94a-0fa9-4b74-8822-723d24b30701)
+  2. Fix the GA_HitReact
+  ![Screenshot 2025-05-04 185101](https://github.com/user-attachments/assets/05a77066-9853-4095-8eba-485c10dd586b)\
+  ![Screenshot 2025-05-04 185105](https://github.com/user-attachments/assets/51445a1a-c971-46b3-a299-adf8534684b0)
+- 8, 
+
+
 
 
 
