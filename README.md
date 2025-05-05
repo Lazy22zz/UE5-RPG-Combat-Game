@@ -2868,7 +2868,16 @@ Then, create a new blueprint animation.
   2. Fix the GA_HitReact
   ![Screenshot 2025-05-04 185101](https://github.com/user-attachments/assets/05a77066-9853-4095-8eba-485c10dd586b)\
   ![Screenshot 2025-05-04 185105](https://github.com/user-attachments/assets/51445a1a-c971-46b3-a299-adf8534684b0)
-- 8, 
+- 8, Compute Hit React Direction\
+  Purpose: using the cross product to find the hit direction. {In UE5, it uses the left-hand cross product. To simplify decision-making in code or animation blueprints, this sign is often converted to a standardized value:
+  If Z < 0: Set to -1 (indicating left).
+  If Z ≥ 0: Set to 1 (indicating right). }
+  1. Create a new C++ function to compute the hit direction.
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/d0511684802ebb13a4433bfed9735483e6293dd6)\
+  2. Pop up the compute hit react direction for debugging.
+  ![Screenshot 2025-05-04 192754](https://github.com/user-attachments/assets/4855402f-df1d-4184-b979-60875e3c2470)
+- 9, 
+
 
 
 
