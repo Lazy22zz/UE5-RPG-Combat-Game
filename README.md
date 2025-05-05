@@ -2852,7 +2852,19 @@ Then, create a new blueprint animation.
   1. Build the Hit React Ability Blueprint
   ![Screenshot 2025-05-04 163035](https://github.com/user-attachments/assets/f1d016e9-8202-46a8-8cd6-f7e0b3caa810)\
   2. Create the HitReact Montage, remember to change the slot name to `upbodyslot`.
-- 6, 
+- 6, Trigger Hero Hit React\
+  Purpose: enable this gameplayability to play montage and get gameplayevent from enemy melee attack.\
+  1. Fill up the GA_Hero_Hitreact.\
+  ![Screenshot 2025-05-04 170357](https://github.com/user-attachments/assets/7619005f-fb47-4bf8-9b33-f05d1bbab765)\
+  2. Enable the hero character to use this reactive gameplay ability in DA_Hero.\
+  ![Screenshot 2025-05-04 170455](https://github.com/user-attachments/assets/727e0fa6-641c-4508-928d-d4a15bc24a9b)\
+  3. Enable the DummyEnemy can attack, fix the behavior tree.\
+  4. After the enemy's Melee attack, catch up the gameplay event tag from the enemy.\
+  ![Screenshot 2025-05-04 170714](https://github.com/user-attachments/assets/638ea840-927c-4068-b7fc-9d5f099f6abe)
+- 7, 
+
+
+
 
   
 
