@@ -2858,7 +2858,7 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-05-04 170357](https://github.com/user-attachments/assets/7619005f-fb47-4bf8-9b33-f05d1bbab765)\
   2. Enable the hero character to use this reactive gameplay ability in DA_Hero.\
   ![Screenshot 2025-05-04 170455](https://github.com/user-attachments/assets/727e0fa6-641c-4508-928d-d4a15bc24a9b)\
-  3. Enable the DummyEnemy can attack, fix the behavior tree.\
+  3. Enable the DummyEnemy to attack, fix the behavior tree.\
   4. After the enemy's Melee attack, catch up the gameplay event tag from the enemy.\
   ![Screenshot 2025-05-04 170714](https://github.com/user-attachments/assets/638ea840-927c-4068-b7fc-9d5f099f6abe)
 - 7, Hero Hit FX\
@@ -2876,8 +2876,11 @@ Then, create a new blueprint animation.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/d0511684802ebb13a4433bfed9735483e6293dd6)\
   2. Pop up the compute hit react direction for debugging.
   ![Screenshot 2025-05-04 192754](https://github.com/user-attachments/assets/4855402f-df1d-4184-b979-60875e3c2470)
-- 9, 
-
+- 9, ⚠️ Hit React Tags\
+  Purpose: Hit from front [-45, 45]; Hit from right [45, 135]; Hit from back [ < -135 or > 135]; Hit from left [-135, -45].\
+  1. Add four direction tags and, based on different hit angles, return different sample tags.\
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/f8609f2cb1af9cd72f923b2242e41326c35ab2cf)
+- 10, 
 
 
 
