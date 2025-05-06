@@ -189,6 +189,72 @@
        <summary>Click to reveal</summary>
       First, an Actor doesn't just have a single USceneComponent—it can also include components like UMovementComponent, AIComponent, and any custom components we design. Second, when it comes to implementing game logic, Unreal Engine generally advises against placing core logic directly in Components.
      </details>
+  4. Level: In UE5, a Level is like a country—think of it as China, the USA, or Russia. It's an `AActor` derived from `UObject`, specifically represented by the `ALevelScriptActor`, which defines the rules for that level. Each level has its settings, such as gravity, game mode, and lighting, which are managed through its `WorldSettings`. Among all levels, the `Persistent Level` acts as the primary one, while the others are treated as Sublevels.  
+![ActorAndComponent](https://github.com/user-attachments/assets/87758371-e814-47bb-ab86-ffedb94798af)
+
+  <details>
+  <summary>▶️ View Code</summary>
+
+  ```c++
+  void ULevel::SortActorList()
+  {
+    if (Actors.Num() == 0)
+    {
+        // No need to sort an empty list
+        return;
+    }
+
+    TArray<AActor*> NewActors;
+    TArray<AActor*> NewNetActors;
+    NewActors.Reserve(Actors.Num());
+    NewNetActors.Reserve(Actors.Num());
+
+    check(WorldSettings);
+
+    // The WorldSettings tries to stay at index 0
+    NewActors.Add(WorldSettings);
+
+    // Add non-net actors to the NewActors immediately, cache off the net actors to Append after
+    for (AActor* Actor : Actors)
+    {
+        if (Actor != nullptr && Actor != WorldSettings && !Actor->IsPendingKill())
+        {
+            if (IsNetActor(Actor))
+            {
+                NewNetActors.Add(Actor);
+            }
+            else
+            {
+                NewActors.Add(Actor);
+            }
+        }
+    }
+
+    iFirstNetRelevantActor = NewActors.Num();
+    NewActors.Append(MoveTemp(NewNetActors));
+    Actors = MoveTemp(NewActors);
+
+    if (OwningWorld != nullptr)
+    {
+        if (!OwningWorld->IsGameWorld())
+        {
+            iFirstNetRelevantActor = 0;
+        }
+
+        for (int32 i = iFirstNetRelevantActor; i < Actors.Num(); i++)
+        {
+            if (Actors[i] != nullptr)
+            {
+                OwningWorld->AddNetworkActor(Actors[i]);
+            }
+        }
+    }
+  }
+  ```
+  <details>
+  5. World: The World in UE5 is like the Earth—it’s the container that holds all levels. A World must include a `Persistent Level`, which functions like the central authority, similar to the United Nations overseeing multiple countries (levels).
+  ![WorldAndLevel](https://github.com/user-attachments/assets/ef62a50e-c70b-426f-811b-2a640b6d3bfc)
+  6. 
 
   
 # 1, Set Up Hero Character
