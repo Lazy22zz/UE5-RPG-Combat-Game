@@ -251,9 +251,10 @@
     }
   }
   ```
-  <details>
+  </details>
   5. World: The World in UE5 is like the Earth—it’s the container that holds all levels. A World must include a `Persistent Level`, which functions like the central authority, similar to the United Nations overseeing multiple countries (levels).
-  ![WorldAndLevel](https://github.com/user-attachments/assets/ef62a50e-c70b-426f-811b-2a640b6d3bfc)
+  ![WorldAndLevel](https://github.com/user-attachments/assets/d94bbf72-702b-4f22-a403-d6811b70be33)
+
   6. 
 
   
