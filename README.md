@@ -2945,16 +2945,24 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-05-04 192754](https://github.com/user-attachments/assets/4855402f-df1d-4184-b979-60875e3c2470)
 - 9, ⚠️ Hit React Tags\
   Purpose: Hit from front (-45, 45); Hit from right (45, 135); Hit from back [ < -135 or > 135]; Hit from left (-135, -45).\
-  1. Add four direction tags and, based on different hit angles, return different sample tags.\
+  1. Add four direction tags and return different sample tags based on different hit angles.\
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/f8609f2cb1af9cd72f923b2242e41326c35ab2cf)
 - 10, ⚠️ Switch On Gameplay Tags + Fix the hit react animation issue\
-  Purpose: using blueprint `Switch On Gameplay Tags` to avoid animation issues when getting hit.\
+  Purpose: Use the blueprint `Switch On Gameplay Tags` to avoid animation issues when getting hit.\
   1. Add the `Switch On Gameplay Tags`.
   ![Screenshot 2025-05-05 182159](https://github.com/user-attachments/assets/f8e1a34f-a2aa-4c08-9161-0626d0fcd561)
   2. Fix the issue: we blend the upper body to locomotion; however, when the hostle is not moving, it should display full-body hit react animation.
   3. Using the `Blend pose by bool` and using the anim variable: acceleration to determine whether should display hit react fullbody or blend upperbody and fullbody.
   ![Screenshot 2025-05-05 183349](https://github.com/user-attachments/assets/9b1339c0-57b7-4603-b52e-54d7c9faa67a)
-- 11.
+- 11, ⚠️ Hero Block Ability\
+  Purpose: New Ability Access, Must Be Held, Loop Animation, Visual Cue, Block Logic\
+  1. Create necessary gameplaytags. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/2ff771d51ed2db883fce2c40c0de8e4912cbe1ca)
+  2. Create a new GA_Block.
+  3. Create a new IA_Block.
+  4. Add new Inputability in DA_InputConfig.
+  5. Attach this new Block InputAbility in BP_HeroAxe(Only be activatable when weapon eqquiped)
+  6. Link the Input Button in IMC_Weapon.
+- 12, 
 
 
 
