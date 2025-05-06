@@ -191,7 +191,6 @@
      </details>
   4. Level: In UE5, a Level is like a country—think of it as China, the USA, or Russia. It's an `AActor` derived from `UObject`, specifically represented by the `ALevelScriptActor`, which defines the rules for that level. Each level has its settings, such as gravity, game mode, and lighting, which are managed through its `WorldSettings`. Among all levels, the `Persistent Level` acts as the primary one, while the others are treated as Sublevels.  
 ![ActorAndComponent](https://github.com/user-attachments/assets/87758371-e814-47bb-ab86-ffedb94798af)
-
   <details>
   <summary>▶️ View Code</summary>
 
@@ -252,6 +251,7 @@
   }
   ```
   </details>
+  
   5. World: The World in UE5 is like the Earth—it’s the container that holds all levels. A World must include a `Persistent Level`, which functions like the central authority, similar to the United Nations overseeing multiple countries (levels).
   ![WorldAndLevel](https://github.com/user-attachments/assets/d94bbf72-702b-4f22-a403-d6811b70be33)
 
