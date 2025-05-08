@@ -2952,7 +2952,7 @@ Then, create a new blueprint animation.
   1. Add the `Switch On Gameplay Tags`.
   ![Screenshot 2025-05-05 182159](https://github.com/user-attachments/assets/f8e1a34f-a2aa-4c08-9161-0626d0fcd561)
   2. Fix the issue: we blend the upper body to locomotion; however, when the hostle is not moving, it should display full-body hit react animation.
-  3. Using the `Blend pose by bool` and using the anim variable: acceleration to determine whether should display hit react fullbody or blend upperbody and fullbody.
+  3. Using the `Blend pose by bool` and the anim variable: acceleration to determine whether to display hit react fullbody or blend upperbody and fullbody.
   ![Screenshot 2025-05-05 183349](https://github.com/user-attachments/assets/9b1339c0-57b7-4603-b52e-54d7c9faa67a)
 - 11, ⚠️ Hero Block Ability\
   Purpose: New Ability Access, Must Be Held, Loop Animation, Visual Cue, Block Logic\
@@ -2962,7 +2962,27 @@ Then, create a new blueprint animation.
   4. Add new Inputability in DA_InputConfig.
   5. Attach this new Block InputAbility in BP_HeroAxe(Only be activatable when weapon eqquiped)
   6. Link the Input Button in IMC_Weapon.
-- 12, 
+- 12, ⚠️Enable Block montage + Add GameplayCue
+  1. Create a block montage, change its slot name to upper, and pause it for looping.
+     ![Screenshot 2025-05-08 091611](https://github.com/user-attachments/assets/a2de4b7a-ad40-428a-8259-58838008b596)
+  2. Add block montage in gameplayability_block.
+      ![Screenshot 2025-05-08 091739](https://github.com/user-attachments/assets/6c79602c-c0dc-4eb0-bef6-2c1f770abc47)
+  3. In GA_HitReact, add cancelled abilities `Player.ability.block`.
+     ![Screenshot 2025-05-08 091859](https://github.com/user-attachments/assets/361ea96f-26ec-4575-b592-0b95085990e6)
+  4. Create a new GameplayCue_Actor for MagicShield, and manage its class settings.
+     ![Screenshot 2025-05-08 093202](https://github.com/user-attachments/assets/f7c50596-b834-4c67-9a16-e2df6bd2b7e8)
+  5. In GA_Block, using `Add GameplayCueWithParameter To Actor`.
+     ![Screenshot 2025-05-08 093619](https://github.com/user-attachments/assets/e778dd58-d39c-4490-9c9b-10da1ccdb09b)
+  6. In GC_MagicShield, compute two functions: while and on remove.{remeber to add the new socket in Skeleton}
+     ![Screenshot 2025-05-08 095309](https://github.com/user-attachments/assets/28d346b0-8aa6-484e-af84-3e41ce45ad2f)\
+     ![Screenshot 2025-05-08 095623](https://github.com/user-attachments/assets/20939364-16dd-43d9-bdb9-7ff6c21ab67e)
+  7. In the while, we use `Spawn System Attached`, `play sound at location` to add sound FX and visual FX. In Remove, we need to destroy the component.
+- 13, 
+
+
+
+
+
 
 
 
