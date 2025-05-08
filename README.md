@@ -2977,7 +2977,10 @@ Then, create a new blueprint animation.
      ![Screenshot 2025-05-08 095309](https://github.com/user-attachments/assets/28d346b0-8aa6-484e-af84-3e41ce45ad2f)\
      ![Screenshot 2025-05-08 095623](https://github.com/user-attachments/assets/20939364-16dd-43d9-bdb9-7ff6c21ab67e)
   7. In the while, we use `Spawn System Attached`, `play sound at location` to add sound FX and visual FX. In Remove, we need to destroy the component.
-- 13, 
+- 13, Is Valid Block
+  Purpose: Using dot product for attacker.forward vector, and player.forward vector, if near 0, then it is valid block.
+  1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/72cbad3fe0b7bfbf59f79ad326b9bc617dd7d114)
+- 14, 
 
 
 
