@@ -2999,9 +2999,16 @@ Then, create a new blueprint animation.
      ![Screenshot 2025-05-08 095623](https://github.com/user-attachments/assets/20939364-16dd-43d9-bdb9-7ff6c21ab67e)
   7. In the while, we use `Spawn System Attached`, `play sound at location` to add sound FX and visual FX. In Remove, we need to destroy the component.
 - 13, Is Valid Block
-  Purpose: Using dot product for attacker.forward vector, and player.forward vector, if near 0, then it is valid block.
+  Purpose: Using the dot product for the attacker.forward vector, and player. forward vector, if near 0, then it is a valid block.
   1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/72cbad3fe0b7bfbf59f79ad326b9bc617dd7d114)
-- 14, 
+- 14, Successful Block
+  Purpose: Notify and handle the successful block.
+  1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/e9399c4325ff3d4275c5761805e5cb5dceec567b)
+  2. In GA_Block, use `Set Actor Rotation`, `Apply Roost constant force`, and `Execute Gameplaycuewithparams on owner` to face the attacker, apply force back, and play sound/VFX on location.
+  ![Screenshot 2025-05-11 115206](https://github.com/user-attachments/assets/9a82bca6-5917-4103-a1e6-4651e4d2b850)
+  3. Create a new GC_Hero_Successful block.
+  ![Screenshot 2025-05-11 115216](https://github.com/user-attachments/assets/92018b39-61bb-455c-9f2c-1ed21a607b84)
+- 15,
 
 
 
