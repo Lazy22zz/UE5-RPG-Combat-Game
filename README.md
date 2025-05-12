@@ -3018,13 +3018,21 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-05-11 173721](https://github.com/user-attachments/assets/158f0f7d-f492-4dc6-afb8-43846af9cca4)
 - 17, Initiate Counter Attack
   Purpose: If a perfect block, then do Jump To finisher Attack.
-  1. In GS_Block, using a new event to detect short CD for the next finisher attack.
+  1. In GS_Block, a new event is used to detect a short CD for the next finisher attack.
   ![Screenshot 2025-05-11 183912](https://github.com/user-attachments/assets/0f501b58-3391-4e04-b99c-e5103939c109)\
   ![Screenshot 2025-05-11 183917](https://github.com/user-attachments/assets/f2184be9-fbb6-456d-ba0a-3d9f9716ce11)\
   ![Screenshot 2025-05-11 184227](https://github.com/user-attachments/assets/585a2252-18d9-433f-89a3-dd6891ce69c2)
   2. In GS_LightAttackMaster, if perfect block is enabled, then use the combo length to set the combo count.
   ![Screenshot 2025-05-11 183926](https://github.com/user-attachments/assets/d4fc04b2-7bcb-4e94-93a8-239a9afa7560)
-- 18, 
+- 18, Target Lock 
+  Purpose: To enable this function, we need to have toggleable ability, get available targets, draw/update the target lock widget, switch animation pose, and switch target.
+  1. Create a new child WarriorGameplayAbility_Lock based on WarriorHeroGameplayAbility.
+  2. Add GameplayTags based on the new gameplayability TargetLock.
+  3. Create a new GA_Hero_TargetLock based on this new c++.
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/74023193889b1b7d3d2db2adc8d42d911b6b911b)\
+  ![Screenshot 2025-05-12 094355](https://github.com/user-attachments/assets/4552b043-7d76-4b0d-9cac-7ee6335c8c8c)
+- 19, 
+
 
 
 
