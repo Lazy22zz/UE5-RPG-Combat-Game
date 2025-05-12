@@ -3031,7 +3031,11 @@ Then, create a new blueprint animation.
   3. Create a new GA_Hero_TargetLock based on this new c++.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/74023193889b1b7d3d2db2adc8d42d911b6b911b)\
   ![Screenshot 2025-05-12 094355](https://github.com/user-attachments/assets/4552b043-7d76-4b0d-9cac-7ee6335c8c8c)
-- 19, 
+- 19, Target Lock
+  1. Enable the InputTag_Toggleable.
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c299a8ac7c63919db21473394e3fa08e942ced88)
+  2. new IA_TargetLock, bind the new GameplayAbility in weapon_axe, put Input_TargetLock in DA_InputConfig, bind button in IMC_Axe.
+- 20, 
 
 
 
