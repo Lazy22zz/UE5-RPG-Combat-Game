@@ -3012,7 +3012,12 @@ Then, create a new blueprint animation.
   Purpose: using the comparison between the block start time and required check time to decide the perfect block.
   ![Screenshot 2025-05-11 165347](https://github.com/user-attachments/assets/d7ea968b-2d48-4c01-b2fa-9e086355a06f)\
   ![Screenshot 2025-05-11 165340](https://github.com/user-attachments/assets/ece08ddb-fd82-4403-a376-69f4b9f3aeb1)
-- 16, 
+- 16, Notify Perfect Block
+  Purpose: Add a VFX to show a special VFX to notify the player who did a perfect block.
+  ![Screenshot 2025-05-11 173648](https://github.com/user-attachments/assets/a99f7566-9e5d-4555-9749-608578bcd0a0)\
+  ![Screenshot 2025-05-11 173721](https://github.com/user-attachments/assets/158f0f7d-f492-4dc6-afb8-43846af9cca4)
+- 17, 
+
 
 
 
