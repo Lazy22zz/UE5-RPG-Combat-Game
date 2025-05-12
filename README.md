@@ -3016,7 +3016,18 @@ Then, create a new blueprint animation.
   Purpose: Add a VFX to show a special VFX to notify the player who did a perfect block.
   ![Screenshot 2025-05-11 173648](https://github.com/user-attachments/assets/a99f7566-9e5d-4555-9749-608578bcd0a0)\
   ![Screenshot 2025-05-11 173721](https://github.com/user-attachments/assets/158f0f7d-f492-4dc6-afb8-43846af9cca4)
-- 17, 
+- 17, Initiate Counter Attack
+  Purpose: If a perfect block, then do Jump To finisher Attack.
+  1. In GS_Block, using a new event to detect short CD for the next finisher attack.
+  ![Screenshot 2025-05-11 183912](https://github.com/user-attachments/assets/0f501b58-3391-4e04-b99c-e5103939c109)\
+  ![Screenshot 2025-05-11 183917](https://github.com/user-attachments/assets/f2184be9-fbb6-456d-ba0a-3d9f9716ce11)\
+  ![Screenshot 2025-05-11 184227](https://github.com/user-attachments/assets/585a2252-18d9-433f-89a3-dd6891ce69c2)
+  2. In GS_LightAttackMaster, if perfect block is enabled, then use the combo length to set the combo count.
+  ![Screenshot 2025-05-11 183926](https://github.com/user-attachments/assets/d4fc04b2-7bcb-4e94-93a8-239a9afa7560)
+- 18, 
+
+
+
 
 
 
