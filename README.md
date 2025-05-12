@@ -3008,7 +3008,13 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-05-11 115206](https://github.com/user-attachments/assets/9a82bca6-5917-4103-a1e6-4651e4d2b850)
   3. Create a new GC_Hero_Successful block.
   ![Screenshot 2025-05-11 115216](https://github.com/user-attachments/assets/92018b39-61bb-455c-9f2c-1ed21a607b84)
-- 15,
+- 15, Is Perfect Block
+  Purpose: using the comparison between the block start time and required check time to decide the perfect block.
+  ![Screenshot 2025-05-11 165347](https://github.com/user-attachments/assets/d7ea968b-2d48-4c01-b2fa-9e086355a06f)\
+  ![Screenshot 2025-05-11 165340](https://github.com/user-attachments/assets/ece08ddb-fd82-4403-a376-69f4b9f3aeb1)
+- 16, 
+
+
 
 
 
