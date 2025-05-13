@@ -3063,15 +3063,15 @@ Then, create a new blueprint animation.
   1. Create a new WDG_TargetLock.
   2. Using template `Createwidget`, `UUserWidget::AddToViewport()`, `UWidget::RemoveFromParent()`
      <details>
-  <summary> View Code</summary>
+     <summary> View Code</summary>
 	     
-     ```c++
-	template <typename WidgetT = UUserWidget, typename OwnerType = UObject>
-  	WidgetT* CreateWidget(OwnerType OwningObject, TSubclassOf<UUserWidget> UserWidgetClass = WidgetT::StaticClass(), FName WidgetName = NAME_None)     
-     ```
+       ```c++
+	 template <typename WidgetT = UUserWidget, typename OwnerType = UObject>
+  	 WidgetT* CreateWidget(OwnerType OwningObject, TSubclassOf<UUserWidget> UserWidgetClass = WidgetT::StaticClass(), FName WidgetName = NAME_None)     
+       ```
      </details>
      
-     [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/7ae2bcfe8e76ad589d11ce33ab2dff7edbf9e694)\
+     [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/7ae2bcfe8e76ad589d11ce33ab2dff7edbf9e694)
      
 
 - 23,
