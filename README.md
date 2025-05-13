@@ -3029,7 +3029,36 @@ Then, create a new blueprint animation.
   1. Enable the InputTag_Toggleable.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c299a8ac7c63919db21473394e3fa08e942ced88)
   2. new IA_TargetLock, bind the new GameplayAbility in weapon_axe, put Input_TargetLock in DA_InputConfig, bind button in IMC_Axe.
-- 20, 
+- 20, ⚠️ Get Avaliable Targets
+  Purpose: Using `BoxTraceMultiForObjects` to detect In box pawns.
+  <details>
+  <summary> View Code</summary>
+
+  ```c++
+  UFUNCTION(BlueprintCallable, Category = "Collision", meta = (bIgnoreSelf = "true", WorldContext="WorldContextObject", AutoCreateRefTerm = "ActorsToIgnore", DisplayName = "Multi Box Trace For Objects", AdvancedDisplay="TraceColor,TraceHitColor,DrawTime", Keywords="sweep"))
+  static ENGINE_API bool BoxTraceMultiForObjects(const UObject* WorldContextObject, const FVector Start, const FVector End, const FVector HalfSize, const FRotator Orientation, const TArray<TEnumAsByte<EObjectTypeQuery> > & ObjectTypes, bool bTraceComplex, const TArray<AActor*>& ActorsToIgnore, EDrawDebugTrace::Type DrawDebugType, TArray<FHitResult>& OutHits, bool bIgnoreSelf, FLinearColor TraceColor = FLinearColor::Red, FLinearColor TraceHitColor = FLinearColor::Green, float DrawTime = 5.0f);
+
+  /**
+   * Sweeps a capsule along the given line and returns the first hit encountered.
+   * This only finds objects that are of a type specified by ObjectTypes.
+   * 
+   * @param WorldContext	World context
+   * @param Start			Start of line segment.
+   * @param End			End of line segment.
+   * @param Radius		Radius of the capsule to sweep
+   * @param HalfHeight	Distance from center of capsule to tip of hemisphere endcap.
+   * @param ObjectTypes	Array of Object Types to trace 
+   * @param bTraceComplex	True to test against complex collision, false to test against simplified collision.
+   * @param OutHit		Properties of the trace hit.
+   * @return				True if there was a hit, false otherwise.
+   */
+  ```
+  </details>
+  
+  1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/4b0a1131f485b2f8b9c4ac85ffabcef7ef83ddb5)
+  2. ![Screenshot 2025-05-13 092802](https://github.com/user-attachments/assets/2b571fab-0183-41f1-9530-31cd71beb5f7)
+- 21, 
+
 
 
 
