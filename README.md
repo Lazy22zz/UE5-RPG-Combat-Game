@@ -257,36 +257,20 @@
 
   6. WorldContext: Identifies the Active World: Facilitates Access to World-Specific Systems(gamemode, gamestate, level, actors); Supports Multi-World Scenarios(Persistence level, sublevel); Enables Blueprint Functionality(Get Actor of Class, Spawn Actor from Class, or Get Game Mode).\
   ![WorldContextAndWorld](https://github.com/user-attachments/assets/0f33b91f-aae0-408c-8acf-04157e644a87)
-    <details>
-    <summary> View Code</summary>
-
-    ```c++
-    namespace EWorldType
-  {
-	enum Type
-	{
-		None,		// An untyped world, in most cases this will be the vestigial worlds of streamed in sub-levels
-		Game,		// The game world
-		Editor,		// A world being edited in the editor
-		PIE,		// A Play In Editor world
-		Preview,	// A preview world for an editor tool
-		Inactive	// An editor world that was loaded but not currently being edited in the level editor
-	};
-  }
-
-    ```
-    </details>
-    7. GameInstance: holds the current WorldContext and other information about the entire game.\
+  8. GameInstance: holds the current WorldContext and other information about the entire game.\
     ![GameInstance](https://github.com/user-attachments/assets/318ab8e3-6d18-4d78-84c5-e50625057a09)
-    8. Engine: `UGameEngine` and `UEditorEngine`. UE's editor is a game! We are creating another game of our own inside the game that is the editor!
+  9. Engine: `UGameEngine` and `UEditorEngine`. UE's editor is a game! We are creating another game of our own inside the game that is the editor!
      In different modes, UE selects a specific Engine class based on the build environment, and the base class UEngine stores all Worlds through a WorldList; in `Standalone Game mode`, UGameEngine creates the only GameWorld and directly stores the GameInstance pointer, whereas in the editor, the `EditorWorld` is used only for preview and does not have an OwningGameInstance — only the PlayWorld indirectly holds the GameInstance. 
-    9. GamePlayStatics: UE provides a series of static functions in Blueprints through the UGameplayStatics class (such as GetPlayerController, SpawnActor, OpenLevel, etc.), making it convenient for developers to control levels and the world without directly dealing with low-level C++. It serves as an important entry point for accessing engine functionalities in Blueprints. 
-    10. Summary: UEngine\
+  10. GamePlayStatics: UE provides a series of static functions in Blueprints through the UGameplayStatics class (such as GetPlayerController, SpawnActor, OpenLevel, etc.), making it convenient for developers to control levels and the world without directly dealing with low-level C++. It serves as an important entry point for accessing engine functionalities in Blueprints. 
+  11. Summary: UEngine\
      └── UGameInstance\
        └── UWorld\
           └── ULevel\
             └── AActor\
                 └── UComponent  
+  
+
+    
 
   
 # 1, Set Up Hero Character
