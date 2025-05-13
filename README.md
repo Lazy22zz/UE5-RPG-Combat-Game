@@ -255,7 +255,7 @@
   5. World: The World in UE5 is like the Earth—it’s the container that holds all levels. A World must include a `Persistent Level`, which functions like the central authority, similar to the United Nations overseeing multiple countries (levels).
   ![WorldAndLevel](https://github.com/user-attachments/assets/d94bbf72-702b-4f22-a403-d6811b70be33)
 
-  6. WorldContext: Identifies the Active World: Facilitates Access to World-Specific Systems(gamemode, gamestate, level, actors); Supports Multi-World Scenarios(Persistence level, sublevel); Enables Blueprint Functionality(Get Actor of Class, Spawn Actor from Class, or Get Game Mode).
+  6. WorldContext: Identifies the Active World: Facilitates Access to World-Specific Systems(gamemode, gamestate, level, actors); Supports Multi-World Scenarios(Persistence level, sublevel); Enables Blueprint Functionality(Get Actor of Class, Spawn Actor from Class, or Get Game Mode).\
   ![WorldContextAndWorld](https://github.com/user-attachments/assets/0f33b91f-aae0-408c-8acf-04157e644a87)
     <details>
     <summary> View Code</summary>
