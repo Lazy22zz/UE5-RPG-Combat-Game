@@ -3030,7 +3030,7 @@ Then, create a new blueprint animation.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c299a8ac7c63919db21473394e3fa08e942ced88)
   2. new IA_TargetLock, bind the new GameplayAbility in weapon_axe, put Input_TargetLock in DA_InputConfig, bind button in IMC_Axe.
 - 20, ⚠️ Get Avaliable Targets
-  Purpose: Using `BoxTraceMultiForObjects` to detect In box pawns.
+  Purpose: Using `BoxTraceMultiForObjects` to detect in-box pawns.
   <details>
   <summary> View Code</summary>
 
@@ -3059,7 +3059,22 @@ Then, create a new blueprint animation.
   2. ![Screenshot 2025-05-13 092802](https://github.com/user-attachments/assets/2b571fab-0183-41f1-9530-31cd71beb5f7)
 - 21, ⚠️ Get Nearest Target
   1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/8d29b9962f31fd6483020662420b76a4ccb45eb3)
-- 22, 
+- 22, ⚠️ Draw Target Lock Widget And Play it
+  1. Create a new WDG_TargetLock.
+  2. Using template `Createwidget`, `UUserWidget::AddToViewport()`, `UWidget::RemoveFromParent()`
+     <details>
+  <summary> View Code</summary>
+	     
+     ```c++
+	template <typename WidgetT = UUserWidget, typename OwnerType = UObject>
+  	WidgetT* CreateWidget(OwnerType OwningObject, TSubclassOf<UUserWidget> UserWidgetClass = WidgetT::StaticClass(), FName WidgetName = NAME_None)     
+     ```
+     </details>
+     
+     [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/7ae2bcfe8e76ad589d11ce33ab2dff7edbf9e694)\
+     
+
+- 23,
 
 
 
