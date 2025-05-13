@@ -3057,8 +3057,9 @@ Then, create a new blueprint animation.
   
   1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/4b0a1131f485b2f8b9c4ac85ffabcef7ef83ddb5)
   2. ![Screenshot 2025-05-13 092802](https://github.com/user-attachments/assets/2b571fab-0183-41f1-9530-31cd71beb5f7)
-- 21, 
-
+- 21, ⚠️ Get Nearest Target
+  1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/8d29b9962f31fd6483020662420b76a4ccb45eb3)
+- 22, 
 
 
 
