@@ -158,12 +158,12 @@
   Pre-Construct → Runs before the widget is fully created and can be previewed in the editor.\
   Construct → Runs after the widget is created and is used for regular initialization at runtime.
 
-- 12, New Ability Process:\
-  1. Create Ability Tags.\
-  2. Create Ability Blueprint.\
-  3. Anim Montage.\
-  4. Ability Input Action.\
-  5. Grant Ability.\
+- 12, New Ability Process:
+  1. Create Ability Tags.
+  2. Create Ability Blueprint.
+  3. Anim Montage.
+  4. Ability Input Action.
+  5. Grant Ability.
 
 - 13, World Of the UE  
   1. UObject: Mother of the World, which is under the class.  
@@ -192,7 +192,7 @@
   4. Level: In UE5, a Level is like a country—think of it as China, the USA, or Russia. It's an `AActor` derived from `UObject`, specifically represented by the `ALevelScriptActor`, which defines the rules for that level. Each level has its settings, such as gravity, game mode, and lighting, which are managed through its `WorldSettings`. Among all levels, the `Persistent Level` acts as the primary one, while the others are treated as Sublevels.  
 ![ActorAndComponent](https://github.com/user-attachments/assets/87758371-e814-47bb-ab86-ffedb94798af)
   <details>
-  <summary>▶️ View Code</summary>
+  <summary> View Code</summary>
 
   ```c++
   void ULevel::SortActorList()
