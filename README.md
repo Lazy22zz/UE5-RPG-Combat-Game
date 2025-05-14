@@ -3114,7 +3114,11 @@ Then, create a new blueprint animation.
        ```
      </details>
      
-  - 24, 
+- 24, ⚠️⚠️⚠️Execute Ability Task On Tick
+  Purpose: In GA_TargetLock, there is no blueprint node for the tick function. We need to create a new ability task node that includes ticks.
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/f0d28376ab6bf9617415c0cf8a4914a60d350cef)\
+
+- 25, 
      
 
 
