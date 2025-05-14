@@ -5,19 +5,21 @@
 
 - [UE5-RPG-Combat-Game (Using GAS, Gameplay Ability System)](#ue5-rpg-combat-game-using-gas-gameplay-ability-system)
 - [EXTRA](#extra)
-  - [1. Hard Reference](#1-hard-reference)
-  - [2. Soft Reference](#2-soft-reference)
-  - [3. Conclusion](#3-conclusion)
-  - [4. TObjectPtr](#4-tobjectptr)
-  - [5. TSubclassof](#5-tsubclassof)
-  - [6. Synchronous and Asynchronous Loading](#6-synchronous-and-asynchronous-loading)
-  - [7. Basic GameplayEffectHandle Code](#7-basic-gameplayeffecthandle-code)
-  - [8. Automatic Storage, Static Storage, Dynamic Storage](#8-automatic-storage-static-storage-dynamic-storage)
-  - [9. dynamic_cast, shared_ptr, weak_ptr, unique_ptr](#9-dynamic_cast-shared_ptr-weak_ptr-unique_ptr)
-  - [10. checkf()](#10-checkf)
-  - [11. Pre-construction and Construction](#11-pre-construction-and-construction)
-  - [12. New Ability Process](#12-new-ability-process)
-  - [13. World Of the UE](#13-World-Of-the-UE)
+  - [1, Hard Reference](#1-hard-reference)
+  - [2, Soft Reference](#2-soft-reference)
+  - [3, Conclusion](#3-conclusion)
+  - [4, TObjectPtr](#4-tobjectptr)
+  - [5, TSubclassof](#5-tsubclassof)
+  - [6, Synchronous and Asynchronous Loading](#6-synchronous-and-asynchronous-loading)
+  - [7, Basic GameplayEffectHandle Code](#7-basic-gameplayeffecthandle-code)
+  - [8, Automatic Storage, Static Storage, Dynamic Storage](#8-automatic-storage-static-storage-dynamic-storage)
+  - [9, dynamic_cast, shared_ptr, weak_ptr, unique_ptr](#9-dynamic_cast-shared_ptr-weak_ptr-unique_ptr)
+  - [10, checkf()](#10-checkf)
+  - [11, Pre-construction and Construction](#11-pre-construction-and-construction)
+  - [12, New Ability Process](#12-new-ability-process)
+  - [13, World Of the UE](#13-World-Of-the-UE)
+  - [14, Lamda Function](#14-Lamda-Function)
+  - [15, Gameplay Ability System](#15-Gameplay-Ability-System)
 - [1. Set Up Hero Character](#1-set-up-hero-character)
 - [2. Combo System](#2-combo-system)
 - [3. Hero Combat](#3-hero-combat)
@@ -267,11 +269,127 @@
        └── UWorld\
           └── ULevel\
             └── AActor\
-                └── UComponent  
-  
+                └── UComponent
+      
+- 14, Lamda Function.\
+  Basic Logic:
+  ```c++
+  [capture-clause](parameters) -> return_type { function_body }
+  ```
+  Example:
+  ```c++
+  int x = 10;
+  auto incrementX = [&x]() { x++; };
+  incrementX();  // x is now 11
+  ```
+- 15, Gameplay Ability System.\
+  A Sample of Creating the Ability Task Node in C++.\
+  .h file,
+  <details>
+  <summary> View Code</summary>
+	  
+  ```c++
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FMyCustomTaskCompletedDelegate);
 
+	UCLASS()
+	class YOURGAME_API UAbilityTask_MyCustomTask : public UAbilityTask
+	{
+    	GENERATED_BODY()
+
+	public:
+    	// Constructor
+    	UAbilityTask_MyCustomTask(const FObjectInitializer& ObjectInitializer);
+
+    	// Blueprint accessible function to create the task
+   	 UFUNCTION(BlueprintCallable, Category = "Ability|Tasks", meta = (HidePin = "OwningAbility", DefaultToSelf = "OwningAbility", BlueprintInternalUseOnly = "TRUE"))
+   	 static UAbilityTask_MyCustomTask* CreateMyCustomTask(UGameplayAbility* OwningAbility, FName TaskInstanceName, float Duration);
+
+    	// Called to activate the task
+    	virtual void Activate() override;
+
+    	// Called when the task is ended or canceled
+    	virtual void OnDestroy(bool bInOwnerFinished) override;
+
+    	// Delegate that will be called when the task completes
+    	UPROPERTY(BlueprintAssignable)
+   	 FMyCustomTaskCompletedDelegate OnCompleted;
+
+	protected:
+    	// Parameters for our task
+    	float TaskDuration;
     
+    	// Internal timer handle
+    	FTimerHandle TimerHandle;
+    
+   	 // Timer callback
+    	void OnTimerCompleted();
+	};  
+  ```
+  </details>
 
+  .cpp file,
+  <details>
+  <summary> View Code</summary>
+	  
+  ```c++
+	UAbilityTask_MyCustomTask::UAbilityTask_MyCustomTask(const FObjectInitializer& ObjectInitializer)
+    : Super(ObjectInitializer), TaskDuration(1.0f)
+	{
+    		// Initialize any properties here
+	}
+
+	UAbilityTask_MyCustomTask* UAbilityTask_MyCustomTask::CreateMyCustomTask(UGameplayAbility* OwningAbility, FName TaskInstanceName, float Duration)
+	{
+   	 UAbilityTask_MyCustomTask* MyObj = NewAbilityTask<UAbilityTask_MyCustomTask>(OwningAbility, TaskInstanceName);
+   	 MyObj->TaskDuration = Duration;
+	    return MyObj;
+	}
+
+	void UAbilityTask_MyCustomTask::Activate()
+	{
+   	 // Call Super::Activate() first as it validates the ability is still active
+   	 Super::Activate();
+
+    	// Make sure we have a valid world
+   	 if (GetWorld())
+    	{
+       	 // Set up a timer to complete the task after the specified duration
+       	 GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &UAbilityTask_MyCustomTask::OnTimerCompleted, TaskDuration, false);
+    	}
+   	 else
+   	 {
+      	  // If we don't have a valid world, end the task immediately
+       	 EndTask();
+   	 }
+	}
+
+	void UAbilityTask_MyCustomTask::OnDestroy(bool bInOwnerFinished)
+	{
+   	 // Clean up any timers or resources
+  	  if (GetWorld())
+   	 {
+   	     GetWorld()->GetTimerManager().ClearTimer(TimerHandle);
+  	  }
+	
+   	 Super::OnDestroy(bInOwnerFinished);
+	}
+
+	void UAbilityTask_MyCustomTask::OnTimerCompleted()
+	{
+   	 // Broadcast our completion delegate
+   	 if (ShouldBroadcastAbilityTaskDelegates())
+   	 {
+   	     OnCompleted.Broadcast();
+   	 }
+    
+   	 // End the task
+   	 EndTask();
+	}
+  ```
+  </details>
+
+- 16, 
+  
   
 # 1, Set Up Hero Character
 - 1, Base Class Structure \
