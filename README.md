@@ -3072,9 +3072,51 @@ Then, create a new blueprint animation.
      </details>
      
      [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/7ae2bcfe8e76ad589d11ce33ab2dff7edbf9e694)
+- 23, ⚠️⚠️Set Target Widget By Position
+  Purpose: 1, using `ProjectWorldLocationToWidgetPosition` to convert 3d to 2d; 2, using `DrawnTargetLockWidget->WidgetTree->ForEachWidget(Lamda function)` to capture the sizebox's size.
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/bd5df4199b36b996ffd810a697b7050b32bbd461)
+  <details>
+     <summary> View Code</summary>
+	     
+       ```c++
+	  bool UWidgetLayoutLibrary::ProjectWorldLocationToWidgetPosition(APlayerController* PlayerController, FVector WorldLocation, FVector2D& ViewportPosition, bool bPlayerViewportRelative)
+      {
+	  FVector ScreenPosition3D;
+	  const bool bSuccess = ProjectWorldLocationToWidgetPositionWithDistance(PlayerController, WorldLocation, ScreenPosition3D, bPlayerViewportRelative);
+	  ViewportPosition = FVector2D(ScreenPosition3D.X, ScreenPosition3D.Y);
+	  return bSuccess;
+      }
+
+      bool UWidgetLayoutLibrary::ProjectWorldLocationToWidgetPositionWithDistance(APlayerController* PlayerController, FVector WorldLocation, FVector& ViewportPosition, bool bPlayerViewportRelative)
+      {	
+	  if ( PlayerController )
+	  {
+		FVector PixelLocation;
+		const bool bProjected = PlayerController->ProjectWorldLocationToScreenWithDistance(WorldLocation, PixelLocation, bPlayerViewportRelative);
+
+		if ( bProjected )
+		{
+			// Round the pixel projected value to reduce jittering due to layout rounding,
+			// I do this before I remove scaling, because scaling is going to be applied later
+			// in the opposite direction, so as long as we round, before inverse scale, scale should
+			// result in more or less the same value, especially after slate does layout rounding.
+			FVector2D ScreenPosition(FMath::RoundToInt(PixelLocation.X), FMath::RoundToInt(PixelLocation.Y));
+
+			FVector2D ViewportPosition2D;
+			USlateBlueprintLibrary::ScreenToViewport(PlayerController, ScreenPosition, ViewportPosition2D);
+			ViewportPosition.X = ViewportPosition2D.X;
+			ViewportPosition.Y = ViewportPosition2D.Y;
+			ViewportPosition.Z = PixelLocation.Z;
+
+			return true;
+		}
+	  }   
+       ```
+     </details>
+     
+  - 24, 
      
 
-- 23,
 
 
 
