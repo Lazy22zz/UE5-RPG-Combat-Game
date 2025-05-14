@@ -27,7 +27,7 @@
 - [5. Hero Combat Ability](#5-hero-combat-ability)
 
 # EXTRA
-## 1, hard reference :\
+## 1, hard reference
   A hard reference is a direct pointer to another object or asset. When object A hard-references object B, both objects are loaded into memory together. \
   pros:\
   Simplicity: Easier to work with since everything is loaded and accessible.\
@@ -42,7 +42,7 @@
   UPROPERTY()
   UStaticMesh* HardMesh;
   ```
-## 2, soft reference: \
+## 2, soft reference
   A soft reference is an indirect pointer (via a TSoftObjectPtr or TSoftClassPtr) to another object or asset. It doesn't load the referenced object into memory until explicitly requested. \
   pros:\
   Reduced Memory Footprint: Assets are only loaded into memory when required, helping to optimize memory usage. \
@@ -68,23 +68,23 @@
       SoftMesh.ToSoftObjectPath().TryLoad();
   }
   ```
-## 3, conclusion: \
+## 3, conclusion
   ![Screenshot 2025-01-07 100832](https://github.com/user-attachments/assets/4895bb3b-7242-45c5-a380-8f636d9ba03f)
-## 4, TObjectPtr: \
+## 4, TObjectPtr
   "T" in UE5 means the Type, such as TArray, TMap; \
   TObjectPtr is *hard* reference in UObject pointer; \
   ![Screenshot 2025-01-07 103243](https://github.com/user-attachments/assets/03a5a1ba-d070-4fa8-b3f8-6c3645a17bc0)
-## 5, TSubclassof\
+## 5, TSubclassof
   Wrap up the required class type\
   Example:
   ```c++
   TArray< TSubclassOf < UWarriorGameplayAbility > > ActivateOnGivenAbilities;	
   ```
   We wrap up any types under `UWarriorGameplayAbility` that satisfy the requirements of `TArray<UClass *>`
-## 6, Synchronous and  Asynchronous loading\
+## 6, Synchronous and  Asynchronous loading
   In Unreal Engine C++, synchronous loading uses `LoadObject()` to load assets immediately, ensuring they are available before gameplay starts, while asynchronous loading uses `FStreamableManager::RequestAsyncLoad()` to load assets in the background without 
   blocking the main thread. Synchronous loading is ideal for critical assets like the player's character, ensuring smooth startup. In contrast, asynchronous loading is best for non-critical assets like enemies, optimizing performance and reducing initial load times.\
-## 7, Basic GameplayEffectHandle code:
+## 7, Basic GameplayEffectHandle code
   ```c++
   // Create context
   FGameplayEffectContextHandle ContextHandle = AbilitySystemComponent->MakeEffectContext();
@@ -107,7 +107,7 @@
   // Then, eventually, you apply the effect
   AbilitySystemComponent->ApplyGameplayEffectSpecToTarget(EffectSpecHandle, TargetASC);
   ```
-## 8, Automatic Storage, Static Storage,  Dynamic Storage:\
+## 8, Automatic Storage, Static Storage,  Dynamic Storage
   Automatic storage: variables defined inside a function use `automatic storage`, which means the variables exist automatically when the function containing them is invoked and expire when the function is terminated\
   Static Storage: exists throughout the execution of an entire program. Two ways to make a variable static: 1, define it externally, outside a function; 2, use the keyword `static` when declaring a variable\
   Dynamic Storage: Do dynamic data work.\
@@ -119,7 +119,7 @@
   |      Stack       |  (Grows downwards with function calls)  \
   +-------------------+  <- Low memory address  \
 
-## 9, `dynamic_cast`, `shared_ptr`, `weak_ptr`, `unique_ptr`:\
+## 9, `dynamic_cast`, `shared_ptr`, `weak_ptr`, `unique_ptr`
   ✅ Use dynamic_cast only to check and convert polymorphic types at runtime safely.\
   ✅ Use shared_ptr when you need multiple pointers for the same object.\
   ```
@@ -149,18 +149,18 @@
   // std::unique_ptr<int> ptr2 = ptr; // ❌ compile error
   std::unique_ptr<int> ptr2 = std::move(ptr); // ✅ ownership transferred
   ```
-## 9.1, memory leak, smart pointer\
+## 9.1, memory leak, smart pointer
   📦 Memory leak: When a program allocates memory but fails to release it, even though it’s no longer needed. \
   📦 Smart Pointer: using RAII (Resource Acquisition Is Initialization). That means memory is automatically released when the pointer goes out of scope.[You can think it has built-in new, delete functions in the references.]\
   
-## 10, `checkf()`\
+## 10, `checkf()`
   Purpose: The game crashes and generates a report when it is false.\
   
-## 11, pre-construction and construction :\
+## 11, pre-construction and construction 
   Pre-Construct → Runs before the widget is fully created and can be previewed in the editor.\
   Construct → Runs after the widget is created and is used for regular initialization at runtime.
 
-## 12, New Ability Process:
+## 12, New Ability Process
   1. Create Ability Tags.
   2. Create Ability Blueprint.
   3. Anim Montage.
