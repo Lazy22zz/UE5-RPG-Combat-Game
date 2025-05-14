@@ -3241,6 +3241,7 @@ Then, create a new blueprint animation.
 - 25, ⚠️⚠️⚠️ On Target Lock Tick
   Purpose: In 24, we have enabled a new ability node for getting each tick per frame. And here we need to update each frame, the target lock is targeting the closest one.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/2f387b1c5f7419607d0549e88015a36c032b85c1)
+  ![Screenshot 2025-05-14 163252](https://github.com/user-attachments/assets/615d33c2-6b0a-4d75-bc50-6c762a0a36cd)
 
 - 26, 
 
