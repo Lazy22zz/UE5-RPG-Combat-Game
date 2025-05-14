@@ -3236,10 +3236,13 @@ Then, create a new blueprint animation.
      
 - 24, ⚠️⚠️⚠️Execute Ability Task On Tick
   Purpose: In GA_TargetLock, there is no blueprint node for the tick function. We need to create a new ability task node that includes ticks.
-  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/f0d28376ab6bf9617415c0cf8a4914a60d350cef)\
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/f0d28376ab6bf9617415c0cf8a4914a60d350cef)
 
-- 25, 
-     
+- 25, ⚠️⚠️⚠️ On Target Lock Tick
+  Purpose: In 24, we have enabled a new ability node for getting each tick per frame. And here we need to update each frame, the target lock is targeting the closest one.
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/2f387b1c5f7419607d0549e88015a36c032b85c1)
+
+- 26, 
 
 
 
