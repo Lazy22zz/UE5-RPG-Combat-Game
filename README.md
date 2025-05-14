@@ -388,6 +388,8 @@
   ```
   </details>
 
+  Go To chapter5.24, Execute Ability Task On Tick, it has an example.
+
 - 16, 
   
   
