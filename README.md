@@ -3247,7 +3247,14 @@ Then, create a new blueprint animation.
   Purpose: 1, In cleanup, initialize the `DrawnTargetLockWidget` and `TargetLockWidgetS`; 2, When doing the orienting, stop auto orienting if the hero is doing some specific actions, and force the player controller,
   	      actor rotation to face the enemy using `FMath::RInterpTo( const FRotator& Current, const FRotator& Target, float DeltaTime, float InterpSpeed)`
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c0dd15336507156ed8e82ba867e99d27f9666afb)
-- 27, 
+  
+- 27, SWitch To Target Pose
+  Purpose: Create a new blend space for Directional Locomotion TargetLock. (If I forget how to do animation creation, go back to chapter 1)
+  1. ![Screenshot 2025-05-14 200027](https://github.com/user-attachments/assets/057ed410-5bbc-400c-8bf9-b708706e7a55)
+  2. using `blend pose by bool`, `does owner have tag`, `blend space by player`, expose a pin(help to get the blend space as a variable ), `property access` (to get  required blend space properties)\
+     ![Screenshot 2025-05-14 200645](https://github.com/user-attachments/assets/104c0a0d-d5c7-4442-a8cc-51ef3cc4bd92)
+
+- 28, 
 
 
 
