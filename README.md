@@ -3243,7 +3243,11 @@ Then, create a new blueprint animation.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/2f387b1c5f7419607d0549e88015a36c032b85c1)
   ![Screenshot 2025-05-14 163252](https://github.com/user-attachments/assets/615d33c2-6b0a-4d75-bc50-6c762a0a36cd)
 
-- 26, 
+- 26, ⚠️⚠️ Orient to Target with target lock
+  Purpose: 1, In cleanup, initialize the `DrawnTargetLockWidget` and `TargetLockWidgetS`; 2, When doing the orienting, stop auto orienting if the hero is doing some specific actions, and force the player controller,
+  	      actor rotation to face the enemy using `FMath::RInterpTo( const FRotator& Current, const FRotator& Target, float DeltaTime, float InterpSpeed)`
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c0dd15336507156ed8e82ba867e99d27f9666afb)
+- 27, 
 
 
 
