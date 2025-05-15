@@ -3261,13 +3261,18 @@ Then, create a new blueprint animation.
      ![Screenshot 2025-05-14 204040](https://github.com/user-attachments/assets/d3f9babf-9ed6-490a-8b56-7a3e01b71626)
 
 - 29, ⚠️⚠️⚠️ Switch Target Input Action
-  Purpose: We need to use mouse input directly to control the locking switch, which will quit control the character camera controlling.\
+  Purpose: We need to use mouse input directly to control the locking switch, which will quit the control of the character camera.\
   1, Native Input Action; 2, Input Callbacks; 3, New Mapping Context; 4, Notify switch target; 5, Handle switch target
   1. Create the tags and input the callback in warriorHerocharacter. (This is a default input action.)
      [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/6262dff1925c5b95360be6e0408644b56562b859)
   2. Add it in DA_InputConfig(Native Input Action), and create a new Input Action, make sure its value type is `Axis 2D(Vector2D)`.
  
-- 30, 
+- 30, New Mapping Context
+  Purpose: Using `UEnhancedInputLocalPlayerSubsystem* Subsystem` enables attaching a new IMC to the local player.(create a new IMC slot in GA_TargetLock)
+  1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/d501fd3484990830dc39c0f08d4f560f8222e3a7)
+  2. Create a new IMC_SwitchTarget and attach it in GA_TargetLock's slot.
+
+- 31,
 
 
 
