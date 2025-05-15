@@ -3248,13 +3248,20 @@ Then, create a new blueprint animation.
   	      actor rotation to face the enemy using `FMath::RInterpTo( const FRotator& Current, const FRotator& Target, float DeltaTime, float InterpSpeed)`
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c0dd15336507156ed8e82ba867e99d27f9666afb)
   
-- 27, SWitch To Target Pose
+- 27, Switch To Target Pose
   Purpose: Create a new blend space for Directional Locomotion TargetLock. (If I forget how to do animation creation, go back to chapter 1)
   1. ![Screenshot 2025-05-14 200027](https://github.com/user-attachments/assets/057ed410-5bbc-400c-8bf9-b708706e7a55)
   2. using `blend pose by bool`, `does owner have tag`, `blend space by player`, expose a pin(help to get the blend space as a variable ), `property access` (to get  required blend space properties)\
      ![Screenshot 2025-05-14 200645](https://github.com/user-attachments/assets/104c0a0d-d5c7-4442-a8cc-51ef3cc4bd92)
 
-- 28, 
+- 28, Target Lock Speed
+  Purpose: Character has two walking speeds: locking target walk speed, normal walking speed. However, when he is doing a locking target walk, its speed will be higher than the max target lock walking speed, then it will make the character do normal walking. To solve it, we need to use C++ to limit the maximum lock target walk speed.
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/00ef2ecba253143510f1ef542910c9205f128d92)
+  1. When the character is moving left, right, left, right. it does meaningless shaking, to solve this, we have to click the `wrap input`.
+     ![Screenshot 2025-05-14 204040](https://github.com/user-attachments/assets/d3f9babf-9ed6-490a-8b56-7a3e01b71626)
+
+- 29, 
+
 
 
 
