@@ -3255,12 +3255,19 @@ Then, create a new blueprint animation.
      ![Screenshot 2025-05-14 200645](https://github.com/user-attachments/assets/104c0a0d-d5c7-4442-a8cc-51ef3cc4bd92)
 
 - 28, Target Lock Speed
-  Purpose: Character has two walking speeds: locking target walk speed, normal walking speed. However, when he is doing a locking target walk, its speed will be higher than the max target lock walking speed, then it will make the character do normal walking. To solve it, we need to use C++ to limit the maximum lock target walk speed.
+  Purpose: Character has two walking speeds: locking target walk speed, normal walking speed. However, when he is doing a locking target walk, its speed will be higher than the max target lock walking speed, making the character do normal walking. We need to use C++ to limit the maximum lock target walk speed to solve it.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/00ef2ecba253143510f1ef542910c9205f128d92)
   1. When the character is moving left, right, left, right. it does meaningless shaking, to solve this, we have to click the `wrap input`.
      ![Screenshot 2025-05-14 204040](https://github.com/user-attachments/assets/d3f9babf-9ed6-490a-8b56-7a3e01b71626)
 
-- 29, 
+- 29, ⚠️⚠️⚠️ Switch Target Input Action
+  Purpose: We need to use mouse input directly to control the locking switch, which will quit control the character camera controlling.\
+  1, Native Input Action; 2, Input Callbacks; 3, New Mapping Context; 4, Notify switch target; 5, Handle switch target
+  1. Create the tags and input the callback in warriorHerocharacter. (This is a default input action.)
+     [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/6262dff1925c5b95360be6e0408644b56562b859)
+  2. Add it in DA_InputConfig(Native Input Action), and create a new Input Action, make sure its value type is `Axis 2D(Vector2D)`.
+ 
+- 30, 
 
 
 
