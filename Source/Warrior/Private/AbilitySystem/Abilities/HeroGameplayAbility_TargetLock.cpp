@@ -155,6 +155,32 @@ AActor* UHeroGameplayAbility_TargetLock::GetNearestTargetFromAvailableActors(con
 
 void UHeroGameplayAbility_TargetLock::GetAvailableActorsAroundTarget(TArray<AActor*>& OutActorsOnLeft, TArray<AActor*>& OutActorsOnRight)
 {
+	if (!CurrentLockedActor || AvailableActorsToLock.IsEmpty())
+	{
+		CancelTargetLockAbility();
+		return;
+	}
+
+	const FVector PlayerLocation = GetHeroCharacterFromActorInfo()->GetActorLocation();
+	const FVector PlayerToCurrentNormalized = (CurrentLockedActor->GetActorLocation() - PlayerLocation).GetSafeNormal();
+
+	for (AActor* AvailableActor : AvailableActorsToLock)
+	{
+		if (!AvailableActor || AvailableActor == CurrentLockedActor) continue;
+
+		const FVector PlayerToAvailableNormalized = (AvailableActor->GetActorLocation() - PlayerLocation).GetSafeNormal();
+
+		const FVector CrossResult = FVector::CrossProduct(PlayerToCurrentNormalized, PlayerToAvailableNormalized);
+
+		if (CrossResult.Z > 0.f)
+		{
+			OutActorsOnRight.AddUnique(AvailableActor);
+		}
+		else
+		{
+			OutActorsOnLeft.AddUnique(AvailableActor);
+		}
+	}
 }
 
 void UHeroGameplayAbility_TargetLock::DrawTargetLockWidget()
