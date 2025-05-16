@@ -3233,7 +3233,7 @@ Then, create a new blueprint animation.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c0dd15336507156ed8e82ba867e99d27f9666afb)
   
 - 27, Switch To Target Pose
-  Purpose: Create a new blend space for Directional Locomotion TargetLock. (If I forget how to do animation creation, go back to chapter 1)
+  Purpose: Create a new blend space for Directional Locomotion TargetLock. (If I forget how to do animation creation, go back to chapter 1.)
   1. ![Screenshot 2025-05-14 200027](https://github.com/user-attachments/assets/057ed410-5bbc-400c-8bf9-b708706e7a55)
   2. using `blend pose by bool`, `does owner have tag`, `blend space by player`, expose a pin(help to get the blend space as a variable ), `property access` (to get  required blend space properties)\
      ![Screenshot 2025-05-14 200645](https://github.com/user-attachments/assets/104c0a0d-d5c7-4442-a8cc-51ef3cc4bd92)
@@ -3241,7 +3241,7 @@ Then, create a new blueprint animation.
 - 28, Target Lock Speed
   Purpose: Character has two walking speeds: locking target walk speed, normal walking speed. However, when he is doing a locking target walk, its speed will be higher than the max target lock walking speed, making the character do normal walking. We need to use C++ to limit the maximum lock target walk speed to solve it.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/00ef2ecba253143510f1ef542910c9205f128d92)
-  1. When the character is moving left, right, left, right. it does meaningless shaking, to solve this, we have to click the `wrap input`.
+  1. When the character moves left, right, left, right. It does meaningless shaking, to solve this, we have to click the `wrap input`.
      ![Screenshot 2025-05-14 204040](https://github.com/user-attachments/assets/d3f9babf-9ed6-490a-8b56-7a3e01b71626)
 
 - 29, ⚠️⚠️⚠️ Switch Target Input Action
@@ -3249,14 +3249,21 @@ Then, create a new blueprint animation.
   1, Native Input Action; 2, Input Callbacks; 3, New Mapping Context; 4, Notify switch target; 5, Handle switch target
   1. Create the tags and input the callback in warriorHerocharacter. (This is a default input action.)
      [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/6262dff1925c5b95360be6e0408644b56562b859)
-  2. Add it in DA_InputConfig(Native Input Action), and create a new Input Action, make sure its value type is `Axis 2D(Vector2D)`.
+  2. Add it to DA_InputConfig(Native Input Action), and create a new Input Action. Make sure its value type is `Axis 2D(Vector2D)`.
  
 - 30, New Mapping Context
-  Purpose: Using `UEnhancedInputLocalPlayerSubsystem* Subsystem` enables attaching a new IMC to the local player.(create a new IMC slot in GA_TargetLock)
+  Purpose: Using `UEnhancedInputLocalPlayerSubsystem* Subsystem` enables attaching a new IMC to the local player. (Create a new IMC slot in GA_TargetLock)
   1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/d501fd3484990830dc39c0f08d4f560f8222e3a7)
   2. Create a new IMC_SwitchTarget and attach it in GA_TargetLock's slot.
 
-- 31,
+- 31, ⚠️⚠️Notify Switch Target
+  Purpose: Capture mouse input -> notify Target Lock Ability -> send gameplay event -> play target lock ability -> handle switching
+  1. Create a new target event and SendGameplayEventToActor.[This event is bound to the button pressed!!!]
+     [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c7b68df5fd82b43b4497cab925df899cd9d87a91)
+  2. Do test.\
+     ![Screenshot 2025-05-16 105347](https://github.com/user-attachments/assets/aae6c9de-8737-46ba-9c96-d5473243784f)
+
+- 32, 
 
 
 
