@@ -3258,14 +3258,21 @@ Then, create a new blueprint animation.
 
 - 31, ⚠️⚠️Notify Switch Target
   Purpose: Capture mouse input -> notify Target Lock Ability -> send gameplay event -> play target lock ability -> handle switching
-  1. Create a new target event and SendGameplayEventToActor.[This event is bound to the button pressed!!!]
+  1. Create a new target event and send GameplayEventToActor.[This event is bound to the button pressed!!!]
      [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c7b68df5fd82b43b4497cab925df899cd9d87a91)
   2. Do test.\
      ![Screenshot 2025-05-16 105347](https://github.com/user-attachments/assets/aae6c9de-8737-46ba-9c96-d5473243784f)
 
-- 32, 
+- 32, ⚠️⚠️⚠️⚠️Handle Switch Target
+  Purpose: First, use the cross product.z to detect enemy is on the left or the right; Second, after sorting those actors, place them into the array; Third, use the gameplay event to detect which is which; Fourth, reset the mouse input movement speed.
+  [code1 view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/965a8e1f2f6da46a4c7974158a96637030d982d7), [code2 view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/4456ab5f16af3df9648d50542515ae9aedd3ac12)
+  1. ![Screenshot 2025-05-16 113330](https://github.com/user-attachments/assets/4bdbee0e-1911-40e1-b26e-a7707a35324d)
+  2. ![Screenshot 2025-05-16 113022](https://github.com/user-attachments/assets/e2241d07-8420-4b4d-804d-1ca5bc36115e)
+ 
+- 33, 
 
 
+ 
 
 
 
