@@ -27,7 +27,7 @@
 - [5. Hero Combat Ability](#5-hero-combat-ability)
 
 # EXTRA
-## 1, hard reference
+## 1, Hard reference
   A hard reference is a direct pointer to another object or asset. When object A hard-references object B, both objects are loaded into memory together. \
   pros:\
   Simplicity: Easier to work with since everything is loaded and accessible.\
@@ -42,33 +42,17 @@
   UPROPERTY()
   UStaticMesh* HardMesh;
   ```
-## 2, soft reference
-  A soft reference is an indirect pointer (via a TSoftObjectPtr or TSoftClassPtr) to another object or asset. It doesn't load the referenced object into memory until explicitly requested. \
-  pros:\
-  Reduced Memory Footprint: Assets are only loaded into memory when required, helping to optimize memory usage. \
-  Faster Initial Load Times: Reduces startup loading times by deferring asset loading. \
-  Flexible Asset Management: Soft references allow dynamic loading and unloading, which is ideal for modular systems. \
-  cons:\
-  Management Complexity: Requires additional logic to load and check the availability of assets. \
-  Performance Overhead: Loading assets at runtime can introduce hitches or delays if not properly managed (e.g., using asynchronous loading). \
-  Error-Prone: If not handled properly, a soft reference can lead to runtime errors (e.g., attempting to use an asset before it is fully loaded). 
-  ```c++
-  UPROPERTY()
-  TSoftObjectPtr<UStaticMesh> SoftMesh;
-  ```
-  To load a soft reference: 
-  ```c++
-   if (SoftMesh.IsValid())
-  {
-      UStaticMesh* Mesh = SoftMesh.Get(); // Already loaded
-  }
-  else
-  {
-      // Asynchronous loading
-      SoftMesh.ToSoftObjectPath().TryLoad();
-  }
-  ```
-## 3, conclusion
+## 2, Soft reference
+  A soft reference is an indirect pointer (via a FSoftObjectPath or TSoftObjectPtr) to another object or asset. It doesn't load the referenced object into memory until explicitly requested. \
+  1. FSoftObjectPath\
+     A simple string path to an asset\
+     Works like a "bookmark" to the asset without loading it\
+     Shows up in the editor like a regular asset selector
+  2. TSoftObjectPtr<Type>\
+     A template version that restricts to specific types (like TSoftObjectPtr<UTexture2D>)\
+     Slightly more powerful than FSoftObjectPath\
+     Can automatically convert to the real object if it's already loaded
+## 3, Conclusion
   ![Screenshot 2025-01-07 100832](https://github.com/user-attachments/assets/4895bb3b-7242-45c5-a380-8f636d9ba03f)
 ## 4, TObjectPtr
   "T" in UE5 means the Type, such as TArray, TMap; \
