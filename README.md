@@ -43,7 +43,7 @@
   UStaticMesh* HardMesh;
   ```
 ## 2, Soft reference
-  A soft reference is an indirect pointer (via a FSoftObjectPath or TSoftObjectPtr) to another object or asset. It doesn't load the referenced object into memory until explicitly requested. \
+  A soft reference is an delay pointer (via a FSoftObjectPath or TSoftObjectPtr) to another object or asset. It doesn't load the referenced object into memory until fully loaded. \
   1. FSoftObjectPath\
      A simple string path to an asset\
      Works like a "bookmark" to the asset without loading it\
@@ -65,7 +65,7 @@
   TArray< TSubclassOf < UWarriorGameplayAbility > > ActivateOnGivenAbilities;	
   ```
   We wrap up any types under `UWarriorGameplayAbility` that satisfy the requirements of `TArray<UClass *>`
-## 6, Synchronous and  Asynchronous loading
+## 6, Synchronous and Asynchronous loading
   In Unreal Engine C++, synchronous loading uses `LoadObject()` to load assets immediately, ensuring they are available before gameplay starts, while asynchronous loading uses `FStreamableManager::RequestAsyncLoad()` to load assets in the background without 
   blocking the main thread. Synchronous loading is ideal for critical assets like the player's character, ensuring smooth startup. In contrast, asynchronous loading is best for non-critical assets like enemies, optimizing performance and reducing initial load times.\
 ## 7, Basic GameplayEffectHandle code
@@ -91,7 +91,7 @@
   // Then, eventually, you apply the effect
   AbilitySystemComponent->ApplyGameplayEffectSpecToTarget(EffectSpecHandle, TargetASC);
   ```
-## 8, Automatic Storage, Static Storage,  Dynamic Storage
+## 8, Automatic Storage, Static Storage, Dynamic Storage
   Automatic storage: variables defined inside a function use `automatic storage`, which means the variables exist automatically when the function containing them is invoked and expire when the function is terminated\
   Static Storage: exists throughout the execution of an entire program. Two ways to make a variable static: 1, define it externally, outside a function; 2, use the keyword `static` when declaring a variable\
   Dynamic Storage: Do dynamic data work.\
