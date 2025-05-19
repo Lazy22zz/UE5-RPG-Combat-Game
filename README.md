@@ -3276,7 +3276,8 @@ Then, create a new blueprint animation.
   3. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/993dfa6aeab7f6e58b1f79dc19c51b244a43f0cf)
  
 # 6, Ranged Enemy
-
+  Purpose: Starting Weapon, Starting Stats, Combat Abilities, Projectile Ability, Behavior Tree.
+- 1, 
 
 
 
