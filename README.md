@@ -1,4 +1,4 @@
-# UE5-RPG-Combat-Game (Using GAS, Gameplay Ability System)
+![image](https://github.com/user-attachments/assets/d45f12b7-662b-4c02-84c9-d53f2be10cfd)# UE5-RPG-Combat-Game (Using GAS, Gameplay Ability System)
  Creating a combat action RPG game
 
  # Table of Contents
@@ -25,6 +25,7 @@
 - [3. Hero Combat](#3-hero-combat)
 - [4. Enemy AI](#4-enemy-ai)
 - [5. Hero Combat Ability](#5-hero-combat-ability)
+- [6, Ranged Enemy](#6-Ranged-Enemy)
 
 # EXTRA
 ## 1, Hard reference
@@ -3264,12 +3265,21 @@ Then, create a new blueprint animation.
      ![Screenshot 2025-05-16 105347](https://github.com/user-attachments/assets/aae6c9de-8737-46ba-9c96-d5473243784f)
 
 - 32, ⚠️⚠️⚠️⚠️Handle Switch Target
-  Purpose: First, use the cross product.z to detect enemy is on the left or the right; Second, after sorting those actors, place them into the array; Third, use the gameplay event to detect which is which; Fourth, reset the mouse input movement speed.
+  Purpose: First, use the cross product.z to detect whether the enemy is on the left or the right; Second, after sorting those actors, place them into the array; Third, use the gameplay event to detect which is which; Fourth, reset the mouse input movement speed.
   [code1 view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/965a8e1f2f6da46a4c7974158a96637030d982d7), [code2 view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/4456ab5f16af3df9648d50542515ae9aedd3ac12)
   1. ![Screenshot 2025-05-16 113330](https://github.com/user-attachments/assets/4bdbee0e-1911-40e1-b26e-a7707a35324d)
   2. ![Screenshot 2025-05-16 113022](https://github.com/user-attachments/assets/e2241d07-8420-4b4d-804d-1ca5bc36115e)
  
-- 33, 
+- 33, Hero Death + Issue Fixed
+  1. Create a new GA_Hero_Death.\
+     ![Screenshot 2025-05-19 085603](https://github.com/user-attachments/assets/c582368f-f558-4647-86c2-a203740fe801)
+  2. Create two Anime Montages for hero deaths.
+  3. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/993dfa6aeab7f6e58b1f79dc19c51b244a43f0cf)
+ 
+# 6, Ranged Enemy
+
+
+
 
 
  
