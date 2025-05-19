@@ -3277,7 +3277,11 @@ Then, create a new blueprint animation.
  
 # 6, Ranged Enemy
   Purpose: Starting Weapon, Starting Stats, Combat Abilities, Projectile Ability, Behavior Tree.
-- 1, 
+- 1, Create a new enemy Glacer
+  1. Duplicate new BP_Glacer based on the BP_GuntlingBase, DA_Guadrain, Bp_GuadrainWeapon.
+  2. Fix them and attach the property name.
+
+- 2, 
 
 
 
