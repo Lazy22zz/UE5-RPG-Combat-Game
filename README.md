@@ -1,4 +1,3 @@
-![image](https://github.com/user-attachments/assets/d45f12b7-662b-4c02-84c9-d53f2be10cfd)# UE5-RPG-Combat-Game (Using GAS, Gameplay Ability System)
  Creating a combat action RPG game
 
  # Table of Contents
