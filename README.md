@@ -19,6 +19,7 @@
   - [13, World Of the UE](#13-World-Of-the-UE)
   - [14, Lamda Function](#14-Lamda-Function)
   - [15, Gameplay Ability System](#15-Gameplay-Ability-System)
+  - [16, Pawn](##-16-Pawn)
 - [1. Set Up Hero Character](#1-set-up-hero-character)
 - [2. Combo System](#2-combo-system)
 - [3. Hero Combat](#3-hero-combat)
@@ -374,7 +375,18 @@
 
   Go To chapter5.24, Execute Ability Task On Tick, it has an example.
 
-## 16, 
+## 16, Pawn
+   1. Component: You can think of an Actor as being built from components, and components can be thought of as similar to functions.
+   2. Actor: If UE is a big country, then Actor is undoubtedly the biggest nation in terms of population.
+   3. Pawn: An actor that our player interacts with. It contains 3 blocks of basic template method interfaces: 1, controlled by `controller`; 2, `PhysicsCollision` display; 3, `MovementInput`'s basic response interface.\
+      ![Pawn](https://github.com/user-attachments/assets/8104740a-6b18-49c2-ab51-28f5b2a88a15)
+   4. DefaultPawn， SpectatorPawn， Character: Here's a concise English summary of your content in a paragraph:
+	Unreal Engine provides several types of Pawns to simplify character and camera setup. **DefaultPawn** is a convenient starting point that comes pre-equipped with a movement component, a spherical collision component, and a static mesh—essentially a ready-made package to avoid building everything from scratch. **SpectatorPawn**, derived from DefaultPawn, is designed for non-interactive players like spectators. It removes the mesh display, disables collisions, and uses a movement component suited for free-floating camera control without gravity. **Character** is a more specialized version of Pawn, tailored for humanoid gameplay. It includes a CharacterMovementComponent for realistic walking, a CapsuleComponent for accurate collision, and a 	SkeletalMesh for animations. While beginners may be unsure whether to use Pawn or Character, the rule of thumb is: use **Character** for humanoid characters with skeletons, and **Pawn** for more abstract or non-humanoid setups like VR hands. Character is essentially an enhanced Pawn, while Pawn offers greater flexibility for custom behaviors.\
+	![DefaultPawnAndCharacter](https://github.com/user-attachments/assets/d78c666a-a70d-449d-88de-106870f4a40c)
+
+## 17,
+
+ 
   
   
 # 1, Set Up Hero Character
