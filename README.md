@@ -19,7 +19,7 @@
   - [13, World Of the UE](#13-World-Of-the-UE)
   - [14, Lamda Function](#14-Lamda-Function)
   - [15, Gameplay Ability System](#15-Gameplay-Ability-System)
-  - [16, Pawn](##-16-Pawn)
+  - [16, Pawn](#16-Pawn)
 - [1. Set Up Hero Character](#1-set-up-hero-character)
 - [2. Combo System](#2-combo-system)
 - [3. Hero Combat](#3-hero-combat)
@@ -256,7 +256,7 @@
             └── AActor\
                 └── UComponent
       
-## 14, Lamda Function.\
+## 14, Lamda Function.
   Basic Logic:
   ```c++
   [capture-clause](parameters) -> return_type { function_body }
@@ -267,7 +267,7 @@
   auto incrementX = [&x]() { x++; };
   incrementX();  // x is now 11
   ```
-## 15, Gameplay Ability System.\
+## 15, Gameplay Ability System.
   A Sample of Creating the Ability Task Node in C++.\
   .h file,
   <details>
@@ -373,7 +373,7 @@
   ```
   </details>
 
-  Go To chapter5.24, Execute Ability Task On Tick, it has an example.
+  Go to chapter 5.24, Execute Ability Task On Tick, it has an example.
 
 ## 16, Pawn
    1. Component: You can think of an Actor as being built from components, and components can be thought of as similar to functions.
