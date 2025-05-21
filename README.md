@@ -3304,11 +3304,22 @@ Then, create a new blueprint animation.
 
 - 4, ⚠️⚠️Ranged Behavior Tree + Debug :Rolling Issue
   1. Debugging rolling issue: When a character tries to roll toward the wall, it will roll back to its world's original position.
-      In GA_Roll, we use a blocking hit to calculate the required destination, so we need to branch if there's no blocking hit, cause rolling does not finish while the character is facing to wall.\
+      In GA_Roll, we use a blocking hit to calculate the required destination, so we need to branch if there's no blocking hit, cause rolling does not finish while the character faces a wall.\
      ![Screenshot 2025-05-20 113737](https://github.com/user-attachments/assets/00baf18d-0a28-4116-a8ba-2b677a81c199)
   2. Create a new child AIC_Galcer from AIC_Enemy_Base, and also duplicate the required Glacer Behavior Tree, attach it to AIC, and enable the BP_Glacer using this new AIC.
  
-- 5, 
+- 5, ⚠️⚠️⚠️⚠️ Find Shooting Position
+  Purpose: Using the EQS to design the dynamic path and distance.
+  0. If I forgot the EQS, please go to chapter 4 - 10: Custom EQS.
+  1. Create a new EQS named `EQS_FindShootingProjectileLocation`, and create a new blackboard variable `ShootingLocation`.
+  2. Using `EQSContext_TargetActor` for visible debugging.\
+  ![Screenshot 2025-05-21 101853](https://github.com/user-attachments/assets/789f2c4b-39ce-497c-994d-bd1e964702ba)\
+  ![Screenshot 2025-05-21 101907](https://github.com/user-attachments/assets/945d61e3-ccd8-46e5-8ed3-494b615f31e6)
+
+- 6, 
+
+
+  
 
 
 
