@@ -13,7 +13,7 @@
   - [7, Basic GameplayEffectHandle Code](#7-basic-gameplayeffecthandle-code)
   - [8, Automatic Storage, Static Storage, Dynamic Storage](#8-automatic-storage-static-storage-dynamic-storage)
   - [9, dynamic_cast, shared_ptr, weak_ptr, unique_ptr](#9-dynamic_cast-shared_ptr-weak_ptr-unique_ptr)
-  - [10, checkf()](#10-checkf)
+  - [10, AI](#10-AI)
   - [11, Pre-construction and Construction](#11-pre-construction-and-construction)
   - [12, New Ability Process](#12-new-ability-process)
   - [13, World Of the UE](#13-World-Of-the-UE)
@@ -138,9 +138,13 @@
   📦 Memory leak: When a program allocates memory but fails to release it, even though it’s no longer needed. \
   📦 Smart Pointer: using RAII (Resource Acquisition Is Initialization). That means memory is automatically released when the pointer goes out of scope.[You can think it has built-in new, delete functions in the references.]\
   
-## 10, `checkf()`
-  Purpose: The game crashes and generates a report when it is false.\
-  
+## 10, AI
+  1. AI Controller: 1, AI Avoidance (RVO Avoidance, Detour Crowd Avoidance); 2, Perception (using C++); 3, Generic Team ID (using C++)
+  2. Behavior Tree: 1, Behavior Tree (Make decisions); 2, blackboard (Hold info)
+  3. Behavior Tree Nodes Type: 1, Composite Node(Sequence [left to right, if one fail, exit], Selector [left to right, ONLY succeeed can run]); 2, Decorator Node (Condition); 3, Service Node (Running in background); 4, Task Node (Doing task)
+  4. Observe Aborts: 1, None(Abort Nothing); 2, Self (Only do self jobs); 3, Low Priority (Enable other jobs finished first); 4, Both (Abort Both)
+  5. Environment Query System: EQS, Dynamically calculate the best decision based on the environement change.
+  6. 
 ## 11, pre-construction and construction 
   Pre-Construct → Runs before the widget is fully created and can be previewed in the editor.\
   Construct → Runs after the widget is created and is used for regular initialization at runtime.
