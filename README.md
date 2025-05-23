@@ -3320,7 +3320,16 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-05-21 101853](https://github.com/user-attachments/assets/789f2c4b-39ce-497c-994d-bd1e964702ba)\
   ![Screenshot 2025-05-21 101907](https://github.com/user-attachments/assets/945d61e3-ccd8-46e5-8ed3-494b615f31e6)
 
-- 6, 
+- 6, Projectile Ability
+  Purpose: 1, ability blueprint; 2, Projectile class; 3, Damage logic; 4, VFX
+  1. Create a new GA_Glacer_Projectile.\
+     ![Screenshot 2025-05-23 112402](https://github.com/user-attachments/assets/f552f038-2714-49f7-b110-ccee35c4d0a3)
+  2. Create a new montage.
+  3. Attach new GA in DA_Glacer.
+  4. Enable the behavior tree.\
+     ![Screenshot 2025-05-23 113126](https://github.com/user-attachments/assets/9551ac8d-affc-4678-a1ed-9820827cb31b)
+
+- 7, 
 
 
   
