@@ -3329,7 +3329,15 @@ Then, create a new blueprint animation.
   4. Enable the behavior tree.\
      ![Screenshot 2025-05-23 113126](https://github.com/user-attachments/assets/9551ac8d-affc-4678-a1ed-9820827cb31b)
 
-- 7, 
+- 7, ⚠️⚠️⚠️Projectile Class
+  Purpose: We need to enable the BoxComponent (contains the collision), NiagaraComponent, ProjectileMovementComponent, and set up an enum for OnHitPolicy.
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/34185646d083d6f62cd17868324b0b8568c62b28)
+  0. Read Extra for collision.
+  1. Create a new C++ Actor as WarriorProjectileBase, and create a new blueprint and its blueprint child.
+  2.  Attach the Niagara.
+ 
+- 8,  
+  
 
 
   
