@@ -388,57 +388,54 @@
 	Unreal Engine provides several types of Pawns to simplify character and camera setup. **DefaultPawn** is a convenient starting point that comes pre-equipped with a movement component, a spherical collision component, and a static mesh—essentially a ready-made package to avoid building everything from scratch. **SpectatorPawn**, derived from DefaultPawn, is designed for non-interactive players like spectators. It removes the mesh display, disables collisions, and uses a movement component suited for free-floating camera control without gravity. **Character** is a more specialized version of Pawn, tailored for humanoid gameplay. It includes a CharacterMovementComponent for realistic walking, a CapsuleComponent for accurate collision, and a 	SkeletalMesh for animations. While beginners may be unsure whether to use Pawn or Character, the rule of thumb is: use **Character** for humanoid characters with skeletons, and **Pawn** for more abstract or non-humanoid setups like VR hands. Character is essentially an enhanced Pawn, while Pawn offers greater flexibility for custom behaviors.\
 	![DefaultPawnAndCharacter](https://github.com/user-attachments/assets/d78c666a-a70d-449d-88de-106870f4a40c)
 
-## 17, Collision
-   1. `ECollisionEnabled`.
-       <details>
-  	<summary> View Code</summary>
-	  
-  	```c++
-   	UENUM(BlueprintType)
-	namespace ECollisionEnabled 
-	{ 
-		enum Type : int
-		{ 
-		/** Will not create any representation in the physics engine. Cannot be used for spatial queries (raycasts, sweeps, overlaps) or simulation (rigid body, constraints). Best performance 			possible (especially for moving objects) */
-		NoCollision UMETA(DisplayName="No Collision"), 
-		/** Only used for spatial queries (raycasts, sweeps, and overlaps). Cannot be used for simulation (rigid body, constraints). Useful for character movement and things that do not need physical 		simulation. Performance gains by keeping data out of simulation tree. */
-		QueryOnly UMETA(DisplayName="Query Only (No Physics Collision)"),
-		/** Only used only for physics simulation (rigid body, constraints). Cannot be used for spatial queries (raycasts, sweeps, overlaps). Useful for jiggly bits on characters that do not need per 		bone detection. Performance gains by keeping data out of query tree */
-		PhysicsOnly UMETA(DisplayName="Physics Only (No Query Collision)"),
-		/** Can be used for both spatial queries (raycasts, sweeps, overlaps) and simulation (rigid body, constraints). */
-		QueryAndPhysics UMETA(DisplayName="Collision Enabled (Query and Physics)"),
-		/** Only used for probing the physics simulation (rigid body, constraints). Cannot be used for spatial queries (raycasts,
-		sweeps, overlaps). Useful for when you want to detect potential physics interactions and pass contact data to hit callbacks
-		or contact modification, but don't want to physically react to these contacts. */
-		ProbeOnly UMETA(DisplayName="Probe Only (Contact Data, No Query or Physics Collision)"),
-		/** Can be used for both spatial queries (raycasts, sweeps, overlaps) and probing the physics simulation (rigid body,
-		constraints). Will not allow for actual physics interaction, but will generate contact data, trigger hit callbacks, and
-		contacts will appear in contact modification. */
-		QueryAndProbe UMETA(DisplayName="Query and Probe (Query Collision and Contact Data, No Physics Collision)")
-	}; 
- 	```
-  	</details>
+## 17. Collision
 
-   2. ECollisionChannel:
-      <details>
-  	<summary> View Code</summary>
-	  
-  	```c++
-   	enum ECollisionChannel : int
-        {
+1. `ECollisionEnabled`:
+   <details>
+   <summary>View Code</summary>
+   
+   ```cpp
+   UENUM(BlueprintType)
+   namespace ECollisionEnabled 
+   { 
+       enum Type : int
+       { 
+           /** Will not create any representation in the physics engine. Cannot be used for spatial queries (raycasts, sweeps, overlaps) or simulation (rigid body, constraints). Best performance possible (especially for moving objects) */
+           NoCollision UMETA(DisplayName="No Collision"), 
+           /** Only used for spatial queries (raycasts, sweeps, and overlaps). Cannot be used for simulation (rigid body, constraints). Useful for character movement and things that do not need physical simulation. Performance gains by keeping data out of simulation tree. */
+           QueryOnly UMETA(DisplayName="Query Only (No Physics Collision)"),
+           /** Only used only for physics simulation (rigid body, constraints). Cannot be used for spatial queries (raycasts, sweeps, overlaps). Useful for jiggly bits on characters that do not need per bone detection. Performance gains by keeping data out of query tree */
+           PhysicsOnly UMETA(DisplayName="Physics Only (No Query Collision)"),
+           /** Can be used for both spatial queries (raycasts, sweeps, overlaps) and simulation (rigid body, constraints). */
+           QueryAndPhysics UMETA(DisplayName="Collision Enabled (Query and Physics)"),
+           /** Only used for probing the physics simulation (rigid body, constraints). Cannot be used for spatial queries (raycasts, sweeps, overlaps). Useful for when you want to detect potential physics interactions and pass contact data to hit callbacks or contact modification, but don't want to physically react to these contacts. */
+           ProbeOnly UMETA(DisplayName="Probe Only (Contact Data, No Query or Physics Collision)"),
+           /** Can be used for both spatial queries (raycasts, sweeps, overlaps) and probing the physics simulation (rigid body, constraints). Will not allow for actual physics interaction, but will generate contact data, trigger hit callbacks, and contacts will appear in contact modification. */
+           QueryAndProbe UMETA(DisplayName="Query and Probe (Query Collision and Contact Data, No Physics Collision)")
+       }; 
+   }
+   ```
+   </details>
 
-	ECC_WorldStatic UMETA(DisplayName="WorldStatic"),
-	ECC_WorldDynamic UMETA(DisplayName="WorldDynamic"),
-	ECC_Pawn UMETA(DisplayName="Pawn"),
-	ECC_Visibility UMETA(DisplayName="Visibility" , TraceQuery="1"),
-	ECC_Camera UMETA(DisplayName="Camera" , TraceQuery="1"),
-	ECC_PhysicsBody UMETA(DisplayName="PhysicsBody"),
-	ECC_Vehicle UMETA(DisplayName="Vehicle"),
-	ECC_Destructible UMETA(DisplayName="Destructible"),
- 	...
- 	```
-  	</details>
-
+2. `ECollisionChannel`:
+   <details>
+   <summary>View Code</summary>
+   
+   ```cpp
+   enum ECollisionChannel : int
+   {
+       ECC_WorldStatic UMETA(DisplayName="WorldStatic"),
+       ECC_WorldDynamic UMETA(DisplayName="WorldDynamic"),
+       ECC_Pawn UMETA(DisplayName="Pawn"),
+       ECC_Visibility UMETA(DisplayName="Visibility", TraceQuery="1"),
+       ECC_Camera UMETA(DisplayName="Camera", TraceQuery="1"),
+       ECC_PhysicsBody UMETA(DisplayName="PhysicsBody"),
+       ECC_Vehicle UMETA(DisplayName="Vehicle"),
+       ECC_Destructible UMETA(DisplayName="Destructible"),
+       // ...
+   };
+   ```
+   </details>
 ## 18,
  
   
