@@ -437,6 +437,84 @@
    };
    ```
    </details>
+
+3. `FComponentHitSignature`: Attach it to the boxcomponent to eanble the collision detec.
+   <details>
+   <summary>View Code</summary>
+   
+   ```cpp
+   /** 
+    *	Event called when a component hits (or is hit by) something solid. This could happen due to things like Character movement, using Set Location with 'sweep' enabled, or physics simulation.
+    *	For events when objects overlap (e.g. walking into a trigger) see the 'Overlap' event.
+    *
+    *	@note For collisions during physics simulation to generate hit events, 'Simulation Generates Hit Events' must be enabled for this component.
+    *	@note When receiving a hit from another object's movement, the directions of 'Hit.Normal' and 'Hit.ImpactNormal'
+    *	will be adjusted to indicate force from the other object against this object.
+    *	@note NormalImpulse will be filled in for physics-simulating bodies, but will be zero for swept-component blocking collisions.
+    */
+   UPROPERTY(BlueprintAssignable, Category="Collision")
+   FComponentHitSignature OnComponentHit;
+
+   /** 
+    *	Event called when something starts to overlaps this component, for example a player walking into a trigger.
+    *	For events when objects have a blocking collision, for example a player hitting a wall, see 'Hit' events.
+    *
+    *	@note Both this component and the other one must have GetGenerateOverlapEvents() set to true to generate overlap events.
+    *	@note When receiving an overlap from another object's movement, the directions of 'Hit.Normal' and 'Hit.ImpactNormal'
+    *	will be adjusted to indicate force from the other object against this object.
+    */
+   UPROPERTY(BlueprintAssignable, Category="Collision")
+   FComponentBeginOverlapSignature OnComponentBeginOverlap;
+
+   /** 
+    *	Event called when something stops overlapping this component 
+    *	@note Both this component and the other one must have GetGenerateOverlapEvents() set to true to generate overlap events.
+    */
+   UPROPERTY(BlueprintAssignable, Category="Collision")
+   FComponentEndOverlapSignature OnComponentEndOverlap;
+
+   /** 
+    *	Event called when the underlying physics objects is woken up
+    */
+   UPROPERTY(BlueprintAssignable, Category="Collision")
+   FComponentWakeSignature OnComponentWake;
+
+   /** 
+    *	Event called when the underlying physics objects is put to sleep
+    */
+   UPROPERTY(BlueprintAssignable, Category = "Collision")
+   FComponentSleepSignature OnComponentSleep;
+   ```
+   </details>
+
+4.  Delegate: Attach the event by function.
+   <details>
+   <summary>View Code</summary>
+   
+   ```cpp
+   /**
+    * Delegate for notification of blocking collision against a specific component.  
+    * NormalImpulse will be filled in for physics-simulating bodies, but will be zero for swept-component blocking collisions. 
+    */
+   DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_FiveParams( FComponentHitSignature, UPrimitiveComponent, OnComponentHit, UPrimitiveComponent*, HitComponent, AActor*, OtherActor, UPrimitiveComponent*, OtherComp, 
+   FVector, NormalImpulse, const FHitResult&, Hit );
+   /** Delegate for notification of start of overlap with a specific component */
+   DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_SixParams( FComponentBeginOverlapSignature, UPrimitiveComponent, OnComponentBeginOverlap, UPrimitiveComponent*, OverlappedComponent, AActor*, OtherActor, 
+   UPrimitiveComponent*, OtherComp, int32, OtherBodyIndex, bool, bFromSweep, const FHitResult &, SweepResult);
+   /** Delegate for notification of end of overlap with a specific component */
+   DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_FourParams( FComponentEndOverlapSignature, UPrimitiveComponent, OnComponentEndOverlap, UPrimitiveComponent*, OverlappedComponent, AActor*, OtherActor, 
+   UPrimitiveComponent*, OtherComp, int32, OtherBodyIndex);
+   /** Delegate for notification when a wake event is fired by physics*/
+   DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_TwoParams(FComponentWakeSignature, UPrimitiveComponent, OnComponentWake, UPrimitiveComponent*, WakingComponent, FName, BoneName);
+   /** Delegate for notification when a sleep event is fired by physics*/
+   DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_TwoParams(FComponentSleepSignature, UPrimitiveComponent, OnComponentSleep, UPrimitiveComponent*, SleepingComponent, FName, BoneName);
+   /** Delegate for notification when collision settings change. */
+   DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_OneParam(FComponentCollisionSettingsChangedSignature, UPrimitiveComponent, OnComponentCollisionSettingsChangedEvent, UPrimitiveComponent*, ChangedComponent);
+   /** Delegate for physics state created */
+   DECLARE_DYNAMIC_MULTICAST_SPARSE_DELEGATE_TwoParams(FComponentPhysicsStateChanged, UPrimitiveComponent, OnComponentPhysicsStateChanged, UPrimitiveComponent*, ChangedComponent, 
+   EComponentPhysicsStateChange, StateChange);
+   ```
+   </details>
 ## 18,
  
   
@@ -3392,7 +3470,10 @@ Then, create a new blueprint animation.
   3. Finsihg the GA_Projectile.\
      ![Screenshot 2025-05-25 175306](https://github.com/user-attachments/assets/ca7126b7-9185-4a55-8a6a-f0befc50d1e9)
 
-- 9, 
+- 9, ⚠️⚠️⚠️⚠️⚠️ On Projectile Hit
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/106466f939ab9c3ba22c56bae9c91a1306a81e6a)
+
+- 10, 
 
 
   
