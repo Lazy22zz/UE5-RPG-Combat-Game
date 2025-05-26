@@ -3384,7 +3384,17 @@ Then, create a new blueprint animation.
   1. Create a new C++ Actor as WarriorProjectileBase, and create a new blueprint and its blueprint child.
   2.  Attach the Niagara.
  
-- 8,  
+- 8,  Spawning Projectile
+  1. Create a new socket and a new event tag.\
+     ![Screenshot 2025-05-25 175313](https://github.com/user-attachments/assets/810dce91-5a4d-44a0-8d29-ec31388fefa0)
+  2. Add a new notify ANS.\
+      ![Screenshot 2025-05-25 175324](https://github.com/user-attachments/assets/13d28555-8ae8-4354-adf2-8c4b278a2566)
+  3. Finsihg the GA_Projectile.\
+     ![Screenshot 2025-05-25 175306](https://github.com/user-attachments/assets/ca7126b7-9185-4a55-8a6a-f0befc50d1e9)
+
+- 9, 
+
+
   
 
 
