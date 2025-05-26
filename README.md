@@ -487,7 +487,7 @@
    ```
    </details>
 
-4.  Delegate: Attach the event by function.
+4. Delegate: Attach the event by function.
    <details>
    <summary>View Code</summary>
    
