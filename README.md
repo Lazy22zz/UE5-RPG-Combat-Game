@@ -515,36 +515,37 @@
    EComponentPhysicsStateChange, StateChange);
    ```
    </details>
-## 18, Apply Damage
-   1. Create a Gameplay Ability (GA)
-   2. Create a Gameplay Effect (GE) to Apply Damage
-   3. Create a Damage GameplayEffectHandle in the GA
-      
-      <details>
-      <summary>View Code .h</summary>
+   
+## 18. Apply Damage
 
-      ```c++
-      UFUNCTION(BlueprintCallable,Category = "Warrior|FunctionLibrary")
-      static bool ApplyGameplayEffectSpecHandleToTargetActor(AActor* InInstigator,AActor* InTargetActor,const FGameplayEffectSpecHandle& InSpecHandle);
-      ```
-      </details>
-      
-      <details>
-      <summary>View Code .cpp </summary>
+1. Create a Gameplay Ability (GA)
+2. Create a Gameplay Effect (GE) to Apply Damage  
+3. Create a Damage GameplayEffectHandle in the GA
 
-      ```c++
-      bool UWarriorFunctionLibrary::ApplyGameplayEffectSpecHandleToTargetActor(AActor* InInstigator, AActor* InTargetActor, const FGameplayEffectSpecHandle& InSpecHandle)
-      {
-	UWarriorAbilitySystemComponent* SourceASC = NativeGetWarriorASCFromActor(InInstigator);
-	UWarriorAbilitySystemComponent* TargetASC = NativeGetWarriorASCFromActor(InTargetActor);
-
-	FActiveGameplayEffectHandle ActiveGameplayEffectHandle = SourceASC->ApplyGameplayEffectSpecToTarget(*InSpecHandle.Data, TargetASC);
-
-	return ActiveGameplayEffectHandle.WasSuccessfullyApplied();
-      }
-      ```
-      </details>
-   4. Detect Collision (e.g., in Actor or Projectile)
+    <details>
+    <summary>View Code .h</summary>
+    
+    ```cpp
+    UFUNCTION(BlueprintCallable,Category = "Warrior|FunctionLibrary")
+    static bool ApplyGameplayEffectSpecHandleToTargetActor(AActor* InInstigator,AActor* InTargetActor,const FGameplayEffectSpecHandle& InSpecHandle);
+    ```
+    
+    </details>
+    
+    <details>
+    <summary>View Code .cpp</summary>
+    
+    ```cpp
+    bool UWarriorFunctionLibrary::ApplyGameplayEffectSpecHandleToTargetActor(AActor* InInstigator, AActor* InTargetActor, const FGameplayEffectSpecHandle& InSpecHandle)
+    {
+    	UWarriorAbilitySystemComponent* SourceASC = NativeGetWarriorASCFromActor(InInstigator);
+    	UWarriorAbilitySystemComponent* TargetASC = NativeGetWarriorASCFromActor(InTargetActor);
+    	FActiveGameplayEffectHandle ActiveGameplayEffectHandle = SourceASC->ApplyGameplayEffectSpecToTarget(*InSpecHandle.Data, TargetASC);
+    	return ActiveGameplayEffectHandle.WasSuccessfullyApplied();
+    }
+    ```
+    
+    </details>
 
  ## 19, 
   
