@@ -3513,8 +3513,9 @@ Then, create a new blueprint animation.
   4. ![Screenshot 2025-05-26 184158](https://github.com/user-attachments/assets/d0226bdd-1560-48bf-ab2e-40b5ec57e1a9)
 
 - 11, ⚠️⚠️⚠️⚠️Projectile Spec Handle
-  Purpose: Apply Damage, please watch note ##18.[18-Apply-Damage].
-  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/911f936aaa15beb36e10b8f1240f738df126fadc)
+  Purpose: Apply Damage, please watch note ##18[18-Apply-Damage].
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/911f936aaa15beb36e10b8f1240f738df126fadc)\
+  ![Screenshot 2025-05-27 111914](https://github.com/user-attachments/assets/a7ed25b9-2a13-44ab-97cc-8c0b3eee9807)
   
 - 12, 
 
