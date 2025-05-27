@@ -3473,9 +3473,15 @@ Then, create a new blueprint animation.
 - 9, ⚠️⚠️⚠️⚠️⚠️ On Projectile Hit
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/106466f939ab9c3ba22c56bae9c91a1306a81e6a)
 
-- 10, 
+- 10, ⚠️⚠️⚠️⚠️ Handle Projectile Hit If Is Blocking
+   purpose: Detect wheteher player is doing valid blocking and play sound and spawn system on location.
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/489f635cc94c965c3a85ff1d1fd04760e0b1b956)
+  1. using custom `UWarriorFunctionLibrary` function for :1, IsTargetPawnHostile; 2, NativeDoesActorHaveTag; 3, IsValidBlock.
+  2. using `UAbilitySystemBlueprintLibrary::SendGameplayEventToActor` to set gameplay event to actor.
+  3. create custom functions for displaying the sounds, spawn systems.
+  4. ![Screenshot 2025-05-26 184158](https://github.com/user-attachments/assets/d0226bdd-1560-48bf-ab2e-40b5ec57e1a9)
 
-
+- 11,
   
 
 
