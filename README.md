@@ -519,6 +519,7 @@
    1. Create a Gameplay Ability (GA)
    2. Create a Gameplay Effect (GE) to Apply Damage
    3. Create a Damage GameplayEffectHandle in the GA
+      
       <details>
       <summary>View Code .h</summary>
 
@@ -542,7 +543,7 @@
 	return ActiveGameplayEffectHandle.WasSuccessfullyApplied();
       }
       ```
-      <details>
+      </details>
    4. Detect Collision (e.g., in Actor or Projectile)
 
  ## 19, 
