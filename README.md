@@ -21,6 +21,7 @@
   - [15, Gameplay Ability System](#15-Gameplay-Ability-System)
   - [16, Pawn](#16-Pawn)
   - [17, Collision](#17-Collision)
+  - [18, Apply Damage](#18-Apply-Damage)
 - [1. Set Up Hero Character](#1-set-up-hero-character)
 - [2. Combo System](#2-combo-system)
 - [3. Hero Combat](#3-hero-combat)
@@ -67,9 +68,9 @@
   TArray< TSubclassOf < UWarriorGameplayAbility > > ActivateOnGivenAbilities;	
   ```
   We wrap up any types under `UWarriorGameplayAbility` that satisfy the requirements of `TArray<UClass *>`
-## 6, Synchronous and Asynchronous loading
+## 6, Synchronous and Asynchronous Loading
   In Unreal Engine C++, synchronous loading uses `LoadObject()` to load assets immediately, ensuring they are available before gameplay starts, while asynchronous loading uses `FStreamableManager::RequestAsyncLoad()` to load assets in the background without 
-  blocking the main thread. Synchronous loading is ideal for critical assets like the player's character, ensuring smooth startup. In contrast, asynchronous loading is best for non-critical assets like enemies, optimizing performance and reducing initial load times.\
+  blocking the main thread. Synchronous loading is ideal for critical assets, such as the player's character, ensuring a smooth startup. In contrast, asynchronous loading is best suited for non-critical assets, such as enemies, which optimizes performance and reduces initial load times.\
 ## 7, Basic GameplayEffectHandle code
   ```c++
   // Create context
@@ -390,7 +391,6 @@
 	![DefaultPawnAndCharacter](https://github.com/user-attachments/assets/d78c666a-a70d-449d-88de-106870f4a40c)
 
 ## 17. Collision
-
 1. `ECollisionEnabled`:
    <details>
    <summary>View Code</summary>
@@ -515,8 +515,37 @@
    EComponentPhysicsStateChange, StateChange);
    ```
    </details>
-## 18,
- 
+## 18, Apply Damage
+   1. Create a Gameplay Ability (GA)
+   2. Create a Gameplay Effect (GE) to Apply Damage
+   3. Create a Damage GameplayEffectHandle in the GA
+      <details>
+      <summary>View Code .h</summary>
+
+      ```c++
+      UFUNCTION(BlueprintCallable,Category = "Warrior|FunctionLibrary")
+      static bool ApplyGameplayEffectSpecHandleToTargetActor(AActor* InInstigator,AActor* InTargetActor,const FGameplayEffectSpecHandle& InSpecHandle);
+      ```
+      </details>
+      
+      <details>
+      <summary>View Code .cpp </summary>
+
+      ```c++
+      bool UWarriorFunctionLibrary::ApplyGameplayEffectSpecHandleToTargetActor(AActor* InInstigator, AActor* InTargetActor, const FGameplayEffectSpecHandle& InSpecHandle)
+      {
+	UWarriorAbilitySystemComponent* SourceASC = NativeGetWarriorASCFromActor(InInstigator);
+	UWarriorAbilitySystemComponent* TargetASC = NativeGetWarriorASCFromActor(InTargetActor);
+
+	FActiveGameplayEffectHandle ActiveGameplayEffectHandle = SourceASC->ApplyGameplayEffectSpecToTarget(*InSpecHandle.Data, TargetASC);
+
+	return ActiveGameplayEffectHandle.WasSuccessfullyApplied();
+      }
+      ```
+      <details>
+   4. Detect Collision (e.g., in Actor or Projectile)
+
+ ## 19, 
   
   
 # 1, Set Up Hero Character
