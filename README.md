@@ -3496,25 +3496,27 @@ Then, create a new blueprint animation.
 - 8,  Spawning Projectile
   1. Create a new socket and a new event tag.\
      ![Screenshot 2025-05-25 175313](https://github.com/user-attachments/assets/810dce91-5a4d-44a0-8d29-ec31388fefa0)
-  2. Add a new notify ANS.\
+  2. Add a new notify ANS \
       ![Screenshot 2025-05-25 175324](https://github.com/user-attachments/assets/13d28555-8ae8-4354-adf2-8c4b278a2566)
-  3. Finsihg the GA_Projectile.\
+  3. Finishing the GA_Projectile.\
      ![Screenshot 2025-05-25 175306](https://github.com/user-attachments/assets/ca7126b7-9185-4a55-8a6a-f0befc50d1e9)
 
 - 9, ⚠️⚠️⚠️⚠️⚠️ On Projectile Hit
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/106466f939ab9c3ba22c56bae9c91a1306a81e6a)
 
 - 10, ⚠️⚠️⚠️⚠️ Handle Projectile Hit If Is Blocking
-   purpose: Detect wheteher player is doing valid blocking and play sound and spawn system on location.
+  Purpose: Detect whether the player is doing valid blocking and play a sound, and spawn a system at the location.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/489f635cc94c965c3a85ff1d1fd04760e0b1b956)
   1. using custom `UWarriorFunctionLibrary` function for :1, IsTargetPawnHostile; 2, NativeDoesActorHaveTag; 3, IsValidBlock.
-  2. using `UAbilitySystemBlueprintLibrary::SendGameplayEventToActor` to set gameplay event to actor.
-  3. create custom functions for displaying the sounds, spawn systems.
+  2. Using `UAbilitySystemBlueprintLibrary::SendGameplayEventToActor` to set gameplay event to actor.
+  3. Create custom functions for displaying the sounds, spawn systems.
   4. ![Screenshot 2025-05-26 184158](https://github.com/user-attachments/assets/d0226bdd-1560-48bf-ab2e-40b5ec57e1a9)
 
-- 11,
+- 11, ⚠️⚠️⚠️⚠️Projectile Spec Handle
+  Purpose: Apply Damage, please watch note ##18.[18-Apply-Damage].
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/911f936aaa15beb36e10b8f1240f738df126fadc)
   
-
+- 12, 
 
   
 
