@@ -108,6 +108,7 @@ void AWarriorProjectileBase::HandleApplyProjectileDamage(APawn* InHitPawn, const
 			InPayload
 		);
 	}
+
 }
 
 
