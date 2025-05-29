@@ -3517,7 +3517,11 @@ Then, create a new blueprint animation.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/911f936aaa15beb36e10b8f1240f738df126fadc)\
   ![Screenshot 2025-05-27 111914](https://github.com/user-attachments/assets/a7ed25b9-2a13-44ab-97cc-8c0b3eee9807)
   
-- 12, 
+- 12, Projectile Sound FX
+  ![Screenshot 2025-05-28 193845](https://github.com/user-attachments/assets/b27742a5-abce-4880-a8df-ae512335b581)
+
+- 13, 
+
 
   
 
