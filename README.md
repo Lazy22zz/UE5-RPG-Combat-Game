@@ -173,9 +173,9 @@
      ![ActorAndComponent](https://github.com/user-attachments/assets/f934ca7c-4772-4c00-8112-c756976eaccc)\
      1, `TSet<UActorComponent*> OwnedComponents` holds all the Components owned by the Actor, usually one of which will be a SceneComponent as a RootComponent.\
      2, `TArray<UActorComponent*> InstanceComponents` holds instantiated Components. What does instantiation mean is the Component that you define in the Details in Blueprint, and when the Actor is instantiated, these attached Components will also be instantiated.\
-     3, For an Actor to be able to be placed in a Level, it must instantiate `USceneComponent* RootComponent`; SceneComponents provide two major capabilities: Transforms and nesting\
+     3, For an Actor to be able to be placed in a Level, it must instantiate `USceneComponent* RootComponent`\
      ![Components](https://github.com/user-attachments/assets/4381032e-f880-4016-b757-4d21a487bcc5)\
-     4, Major Components: `UActorComponent`, `USceneComponent`, `UPrimitiveComponent`\
+     4, Major Components: `UActorComponent`[basic logic/data], `USceneComponent`[transform], `UPrimitiveComponent`[collision]\
      Think: Why can't ActorComponents nest within each other? And nesting is only available at the SceneComponent level?
      <details>
        <summary>Click to reveal</summary>
