@@ -20,8 +20,9 @@
   - [14, Lamda Function](#14-Lamda-Function)
   - [15, Gameplay Ability System](#15-Gameplay-Ability-System)
   - [16, Pawn](#16-Pawn)
-  - [17, Collision](#17-Collision)
-  - [18, Apply Damage](#18-Apply-Damage)
+  - [17, Controller](#17-Controller)
+  - [18, Collision](#18-Collision)
+  - [19, Apply Damage](#19-Apply-Damage)
 - [1. Set Up Hero Character](#1-set-up-hero-character)
 - [2. Combo System](#2-combo-system)
 - [3. Hero Combat](#3-hero-combat)
@@ -389,7 +390,22 @@
 	Unreal Engine provides several types of Pawns to simplify character and camera setup. **DefaultPawn** is a convenient starting point that comes pre-equipped with a movement component, a spherical collision component, and a static mesh—essentially a ready-made package to avoid building everything from scratch. **SpectatorPawn**, derived from DefaultPawn, is designed for non-interactive players like spectators. It removes the mesh display, disables collisions, and uses a movement component suited for free-floating camera control without gravity. **Character** is a more specialized version of Pawn, tailored for humanoid gameplay. It includes a CharacterMovementComponent for realistic walking, a CapsuleComponent for accurate collision, and a 	SkeletalMesh for animations. While beginners may be unsure whether to use Pawn or Character, the rule of thumb is: use **Character** for humanoid characters with skeletons, and **Pawn** for more abstract or non-humanoid setups like VR hands. Character is essentially an enhanced Pawn, while Pawn offers greater flexibility for custom behaviors.\
 	![DefaultPawnAndCharacter](https://github.com/user-attachments/assets/d78c666a-a70d-449d-88de-106870f4a40c)
 
-## 17. Collision
+## 17. Controller
+   0, Summary:\
+   ![PlayerControllerAndAIController](https://github.com/user-attachments/assets/d347d38a-d970-465e-9f28-c8e5b54d1658)\
+   1, AController: 1 on 1 control actor.\
+   ![AController](https://github.com/user-attachments/assets/3d58390a-b2e4-4cc5-a7ea-a787ffb2599e)\
+   2, APlayerState: Under the AInfo, to save the player's info, not NPCs.\
+   ![APlayerState](https://github.com/user-attachments/assets/85c551fb-22c8-459c-b10a-f44d03e83d6a)\
+   3, Component-Actor-Pawn-Controller Structure:\
+   ![ControllerAndPawn](https://github.com/user-attachments/assets/1cdc6ce7-471e-499f-94ed-30d639807095)\
+   4, APlayerController: Player's controller.\
+   ![PlayerController](https://github.com/user-attachments/assets/e551197e-d93d-4804-881c-24acb0a8e4cd)\
+   5, AAIController: AI Pawn's controller.\
+   ![AIController](https://github.com/user-attachments/assets/c7aeb7b3-f3cd-45e8-8502-c39b1666ef72)
+
+
+## 18. Collision
 1. `ECollisionEnabled`:
    <details>
    <summary>View Code</summary>
@@ -515,7 +531,7 @@
    ```
    </details>
    
-## 18. Apply Damage
+## 19. Apply Damage
 
 1. Create a Gameplay Ability (GA)
 2. Create a Gameplay Effect (GE) to Apply Damage  
@@ -546,7 +562,7 @@
     
     </details>
 
- ## 19, 
+ ## 20, 
   
   
 # 1, Set Up Hero Character
