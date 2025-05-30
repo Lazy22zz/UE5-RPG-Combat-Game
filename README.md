@@ -3535,7 +3535,21 @@ Then, create a new blueprint animation.
 - 12, Projectile Sound FX
   ![Screenshot 2025-05-28 193845](https://github.com/user-attachments/assets/b27742a5-abce-4880-a8df-ae512335b581)
 
-- 13, 
+- 13, Glacer Melee Ability
+  1. Create a new GA_Glacer_Attack.
+  2. Create a new Montage.
+  3. Add this GA into DA_Glacer_status.
+  4. Enable this new GA in the behavior tree.
+  ![Screenshot 2025-05-29 201113](https://github.com/user-attachments/assets/38e64c80-0ce2-4703-96e8-26f9959f7bb9)\
+  ![Screenshot 2025-05-29 201121](https://github.com/user-attachments/assets/8b7b452c-f7c6-4aef-9f96-91e328bec5c2)\
+  ![Screenshot 2025-05-29 201127](https://github.com/user-attachments/assets/a0c8f839-0cc6-4a9c-a9a0-a6e61873bffd)\
+  ![Screenshot 2025-05-29 201152](https://github.com/user-attachments/assets/7fa24df5-ec38-4c96-bbae-889343b1e62b)
+
+- 14, 
+
+
+
+
 
 
   
