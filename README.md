@@ -3545,7 +3545,21 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-05-29 201127](https://github.com/user-attachments/assets/a0c8f839-0cc6-4a9c-a9a0-a6e61873bffd)\
   ![Screenshot 2025-05-29 201152](https://github.com/user-attachments/assets/7fa24df5-ec38-4c96-bbae-889343b1e62b)
 
-- 14, 
+- 14, ⚠️⚠️⚠️⚠️unblockable attack
+  1. Create new tags.
+     [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/89afca868ee275299d2353fe7e7eb87d8c4792fa)
+  2. Attach a new tag on GA_Glacer_Attack.\
+     ![Screenshot 2025-05-30 095058](https://github.com/user-attachments/assets/68aba693-6bc8-4ee3-b17b-4ecdefc5d33d)
+  3. Create a new Gameplaycue notify base.\
+     ![Screenshot 2025-05-30 095030](https://github.com/user-attachments/assets/5c12fd03-cb07-4bc9-8dcb-dfd095e8e238)
+  4. In Ga_Galer_Attack's parent GA_Enemy_Melee, enable `execute` that new gameplay cue.\
+     ![Screenshot 2025-05-30 095053](https://github.com/user-attachments/assets/68eb0ee1-76aa-41c0-aa2c-97080e6d800f)
+
+- 15, 
+
+     
+
+
 
 
 
