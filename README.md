@@ -3555,7 +3555,13 @@ Then, create a new blueprint animation.
   4. In Ga_Galer_Attack's parent GA_Enemy_Melee, enable `execute` that new gameplay cue.\
      ![Screenshot 2025-05-30 095053](https://github.com/user-attachments/assets/68eb0ee1-76aa-41c0-aa2c-97080e6d800f)
 
-- 15, 
+# 7, Boss Character
+  Purpose: 1, Staring Stats; 2, Boss Bar; 3, Combat Abilities; 4, Behavior Tree
+
+- 1, Set Up Boss Character
+  Create a new BP_FrostGiant; ABP_FrostGiant; BS_FrostGiant_Walk.\
+
+- 2, 
 
      
 
