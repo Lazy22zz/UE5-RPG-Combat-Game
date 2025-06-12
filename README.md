@@ -29,6 +29,7 @@
 - [4. Enemy AI](#4-enemy-ai)
 - [5. Hero Combat Ability](#5-hero-combat-ability)
 - [6, Ranged Enemy](#6-Ranged-Enemy)
+- [7, Boss Character](#7-Boss-Character)
 
 # EXTRA
 ## 1, Hard reference
@@ -3561,7 +3562,16 @@ Then, create a new blueprint animation.
 - 1, Set Up Boss Character
   Create a new BP_FrostGiant; ABP_FrostGiant; BS_FrostGiant_Walk.\
 
-- 2, 
+- 2, ⚠️Boss Start Up Status
+  Debug: Fixing the shadow issue. \
+  ![Screenshot 2025-06-12 094519](https://github.com/user-attachments/assets/d8f76568-1411-4942-ad33-6030fe3e72a4)\
+  ![Screenshot 2025-06-12 094441](https://github.com/user-attachments/assets/4bd0c505-93b2-4001-a52c-7f5b7f769b59)
+  1. Create a new CT, GE, and DA for the Fost Giant.
+  2. Attach the DA to BP_FrostGiant.
+  3. Using `ShowDebug AbilitySystem` to check the Data Status.
+ 
+- 3. 
+
 
      
 
