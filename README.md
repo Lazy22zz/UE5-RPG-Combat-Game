@@ -3570,7 +3570,18 @@ Then, create a new blueprint animation.
   2. Attach the DA to BP_FrostGiant.
   3. Using `ShowDebug AbilitySystem` to check the Data Status.
  
-- 3. 
+- 3, Boss Bar Widget
+  1. Create a new blueprint, textblock, named `WarriorTextBlock`.\
+     ![Screenshot 2025-06-13 105335](https://github.com/user-attachments/assets/a50dfa66-17b8-4c35-9ae3-c79247bc6f8e)
+  2. Create a new user interface -> User Widget -> WarriorWidgetBase, named `WBP_DeafultBoss`.
+     ![Screenshot 2025-06-13 110339](https://github.com/user-attachments/assets/ddf95914-964b-428f-8ed2-e8e448c2975d)
+  3. Enable the Health bar to change based on the health change.
+     ![Screenshot 2025-06-13 110346](https://github.com/user-attachments/assets/7e28fd61-89bf-4bfc-a627-7452d03e9e06)
+
+- 4, 
+
+
+
 
 
      
