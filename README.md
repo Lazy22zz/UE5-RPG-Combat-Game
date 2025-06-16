@@ -3578,7 +3578,13 @@ Then, create a new blueprint animation.
   3. Enable the Health bar to change based on the health change.
      ![Screenshot 2025-06-13 110346](https://github.com/user-attachments/assets/7e28fd61-89bf-4bfc-a627-7452d03e9e06)
 
-- 4, 
+- 4, Draw BossBar to the screen
+  1. Create a new GA_Default_Boss_DrawHealthBar and enable the text lock name change.
+     ![Screenshot 2025-06-15 171937](https://github.com/user-attachments/assets/82804423-6e74-45ad-9b07-d46ea4b100a5)
+  2. Create a new child GA_Giant_DrawHealthBar.
+  3. Add it to DA_Boss.
+ 
+- 5, 
 
 
 
