@@ -3584,7 +3584,13 @@ Then, create a new blueprint animation.
   2. Create a new child GA_Giant_DrawHealthBar.
   3. Add it to DA_Boss.
  
-- 5, 
+- 5, Grant Hit React
+  1. Create a new child GA_Giant_HitReact.
+  2. Go to BP_FrostGiant, change its Materials, and ensure it can enable the computeDissolveHitFix.
+  3. Decide on which color for HitReact.
+  4. Assign this GA_Giant_HitReact to DA_Boss.
+
+- 6, 
 
 
 
