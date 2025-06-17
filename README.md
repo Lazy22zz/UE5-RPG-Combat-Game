@@ -3590,7 +3590,16 @@ Then, create a new blueprint animation.
   3. Decide on which color for HitReact.
   4. Assign this GA_Giant_HitReact to DA_Boss.
 
-- 6, 
+- 6, ⚠️Giant Death
+  1. Create a new GamePlayability based on GA_EnemyDeathBase, named GA_Giant_Death.
+  2. Create a new DEATH MONTAGE.
+  3. Create a new Death Sound Gampley Cue Tag.
+  4. Add the nigaraga.
+  5. Create a new GameplayCue based on the `GameplayCue_notify_state`.
+     ![Screenshot 2025-06-16 202421](https://github.com/user-attachments/assets/ae604967-eb18-4091-b542-5b47fd2d5018)
+
+- 7,
+
 
 
 
