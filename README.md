@@ -3598,7 +3598,16 @@ Then, create a new blueprint animation.
   5. Create a new GameplayCue based on the `GameplayCue_notify_state`.
      ![Screenshot 2025-06-16 202421](https://github.com/user-attachments/assets/ae604967-eb18-4091-b542-5b47fd2d5018)
 
-- 7,
+- 7, ⚠️⚠️⚠️ Remove Boss Bar
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/a2f0672d953e086dc8832d0c5effe3015242568f)
+  1. Go to Share/GA_Enemy_Boss_DrawBar.
+     ![Screenshot 2025-06-19 200957](https://github.com/user-attachments/assets/48fb7c6c-b3d5-4c24-a4a8-104cfce0e4a4)
+  2. Go to BP_WarriorEnemyCharacter_Base
+     ![Screenshot 2025-06-19 201334](https://github.com/user-attachments/assets/46324e2f-1949-4b22-b252-34a3b56cc337)
+
+- 8, 
+
+
 
 
 
