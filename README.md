@@ -3605,7 +3605,13 @@ Then, create a new blueprint animation.
   2. Go to BP_WarriorEnemyCharacter_Base
      ![Screenshot 2025-06-19 201334](https://github.com/user-attachments/assets/46324e2f-1949-4b22-b252-34a3b56cc337)
 
-- 8, 
+- 8, Boss Behavior Tree
+  1. Create a new AIC_FrostGiant.
+  2. Create a new BT_FrostGiant.
+  3. Assign AIC, BT to the BP_FrostGiant.
+  4. Change Frost Giant's move speed.
+ 
+- 9,
 
 
 
