@@ -3611,7 +3611,19 @@ Then, create a new blueprint animation.
   3. Assign AIC, BT to the BP_FrostGiant.
   4. Change Frost Giant's move speed.
  
-- 9,
+- 9, ⚠️⚠️⚠️ Giant Melee Attack
+  1. Create a new GA_Giant_Melee_Attack1
+  2. ![Screenshot 2025-06-24 093842](https://github.com/user-attachments/assets/9eef1ba2-e262-46bb-84c5-21876c55f9a0)
+  3. Finish the melee attack montage.
+  4. ![Screenshot 2025-06-24 093934](https://github.com/user-attachments/assets/855ed0b8-5b24-4190-af54-b0679aa40d30)
+  5. Fill up the behavior tree.
+  6. ![Screenshot 2025-06-24 094024](https://github.com/user-attachments/assets/2f493e54-80df-45c0-99de-94d41f8e1051)
+  7. Add this GA_Giant_Melee_Attack1 in the DA_Giant.
+
+- 10, 
+
+
+
 
 
 
