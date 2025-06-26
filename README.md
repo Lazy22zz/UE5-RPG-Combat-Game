@@ -3620,8 +3620,9 @@ Then, create a new blueprint animation.
   6. ![Screenshot 2025-06-24 094024](https://github.com/user-attachments/assets/2f493e54-80df-45c0-99de-94d41f8e1051)
   7. Add this GA_Giant_Melee_Attack1 in the DA_Giant.
 
-- 10, 
-
+- 10, ⚠️⚠️⚠️⚠️ Enemy Hand Collision Box
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/d8475b41ca7fc6a85872a9a1297af0109cc5020b)
+  
 
 
 
