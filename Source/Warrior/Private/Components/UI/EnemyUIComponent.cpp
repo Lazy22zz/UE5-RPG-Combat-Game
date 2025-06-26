@@ -29,4 +29,5 @@ void UEnemyUIComponent::RemoveAnyEnemyWidgetsIfAny()
 		}
 	}
 
+	EnemyDrawnWidgets.Empty();
 }

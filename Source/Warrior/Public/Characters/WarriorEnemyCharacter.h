@@ -6,9 +6,11 @@
 #include "Characters/WarriorBaseCharacter.h"
 #include "WarriorEnemyCharacter.generated.h"
 
+
 class UEnemyCombatComponent;
 class UEnemyUIComponent;
 class UWidgetComponent;
+class UBoxComponent;
 
 /**
  * 
@@ -40,15 +42,26 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat")
 	UEnemyCombatComponent* EnemyCombatComponent;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat")
+	UBoxComponent* LeftHandHitBoxComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat")
+	UBoxComponent* RightHandHitBoxComponent;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI")
 	UEnemyUIComponent* EnemyUIComponent;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI")
 	UWidgetComponent* EnemyHealthWidgetComponent;
 
+	UFUNCTION()
+	virtual void OnBodyCollisionBoxBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
 private:
 	void InitEnemyStartUpData();
 
 public:
 	FORCEINLINE UEnemyCombatComponent* GetEnemyCombatComponent() const { return EnemyCombatComponent; }
+	FORCEINLINE UBoxComponent* GetLeftHandCollisionBox() const { return LeftHandHitBoxComponent; }
+	FORCEINLINE UBoxComponent* GetRightHandCollisionBox() const { return RightHandHitBoxComponent; }
 };
