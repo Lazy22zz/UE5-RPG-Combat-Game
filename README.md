@@ -3622,7 +3622,12 @@ Then, create a new blueprint animation.
 
 - 10, ⚠️⚠️⚠️⚠️ Enemy Hand Collision Box
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/d8475b41ca7fc6a85872a9a1297af0109cc5020b)
-  
+
+- 11, ⚠️⚠️⚠️⚠️⚠️ Post Edit Change Property
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/de405a6593b3d1f0e3e0bf9918dd87fef36f6d67)
+  Purpose: Using `PostEditChangeProperty` to attach the new hitbox based on the bone name.
+  1. `void AWarriorEnemyCharacter::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent)` : Trigger for property changed.
+  2. `bool AActor::AttachToComponent(USceneComponent* Parent, const FAttachmentTransformRules& AttachmentRules, FName SocketName)` : Attach component.
 
 
 
