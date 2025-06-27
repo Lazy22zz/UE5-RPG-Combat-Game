@@ -23,6 +23,7 @@
   - [17, Controller](#17-Controller)
   - [18, Collision](#18-Collision)
   - [19, Apply Damage](#19-Apply-Damage)
+  - [20, Triggers In UE](#20-Triggers-In-UE)
 - [1. Set Up Hero Character](#1-set-up-hero-character)
 - [2. Combo System](#2-combo-system)
 - [3. Hero Combat](#3-hero-combat)
@@ -563,8 +564,68 @@
     
     </details>
 
- ## 20, 
-  
+ ## 20, Triggers In UE
+
+ 1. Editor Triggers(Only Effective In Editor)
+    - 1,  Property Modification Trigger\
+	Function: PostEditChangeProperty(FPropertyChangedEvent&)\
+	Purpose: Executes logic after editing an Actor/Component property (e.g., syncing models, binding bones).\
+	Example: When modifying an enemy's "attack range" property, automatically update the collision box size.\
+    - 2, Blueprint Compilation Trigger\
+	Function: PostEditCompile()\
+	Purpose: Runs after blueprint compilation (e.g., generating data tables, validating configurations).\
+	Example: When compiling a character blueprint, automatically check if skill configurations are complete.\
+    - 3, Component Addition/Removal Trigger\
+	Functions: PostEditAddComponent(), PostEditRemoveComponent()\
+	Purpose: Triggers when adding/removing components in the editor (e.g., updating component dependencies).\
+	Example: After adding an "AI Controller" component, automatically enable AI behavior logic.
+ 2. Runtimer Triggers
+    - 1, Lifecycle Triggers\
+	Functions:\
+	BeginPlay(): Triggers when an Actor starts playing (initializes components, binds events).\
+	Tick(float DeltaTime): Updates every frame (handles movement, animation interpolation).\
+	EndPlay(const EEndPlayReason::Type EndPlayReason): Triggers when an Actor ends (releases resources).\
+	Example: Initializing the skill system in BeginPlay when a character spawns.\
+    - 2, Input Event Triggers\
+	Functions: Configured via input mapping (e.g., BindAction, BindAxis).\
+	Purpose: Responds to player actions (key presses, joystick movements).\
+	Example: Triggering OnAttackInput() when the attack key is pressed.\
+    - 3, Physics Collision Triggers\
+	Functions:\
+	OnComponentBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, ...)\
+	OnComponentEndOverlap(...)\
+	Purpose: Detects collisions/overlaps (e.g., activating traps, picking up items).\
+	Example: When a player enters a treasure chest's collision volume, OnBeginOverlap triggers an interaction prompt.\
+    - 4, Animation State Triggers\
+	Functions: Via nodes in the Animation Blueprint (e.g., AnimNotify, Montage Notify).\
+	Purpose: Triggers at specific animation frames (e.g., generating damage 判定 during an attack animation).\
+	Example: Using AnimNotify to trigger damage logic at frame 30 of a sword swing animation.\
+    - 5, Network Synchronization Triggers\
+	Function: OnRep_PropertyName() (requires property to be marked ReplicatedUsing).\
+	Purpose: Triggers when properties sync between server and client (e.g., character position changes).\
+	Example: When the server modifies a player's health, the client updates the health bar via OnRep_Health.\
+ 3. System Events & Custom Triggers
+    - 1, GameplayAbility System Triggers\
+	Key Components: GameplayEffect, AbilityTask\
+	Purpose: Implements skills and status effects (damage, healing, buffs).\
+	Example: Triggering damage calculation via a GameplayEffect when casting a fireball skill.\
+    - 2, Custom Delegate Triggers\
+	Function: Declare with DECLARE_DYNAMIC_MULTICAST_DELEGATE and bind callbacks.\
+	Purpose: Decouples custom events (e.g., linking UI with gameplay logic).\
+	Example: Using a delegate to show a "Game Over" UI when a character dies.\
+    - 3, Timer Triggers\
+	Function: GetWorldTimerManager().SetTimer()\
+	Purpose: Executes logic at specified intervals (e.g., skill cooldowns, continuous damage).\
+	Example: Applying poison damage to an enemy every 5 seconds.
+ 4. Trigger Mechanism Comparison & Selection Guide
+
+| **Trigger Type** | **Core Function** | **Suitable Scenarios** | **Performance Notes** |
+|------------------|-------------------|------------------------|----------------------|
+| Editor Property | `PostEditChangeProperty` | Editor config sync | Editor-only, no runtime impact |
+| Runtime Lifecycle | `BeginPlay`/`Tick` | Init & frame updates | `Tick` needs careful optimization |
+| Input & Collision | `OnComponentBeginOverlap` | Player actions, physics | Event-driven, efficient |
+| GAS System | `GameplayEffect` | Combat, status effects | Requires ASC, complex logic |
+| Custom Delegate | `DECLARE_DELEGATE` | Module decoupling | Flexible, manual management |
   
 # 1, Set Up Hero Character
 - 1, Base Class Structure \
@@ -3628,6 +3689,10 @@ Then, create a new blueprint animation.
   Purpose: Using `PostEditChangeProperty` to attach the new hitbox based on the bone name.
   1. `void AWarriorEnemyCharacter::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent)` : Trigger for property changed.
   2. `bool AActor::AttachToComponent(USceneComponent* Parent, const FAttachmentTransformRules& AttachmentRules, FName SocketName)` : Attach component.
+  3. ![Screenshot 2025-06-27 103552](https://github.com/user-attachments/assets/c25022e0-6bcf-42ea-adbf-086b9729c639)
+  4. ![Screenshot 2025-06-27 103555](https://github.com/user-attachments/assets/2c6f3adb-f24e-4dc2-9108-561fe7d729ec)
+
+
 
 
 
