@@ -49,4 +49,7 @@ private:
 
 protected:
 	TArray<AActor*> OverlappedActors;
+
+	virtual void ToggleCurrentEquippedWeaponCollision(bool bShouldEnable);
+	virtual void ToggleBodyCollsionBoxCollision(bool bShouldEnable, EToggleDamageType ToggleDamageType);
 };
