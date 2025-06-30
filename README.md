@@ -3692,9 +3692,13 @@ Then, create a new blueprint animation.
   3. ![Screenshot 2025-06-27 103552](https://github.com/user-attachments/assets/c25022e0-6bcf-42ea-adbf-086b9729c639)
   4. ![Screenshot 2025-06-27 103555](https://github.com/user-attachments/assets/2c6f3adb-f24e-4dc2-9108-561fe7d729ec)
 
-
-
-
+- 12, ⚠️⚠️⚠️⚠️⚠️⚠️⚠️ Enable Left Hand Toggle Hit Collision
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/3c78ec2977b734d0127b24b1afe232674becd3ce)
+  1. In `WarriorEnemyComponent.cpp`, enable the `OnBodyCollisionBoxBeginOverlap()` to detect whether a HitPawn exists.
+  2. In `PawnCombatComponent`, create two virtual functions: `ToggleBodyCollisionBoxCollision`, `ToggleCurrentEquippedWeaponCollision`: One for body collision, one for weapon collision.
+  3. Because only the Frost Giant boss uses its body as a weapon.[Gultningenemy uses the same weapon collision as warriorhero]. We only need to implement the bodybox collision. Check `OwningEnemyCharacter` and `ToggleDamageType`, and if the collision is not allowed, which means when' ans_togglecollision' is not set, the collision will be disabled.
+ 
+- 13,
 
 
 
