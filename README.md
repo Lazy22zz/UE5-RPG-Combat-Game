@@ -3706,7 +3706,12 @@ Then, create a new blueprint animation.
   3. Create a new Montage, enable its Gameplayability and DA.
      ![Screenshot 2025-06-30 193925](https://github.com/user-attachments/assets/d8c6d139-832d-47a8-8646-69427dc95a27)
 
-- 14, 
+- 14, Boss Combo Gameplay Ability
+  Purpose: Make a new GameplayAbility.
+  ![Screenshot 2025-07-01 095905](https://github.com/user-attachments/assets/0eacb2cd-3425-4664-8a8e-19b157081f3a)
+
+- 15, 
+
 
 
 
