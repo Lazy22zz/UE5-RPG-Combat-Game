@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/f67a5606-7d51-4db1-838a-aeb0f3901764) Creating a combat action RPG game
+Creating a combat action RPG game
 
  # Table of Contents
 
