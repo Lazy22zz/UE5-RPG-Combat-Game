@@ -1,4 +1,4 @@
- Creating a combat action RPG game
+![image](https://github.com/user-attachments/assets/f67a5606-7d51-4db1-838a-aeb0f3901764) Creating a combat action RPG game
 
  # Table of Contents
 
@@ -3698,7 +3698,19 @@ Then, create a new blueprint animation.
   2. In `PawnCombatComponent`, create two virtual functions: `ToggleBodyCollisionBoxCollision`, `ToggleCurrentEquippedWeaponCollision`: One for body collision, one for weapon collision.
   3. Because only the Frost Giant boss uses its body as a weapon.[Gultningenemy uses the same weapon collision as warriorhero]. We only need to implement the bodybox collision. Check `OwningEnemyCharacter` and `ToggleDamageType`, and if the collision is not allowed, which means when' ans_togglecollision' is not set, the collision will be disabled.
  
-- 13,
+- 13, ⚠️⚠️⚠️⚠️ New Boss Right Hand Attack Skill[Unblockable]
+  1. Make magnitude of the parameters is changeable, in `GC_Enemy_Attack_Unblockable`
+     ![Screenshot 2025-06-30 193230](https://github.com/user-attachments/assets/98f244f2-5afb-4af0-94a6-fe1960c109a8)
+  2. Set a new global variable `Unblockable Warning Circle Offset Size` in `GA_Enemy_MeleeAttack_Base`
+     ![Screenshot 2025-06-30 193451](https://github.com/user-attachments/assets/a4eedf12-7b3e-4243-9d37-70522316f87a)
+  3. Create a new Montage, enable its Gameplayability and DA.
+     ![Screenshot 2025-06-30 193925](https://github.com/user-attachments/assets/d8c6d139-832d-47a8-8646-69427dc95a27)
+
+- 14, 
+
+
+
+
 
 
 
