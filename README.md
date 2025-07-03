@@ -3710,7 +3710,14 @@ Then, create a new blueprint animation.
   Purpose: Make a new GameplayAbility.
   ![Screenshot 2025-07-01 095905](https://github.com/user-attachments/assets/0eacb2cd-3425-4664-8a8e-19b157081f3a)
 
-- 15, 
+- 15, ⚠️⚠️ Wait And Spawn Enemies
+  Purpose: Create a new customized Gameplay Ability Task.
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/8f6123c7c66b30aa05359fb59407a14caf555a6d)
+  1. Create a new Gameplay Ability Task, `AbilityTask_WaitSpawnEnemies`
+  2. Create a new Gameplay Ability Blueprint, `GA_Enemy_SummonEnemies_Base`
+  ![Screenshot 2025-07-03 100554](https://github.com/user-attachments/assets/181ed96d-befa-4d02-bce6-0446b802e47b)
+
+- 16, 
 
 
 
