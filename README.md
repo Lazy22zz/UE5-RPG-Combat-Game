@@ -3726,7 +3726,15 @@ Then, create a new blueprint animation.
   2. Create a new Gameplay Ability Blueprint, `GA_Enemy_SummonEnemies_Base`
   ![Screenshot 2025-07-03 100554](https://github.com/user-attachments/assets/181ed96d-befa-4d02-bce6-0446b802e47b)
 
-- 16, 
+- 16, GA_Summon Ability
+  1. Create new Tags.
+     [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/b00e5876688c32ae806fb4f5b9f390a28c99352b)\
+  2. Create a new GA_FrostGiant_SummonEnemies.
+     ![Screenshot 2025-07-04 190304](https://github.com/user-attachments/assets/ac5c2e44-e7e6-495e-9798-4cd26e5b2325)
+  3. Assign it in DA, and change the behavior tree to test its montage play.
+
+- 17, 
+
 
 
 
