@@ -16,7 +16,7 @@ Creating a combat action RPG game
   - [10, AI](#10-AI)
   - [11, Pre-construction and Construction](#11-pre-construction-and-construction)
   - [12, New Ability Process](#12-new-ability-process)
-  - [13, World Of the UE](#13-World-Of-the-UE)
+  - [13, GamePlay architecture of UE](#13-GamePlay-architecture-of-UE)
   - [14, Lamda Function](#14-Lamda-Function)
   - [15, Gameplay Ability System](#15-Gameplay-Ability-System)
   - [16, Pawn](#16-Pawn)
@@ -74,6 +74,7 @@ Creating a combat action RPG game
 ## 6, Synchronous and Asynchronous Loading
   In Unreal Engine C++, synchronous loading uses `LoadObject()` to load assets immediately, ensuring they are available before gameplay starts, while asynchronous loading uses `FStreamableManager::RequestAsyncLoad()` to load assets in the background without 
   blocking the main thread. Synchronous loading is ideal for critical assets, such as the player's character, ensuring a smooth startup. In contrast, asynchronous loading is best suited for non-critical assets, such as enemies, which optimizes performance and reduces initial load times.\
+  
 ## 7, Basic GameplayEffectHandle code
   ```c++
   // Create context
@@ -97,6 +98,7 @@ Creating a combat action RPG game
   // Then, eventually, you apply the effect
   AbilitySystemComponent->ApplyGameplayEffectSpecToTarget(EffectSpecHandle, TargetASC);
   ```
+
 ## 8, Automatic Storage, Static Storage, Dynamic Storage
   Automatic storage: variables defined inside a function use `automatic storage`, which means the variables exist automatically when the function containing them is invoked and expire when the function is terminated\
   Static Storage: exists throughout the execution of an entire program. Two ways to make a variable static: 1, define it externally, outside a function; 2, use the keyword `static` when declaring a variable\
@@ -149,7 +151,7 @@ Creating a combat action RPG game
   3. Behavior Tree Nodes Type: 1, Composite Node(Sequence [left to right, if one fail, exit], Selector [left to right, ONLY succeeed can run]); 2, Decorator Node (Condition); 3, Service Node (Running in background); 4, Task Node (Doing task)
   4. Observe Aborts: 1, None(Abort Nothing); 2, Self (Only do self jobs); 3, Low Priority (Enable other jobs finished first); 4, Both (Abort Both)
   5. Environment Query System: EQS, Dynamically calculate the best decision based on the environement change.
-  6. 
+
 ## 11, pre-construction and construction 
   Pre-Construct → Runs before the widget is fully created and can be previewed in the editor.\
   Construct → Runs after the widget is created and is used for regular initialization at runtime.
@@ -161,30 +163,24 @@ Creating a combat action RPG game
   4. Ability Input Action.
   5. Grant Ability.
 
-## 13, World Of the UE  
+## 13, GamePlay architecture of UE 
   1. UObject: Mother of the World, which is under the class.  
-     ![UObject](https://github.com/user-attachments/assets/a1098c12-d867-475d-a3b7-8643eb6b0e7f)  
-  2. AActor: Is birth from UObject.  
+     ![UObject](https://github.com/user-attachments/assets/a1098c12-d867-475d-a3b7-8643eb6b0e7f)
+     
+  3. AActor: Is born from UObject.  
      Its Major functions: `Replication`, `Spawn`, `Tick`  
      Its Major types: `staticMeshActor`, `CameraActor`, `PlayerStarterActor`  
-     Think: Why Doesn't Actor Have a Built-in Transform Like Unity's GameObject?  
-     <details>
-       <summary>Click to reveal</summary>
-      To make development easier, Unreal Engine provides convenient methods like GetActorLocation() and SetActorLocation(), which internally delegate to the RootComponent. In the same way, the ability of an Actor to receive and process input events is forwarded to the internal UInputComponent* InputComponent; facilitation is also provided to access it directly through the Actor. Why this design? Because UE follows a C++ philosophy: "Never pay for what you don't need." In Unreal’s view, an Actor isn’t just a visible or physical object in the 3D world. Some Actors are completely invisible and serve only to represent information or control logic—like AInfo and its derived classes (AWorldSettings, AGameMode, AGameSession, APlayerState, AGameState, etc.), as well as AHUD and APlayerCameraManager. These Actors embody various rules, states, and systems that govern the game world. 
-     </details>
-  3. Components: Actor's skills\
+     ![Actor](https://github.com/user-attachments/assets/a5a25910-f301-4e06-a80b-6f9ddce06630)
+     
+  4. Components: Actor's skills\
      ![ActorAndComponent](https://github.com/user-attachments/assets/f934ca7c-4772-4c00-8112-c756976eaccc)\
      1, `TSet<UActorComponent*> OwnedComponents` holds all the Components owned by the Actor, usually one of which will be a SceneComponent as a RootComponent.\
      2, `TArray<UActorComponent*> InstanceComponents` holds instantiated Components. What does instantiation mean is the Component that you define in the Details in Blueprint, and when the Actor is instantiated, these attached Components will also be instantiated.\
      3, For an Actor to be able to be placed in a Level, it must instantiate `USceneComponent* RootComponent`\
      ![Components](https://github.com/user-attachments/assets/4381032e-f880-4016-b757-4d21a487bcc5)\
      4, Major Components: `UActorComponent`[basic logic/data], `USceneComponent`[transform], `UPrimitiveComponent`[collision]\
-     Think: Why can't ActorComponents nest within each other? And nesting is only available at the SceneComponent level?
-     <details>
-       <summary>Click to reveal</summary>
-      First, an Actor doesn't just have a single USceneComponent—it can also include components like UMovementComponent, AIComponent, and any custom components we design. Second, when it comes to implementing game logic, Unreal Engine generally advises against placing core logic directly in Components.
-     </details>
-  4. Level: In UE5, a Level is like a country—think of it as China, the USA, or Russia. It's an `AActor` derived from `UObject`, specifically represented by the `ALevelScriptActor`, which defines the rules for that level. Each level has its settings, such as gravity, game mode, and lighting, which are managed through its `WorldSettings`. Among all levels, the `Persistent Level` acts as the primary one, while the others are treated as Sublevels.  
+    
+  5. Level: In UE5, a Level is like a country—think of it as China, the USA, or Russia. It's an `AActor` derived from `UObject`, specifically represented by the `ALevelScriptActor`, which defines the rules for that level. Each level has its settings, such as gravity, game mode, and lighting, which are managed through its `WorldSettings`. Among all levels, the `Persistent Level` acts as the primary one, while the others are treated as Sublevels.  
 ![ActorAndComponent](https://github.com/user-attachments/assets/87758371-e814-47bb-ab86-ffedb94798af)
   <details>
   <summary> View Code</summary>
@@ -250,14 +246,25 @@ Creating a combat action RPG game
   5. World: The World in UE5 is like the Earth—it’s the container that holds all levels. A World must include a `Persistent Level`, which functions like the central authority, similar to the United Nations overseeing multiple countries (levels).
   ![WorldAndLevel](https://github.com/user-attachments/assets/d94bbf72-702b-4f22-a403-d6811b70be33)
 
-  6. WorldContext: Identifies the Active World: Facilitates Access to World-Specific Systems(gamemode, gamestate, level, actors); Supports Multi-World Scenarios(Persistence level, sublevel); Enables Blueprint Functionality(Get Actor of Class, Spawn Actor from Class, or Get Game Mode).\
+  6. WorldContext: Identifies the Active World: Facilitates Access to World-Specific Systems(game mode, gamestate, level, actors); Supports Multi-World Scenarios(Persistence level, sublevel); Enables Blueprint Functionality(Get Actor of Class, Spawn Actor from Class, or Get Game Mode).\
   ![WorldContextAndWorld](https://github.com/user-attachments/assets/0f33b91f-aae0-408c-8acf-04157e644a87)
-  8. GameInstance: holds the current WorldContext and other information about the entire game.\
+
+  7. Player: `LocalPlayer` is used to represent local players, and `NetConnection` is treated as a remote connection.
+   ![Player](https://github.com/user-attachments/assets/9a8b43b6-ec0a-491c-a235-10ce80a3e142)
+
+  8. GameInstance: holds the current `WorldContext` and `player`.\
     ![GameInstance](https://github.com/user-attachments/assets/318ab8e3-6d18-4d78-84c5-e50625057a09)
-  9. Engine: `UGameEngine` and `UEditorEngine`. UE's editor is a game! We are creating another game of our own inside the game that is the editor!
-     In different modes, UE selects a specific Engine class based on the build environment, and the base class UEngine stores all Worlds through a WorldList; in `Standalone Game mode`, UGameEngine creates the only GameWorld and directly stores the GameInstance pointer, whereas in the editor, the `EditorWorld` is used only for preview and does not have an OwningGameInstance — only the PlayWorld indirectly holds the GameInstance. 
-  10. GamePlayStatics: UE provides a series of static functions in Blueprints through the UGameplayStatics class (such as GetPlayerController, SpawnActor, OpenLevel, etc.), making it convenient for developers to control levels and the world without directly dealing with low-level C++. It serves as an important entry point for accessing engine functionalities in Blueprints. 
-  11. Summary: UEngine\
+
+  9. Engine: `UGameEngine` and `UEditorEngine`. UE's editor is a game! We are creating another game of our own inside the game, which is the editor!
+     In different modes, UE selects a specific Engine class based on the built environment, and the base class UEngine stores all Worlds through a WorldList; in `Standalone Game mode`, UGameEngine creates the only GameWorld and directly stores the GameInstance pointer, whereas in the editor, the `EditorWorld` is used only for preview and does not have an OwningGameInstance — only the PlayWorld indirectly holds the GameInstance.
+
+  10. GamePlayStatics: UE provides a series of static functions in Blueprints through the UGameplayStatics class (such as GetPlayerController, SpawnActor, OpenLevel, etc.), making it convenient for developers to control levels and the world without directly dealing with low-level C++. It serves as an important entry point for accessing engine functionalities in Blueprints.
+  
+  11. Data and logic :
+      We can divide the GamePlay of the whole game into three parts: 表现（View）、逻辑（Controller）、数据（Model）.
+      ![Data_And_Logic](https://github.com/user-attachments/assets/32fe62ce-39c1-4b15-aa44-705417da2d5d)
+
+  12. Summary: UEngine\
      └── UGameInstance\
        └── UWorld\
           └── ULevel\
@@ -455,7 +462,7 @@ Creating a combat action RPG game
    ```
    </details>
 
-3. `FComponentHitSignature`: Attach it to the boxcomponent to eanble the collision detec.
+3. `FComponentHitSignature`: Attach it to the box component to enable the collision detection.
    <details>
    <summary>View Code</summary>
    
