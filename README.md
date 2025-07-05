@@ -270,6 +270,8 @@ Creating a combat action RPG game
           └── ULevel\
             └── AActor\
                 └── UComponent
+      ![Gameplay_Summary_UE5](https://github.com/user-attachments/assets/dc6dab40-6c2e-4019-83fe-63e0c2ec5d81)
+
       
 ## 14, Lamda Function.
   Basic Logic:
