@@ -23,7 +23,7 @@ void UAbilityTask_WaitSpawnEnemies::Activate()
 {
     FGameplayEventMulticastDelegate& Delegate = AbilitySystemComponent->GenericGameplayEventCallbacks.FindOrAdd(CachedEventTag);
 
-    DelegateHandle = Delegate.AddUObject(this, &OnGameplayEventReceived);
+    DelegateHandle = Delegate.AddUObject(this, &ThisClass::OnGameplayEventReceived);
 }
 
 void UAbilityTask_WaitSpawnEnemies::OnDestroy(bool bInOwnerFinished)
