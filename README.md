@@ -3733,7 +3733,12 @@ Then, create a new blueprint animation.
      ![Screenshot 2025-07-04 190304](https://github.com/user-attachments/assets/ac5c2e44-e7e6-495e-9798-4cd26e5b2325)
   3. Assign it in DA, and change the behavior tree to test its montage play.
 
-- 17, 
+- 17, ⚠️⚠️⚠️⚠️⚠️⚠️⚠️ Listening For GameplayEvent
+  Purpose: 1, Using GameplayTask's `Activate();` and `OnDestroy(bool bInOwnerFinished)`\
+	   2, Using `FindOrAdd(CachedEventTag)` to catch the required tag; `AddUObject(this, &OnGameplayEventReceived)` to add object to delegate; `Remove(DelegateHandle)` to remove the delegate.
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/ab1bd1c6926c9cc3d7954a8525b58ed74be4d062)\
+
+- 18. 
 
 
 
