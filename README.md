@@ -24,6 +24,7 @@ Creating a combat action RPG game
   - [18, Collision](#18-Collision)
   - [19, Apply Damage](#19-Apply-Damage)
   - [20, Triggers In UE](#20-Triggers-In-UE)
+  - [21, Broadcast Events](#21-Broadcast-Events)
 - [1. Set Up Hero Character](#1-set-up-hero-character)
 - [2. Combo System](#2-combo-system)
 - [3. Hero Combat](#3-hero-combat)
@@ -635,6 +636,115 @@ Creating a combat action RPG game
 | Input & Collision | `OnComponentBeginOverlap` | Player actions, physics | Event-driven, efficient |
 | GAS System | `GameplayEffect` | Combat, status effects | Requires ASC, complex logic |
 | Custom Delegate | `DECLARE_DELEGATE` | Module decoupling | Flexible, manual management |
+
+# 21. Broadcast Events
+
+## Overview
+
+**Broadcast Events = One-to-Many Communication Mechanism**
+
+- One sender can notify multiple receivers simultaneously
+- Implements loose coupling design - sender doesn't need to know specific receivers
+- Provides event-driven architecture for game systems
+
+## Basic Workflow
+
+### 1. Declare Delegate Type (Define Event Format)
+
+```cpp
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(
+    FWaitSpawnEnemiesDelegate,                    // Delegate type name
+    const TArray<AWarriorEnemyCharacter*>&,      // Parameter type
+    SpawnedEnemies                               // Parameter name
+);
+```
+
+### 2. Create Event Instances
+
+```cpp
+UPROPERTY(BlueprintAssignable)  // Make it bindable in Blueprint
+FWaitSpawnEnemiesDelegate OnSpawnFinished;  // Success event
+
+UPROPERTY(BlueprintAssignable)
+FWaitSpawnEnemiesDelegate DidNotSpawn;      // Failure event
+```
+
+### 3. Broadcast Events
+
+```cpp
+if (Success) {
+    OnSpawnFinished.Broadcast(SpawnedEnemies);  // Broadcast success + data
+} else {
+    DidNotSpawn.Broadcast(EmptyArray);          // Broadcast failure
+}
+```
+
+### 4. Listen to Events
+
+```cpp
+// C++ Listening
+MyTask->OnSpawnFinished.AddDynamic(this, &MyClass::HandleSuccess);
+
+// Blueprint Listening (Direct node connection)
+MyTask -> OnSpawnFinished -> [Blueprint logic for handling success]
+```
+
+## Key Questions & Answers
+
+| Question | Answer |
+|----------|--------|
+| **Why async loading?** | Prevents frame drops, loads resources in the background, and notifies via callback when complete |
+| **Why check ShouldBroadcastAbilityTaskDelegates()?** | Ensures task is still valid, prevents crashes |
+| **Why broadcast?** | Allows multiple systems to receive task results simultaneously, achieves decoupling and extensibility |
+| **Why do we need two events of the same type?** | Although the same type, different semantics (success vs failure), allows listeners to handle specifically |
+
+## Advantages
+
+- ✅ **Decoupling**: The Sender doesn't depend on the receivers
+- ✅ **Extensibility**: Easy to add new listeners  
+- ✅ **Flexibility**: Can dynamically add/remove listeners
+- ✅ **Blueprint Compatible**: Works in both C++ and Blueprint
+
+## Example Usage
+
+```cpp
+// In your ability task class
+class UAbilityTask_WaitSpawnEnemies : public UAbilityTask
+{
+public:
+    // Events
+    UPROPERTY(BlueprintAssignable)
+    FWaitSpawnEnemiesDelegate OnSpawnFinished;
+    
+    UPROPERTY(BlueprintAssignable)
+    FWaitSpawnEnemiesDelegate DidNotSpawn;
+    
+private:
+    void OnEnemyClassLoaded()
+    {
+        // Spawn logic...
+        
+        if (ShouldBroadcastAbilityTaskDelegates())
+        {
+            if (!SpawnedEnemies.IsEmpty())
+            {
+                OnSpawnFinished.Broadcast(SpawnedEnemies);
+            }
+            else
+            {
+                DidNotSpawn.Broadcast(TArray<AWarriorEnemyCharacter*>());
+            }
+        }
+    }
+};
+```
+
+## Best Practices
+
+1. **Always check** `ShouldBroadcastAbilityTaskDelegates()` before broadcasting
+2. **Use meaningful event names** that clearly indicate success/failure states
+3. **Keep delegate signatures simple** - avoid too many parameters
+4. **Clean up listeners** when objects are destroyed to prevent memory leaks
   
 # 1, Set Up Hero Character
 - 1, Base Class Structure \
@@ -3738,7 +3848,11 @@ Then, create a new blueprint animation.
 	   2, Using `FindOrAdd(CachedEventTag)` to catch the required tag; `AddUObject(this, &OnGameplayEventReceived)` to add object to delegate; `Remove(DelegateHandle)` to remove the delegate.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/ab1bd1c6926c9cc3d7954a8525b58ed74be4d062)\
 
-- 18. 
+- 18, ⚠️⚠️⚠️⚠️⚠️⚠️ AsyncLoad And Spawn Enemy
+  Read the ##21, Broadcast Events
+  [code view] (https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/5eb64dcd26b3dd21945bfdb7150b103124802b31)
+
+- 19,
 
 
 
