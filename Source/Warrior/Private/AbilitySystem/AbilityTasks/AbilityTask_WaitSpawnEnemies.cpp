@@ -43,15 +43,15 @@ void UAbilityTask_WaitSpawnEnemies::OnGameplayEventReceived(const FGameplayEvent
     if (ensure(!CachedSoftEnemyClassToSpawn.IsNull()))
     {
         UAssetManager::Get().GetStreamableManager().RequestAsyncLoad(
-            CachedSoftEnemyClassToSpawn.ToSoftObjectPath(),
-            FStreamableDelegate::CreateUObject(this, &ThisClass::OnEnemyClassLoaded)
+            CachedSoftEnemyClassToSpawn.ToSoftObjectPath(), // Path to the resource to be loaded
+            FStreamableDelegate::CreateUObject(this, &ThisClass::OnEnemyClassLoaded) // Callbacks after loading is complete
         );
     }
     else
     {
         if (ShouldBroadcastAbilityTaskDelegates())
         {
-            DidNotSpawn.Broadcast(TArray<AWarriorEnemyCharacter*>());
+            DidNotSpawn.Broadcast(TArray<AWarriorEnemyCharacter*>()); // Broadcast the error
         }
 
         EndTask();
