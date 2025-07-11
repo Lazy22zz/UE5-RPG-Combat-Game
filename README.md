@@ -3857,12 +3857,12 @@ Then, create a new blueprint animation.
   1. Add a new motion warping in the Summon enemies animation.
   2. Add a new BTService_UpdateMotionWrapTo Target in the Behavior Tree.
 
-- 20. Stop Spawning Enemies
+- 20, Stop Spawning Enemies
   1. Create a new blackboard key `HasSpawnedEnemies`
   2. <img width="936" height="497" alt="Screenshot 2025-07-11 101551" src="https://github.com/user-attachments/assets/c3d4b0af-3b5c-4f61-851c-cadaab7a6cd4" />
   3. <img width="701" height="576" alt="Screenshot 2025-07-11 101620" src="https://github.com/user-attachments/assets/eaa19cb4-8bcb-4989-82d7-74f74959fd3b" />
 
-- 21.
+- 21,
 
 
 
