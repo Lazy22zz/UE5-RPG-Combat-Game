@@ -3852,7 +3852,12 @@ Then, create a new blueprint animation.
   Read the ##21, Broadcast Events
   [code view] (https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/5eb64dcd26b3dd21945bfdb7150b103124802b31)
 
-- 19,
+- 19, Boss Facing Rotating
+  [code view] (https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/da2252a3dc6d0fc5ff78398de888087f34ccb487)
+  1. Add a new motion warping in the Summon enemies animation.
+  2. Add a new BTService_UpdateMotionWrapTo Target in the Behavior Tree.
+
+- 20. 
 
 
 
