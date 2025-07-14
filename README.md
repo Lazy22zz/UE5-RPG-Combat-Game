@@ -3868,7 +3868,12 @@ Then, create a new blueprint animation.
   2. Using reverse dissolve timeline to show the enemies' display FX \
      <img width="1345" height="360" alt="Screenshot 2025-07-13 190214" src="https://github.com/user-attachments/assets/c2d004cf-a1c1-4eae-9a31-b200d56bf89c" />
 
-- 22, 
+- 22, Enemy Entry Montage
+  1. Create a new montage array.\
+     <img width="941" height="315" alt="Screenshot 2025-07-13 191257" src="https://github.com/user-attachments/assets/f554133c-00bf-46d8-bf32-ac235a0050ec" />
+  2. Create different montages, and go to their BP_Default (BP_FrostGiant, BP_Guntling_Base), find the new object reference Anim Montage, and add those newly created anim montages.
+
+- 23, 
      
 
 
