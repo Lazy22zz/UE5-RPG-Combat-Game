@@ -3862,7 +3862,14 @@ Then, create a new blueprint animation.
   2. <img width="936" height="497" alt="Screenshot 2025-07-11 101551" src="https://github.com/user-attachments/assets/c3d4b0af-3b5c-4f61-851c-cadaab7a6cd4" />
   3. <img width="701" height="576" alt="Screenshot 2025-07-11 101620" src="https://github.com/user-attachments/assets/eaa19cb4-8bcb-4989-82d7-74f74959fd3b" />
 
-- 21,
+- 21, Enemy Entry FX
+  1. Display the Health Bar widget when the summoning enemies gameplay ability begins; Go to `WBP_DefaultEnemyHealthbar`,\
+     <img width="930" height="422" alt="Screenshot 2025-07-13 185208" src="https://github.com/user-attachments/assets/e2dc506d-5453-4f8b-b6d0-81d44080a93c" />
+  2. Using reverse dissolve timeline to show the enemies' display FX \
+     <img width="1345" height="360" alt="Screenshot 2025-07-13 190214" src="https://github.com/user-attachments/assets/c2d004cf-a1c1-4eae-9a31-b200d56bf89c" />
+
+- 22, 
+     
 
 
 
