@@ -3873,7 +3873,18 @@ Then, create a new blueprint animation.
      <img width="941" height="315" alt="Screenshot 2025-07-13 191257" src="https://github.com/user-attachments/assets/f554133c-00bf-46d8-bf32-ac235a0050ec" />
   2. Create different montages, and go to their BP_Default (BP_FrostGiant, BP_Guntling_Base), find the new object reference Anim Montage, and add those newly created anim montages.
 
-- 23, 
+- 23, Check Current Health Percent
+  1. Create a new BTDecorator_Check_Current_Health.\
+     <img width="1919" height="715" alt="Screenshot 2025-07-14 113502" src="https://github.com/user-attachments/assets/d04780db-08e4-4357-8dea-968c11303c88" />
+  2. Create a new enum file to store conditions.\
+     <img width="1905" height="312" alt="Screenshot 2025-07-14 113607" src="https://github.com/user-attachments/assets/0b3ebbaf-3327-4474-9c35-e3b92fd91b22" />
+  3. Add the new decorator to the Behavior Tree.
+  4. Fix the issue when summoned enemies were killed, the giant would get blocked. To solve this, go to AI_controller and change its detour to match its maximum walk speed.
+
+
+# 8, 
+
+  
      
 
 
