@@ -32,6 +32,7 @@ Creating a combat action RPG game
 - [5. Hero Combat Ability](#5-hero-combat-ability)
 - [6, Ranged Enemy](#6-Ranged-Enemy)
 - [7, Boss Character](#7-Boss-Character)
+- [8, Hero Special Ability](#8-Hero-Special-Ability)
 
 # EXTRA
 ## 1, Hard reference
@@ -3879,37 +3880,17 @@ Then, create a new blueprint animation.
   2. Create a new enum file to store conditions.\
      <img width="1905" height="312" alt="Screenshot 2025-07-14 113607" src="https://github.com/user-attachments/assets/0b3ebbaf-3327-4474-9c35-e3b92fd91b22" />
   3. Add the new decorator to the Behavior Tree.
-  4. Fix the issue when summoned enemies were killed, the giant would get blocked. To solve this, go to AI_controller and change its detour to match its maximum walk speed.
+  4. Fix the issue when summoned enemies were killed; the giant would get blocked. To solve this, go to AI_controller and change its detour to match its maximum walk speed.
 
-
-# 8, 
+# 8, Hero Special Ability
+  Purpose: 1, Rage Ability [a, activation/ongoing condition; b, Invincible -- Can't get any damage; c, Rage Status; d, Gain Rage];\
+  	   2, Special Weapon Ability [a, chorded actions; b, ability damage; c, ability cooldown; d, UI];\
+           3, Healing Stone[a, spawned by deadenemy; b, spawn chance; c, pick up ability; d, recover health/rage];\
+- 1,  
 
   
      
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-     
-
-
-
-
-
-
-
-
-  
 
 
 
