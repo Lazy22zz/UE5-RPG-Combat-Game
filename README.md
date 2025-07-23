@@ -3893,7 +3893,13 @@ Then, create a new blueprint animation.
   4. Add this input data in BP_Axe under Weapon Data.
   5. Add it in DA_Inputtag.
  
-- 2, 
+- 2, Rage Montage
+  1. Create a new AM_Hero_Rage
+  2. Fill the GA_Hero_Rage.\
+     <img width="1259" height="465" alt="Screenshot 2025-07-23 095756" src="https://github.com/user-attachments/assets/af930a14-a73e-4019-971a-9f1fb09f455a" />
+  3. Add `Player.Status.Rage` in `Activation Blocked Tags` of GA_Hero_Roll, GA_LightAttackMaster, GA_HeavyAttackMaster, GA_Hero_Unequipped_Axe
+ 
+- 3, 
 
   
      
