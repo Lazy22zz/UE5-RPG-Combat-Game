@@ -3899,7 +3899,21 @@ Then, create a new blueprint animation.
      <img width="1259" height="465" alt="Screenshot 2025-07-23 095756" src="https://github.com/user-attachments/assets/af930a14-a73e-4019-971a-9f1fb09f455a" />
   3. Add `Player.Status.Rage` in `Activation Blocked Tags` of GA_Hero_Roll, GA_LightAttackMaster, GA_HeavyAttackMaster, GA_Hero_Unequipped_Axe
  
-- 3, 
+- 3, ⚠️⚠️⚠️⚠️Rage GameplayCue
+  1. ⚠️⚠️ Debug the enemy weapon spawing issue: using parameter value to enable weapon dissolve problems.\
+     <img width="927" height="548" alt="Screenshot 2025-07-24 090605" src="https://github.com/user-attachments/assets/9a4a642b-6a36-4e0c-b1ba-cdaacee3cefd" />
+  2. Create two new tags.[code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/b4feb93f1229440dfbac7d25c7e1d214b69e44ae)
+  3. Add a new ANS_gameplayEvent tag in AM_HeroRage.
+  4. Create a new gameplaycue, set up default class settings, and use its `while active` and `OnRemove` functions.\
+     <img width="563" height="241" alt="Screenshot 2025-07-24 091410" src="https://github.com/user-attachments/assets/0e37512d-9f84-4e6a-811a-3ebbe70584cd" />\
+     <img width="1153" height="686" alt="Screenshot 2025-07-24 092352" src="https://github.com/user-attachments/assets/8b87a8a5-1c6b-488f-84b2-ca0051b1a221" />\
+     <img width="953" height="333" alt="Screenshot 2025-07-24 093511" src="https://github.com/user-attachments/assets/0b05f4d3-ac0f-4d09-87fa-c34b151a537b" />
+  5. In GA_HeroRage, enable `waitgameplayevent` and `add gameplaycueparameter to owner`.
+     <img width="1064" height="621" alt="Screenshot 2025-07-24 093236" src="https://github.com/user-attachments/assets/6ea30996-5803-43c5-8546-087b7bfb195b" />
+
+- 4,
+
+
 
   
      
