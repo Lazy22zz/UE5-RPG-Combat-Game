@@ -3911,8 +3911,15 @@ Then, create a new blueprint animation.
   5. In GA_HeroRage, enable `waitgameplayevent` and `add gameplaycueparameter to owner`.
      <img width="1064" height="621" alt="Screenshot 2025-07-24 093236" src="https://github.com/user-attachments/assets/6ea30996-5803-43c5-8546-087b7bfb195b" />
 
-- 4,
+- 4, ⚠️⚠️⚠️ Action Condition
+  Purpose: Using the created WarriorFunctionLibrary's functions `AddGameplayTagToActorIfNone`, `RemoveGameplayTagFromActorIfFound`.
+  1. Using code to add gameplay tags based on the warrior hero's current rage attribute. [code view] (https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/b2393042181c2cdedb3e781a5c65f49913082857).
+  2. In GA_Hero_Rage, add tags in `Activation Owned Tags` and `Activation Required Tags`.
+     <img width="617" height="264" alt="Screenshot 2025-07-25 092337" src="https://github.com/user-attachments/assets/fb2fd35a-7829-400d-aa67-739475f17855" />
+  3. In GE_shared_damage, add new components required tags to apply; set who has tags: shared. status. Invincible takes no damage.
+     <img width="1181" height="937" alt="Screenshot 2025-07-25 091759" src="https://github.com/user-attachments/assets/2a8c1cd8-d1e7-4799-af15-06a69728d247" />
 
+- 5, 
 
 
   
