@@ -3919,7 +3919,15 @@ Then, create a new blueprint animation.
   3. In GE_shared_damage, add new components required tags to apply; set who has tags: shared. status. Invincible takes no damage.
      <img width="1181" height="937" alt="Screenshot 2025-07-25 091759" src="https://github.com/user-attachments/assets/2a8c1cd8-d1e7-4799-af15-06a69728d247" />
 
-- 5, 
+- 5, Consume Rage
+  1. Create a new gameplayeffect named `GE_Hero_Rage`
+  2. Fill up the required properties.(Remember to add new data in CT_Herostatus.)\
+     <img width="1443" height="838" alt="Screenshot 2025-08-04 101533" src="https://github.com/user-attachments/assets/c3ff56af-7f29-4f3e-8e22-072019f0bef3" />
+  3. In GA_Hero_Rage, add the gameplayeffect and enable its removal.\
+     <img width="897" height="391" alt="Screenshot 2025-08-04 101956" src="https://github.com/user-attachments/assets/0922af8f-c9d0-462d-aa82-0b6ce9bbc41f" />
+     <img width="639" height="291" alt="Screenshot 2025-08-04 102001" src="https://github.com/user-attachments/assets/b132d2ef-0c64-43dc-a2ee-548ab00919da" />
+
+- 6,
 
 
   
