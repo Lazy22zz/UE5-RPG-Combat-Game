@@ -3927,7 +3927,13 @@ Then, create a new blueprint animation.
      <img width="897" height="391" alt="Screenshot 2025-08-04 101956" src="https://github.com/user-attachments/assets/0922af8f-c9d0-462d-aa82-0b6ce9bbc41f" />
      <img width="639" height="291" alt="Screenshot 2025-08-04 102001" src="https://github.com/user-attachments/assets/b132d2ef-0c64-43dc-a2ee-548ab00919da" />
 
-- 6,
+- 6, Set Up Hero Slash
+  1. Create a new BP_Projectile_Heroslash base on the `BP_Projectile_Base`.
+  2. Add nigaraga and add sound FX.
+     <img width="1916" height="918" alt="Screenshot 2025-08-04 103044" src="https://github.com/user-attachments/assets/d16f9959-b128-4c45-a596-c45f5e1cfcd4" />
+
+- 7,
+
 
 
   
