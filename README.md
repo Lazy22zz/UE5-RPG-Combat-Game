@@ -3932,7 +3932,20 @@ Then, create a new blueprint animation.
   2. Add nigaraga and add sound FX.
      <img width="1916" height="918" alt="Screenshot 2025-08-04 103044" src="https://github.com/user-attachments/assets/d16f9959-b128-4c45-a596-c45f5e1cfcd4" />
 
-- 7,
+- 7, ⚠️⚠️Spawn Projectile Slash
+  1. In `GA_Hero_LightAttack_Master`, add a new custom event.\
+     <img width="1018" height="482" alt="Screenshot 2025-08-06 134213" src="https://github.com/user-attachments/assets/075c76d1-d46f-455f-9b64-8373c2033952" />
+  2. Go to the weapon Mesh, add a new socket`RageSlashSocket`, remember to change the x direction.\
+     <img width="575" height="614" alt="Screenshot 2025-08-06 134917" src="https://github.com/user-attachments/assets/233c6572-76c0-4021-b023-ad0d882a27e6" />
+  3. In `GA_Hero_LightAttack_AXE`, enable the spawning projectile when getting the gameplay event `shared.event.spawnprojectile`.\
+     <img width="1320" height="644" alt="Screenshot 2025-08-06 140535" src="https://github.com/user-attachments/assets/13128daa-1dda-4998-b8d9-30d5cb578127" />
+  4. Add the ANS_gameplayevent tag in the hero animation.\
+     <img width="821" height="276" alt="Screenshot 2025-08-06 140843" src="https://github.com/user-attachments/assets/dcdfa137-7a58-4f99-9d98-85b4753a2311" />
+
+- 8, 
+     
+
+
 
 
 
