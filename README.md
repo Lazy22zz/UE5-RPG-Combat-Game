@@ -3942,7 +3942,14 @@ Then, create a new blueprint animation.
   4. Add the ANS_gameplayevent tag in the hero animation.\
      <img width="821" height="276" alt="Screenshot 2025-08-06 140843" src="https://github.com/user-attachments/assets/dcdfa137-7a58-4f99-9d98-85b4753a2311" />
 
-- 8, 
+- 8, ⚠️⚠️⚠️ On Slash Projectile Overlap
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/3a421100802a0a684477fe4d184980fc36c51599)
+  1. Go to the `BP_Projectile_Base`, enable the Projectile Damage policy to overlap.\
+     <img width="1917" height="606" alt="Screenshot 2025-08-07 092252" src="https://github.com/user-attachments/assets/dfc12479-915e-4cf2-a160-0f54ae42c048" />
+  2. Fix the issue of `GA_Hero_LightAttack_Axe`.\
+     <img width="691" height="237" alt="Screenshot 2025-08-07 092024" src="https://github.com/user-attachments/assets/be7053df-97c8-4bbe-a78d-29a7ca962258" />
+
+- 9, 
      
 
 
