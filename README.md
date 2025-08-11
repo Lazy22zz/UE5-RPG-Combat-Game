@@ -3952,7 +3952,13 @@ Then, create a new blueprint animation.
 - 9, Rage Heavy Slash
   1. similar to the jobs in 7, but do for all the stuff in heavy attack.
  
+- 10, Gain Rage
+  1. Create a new `GE_Hero_RageGain`.
+     <img width="1437" height="672" alt="Screenshot 2025-08-11 095118" src="https://github.com/user-attachments/assets/68820f2b-a2f0-476b-b9da-ed57adac4656" />
+  2. Go to HandleAppliedDamage in `GA_Hero_LightAttackMaster`'s Functions, add apply gameplayeffect to owner.
+ 
 - 10,
+
      
 
 
