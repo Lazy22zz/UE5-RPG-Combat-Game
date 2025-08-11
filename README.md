@@ -3949,7 +3949,10 @@ Then, create a new blueprint animation.
   2. Fix the issue of `GA_Hero_LightAttack_Axe`.\
      <img width="691" height="237" alt="Screenshot 2025-08-07 092024" src="https://github.com/user-attachments/assets/be7053df-97c8-4bbe-a78d-29a7ca962258" />
 
-- 9, 
+- 9, Rage Heavy Slash
+  1. similar to the jobs in 7, but do for all the stuff in heavy attack.
+ 
+- 10,
      
 
 
