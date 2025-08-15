@@ -3957,7 +3957,18 @@ Then, create a new blueprint animation.
      <img width="1437" height="672" alt="Screenshot 2025-08-11 095118" src="https://github.com/user-attachments/assets/68820f2b-a2f0-476b-b9da-ed57adac4656" />
   2. Go to HandleAppliedDamage in `GA_Hero_LightAttackMaster`'s Functions, add apply gameplayeffect to owner.
  
-- 10,
+- 11, Special Ability Tags and GA_SpecialAbility_Light
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/853015f95a89b6b127e6c93fe30dc6c821cdf094)
+  1. Create a new GA `GA_SpecialAbility_Light` based on warriorgameplayability.
+	 <img width="1093" height="152" alt="Screenshot 2025-08-15 103149" src="https://github.com/user-attachments/assets/fbddaa4c-92b1-4819-b82c-a44b2e8f8413" />
+  2. Create a new IA_SpecialAbility_Light, IA_SpecialAbility_Heavy, IA_SpecialAbility_Trigger.
+  3. Add a new Index element in DA_Inputconfig.
+  	 <img width="1174" height="372" alt="Screenshot 2025-08-15 102632" src="https://github.com/user-attachments/assets/8ed62bf9-e7ac-4e95-9395-0a5bdbf106da" />
+  4. Mapping the input buttons in IMC_Axe.(BC, this is the ability attached to the weapon)
+	 <img width="1083" height="298" alt="Screenshot 2025-08-15 102624" src="https://github.com/user-attachments/assets/3c9378ed-368d-4768-964e-2f789229e84c" />
+
+- 12, 
+
 
      
 
