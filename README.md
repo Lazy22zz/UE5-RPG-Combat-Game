@@ -3967,7 +3967,15 @@ Then, create a new blueprint animation.
   4. Mapping the input buttons in IMC_Axe.(BC, this is the ability attached to the weapon)
 	 <img width="1083" height="298" alt="Screenshot 2025-08-15 102624" src="https://github.com/user-attachments/assets/3c9378ed-368d-4768-964e-2f789229e84c" />
 
-- 12, 
+- 12, ⚠️⚠️⚠️⚠️Grant Special Ability Set
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/d07fc9e5b8abfd6397e1e609b0cc4baea2cae01a)
+  1. In `GA_Hero_EquipAxe`, refresh the blueprint `Grant Hero Abilities`.
+  2. In `BP_HeroAxe`, serach `hero`, add the tags.\
+     <img width="1413" height="226" alt="Screenshot 2025-08-18 115701" src="https://github.com/user-attachments/assets/d2c7e96e-32d2-4d6a-9799-72db3bb242e3" />
+  3. In `GA_Hero_SpecialAbility_Axe_Light`. print string when ability call out and end ability in blueprint.
+
+- 14, 
+
 
 
      
