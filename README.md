@@ -3978,7 +3978,11 @@ Then, create a new blueprint animation.
    <img width="1520" height="915" alt="Screenshot 2025-09-02 105213" src="https://github.com/user-attachments/assets/6d97ff36-15a5-48e0-9e2e-70274deae537" />
 
 - 14, ⚠️⚠️⚠️Apply Light Attack damage
-  
+  <img width="866" height="432" alt="Screenshot 2025-09-02 110930" src="https://github.com/user-attachments/assets/756db1c0-c2b3-46cd-92fc-048c80d7ba2b" />
+  <img width="1557" height="542" alt="Screenshot 2025-09-02 111123" src="https://github.com/user-attachments/assets/bde6878a-401a-4983-9a3e-1f6a463fa48f" />
+  1. In AM_Hero_Axe_Ability_Light, add a new slot `Ans_ToggleWeaponCollision`.
+  2. In GA_Hero_SpecialAbility_Light, finish above two pictures blueprint build up.
+
 
 
 
