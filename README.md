@@ -3974,7 +3974,11 @@ Then, create a new blueprint animation.
      <img width="1413" height="226" alt="Screenshot 2025-08-18 115701" src="https://github.com/user-attachments/assets/d2c7e96e-32d2-4d6a-9799-72db3bb242e3" />
   3. In `GA_Hero_SpecialAbility_Axe_Light`. print string when ability call out and end ability in blueprint.
 
-- 14, 
+- 13, Special_Ability_Light Montage
+   <img width="1520" height="915" alt="Screenshot 2025-09-02 105213" src="https://github.com/user-attachments/assets/6d97ff36-15a5-48e0-9e2e-70274deae537" />
+
+- 14, ⚠️⚠️⚠️Apply Light Attack damage
+  
 
 
 
