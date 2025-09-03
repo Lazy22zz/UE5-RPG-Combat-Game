@@ -3970,9 +3970,9 @@ Then, create a new blueprint animation.
 - 12, ⚠️⚠️⚠️⚠️Grant Special Ability Set
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/d07fc9e5b8abfd6397e1e609b0cc4baea2cae01a)
   1. In `GA_Hero_EquipAxe`, refresh the blueprint `Grant Hero Abilities`.
-  2. In `BP_HeroAxe`, serach `hero`, add the tags.\
+  2. In `BP_HeroAxe`, search `hero`, add the tags.\
      <img width="1413" height="226" alt="Screenshot 2025-08-18 115701" src="https://github.com/user-attachments/assets/d2c7e96e-32d2-4d6a-9799-72db3bb242e3" />
-  3. In `GA_Hero_SpecialAbility_Axe_Light`. print string when ability call out and end ability in blueprint.
+  3. In `GA_Hero_SpecialAbility_Axe_Light`. print string when the ability is called out and end the ability in the blueprint.
 
 - 13, Special_Ability_Light Montage
    <img width="1520" height="915" alt="Screenshot 2025-09-02 105213" src="https://github.com/user-attachments/assets/6d97ff36-15a5-48e0-9e2e-70274deae537" />
@@ -3983,6 +3983,13 @@ Then, create a new blueprint animation.
   1. In AM_Hero_Axe_Ability_Light, add a new slot `Ans_ToggleWeaponCollision`.
   2. In GA_Hero_SpecialAbility_Light, finish above two pictures blueprint build up.
 
+- 15, CoolDown GameplayEffect
+  1. Create a new blueprint gameplayeffect, called `GE_Hero_SpecialAbility_Axe_Light`.
+  2. In `CT_HeroWeaponStats`, add `CD.Axe.SpecialAbility.Light`.
+  3. In `GA_Hero_SpecialAbility_Axe_Light`,  add a new sequence commitability and add a cooldown gameplayeffect.
+  <img width="826" height="397" alt="Screenshot 2025-09-03 095600" src="https://github.com/user-attachments/assets/2693a2d5-22a7-4971-b699-40bc30ba3cee" />
+  4. Adjust the new cooldwon GE.
+  <img width="1895" height="798" alt="Screenshot 2025-09-03 095518" src="https://github.com/user-attachments/assets/67c82833-2de0-42c5-9a9d-df573872e13c" />
 
 
 
