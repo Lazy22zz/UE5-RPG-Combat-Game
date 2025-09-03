@@ -3955,7 +3955,7 @@ Then, create a new blueprint animation.
 - 10, Gain Rage
   1. Create a new `GE_Hero_RageGain`.
      <img width="1437" height="672" alt="Screenshot 2025-08-11 095118" src="https://github.com/user-attachments/assets/68820f2b-a2f0-476b-b9da-ed57adac4656" />
-  2. Go to HandleAppliedDamage in `GA_Hero_LightAttackMaster`'s Functions, add apply gameplayeffect to owner.
+  2. Go to HandleAppliedDamage in `GA_Hero_LightAttackMaster's Functions, add apply gameplayeffect to owner.
  
 - 11, Special Ability Tags and GA_SpecialAbility_Light
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/853015f95a89b6b127e6c93fe30dc6c821cdf094)
@@ -3991,7 +3991,9 @@ Then, create a new blueprint animation.
   4. Adjust the new CoolDown GE.
   <img width="1895" height="798" alt="Screenshot 2025-09-03 095518" src="https://github.com/user-attachments/assets/67c82833-2de0-42c5-9a9d-df573872e13c" />
 
+- 16, AbilityIconWidget
 
+- 17, 
 
      
 
