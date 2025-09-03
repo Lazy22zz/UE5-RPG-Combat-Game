@@ -3981,14 +3981,14 @@ Then, create a new blueprint animation.
   <img width="866" height="432" alt="Screenshot 2025-09-02 110930" src="https://github.com/user-attachments/assets/756db1c0-c2b3-46cd-92fc-048c80d7ba2b" />
   <img width="1557" height="542" alt="Screenshot 2025-09-02 111123" src="https://github.com/user-attachments/assets/bde6878a-401a-4983-9a3e-1f6a463fa48f" />
   1. In AM_Hero_Axe_Ability_Light, add a new slot `Ans_ToggleWeaponCollision`.
-  2. In GA_Hero_SpecialAbility_Light, finish above two pictures blueprint build up.
+  2. In GA_Hero_SpecialAbility_Light, finish the blueprint build-up for the above two pictures.
 
 - 15, CoolDown GameplayEffect
   1. Create a new blueprint gameplayeffect, called `GE_Hero_SpecialAbility_Axe_Light`.
   2. In `CT_HeroWeaponStats`, add `CD.Axe.SpecialAbility.Light`.
   3. In `GA_Hero_SpecialAbility_Axe_Light`,  add a new sequence commitability and add a cooldown gameplayeffect.
-  <img width="826" height="397" alt="Screenshot 2025-09-03 095600" src="https://github.com/user-attachments/assets/2693a2d5-22a7-4971-b699-40bc30ba3cee" />
-  4. Adjust the new cooldwon GE.
+  <img width="826" height="397" alt="Screenshot 2025-09-03 095600" src="https://github.com/user-attachments/assets/2693a2d5-22a7-4971-b699-40bc30ba3cee" />\
+  4. Adjust the new CoolDown GE.
   <img width="1895" height="798" alt="Screenshot 2025-09-03 095518" src="https://github.com/user-attachments/assets/67c82833-2de0-42c5-9a9d-df573872e13c" />
 
 
