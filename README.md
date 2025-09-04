@@ -3993,7 +3993,16 @@ Then, create a new blueprint animation.
 
 - 16, AbilityIconWidget
 
-- 17, 
+- 17, On Ability Icon Update
+  1. Add new delegate [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/9c9d83ede87555080ece76f5fe5ab844aa60388d)
+  2. In GA_HeroEuippedAxe, add the new blueprint to access the new delegate.
+     <img width="1477" height="508" alt="Screenshot 2025-09-04 083315" src="https://github.com/user-attachments/assets/0a257ea1-4356-45cd-84d6-2f1c7732aedf" />\
+  3. Add the new Icon in the BP_weapon.
+     <img width="1362" height="227" alt="Screenshot 2025-09-04 083559" src="https://github.com/user-attachments/assets/1d8d98cf-397c-46d1-9ec2-b6c659f9b1ac" />
+
+- 18, 
+
+
 
      
 
