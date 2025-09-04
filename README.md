@@ -4000,7 +4000,13 @@ Then, create a new blueprint animation.
   3. Add the new Icon in the BP_weapon.
      <img width="1362" height="227" alt="Screenshot 2025-09-04 083559" src="https://github.com/user-attachments/assets/1d8d98cf-397c-46d1-9ec2-b6c659f9b1ac" />
 
-- 18, 
+- 18, ⚠️⚠️⚠️Listen For Ability Icon Display/Non-Display
+  1. In GA_UnequipeedAxe, only call on the ability delegate.
+     <img width="1286" height="287" alt="Screenshot 2025-09-04 090043" src="https://github.com/user-attachments/assets/e65c9bbf-4000-48b7-a47c-3132d5337c6c" />
+  2. In TPWBP_AbilityIconSlot, create a new variable `AbilityInputTag` for identifying two weapon special abilities: light and heavy.
+  3. In Graph. Finish the delegate function:
+     <img width="1798" height="390" alt="Screenshot 2025-09-04 091529" src="https://github.com/user-attachments/assets/5adc210e-36cb-4605-b689-6ca41753cfb5" />
+- 19, 
 
 
 
