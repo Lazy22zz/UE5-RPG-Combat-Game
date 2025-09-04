@@ -31,7 +31,7 @@ struct FWarriorHeroSpecialAbilitySet : public FWarriorHeroAbilitySet
 	GENERATED_BODY()
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	TSoftObjectPtr<UMaterialInterface> SpecialAbilityInconMaterial;
+	TSoftObjectPtr<UMaterialInterface> SoftSpecialAbilityInconMaterial;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta = (Categories = "Player.Cooldown"))
 	FGameplayTag SpecialAbilityCooldownTag;
