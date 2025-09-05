@@ -4006,7 +4006,12 @@ Then, create a new blueprint animation.
   2. In TPWBP_AbilityIconSlot, create a new variable `AbilityInputTag` for identifying two weapon special abilities: light and heavy.
   3. In Graph. Finish the delegate function:
      <img width="1798" height="390" alt="Screenshot 2025-09-04 091529" src="https://github.com/user-attachments/assets/5adc210e-36cb-4605-b689-6ca41753cfb5" />
-- 19, 
+
+- 19, Notify Ability Cooldown
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/115de4c91b63838a9a57367ff033390ba2e65c9c)
+  1. Using the new delegate to handle special ability cooldown in blueprints.
+ 
+- 20
 
 
 
