@@ -4014,6 +4014,8 @@ Then, create a new blueprint animation.
 - 20, ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️Custom Count Down Latent Action
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/49beb9c4321b859fbfacef8785cc80f2141b0985)
 
+- 21, ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️Countdown Action Class
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/78ccb4112794b574b8cae28a6401610460f0ce32)
 
 
      
