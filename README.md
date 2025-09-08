@@ -4017,7 +4017,8 @@ Then, create a new blueprint animation.
 - 21, ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️Countdown Action Class
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/78ccb4112794b574b8cae28a6401610460f0ce32)
 
-
+- 22, ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️Construct Count Down Action
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/d8d1efac3452b2b61496465e24f8547f73be5e78)
      
 
 
