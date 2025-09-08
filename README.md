@@ -4011,7 +4011,8 @@ Then, create a new blueprint animation.
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/115de4c91b63838a9a57367ff033390ba2e65c9c)
   1. Using the new delegate to handle special ability cooldown in blueprints.
  
-- 20
+- 20, ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️Custom Count Down Latent Action
+  [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/49beb9c4321b859fbfacef8785cc80f2141b0985)
 
 
 
