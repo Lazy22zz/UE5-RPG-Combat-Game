@@ -4027,7 +4027,12 @@ Then, create a new blueprint animation.
   1. In `TPWBP_AbilityIconSlot`, update the countdown.
      <img width="1437" height="537" alt="Screenshot 2025-09-09 093414" src="https://github.com/user-attachments/assets/bfffeaaf-a86f-423f-b5bd-38a65c4b9e6f" />
 
-- 25, 
+- 25, ⚠️⚠️⚠️⚠️Resume CoolDown
+  1. Comparing the required gameplay tag and find the tim pair in that gameplay tag showing momnent.code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/dad77d1643578091fc4164f66549e2bd7ccc1700)
+  2. In the GA_AXE_Equipped, do
+     <img width="1139" height="396" alt="Screenshot 2025-09-09 103542" src="https://github.com/user-attachments/assets/9b00332f-9013-465e-99cb-a2b22a4db348" />
+
+- 26, 
 
 
 
