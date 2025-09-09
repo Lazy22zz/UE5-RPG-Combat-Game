@@ -4023,6 +4023,11 @@ Then, create a new blueprint animation.
 - 23, ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️Count Down Logic
   [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/09c38dcdb2484a02905d35de91dd85587b2c09b6)
 
+- 24, Update Countdown
+  1. In `TPWBP_AbilityIconSlot`, update the countdown.
+     <img width="1437" height="537" alt="Screenshot 2025-09-09 093414" src="https://github.com/user-attachments/assets/bfffeaaf-a86f-423f-b5bd-38a65c4b9e6f" />
+
+- 25, 
 
 
 
