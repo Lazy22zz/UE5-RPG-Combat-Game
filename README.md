@@ -4037,7 +4037,10 @@ Then, create a new blueprint animation.
   1. Create a new GA_SpecialAbility_Heavy.
   2. Enable the input settings.
 
-- 27, 
+- 27, Heavy SpecialAbility Montage
+  1. Create a heavy special ability montage.
+ 
+- 28, 
 
 
 
