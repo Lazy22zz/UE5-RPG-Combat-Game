@@ -4040,7 +4040,10 @@ Then, create a new blueprint animation.
 - 27, Heavy SpecialAbility Montage
   1. Create a heavy special ability montage.
  
-- 28, 
+- 28, Heavy Ability Damage
+  1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/89313a45cc76ed712338ade2aa2b84053660e622)
+ 
+- 29, 
 
 
 
