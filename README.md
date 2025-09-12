@@ -4043,7 +4043,12 @@ Then, create a new blueprint animation.
 - 28, Heavy Ability Damage
   1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/89313a45cc76ed712338ade2aa2b84053660e622)
  
-- 29, 
+- 29, Apply AOE Damage
+  1. Add notify in montage.
+  2. Add the blueprint in GA_SpecialAbility_AXE_Heavy. <img width="1330" height="520" alt="Screenshot 2025-09-12 112736" src="https://github.com/user-attachments/assets/9dff89dc-e949-412d-a5ff-c4e7428f7340" />
+
+- 30, 
+
 
 
 
