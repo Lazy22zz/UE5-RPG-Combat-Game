@@ -4050,7 +4050,10 @@ Then, create a new blueprint animation.
 - 30, Commit Ability Cooldown
   1. Do same as 25.Resume CoolDown
 
-- 31, 
+- 31, Stone Class
+  1.Create a warriorpickupbase.[code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/e20ec3829f9a74da2fae08f8b4fed1629b3f9dae)
+
+- 32, 
 
 
 
