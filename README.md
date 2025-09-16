@@ -4056,7 +4056,13 @@ Then, create a new blueprint animation.
 - 32, BP_HealingStones and BP_RageStones
   1. Create 2 bps, BP_HealingStones and BP_RageStones.
 
-- 33, 
+- 33, ⚠️⚠️⚠️Pick up Ability
+  1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/3f1b016531f51332d3f700c0978667975086e544)
+  2. Create a new GA_Hero_Pickup_Stones.<img width="760" height="566" alt="Screenshot 2025-09-16 103944" src="https://github.com/user-attachments/assets/3918015b-15b6-4e75-b9a8-13075b8e417e" />
+  3. Attach new GA to DA_Hero. <img width="1129" height="138" alt="Screenshot 2025-09-16 104032" src="https://github.com/user-attachments/assets/684daac6-07eb-48d7-8a1f-7619c6ce403a" />
+
+- 34, 
+
 
 
 
