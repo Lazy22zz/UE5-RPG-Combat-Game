@@ -4051,9 +4051,12 @@ Then, create a new blueprint animation.
   1. Do same as 25.Resume CoolDown
 
 - 31, Stone Class
-  1.Create a warriorpickupbase.[code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/e20ec3829f9a74da2fae08f8b4fed1629b3f9dae)
+  1. Create a warriorpickupbase.[code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/e20ec3829f9a74da2fae08f8b4fed1629b3f9dae)
 
-- 32, 
+- 32, BP_HealingStones and BP_RageStones
+  1. Create 2 bps, BP_HealingStones and BP_RageStones.
+
+- 33, 
 
 
 
