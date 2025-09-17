@@ -4064,7 +4064,12 @@ Then, create a new blueprint animation.
 - 34, OnStoneBeginOverlapDone
   1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/835b8db8029f39756e417f2643435d9e80f4e747)
   
-- 35, 
+- 35, CollectStones
+  1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/558d95d950b205f9dd502daf4f0aac5fd0b985a8)
+  2. In GA_Hero_Pickup_Stones. <img width="775" height="167" alt="Screenshot 2025-09-17 153943" src="https://github.com/user-attachments/assets/98e45ab5-2fd7-4c12-8d9d-5928123a750d" />
+  3. Add executed by tick. <img width="752" height="299" alt="Screenshot 2025-09-17 154213" src="https://github.com/user-attachments/assets/f3d3d421-1990-4ee6-b573-e996452f555f" />
+
+
 
 
 
