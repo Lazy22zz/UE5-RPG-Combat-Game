@@ -4069,9 +4069,14 @@ Then, create a new blueprint animation.
   2. In GA_Hero_Pickup_Stones. <img width="775" height="167" alt="Screenshot 2025-09-17 153943" src="https://github.com/user-attachments/assets/98e45ab5-2fd7-4c12-8d9d-5928123a750d" />
   3. Add executed by tick. <img width="752" height="299" alt="Screenshot 2025-09-17 154213" src="https://github.com/user-attachments/assets/f3d3d421-1990-4ee6-b573-e996452f555f" />
 
-- 26, Consume Pickup Input
+- 36, Consume Pickup Input
   1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/07f7c73b116b79dbaa6e0df77010be0526e175d7)
   2. set up Inputaction, attach it into DA_Inputconfig.
+ 
+- 37, ⚠️⚠️⚠️Consume Stones
+  1. enable the GA_pickup stone to call a comsume stone functions.
+  2. set a new stonebase blueprint function to apply a gameplayeffect.
+  3. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/1fc49b1412a52928ac8fb8ca14de831f598d1812)
  
 - 
 
