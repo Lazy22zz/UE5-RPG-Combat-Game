@@ -4083,7 +4083,10 @@ Then, create a new blueprint animation.
   2. <img width="1005" height="323" alt="Screenshot 2025-09-22 103050" src="https://github.com/user-attachments/assets/7fff7273-1570-46fc-834e-52888b6f4ffa" />
   3. Create a curve table `CT_Stonebase`, GE_rage stone, GE_HealingStone, adjust the data required.
 
-- 39, 
+- 39, Create input key widget
+  1. Create a new widget about keyinput.
+
+- 40, 
 
 
 
