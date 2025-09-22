@@ -4078,7 +4078,12 @@ Then, create a new blueprint animation.
   2. set a new stonebase blueprint function to apply a gameplayeffect.
   3. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/1fc49b1412a52928ac8fb8ca14de831f598d1812)
  
-- 
+- 38, On Stone Consumed
+  1. In BP_StoneBase, enable the play sound at location, spawn system at location and destory actor.
+  2. <img width="1005" height="323" alt="Screenshot 2025-09-22 103050" src="https://github.com/user-attachments/assets/7fff7273-1570-46fc-834e-52888b6f4ffa" />
+  3. Create a curve table `CT_Stonebase`, GE_rage stone, GE_HealingStone, adjust the data required.
+
+- 39, 
 
 
 
