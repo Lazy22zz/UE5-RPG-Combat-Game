@@ -4097,7 +4097,18 @@ Then, create a new blueprint animation.
   2. Create a new GA_Enemy_SpawnStones_Base, and create a child as guadrain_spawn stones gameplayability.
   3. Add it when enemy die.<img width="842" height="256" alt="Screenshot 2025-09-25 084523" src="https://github.com/user-attachments/assets/88e6e1b2-53bb-48da-bf40-8759a0e17312" />
 
-- 43, 
+- 43, ⚠️⚠️⚠️⚠️⚠️⚠️Spawn Stone Logic
+  1. In GA_Enemy_SpawnStone_base, do `create random spawn stone location`, `use async loading class`, `base on game ability level decide spawn stone chance`, `spawn cast async load calss actor location`.
+  2. <img width="1268" height="274" alt="Screenshot 2025-09-25 092553" src="https://github.com/user-attachments/assets/f19fb2c1-291a-411e-94a1-62cae8150dbf" />
+  3. <img width="1345" height="555" alt="Screenshot 2025-09-25 092904" src="https://github.com/user-attachments/assets/d6a5c37f-bf08-4f3d-9e2c-ae1d07686368" />
+  4. <img width="1083" height="535" alt="Screenshot 2025-09-25 092909" src="https://github.com/user-attachments/assets/8f108e55-0506-4c2f-84cf-bdab3a113966" />
+  5. In BP_Enemy, use delay to enable saync load class finish before the enmy actor get destoryed. <img width="998" height="285" alt="Screenshot 2025-09-25 092543" src="https://github.com/user-attachments/assets/1884f103-9714-4988-9221-1f0768d4bb3b" />
+
+- 44, 
+
+
+
+
 
   
      
