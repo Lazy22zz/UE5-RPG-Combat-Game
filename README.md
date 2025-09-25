@@ -4092,9 +4092,12 @@ Then, create a new blueprint animation.
 - 41, ⚠️⚠️⚠️Listen For Display InputKey
   1. <img width="1635" height="611" alt="Screenshot 2025-09-24 154302" src="https://github.com/user-attachments/assets/38f22cbd-bc58-4445-96a8-5bf99ddd6b89" />
 
+- 42, Spawn Stone Ability
+  1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/88460754fea8827294ae0409aefbd5284b5fd1cf)
+  2. Create a new GA_Enemy_SpawnStones_Base, and create a child as guadrain_spawn stones gameplayability.
+  3. Add it when enemy die.<img width="842" height="256" alt="Screenshot 2025-09-25 084523" src="https://github.com/user-attachments/assets/88e6e1b2-53bb-48da-bf40-8759a0e17312" />
 
-
-
+- 43, 
 
   
      
