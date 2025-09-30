@@ -33,7 +33,7 @@ Creating a combat action RPG game
 - [6, Ranged Enemy](#6-Ranged-Enemy)
 - [7, Boss Character](#7-Boss-Character)
 - [8, Hero Special Ability](#8-Hero-Special-Ability)
-- [9，Game Mode Test Map](#9-Game-Mode-Test-Map)
+- [9, Game Mode Test Map](#9-Game-Mode-Test-Map)
 
 # EXTRA
 ## 1, Hard reference
