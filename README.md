@@ -33,6 +33,7 @@ Creating a combat action RPG game
 - [6, Ranged Enemy](#6-Ranged-Enemy)
 - [7, Boss Character](#7-Boss-Character)
 - [8, Hero Special Ability](#8-Hero-Special-Ability)
+- [9，Game Mode Test Map](#9-Game-Mode-Test-Map)
 
 # EXTRA
 ## 1, Hard reference
@@ -4104,7 +4105,10 @@ Then, create a new blueprint animation.
   4. <img width="1083" height="535" alt="Screenshot 2025-09-25 092909" src="https://github.com/user-attachments/assets/8f108e55-0506-4c2f-84cf-bdab3a113966" />
   5. In BP_Enemy, use delay to enable saync load class finish before the enmy actor get destoryed. <img width="998" height="285" alt="Screenshot 2025-09-25 092543" src="https://github.com/user-attachments/assets/1884f103-9714-4988-9221-1f0768d4bb3b" />
 
-- 44, 
+#9，Game Mode Test Map
+  Purpose: 1. New Gamemode class; 2. Game State; 3. Data Table; 4. Spawn Logic; 5. Widgets
+  
+- 1, 
 
 
 
