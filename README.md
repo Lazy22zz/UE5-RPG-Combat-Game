@@ -3739,7 +3739,7 @@ Then, create a new blueprint animation.
      ![Screenshot 2025-05-30 095053](https://github.com/user-attachments/assets/68eb0ee1-76aa-41c0-aa2c-97080e6d800f)
 
 # 7, Boss Character
-  Purpose: 1, Staring Stats; 2, Boss Bar; 3, Combat Abilities; 4, Behavior Tree
+    Purpose: 1, Staring Stats; 2, Boss Bar; 3, Combat Abilities; 4, Behavior Tree
 
 - 1, Set Up Boss Character
   Create a new BP_FrostGiant; ABP_FrostGiant; BS_FrostGiant_Walk.\
@@ -3884,9 +3884,10 @@ Then, create a new blueprint animation.
   4. Fix the issue when summoned enemies were killed; the giant would get blocked. To solve this, go to AI_controller and change its detour to match its maximum walk speed.
 
 # 8, Hero Special Ability
-  Purpose: 1, Rage Ability [a, activation/ongoing condition; b, Invincible -- Can't get any damage; c, Rage Status; d, Gain Rage];\
+    Purpose: 1, Rage Ability [a, activation/ongoing condition; b, Invincible -- Can't get any damage; c, Rage Status; d, Gain Rage];\
   	   2, Special Weapon Ability [a, chorded actions; b, ability damage; c, ability cooldown; d, UI];\
            3, Healing Stone[a, spawned by deadenemy; b, spawn chance; c, pick up ability; d, recover health/rage];\
+		   
 - 1,  Create Tags And GA_Hero_Rage
   1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/3cdb7c484b34a7fa78c556148696c1374dc5b043)
   2. Create a new GA_Hero_Rage based on the HeroGameplayability, change its ability tag, and disable the hero. ability.attack, status to hero.status.rage.
@@ -4108,7 +4109,14 @@ Then, create a new blueprint animation.
 # 9, Game Mode Test Map
   	Purpose: 1. New Gamemode class; 2. Game State; 3. Data Table; 4. Spawn Logic; 5. Widgets
   
-- 1, 
+- 1, Survial Game Mode Class
+  1. Create a new c++ `WarriorSurvialGameMode`.
+  2. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/dd7a75010050126648001c0c047c8eba87714fbd)
+  3. Create a new Blueprint Game Mode.
+  4. Change its Default class. <img width="975" height="289" alt="Screenshot 2025-09-30 112251" src="https://github.com/user-attachments/assets/fc29076c-3161-469e-b828-546b32456a9b" />
+  5. Assign the delegate. <img width="1051" height="527" alt="Screenshot 2025-09-30 112416" src="https://github.com/user-attachments/assets/74569abf-9ded-4f03-a7bb-34189c32aff4" />
+  6. Assign the gamemode into map. <img width="526" height="188" alt="Screenshot 2025-09-30 112504" src="https://github.com/user-attachments/assets/3b358632-306e-4ad5-8b69-a08092671039" />
+
 
 
 
