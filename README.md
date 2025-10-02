@@ -4127,10 +4127,18 @@ Then, create a new blueprint animation.
   1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/d3e5cfb384c0cd3488bc1a6836ed54f113f10421)
  
 - 4, Wave Count Down Widget
+  0. Create a new WBP_NewCountDownWidget.
   1. <img width="1349" height="646" alt="Screenshot 2025-10-02 093222" src="https://github.com/user-attachments/assets/56384c40-e8ea-46ec-b83d-fe6b77f640f4" />
   2. <img width="1907" height="939" alt="Screenshot 2025-10-02 093236" src="https://github.com/user-attachments/assets/ec44a808-4ae6-4887-978d-84e932d5cd40" />
 
-- 5, 
+- 5, Drawing Wave Count Down Widget
+  1. In `BP_SurvialGamemode`, Custom a new event `CreateWaveWidgetWithCountDown`.
+  2. <img width="1142" height="445" alt="Screenshot 2025-10-02 095750" src="https://github.com/user-attachments/assets/9d7e920c-f443-44b1-841a-08897da89209" />
+  3. In Event Graph. <img width="1188" height="498" alt="Screenshot 2025-10-02 095758" src="https://github.com/user-attachments/assets/d1d1d1e9-cdfa-4cd7-804c-a7f050615648" />
+
+- 6, 
+
+
 
 
 
