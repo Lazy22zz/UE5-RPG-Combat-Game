@@ -6,6 +6,8 @@
 #include "GameModes/WarriorGamemode.h"
 #include "WarriorSurvialGamemode.generated.h"
 
+class AWarriorEnemyCharacter;
+
 UENUM(BlueprintType)
 enum class EWarriorSurvialGameModeState : uint8
 {
@@ -15,6 +17,33 @@ enum class EWarriorSurvialGameModeState : uint8
 	WaveCompleted,
 	AllWavesDone,
 	PlayerDied
+};
+
+USTRUCT(BlueprintType)
+struct FWarriorEnemySPawnWaveInfo
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere)
+	TSoftClassPtr<AWarriorEnemyCharacter> SoftEnemyClassToSpawn;
+
+	UPROPERTY(EditAnywhere)
+	int32 MinPerSpawnToCount = 1;
+
+	UPROPERTY(EditAnywhere)
+	int32 MaxPerSpawnToCount = 3;
+};
+
+USTRUCT(BlueprintType)
+struct FWarriorEnemyWaveSpawnerTableRow : public FTableRowBase
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere)
+	TArray<FWarriorEnemySPawnWaveInfo> EnemyWaveSpawnerDefinitions;
+
+	UPROPERTY(EditAnywhere)
+	int32 TotalEnemyToSpawnInThisWave = 1;
 };
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSurvialGameModeStateChangedDelegate, EWarriorSurvialGameModeState, CurrentState);
@@ -38,5 +67,8 @@ private:
 
 	UPROPERTY(BlueprintAssignable, BlueprintCallable)
 	FOnSurvialGameModeStateChangedDelegate OnSurvialGameModeStateChanged;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "WaveDefinition", meta = (AllowPrivateAccess = "true"))
+	UDataTable* EnemyWaveSpawnerDataTable;
 
 };
