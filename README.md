@@ -4117,7 +4117,13 @@ Then, create a new blueprint animation.
   5. Assign the delegate. <img width="1051" height="527" alt="Screenshot 2025-09-30 112416" src="https://github.com/user-attachments/assets/74569abf-9ded-4f03-a7bb-34189c32aff4" />
   6. Assign the gamemode into map. <img width="526" height="188" alt="Screenshot 2025-09-30 112504" src="https://github.com/user-attachments/assets/3b358632-306e-4ad5-8b69-a08092671039" />
 
+- 2, Enemy Wave Spawner Table Row
+  1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/791a0b41fc819608f5d2b0bd813d03f64e85b99b)
+  2. Create a new Data Table based named `DT_WarriorEnemySpawner`.
+  3. <img width="526" height="188" alt="Screenshot 2025-09-30 112504" src="https://github.com/user-attachments/assets/b2c1d90f-359c-4349-b9bf-d42a0ba5d7e0" />
+  4. Attach this new table Row in `BP_SurvialGamemode`.
 
+- 3, 
 
 
 
