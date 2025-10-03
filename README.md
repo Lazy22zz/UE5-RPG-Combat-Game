@@ -4136,7 +4136,16 @@ Then, create a new blueprint animation.
   2. <img width="1142" height="445" alt="Screenshot 2025-10-02 095750" src="https://github.com/user-attachments/assets/9d7e920c-f443-44b1-841a-08897da89209" />
   3. In Event Graph. <img width="1188" height="498" alt="Screenshot 2025-10-02 095758" src="https://github.com/user-attachments/assets/d1d1d1e9-cdfa-4cd7-804c-a7f050615648" />
 
-- 6, 
+- 6, Wave Info Widget
+  1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/1decb22c37d9b48ed955343ddae3504f7f87d6f8)
+  2. Duplicate a new Widget form `WBP_WaveTextWithCountDown` named `WBP_WaveTextNoCountDown`.
+  3. Create a new Animation. <img width="1326" height="261" alt="Screenshot 2025-10-03 104817" src="https://github.com/user-attachments/assets/dbc5a05a-478e-4cfd-8ee7-074546946f1c" />
+  4. Rebuild the Graph. <img width="1341" height="423" alt="Screenshot 2025-10-03 104734" src="https://github.com/user-attachments/assets/731ade82-6234-41cc-920b-098f4eeab383" />
+  5. In the `BP_SurvialGamemode`, <img width="1034" height="665" alt="Screenshot 2025-10-03 104935" src="https://github.com/user-attachments/assets/0a637308-bf4e-452e-bb6f-d11feafffdd6" />
+
+- 7, 
+
+
 
 
 
