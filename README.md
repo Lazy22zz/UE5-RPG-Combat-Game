@@ -4107,7 +4107,7 @@ Then, create a new blueprint animation.
   5. In BP_Enemy, use delay to enable saync load class finish before the enmy actor get destoryed. <img width="998" height="285" alt="Screenshot 2025-09-25 092543" src="https://github.com/user-attachments/assets/1884f103-9714-4988-9221-1f0768d4bb3b" />
 
 # 9, Game Mode Test Map
-  	Purpose: 1. New Gamemode class; 2. Game State; 3. Data Table; 4. Spawn Logic; 5. Widgets
+  	Purpose: 1. New Gamemode class; 2. Game State; 3. Data Table; 4. Spawn Logic(a, pre load enemy class; b, spawn enemy in level; c, handle spawn count); 5. Widgets
   
 - 1, Survial Game Mode Class
   1. Create a new c++ `WarriorSurvialGameMode`.
@@ -4143,7 +4143,10 @@ Then, create a new blueprint animation.
   4. Rebuild the Graph. <img width="1341" height="423" alt="Screenshot 2025-10-03 104734" src="https://github.com/user-attachments/assets/731ade82-6234-41cc-920b-098f4eeab383" />
   5. In the `BP_SurvialGamemode`, <img width="1034" height="665" alt="Screenshot 2025-10-03 104935" src="https://github.com/user-attachments/assets/0a637308-bf4e-452e-bb6f-d11feafffdd6" />
 
-- 7, 
+- 7, ⚠️⚠️⚠️⚠️⚠️⚠️Pre Load Next Wave Enemies using ASYNC
+  1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/26d8a02d0a108ced4b86d6cffc5513c6c358b513).
+ 
+- 8, 
 
 
 
