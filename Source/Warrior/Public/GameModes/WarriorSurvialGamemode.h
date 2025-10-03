@@ -20,7 +20,7 @@ enum class EWarriorSurvialGameModeState : uint8
 };
 
 USTRUCT(BlueprintType)
-struct FWarriorEnemySPawnWaveInfo
+struct FWarriorEnemySpawnWaveInfo
 {
 	GENERATED_BODY()
 
@@ -40,7 +40,7 @@ struct FWarriorEnemyWaveSpawnerTableRow : public FTableRowBase
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere)
-	TArray<FWarriorEnemySPawnWaveInfo> EnemyWaveSpawnerDefinitions;
+	TArray<FWarriorEnemySpawnWaveInfo> EnemyWaveSpawnerDefinitions;
 
 	UPROPERTY(EditAnywhere)
 	int32 TotalEnemyToSpawnInThisWave = 1;
@@ -62,6 +62,9 @@ protected:
 private:
 	void SetCurrentSurvialGameModeState(EWarriorSurvialGameModeState InState);
 	bool HasFinishedAllWaves() const;
+	void PreLoadNextWaveEnemies();
+	FWarriorEnemyWaveSpawnerTableRow* GetCurrentWaveSpawnerTableRow() const;
+
 
 	UPROPERTY()
 	EWarriorSurvialGameModeState CurrentSurvialGameModeState;
@@ -89,4 +92,7 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "WaveDefinition", meta = (AllowPrivateAccess = "true"))
 	float WaveCompletedWaitTime = 5.f;
+
+	UPROPERTY()
+	TMap <TSoftClassPtr<AWarriorEnemyCharacter>, UClass* > PreLoadedEnemyClassMap;
 };
