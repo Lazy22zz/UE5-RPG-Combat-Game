@@ -4146,8 +4146,13 @@ Then, create a new blueprint animation.
 - 7, ⚠️⚠️⚠️⚠️⚠️⚠️Pre Load Next Wave Enemies using ASYNC
   1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/26d8a02d0a108ced4b86d6cffc5513c6c358b513).
  
-- 8, 
-
+- 8, ⚠️⚠️⚠️⚠️TrySpawnWaveEnemiesDone
+  1. Create 3 target point actor.
+  2. check does target point exust -> base on TargetPoints' loctaion, rotation spawn enemy based on rand number.
+  3. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/5f8eb16938175292fe35f4234128e1481439aa2e)
+  4. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c3d62d1cdff06a02e857af61712fa1a562437561)
+ 
+- 9, 
 
 
 
