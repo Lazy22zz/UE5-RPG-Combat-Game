@@ -180,6 +180,6 @@ int32 AWarriorSurvialGamemode::TrySpawnWaveEnemiesNum()
 
 bool AWarriorSurvialGamemode::ShouldKeepSpawnEnemies() const
 {
-	return false;
+	return TotalSpawnedEnemiesThisWaveCounter < GetCurrentWaveSpawnerTableRow()->TotalEnemyToSpawnInThisWave;
 }
 
