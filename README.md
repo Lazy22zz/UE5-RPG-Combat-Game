@@ -4156,7 +4156,12 @@ Then, create a new blueprint animation.
   1. Alarm when the wavecompleted.
   2. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/0c9111fc7fbc520ea620e0ac259b563ba6c11f4f)
  
-- 10, 
+- 10, OnWaveCompleted
+  1. Create new widget when wave completed.
+  2. <img width="1043" height="517" alt="Screenshot 2025-10-07 102841" src="https://github.com/user-attachments/assets/71ee7fdf-0ed8-4cc6-8410-61e5a80221b3" />
+  3. <img width="1145" height="779" alt="Screenshot 2025-10-07 102848" src="https://github.com/user-attachments/assets/72cba1b3-9d7e-490d-8a83-fcc2cf453499" />
+
+
 
 
 
