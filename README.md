@@ -4152,7 +4152,11 @@ Then, create a new blueprint animation.
   3. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/5f8eb16938175292fe35f4234128e1481439aa2e)
   4. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c3d62d1cdff06a02e857af61712fa1a562437561)
  
-- 9, 
+- 9, OnEnemyDestoryedDone
+  1. Alarm when the wavecompleted.
+  2. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/0c9111fc7fbc520ea620e0ac259b563ba6c11f4f)
+ 
+- 10, 
 
 
 
