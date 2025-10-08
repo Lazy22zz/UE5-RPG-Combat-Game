@@ -4161,7 +4161,10 @@ Then, create a new blueprint animation.
   2. <img width="1043" height="517" alt="Screenshot 2025-10-07 102841" src="https://github.com/user-attachments/assets/71ee7fdf-0ed8-4cc6-8410-61e5a80221b3" />
   3. <img width="1145" height="779" alt="Screenshot 2025-10-07 102848" src="https://github.com/user-attachments/assets/72cba1b3-9d7e-490d-8a83-fcc2cf453499" />
 
+- 11, PlayeTestMode
+  1. Test the game wave and check any debug or fix any enemy ai issue.
 
+- 12, 
 
 
 
