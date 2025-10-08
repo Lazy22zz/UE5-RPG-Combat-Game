@@ -4164,7 +4164,13 @@ Then, create a new blueprint animation.
 - 11, PlayeTestMode
   1. Test the game wave and check any debug or fix any enemy ai issue.
 
-- 12, 
+- 12, Register Spawned Enemy Done
+  1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c3625592b43a5b784422106ea215a0500a9db546)
+  2. Purpose: Add the Summon Enemies Nums In Total Wave Enemies Nums Count.
+  3. In `GA_Enemy_SummonEnemies_Base`, <img width="934" height="570" alt="Screenshot 2025-10-08 153931" src="https://github.com/user-attachments/assets/8c1a73a7-7f9a-4ea3-9b12-ea7bfb1296b2" />
+
+- 13, 
+
 
 
 
