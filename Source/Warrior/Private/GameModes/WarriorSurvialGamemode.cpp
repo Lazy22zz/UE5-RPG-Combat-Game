@@ -163,7 +163,7 @@ int32 AWarriorSurvialGamemode::TrySpawnWaveEnemiesNum()
 
 			if (SpawnedEnemy)
 			{
-				SpawnedEnemy->OnDestroyed.AddUniqueDynamic(this, &ThisClass::OnEnemyDestyoed);
+				SpawnedEnemy->OnDestroyed.AddUniqueDynamic(this, &ThisClass::OnEnemyDestroyed);
 
 				EnemiesSpawnedThisTime++;
 				TotalSpawnedEnemiesThisWaveCounter++;
@@ -185,7 +185,7 @@ bool AWarriorSurvialGamemode::ShouldKeepSpawnEnemies() const
 	return TotalSpawnedEnemiesThisWaveCounter < GetCurrentWaveSpawnerTableRow()->TotalEnemyToSpawnInThisWave;
 }
 
-void AWarriorSurvialGamemode::OnEnemyDestyoed(AActor* DestroyedActor)
+void AWarriorSurvialGamemode::OnEnemyDestroyed(AActor* DestroyedActor)
 {
 	CurrentSpawnedEnemiesCounter--;
 
@@ -201,6 +201,19 @@ void AWarriorSurvialGamemode::OnEnemyDestyoed(AActor* DestroyedActor)
 		CurrentSpawnedEnemiesCounter = 0;
 
 		SetCurrentSurvialGameModeState(EWarriorSurvialGameModeState::WaveCompleted);
+	}
+}
+
+void AWarriorSurvialGamemode::RegisterSummonSpawnEnemies(const TArray<AWarriorEnemyCharacter*>& InEnemiesToRegister)
+{
+	for (AWarriorEnemyCharacter* SpawnedEnemy : InEnemiesToRegister)
+	{
+		if (SpawnedEnemy)
+		{
+			CurrentSpawnedEnemiesCounter++;
+
+			SpawnedEnemy->OnDestroyed.AddUniqueDynamic(this, &ThisClass::OnEnemyDestroyed);
+		}
 	}
 }
 

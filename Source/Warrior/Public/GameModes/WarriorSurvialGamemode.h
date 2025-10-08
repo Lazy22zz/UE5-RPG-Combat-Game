@@ -68,7 +68,7 @@ private:
 	bool ShouldKeepSpawnEnemies() const;
 
 	UFUNCTION()
-	void OnEnemyDestyoed(AActor* DestroyedActor);
+	void OnEnemyDestroyed(AActor* DestroyedActor);
 
 	UPROPERTY()
 	EWarriorSurvialGameModeState CurrentSurvialGameModeState;
@@ -108,4 +108,8 @@ private:
 
 	UPROPERTY()
 	TMap <TSoftClassPtr<AWarriorEnemyCharacter>, UClass* > PreLoadedEnemyClassMap;
+
+public:
+	UFUNCTION(Blueprintcallable)
+	void RegisterSummonSpawnEnemies(const TArray<AWarriorEnemyCharacter*>& InEnemiesToRegister);
 };
