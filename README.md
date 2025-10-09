@@ -4174,7 +4174,9 @@ Then, create a new blueprint animation.
   2. Make sure the `wait enemy delay time` suits the animation's play time in `WBP_WaveTextNoCountDown`.
   3. Add the last wave widget if the current wave count == total wave count. <img width="998" height="479" alt="Screenshot 2025-10-09 085927" src="https://github.com/user-attachments/assets/17f78c36-a4e6-4e42-812e-be47fa68f5b0" />
 
-- 14, 
+- 14, On Player Died
+  1. In `GA_Hero_Died`, <img width="1057" height="453" alt="Screenshot 2025-10-09 091522" src="https://github.com/user-attachments/assets/433f057e-aea2-4a9a-a54e-1188ec5a10d6" />
+
 
 
 
