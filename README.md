@@ -4050,7 +4050,7 @@ Then, create a new blueprint animation.
   2. Add the blueprint in GA_SpecialAbility_AXE_Heavy. <img width="1330" height="520" alt="Screenshot 2025-09-12 112736" src="https://github.com/user-attachments/assets/9dff89dc-e949-412d-a5ff-c4e7428f7340" />
 
 - 30, Commit Ability Cooldown
-  1. Do same as 25.Resume CoolDown
+  1. Do the same as 25.Resume CoolDown
 
 - 31, Stone Class
   1. Create a warriorpickupbase.[code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/e20ec3829f9a74da2fae08f8b4fed1629b3f9dae)
@@ -4073,11 +4073,11 @@ Then, create a new blueprint animation.
 
 - 36, Consume Pickup Input
   1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/07f7c73b116b79dbaa6e0df77010be0526e175d7)
-  2. set up Inputaction, attach it into DA_Inputconfig.
+  2. Set up Inputaction, attach it to DA_Inputconfig.
  
 - 37, ⚠️⚠️⚠️Consume Stones
-  1. enable the GA_pickup stone to call a comsume stone functions.
-  2. set a new stonebase blueprint function to apply a gameplayeffect.
+  1. Enable the GA_pickup stone to call the consume stone functions.
+  2. Set a new stonebase blueprint function to apply a gameplayeffect.
   3. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/1fc49b1412a52928ac8fb8ca14de831f598d1812)
  
 - 38, On Stone Consumed
@@ -4086,7 +4086,7 @@ Then, create a new blueprint animation.
   3. Create a curve table `CT_Stonebase`, GE_rage stone, GE_HealingStone, adjust the data required.
 
 - 39, Create input key widget
-  1. Create a new widget about keyinput.
+  1. Create a new widget about key input.
 
 - 40, BroadcastDisplayinputKeyDone
   1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c3a8b6db94b5122ae612adab9eb3f66071b8051c)
@@ -4100,28 +4100,28 @@ Then, create a new blueprint animation.
   3. Add it when enemy die.<img width="842" height="256" alt="Screenshot 2025-09-25 084523" src="https://github.com/user-attachments/assets/88e6e1b2-53bb-48da-bf40-8759a0e17312" />
 
 - 43, ⚠️⚠️⚠️⚠️⚠️⚠️Spawn Stone Logic
-  1. In GA_Enemy_SpawnStone_base, do `create random spawn stone location`, `use async loading class`, `base on game ability level decide spawn stone chance`, `spawn cast async load calss actor location`.
+  1. In GA_Enemy_SpawnStone_base, do `create random spawn stone location`, `use async loading class`, `base on game ability level decide spawn stone chance`, `spawn cast async load class actor location`.
   2. <img width="1268" height="274" alt="Screenshot 2025-09-25 092553" src="https://github.com/user-attachments/assets/f19fb2c1-291a-411e-94a1-62cae8150dbf" />
   3. <img width="1345" height="555" alt="Screenshot 2025-09-25 092904" src="https://github.com/user-attachments/assets/d6a5c37f-bf08-4f3d-9e2c-ae1d07686368" />
   4. <img width="1083" height="535" alt="Screenshot 2025-09-25 092909" src="https://github.com/user-attachments/assets/8f108e55-0506-4c2f-84cf-bdab3a113966" />
-  5. In BP_Enemy, use delay to enable saync load class finish before the enmy actor get destoryed. <img width="998" height="285" alt="Screenshot 2025-09-25 092543" src="https://github.com/user-attachments/assets/1884f103-9714-4988-9221-1f0768d4bb3b" />
+  5. In BP_Enemy, use a delay to enable the sync load class to finish before the enemy actor gets destroyed. <img width="998" height="285" alt="Screenshot 2025-09-25 092543" src="https://github.com/user-attachments/assets/1884f103-9714-4988-9221-1f0768d4bb3b" />
 
 # 9, Game Mode Test Map
-  	Purpose: 1. New Gamemode class; 2. Game State; 3. Data Table; 4. Spawn Logic(a, pre load enemy class; b, spawn enemy in level; c, handle spawn count); 5. Widgets
+  	Purpose: 1. New Gamemode class; 2. Game State; 3. Data Table; 4. Spawn Logic(a, pre-load enemy class; b, spawn enemy in level; c, handle spawn count); 5. Widgets
   
-- 1, Survial Game Mode Class
-  1. Create a new c++ `WarriorSurvialGameMode`.
+- 1, Survival Game Mode Class
+  1. Create a new C++ `WarriorSurvivalGameMode`.
   2. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/dd7a75010050126648001c0c047c8eba87714fbd)
   3. Create a new Blueprint Game Mode.
   4. Change its Default class. <img width="975" height="289" alt="Screenshot 2025-09-30 112251" src="https://github.com/user-attachments/assets/fc29076c-3161-469e-b828-546b32456a9b" />
   5. Assign the delegate. <img width="1051" height="527" alt="Screenshot 2025-09-30 112416" src="https://github.com/user-attachments/assets/74569abf-9ded-4f03-a7bb-34189c32aff4" />
-  6. Assign the gamemode into map. <img width="526" height="188" alt="Screenshot 2025-09-30 112504" src="https://github.com/user-attachments/assets/3b358632-306e-4ad5-8b69-a08092671039" />
+  6. Assign the gamemode to the map. <img width="526" height="188" alt="Screenshot 2025-09-30 112504" src="https://github.com/user-attachments/assets/3b358632-306e-4ad5-8b69-a08092671039" />
 
 - 2, Enemy Wave Spawner Table Row
   1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/791a0b41fc819608f5d2b0bd813d03f64e85b99b)
-  2. Create a new Data Table based named `DT_WarriorEnemySpawner`.
+  2. Create a new Data Table named `DT_WarriorEnemySpawner`.
   3. <img width="526" height="188" alt="Screenshot 2025-09-30 112504" src="https://github.com/user-attachments/assets/b2c1d90f-359c-4349-b9bf-d42a0ba5d7e0" />
-  4. Attach this new table Row in `BP_SurvialGamemode`.
+  4. Attach this new table Row in `BP_SurvivalGamemode`.
 
 - 3, Wave Progression Logic
   1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/d3e5cfb384c0cd3488bc1a6836ed54f113f10421)
@@ -4132,7 +4132,7 @@ Then, create a new blueprint animation.
   2. <img width="1907" height="939" alt="Screenshot 2025-10-02 093236" src="https://github.com/user-attachments/assets/ec44a808-4ae6-4887-978d-84e932d5cd40" />
 
 - 5, Drawing Wave Count Down Widget
-  1. In `BP_SurvialGamemode`, Custom a new event `CreateWaveWidgetWithCountDown`.
+  1. In `BP_SurvivalGamemode`, Custom a new event `CreateWaveWidgetWithCountDown`.
   2. <img width="1142" height="445" alt="Screenshot 2025-10-02 095750" src="https://github.com/user-attachments/assets/9d7e920c-f443-44b1-841a-08897da89209" />
   3. In Event Graph. <img width="1188" height="498" alt="Screenshot 2025-10-02 095758" src="https://github.com/user-attachments/assets/d1d1d1e9-cdfa-4cd7-804c-a7f050615648" />
 
@@ -4147,30 +4147,34 @@ Then, create a new blueprint animation.
   1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/26d8a02d0a108ced4b86d6cffc5513c6c358b513).
  
 - 8, ⚠️⚠️⚠️⚠️TrySpawnWaveEnemiesDone
-  1. Create 3 target point actor.
-  2. check does target point exust -> base on TargetPoints' loctaion, rotation spawn enemy based on rand number.
+  1. Create 3 target point actors.
+  2. Check does target point exists -> based on the TargetPoints' location, rotation, spawn an enemy based on a random number.
   3. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/5f8eb16938175292fe35f4234128e1481439aa2e)
   4. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c3d62d1cdff06a02e857af61712fa1a562437561)
  
-- 9, OnEnemyDestoryedDone
-  1. Alarm when the wavecompleted.
+- 9, OnEnemyDestroyedDone
+  1. Alarm when the wave is completed.
   2. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/0c9111fc7fbc520ea620e0ac259b563ba6c11f4f)
  
 - 10, OnWaveCompleted
-  1. Create new widget when wave completed.
+  1. Create a new widget when the wave is completed.
   2. <img width="1043" height="517" alt="Screenshot 2025-10-07 102841" src="https://github.com/user-attachments/assets/71ee7fdf-0ed8-4cc6-8410-61e5a80221b3" />
   3. <img width="1145" height="779" alt="Screenshot 2025-10-07 102848" src="https://github.com/user-attachments/assets/72cba1b3-9d7e-490d-8a83-fcc2cf453499" />
 
 - 11, PlayeTestMode
-  1. Test the game wave and check any debug or fix any enemy ai issue.
+  1. Test the game wave and check for any debug or fix any enemy AI issues.
 
 - 12, Register Spawned Enemy Done
   1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c3625592b43a5b784422106ea215a0500a9db546)
   2. Purpose: Add the Summon Enemies Nums In Total Wave Enemies Nums Count.
   3. In `GA_Enemy_SummonEnemies_Base`, <img width="934" height="570" alt="Screenshot 2025-10-08 153931" src="https://github.com/user-attachments/assets/8c1a73a7-7f9a-4ea3-9b12-ea7bfb1296b2" />
 
-- 13, 
+- 13, Notify LastWave Done
+  1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/317a82f72c3d198a8da758aed69fdad99febb8f4)
+  2. Make sure the `wait enemy delay time` suits the animation's play time in `WBP_WaveTextNoCountDown`.
+  3. Add the last wave widget if the current wave count == total wave count. <img width="998" height="479" alt="Screenshot 2025-10-09 085927" src="https://github.com/user-attachments/assets/17f78c36-a4e6-4e42-812e-be47fa68f5b0" />
 
+- 14, 
 
 
 
