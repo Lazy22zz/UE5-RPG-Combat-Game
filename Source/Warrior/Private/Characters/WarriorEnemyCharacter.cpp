@@ -11,6 +11,7 @@
 #include "Widgets/WarriorWidgetBase.h"
 #include "Components/BoxComponent.h"
 #include "WarriorFunctionLibrary.h"
+#include "GameModes/WarriorGameMode.h"
 
 #include "WarriorDebugHelper.h"
 
@@ -106,14 +107,41 @@ void AWarriorEnemyCharacter::InitEnemyStartUpData()
 		return;
 	}
 
+	int32 AbilityCurrentLevel = 1;
+
+	if (AWarriorGamemode* CurrentGamemode = GetWorld()->GetAuthGameMode<AWarriorGamemode>())
+	{
+		switch (CurrentGamemode->GetCurrentGameDifficulty())
+		{
+		case EWarriorGameplayDifficulty::Easy:
+			AbilityCurrentLevel = 1;
+			break;
+
+		case EWarriorGameplayDifficulty::Normal:
+			AbilityCurrentLevel = 2;
+			break;
+
+		case EWarriorGameplayDifficulty::Hard:
+			AbilityCurrentLevel = 3;
+			break;
+
+		case EWarriorGameplayDifficulty::VeryHard:
+			AbilityCurrentLevel = 4;
+			break;
+
+		default:
+			break;
+		}
+	}
+
 	UAssetManager::GetStreamableManager().RequestAsyncLoad(
 		CharacterStartUpData.ToSoftObjectPath(),
 		FStreamableDelegate::CreateLambda(
-			[this]()
+			[this, AbilityCurrentLevel]()
 			{
 				if (UDataAsset_StartupDataBase* LoadedData = CharacterStartUpData.Get())
 				{
-					LoadedData->GiveToAbilitySystemComponent(WarriorAbilitySystemComponent);
+					LoadedData->GiveToAbilitySystemComponent(WarriorAbilitySystemComponent, AbilityCurrentLevel);
 
 					Debug::Print(TEXT("Enemy Start Up Data Loaded"), FColor::Green);
 				}
