@@ -4177,7 +4177,8 @@ Then, create a new blueprint animation.
 - 14, On Player Died
   1. In `GA_Hero_Died`, <img width="1057" height="453" alt="Screenshot 2025-10-09 091522" src="https://github.com/user-attachments/assets/433f057e-aea2-4a9a-a54e-1188ec5a10d6" />
 
-
+- 15, Game Difficulty Done
+  1. Enable the get game difficulty in code. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/1ed1417676295525b1e91de877c7761445009324)
 
 
 
