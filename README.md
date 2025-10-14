@@ -34,6 +34,7 @@ Creating a combat action RPG game
 - [7, Boss Character](#7-Boss-Character)
 - [8, Hero Special Ability](#8-Hero-Special-Ability)
 - [9, Game Mode Test Map](#9-Game-Mode-Test-Map)
+- [10, In Game Widgets](#10-In-Game-Widgets)
 
 # EXTRA
 ## 1, Hard reference
@@ -52,7 +53,7 @@ Creating a combat action RPG game
   UStaticMesh* HardMesh;
   ```
 ## 2, Soft reference
-  A soft reference is an delay pointer (via a FSoftObjectPath or TSoftObjectPtr) to another object or asset. It doesn't load the referenced object into memory until fully loaded. \
+  A soft reference is a delay pointer (via a FSoftObjectPath or TSoftObjectPtr) to another object or asset. It doesn't load the referenced object into memory until it is fully loaded. \
   1. FSoftObjectPath\
      A simple string path to an asset\
      Works like a "bookmark" to the asset without loading it\
@@ -1172,10 +1173,10 @@ Then, create a new blueprint animation.
   }
   ```
 - 11, Build the gameplay Ability\
-  From step 10, we build the abilitysystemcomponent, In here, we need to give the ability to the character, which requires new stuff to attach into abilitysystemcomponent\
+  From step 10, we build the abilitysystemcomponent. In here, we need to give the ability to the character, which requires new stuff to attach to the abilitysystemcomponent\
   ![Screenshot_20250124_102133_Samsung capture](https://github.com/user-attachments/assets/5e1f738a-5e0c-40b0-812f-bbdb7fd91251)
-  Step 1, create a new c++ `gameplayability` name `warriorgameplayability` in a new folder `abilities`\
-  Step 2, compiler the GameplayAbility policy
+  Step 1, create a new C++ `gameplayability` name `warriorgameplayability` in a new folder `abilities`\
+  Step 2, compile the GameplayAbility policy
   ```c++
   UENUM(Blueprint)
   UENUM(Blueprint)
@@ -1194,9 +1195,9 @@ Then, create a new blueprint animation.
 	UPROPERTY(EditDefaultOnly, Category = "WarriorAbility")
 	EWarriorAbilityActivationPolicy AbilityActivationPolicy = EWarriorAbilityActivationPolicy::OnTriggered;
   ```
-  Step3, Given Ability to Character and End Ability\
-  In GameplayAbility.h, we need two functions `OnGiveAbility` and `EndAbility`.\
-  Step4, Implement these two functions\
+  Step 3, Given Ability to Character and End Ability\
+  In GameplayAbility.h, we need two functions, `OnGiveAbility` and `EndAbility`.\
+  Step 4, Implement these two functions\
   ```c++
   void UWarriorGameplayAbility::OnGiveAbility(const FGameplayAbilityActorInfo *ActorInfo, const FGameplayAbilitySpec &Spec)
   {
@@ -1224,7 +1225,7 @@ Then, create a new blueprint animation.
   }
   ```
   Step 5, Create a new blueprint\
-  Go to ue's content, create a Shared/GameplayAbility folder, then select gameplay/gameplayability blueprint, rename GA_Shared_SpawnWeapon.\
+  Go to UE's content, create a Shared/GameplayAbility folder, then select gameplay/gameplayability blueprint, rename GA_Shared_SpawnWeapon.\
   Change the Warrior Ability|Ability Activation Policy to `On Given`.
 - 12, Create weapon Class\
   In the process of setting up the weapon class, we need to understand the weapon class structure:\
@@ -1259,8 +1260,8 @@ Then, create a new blueprint animation.
 - 13, Set Up Hero Weapon\
   Step 1,\
   In shared/GA_Shared_GameplayAbility, right-click in blueprint, `Spawn Actor from class`, \
-  create a new variable, named `WeaponClassToSpawn`, then changes its type to `Warrior Weapon Base`, and its `Change to:` should be `Class Reference`\
-  Spilt the `Spawn Transformation`\
+  Create a new variable, named `WeaponClassToSpawn`, then change its type to `Warrior Weapon Base`, and its `Change to:` should be `Class Reference`\
+  Split the `Spawn Transformation`\
   Collision Handling should be `Try to adjust, but always spawn`\
   Attempt the `Spawn Actor from class`. Create `Get Avatar from actor info`, connect it to `Owner`, and use `cast to pawn`(convert to pure), to connect to investigator\
   Connect `Event ActivateAbility` to `SpawnActor`\
@@ -1272,7 +1273,7 @@ Then, create a new blueprint animation.
   Connect `Attach Actor To Component` to `End Ability`(Need to be created)\
   ![Screenshot 2025-01-26 103047](https://github.com/user-attachments/assets/6c1ce246-0a2f-46d4-917e-43db819d7197) \
   Step 2,
-  create the child of `GA_Hero_Weapon_Axe`, move it to PlayerCharacter/GameplayAbility.\
+  Create the child of `GA_Hero_Weapon_Axe`, move it to PlayerCharacter/GameplayAbility.\
   Click the new child, change its `weapon class to spawn` to `AXE`\
   Create a new socket \
   ![Screenshot 2025-01-26 104356](https://github.com/user-attachments/assets/37213573-bf37-4fd9-9f53-3a898a249847) \
@@ -1280,7 +1281,7 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-01-26 104545](https://github.com/user-attachments/assets/7e4a3256-8bb9-4623-95cc-759ff04964ee)
 - 14, Strat Up Data\
   ![Screenshot_20250126_111728_Samsung capture](https://github.com/user-attachments/assets/f8b865a8-ea8b-4d04-9f35-7c50e95d1f90) \
-  Create a new DataAsset c++ class into DataAssets/StartupData, named `DataAsset_StartupDataBase`\
+  Create a new DataAsset C++ class in DataAssets/StartupData, named `DataAsset_StartupDataBase`\
   In DataAsset_StartupDataBase.h
   ```c++
   	GENERATED_BODY()
@@ -1324,7 +1325,7 @@ Then, create a new blueprint animation.
   Create a derived class name `DataAsset_HeroStartUpData`, and create a new dataset blueprint name `DA_Hero` in the PlayerCharacter folder.\
   ![Screenshot 2025-01-26 120915](https://github.com/user-attachments/assets/c5af4a38-cfd9-4ffb-a928-f62f4944bc95)
 - 15, Synchronous Loading \
-  In WarriorBaseCharacter.h, we use soft reference to enable the DataAsset usage.
+  In WarriorBaseCharacter.h, we use a soft reference to enable the DataAsset usage.
   ```c++
   protected:
   	...
@@ -1364,12 +1365,12 @@ Then, create a new blueprint animation.
   ![Screenshot 2025-01-26 135934](https://github.com/user-attachments/assets/aae2a8e4-70dd-41ef-92b4-e866f2e3ff60)
 
 # 2, Combo System
- - In this part, majorly we will do things: Weapon Equiping and Combo System
+ - In this part, mainly we will do things: Weapon Equipping and Combo System
  - Weapon Equipping: Retrieve the spawned weapon, A new Gameplay Ability, Ability Input Action, Armed Locomotion, Unequip
- - Combo System: Moves can be easily added or removed, Animation Indepent, Light/Heavy Attack, Communication, Damaged scaled by combo count
+ - Combo System: Moves can be easily added or removed, Animation Independent, Light/Heavy Attack, Communication, Damage scaled by combo count
  - 1, Create hero combat component\
    ![Screenshot_20250130_090317_Samsung capture](https://github.com/user-attachments/assets/85094517-76aa-4e8a-bdc4-3a361ab03223)
-   create a new c++ Actor Component class named `PawnExtenComponentBase`
+   Create a new C++ Actor Component class named `PawnExtenComponentBase`
    ```c++
    UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
    class WARRIOR_API UPawnExtensionComponentBase : public UActorComponent
@@ -1396,8 +1397,8 @@ Then, create a new blueprint animation.
 	}		
    };
    ```
-   Then, create a new child c++ class `PawnCombatComponent` in components/Combat\
-   and create a new child base on c++ class `PawnCombatComponent`, name `HeroCombatComponent`\
+   Then, create a new child C++ class `PawnCombatComponent` in components/Combat\
+   and create a new child based on C++ class `PawnCombatComponent`, name `HeroCombatComponent`\
    First, add this `#include "Components/Combat/HeroCombatComponent.h"` in `WarriorHeroCharacter.cpp`\
    Secondly, add `class UHeroCombatComponent;` in `WarriorHeroCharacter.h`\
    Third, add the rest in `WarriorHeroCharacter.h`
@@ -1408,10 +1409,10 @@ Then, create a new blueprint animation.
    FORCEINLINE UHeroCombatComponent* GetHeroCombatComponent() const { return HeroCombatComponent; }
    ``` 
    Fourth, add `HeroCombatComponent = CreateDefaultSubobject<UHeroCombatComponent>(TEXT("HeroCombatComponent"));` in the  `WarriorHeroCharacter.cpp`\
-- 2, Registered weapons by its tags\
+- 2, Registered weapons by their tags\
   In the first step, we must create a data structure to store `Required registered ` weapons. In PawnCombatComponent.h, we use `TMap<typename A, tyname B,...>` to store weapons.\
   For A, we need tags, which come from `FGameplayTag`, by checking the `WarriorGameplayTags.h`, we can use its header `#include "NativeGameplayTags.h"`,\
-  For B, we need WeaponActor, which comes from `AWarriorWeaponBase* `, by `WarriorWeaponBase.cpp`, we need to class its type and include its header .h.
+  For B, we need WeaponActor, which comes from `AWarriorWeaponBase* `, by `WarriorWeaponBase.cpp`. We need to declare its type and include its header file.
   ```c++
   TMap<FGameplayTag,AWarriorWeaponBase*> CharacterCarriedWeaponMap;
   ```
@@ -1436,7 +1437,7 @@ Then, create a new blueprint animation.
   ```
   The third step, implement those UFunctions.\
   In `RegisterSpawnedWeapon`, 
-  we need `checkf()` and `check()` to clarify whether these tags and weapon actor exists, and use `.Emplace()` to register them to the `CharacterCarriedWeaponMap`, last check if this is a required equipped weapon for the main character, if so, then do.
+  We need `checkf()` and `check()` to clarify whether these tags and weapon actor exists, and use `.Emplace()` to register them to the `CharacterCarriedWeaponMap`, last check if this is a required equipped weapon for the main character, if so, then do.
   ```c++
   void UPawnCombatComponent::RegisterSpawnedWeapon(FGameplayTag InWeaponTagToRegister, AWarriorWeaponBase* InWeaponToRegister, bool bRegisterAsEquippedWeapon)
   {
@@ -4180,7 +4181,13 @@ Then, create a new blueprint animation.
 - 15, Game Difficulty Done
   1. Enable the get game difficulty in code. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/1ed1417676295525b1e91de877c7761445009324)
 
+# 10, In Game Widgets
+    In this part, we are creating In-Game Widgets: Lose Screen; Win Screen; Pause Screen; Main Menu; Loading Screen.
 
+- 1, Template Button Widget
+  1. Create a new blueprint `WarriorButton` base on button blueprint.
+  2. In Details, change Style's Normal, Hovered, Pressed's `Draw As` to `Image`.
+  3. <img width="1045" height="60" alt="Screenshot 2025-10-14 093358" src="https://github.com/user-attachments/assets/60973890-2353-4074-a859-2cbb01d82ca8" />
 
 
 
