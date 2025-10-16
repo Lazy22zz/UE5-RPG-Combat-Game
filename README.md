@@ -4181,13 +4181,18 @@ Then, create a new blueprint animation.
 - 15, Game Difficulty Done
   1. Enable the get game difficulty in code. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/1ed1417676295525b1e91de877c7761445009324)
 
-# 10, In Game Widgets
-    In this part, we are creating In-Game Widgets: Lose Screen; Win Screen; Pause Screen; Main Menu; Loading Screen.
+# 10, In-Game Widgets
+    In this part, we are creating In-Game Widgets: Lose Screen, Win Screen, Pause Screen, Main Menu, Loading Screen.
 
 - 1, Template Button Widget
-  1. Create a new blueprint `WarriorButton` base on button blueprint.
+  1. Create a new blueprint `WarriorButton` based on the button blueprint.
   2. In Details, change Style's Normal, Hovered, Pressed's `Draw As` to `Image`.
   3. <img width="1045" height="60" alt="Screenshot 2025-10-14 093358" src="https://github.com/user-attachments/assets/60973890-2353-4074-a859-2cbb01d82ca8" />
+
+- 2, Pause Template Button
+  1. Create a new `TPWBP_PauseWidgetButton` based on `Warriorbasebutton` in UI.
+  2. <img width="1915" height="935" alt="Screenshot 2025-10-16 095547" src="https://github.com/user-attachments/assets/ad6b2648-a582-4464-abb3-f5b715820dbd" />
+  3. <img width="1550" height="758" alt="Screenshot 2025-10-16 095534" src="https://github.com/user-attachments/assets/ed779c2a-c498-46f9-af91-d7b1ff899cfb" />
 
 
 
