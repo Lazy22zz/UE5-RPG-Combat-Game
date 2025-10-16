@@ -4194,6 +4194,14 @@ Then, create a new blueprint animation.
   2. <img width="1915" height="935" alt="Screenshot 2025-10-16 095547" src="https://github.com/user-attachments/assets/ad6b2648-a582-4464-abb3-f5b715820dbd" />
   3. <img width="1550" height="758" alt="Screenshot 2025-10-16 095534" src="https://github.com/user-attachments/assets/ed779c2a-c498-46f9-af91-d7b1ff899cfb" />
 
+- 3, Lose Screen
+  0. Create a new widget `WBP_LoseScreen` based on WarriorBaseWidget.
+  1. Use the Level blueprint to test the widget.
+  2. <img width="1002" height="438" alt="Screenshot 2025-10-16 101931" src="https://github.com/user-attachments/assets/47cb1167-9173-4cf7-ba6d-48fce976c08b" />
+  3. <img width="1880" height="944" alt="Screenshot 2025-10-16 101944" src="https://github.com/user-attachments/assets/d51e6ab8-38ab-40f5-b766-16fd72a0916f" />
+  4. <img width="1224" height="864" alt="Screenshot 2025-10-16 101949" src="https://github.com/user-attachments/assets/faf5b040-ff8b-4842-909c-fe729be45860" />
+
+
 
 
 
