@@ -4201,6 +4201,11 @@ Then, create a new blueprint animation.
   3. <img width="1880" height="944" alt="Screenshot 2025-10-16 101944" src="https://github.com/user-attachments/assets/d51e6ab8-38ab-40f5-b766-16fd72a0916f" />
   4. <img width="1224" height="864" alt="Screenshot 2025-10-16 101949" src="https://github.com/user-attachments/assets/faf5b040-ff8b-4842-909c-fe729be45860" />
 
+- 4, Lose Screen Widget Animation
+  1. <img width="1409" height="884" alt="Screenshot 2025-10-19 165545" src="https://github.com/user-attachments/assets/ddc13a79-91fc-4b25-a32b-45a79141b578" />
+  2. <img width="1291" height="796" alt="Screenshot 2025-10-19 165551" src="https://github.com/user-attachments/assets/d8ec5a0c-bd82-4f3b-aab6-0751f0ff8e20" />
+
+- 5, 
 
 
 
