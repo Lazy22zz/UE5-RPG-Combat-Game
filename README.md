@@ -4205,7 +4205,9 @@ Then, create a new blueprint animation.
   1. <img width="1409" height="884" alt="Screenshot 2025-10-19 165545" src="https://github.com/user-attachments/assets/ddc13a79-91fc-4b25-a32b-45a79141b578" />
   2. <img width="1291" height="796" alt="Screenshot 2025-10-19 165551" src="https://github.com/user-attachments/assets/d8ec5a0c-bd82-4f3b-aab6-0751f0ff8e20" />
 
-- 5, 
+- 5, Drawing Lose Screen
+  1. In `BP_SurvialGamemode`, <img width="1198" height="524" alt="Screenshot 2025-10-19 170825" src="https://github.com/user-attachments/assets/36e0a268-fb9b-446a-8638-dae94012732f" />
+
 
 
 
