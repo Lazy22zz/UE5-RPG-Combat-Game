@@ -10,6 +10,7 @@
 
 class UWarriorAbilitySystemComponent;
 class UPawnCombatComponent;
+class UWarriorGameInstance;
 struct FScalableFloat;
 
 /**
@@ -58,4 +59,7 @@ public:
 	static void CountDown(const UObject* WorldContextObject, float TotalTime, float UpdateInterval,
 		float& OutRemainingTime, EWarriorCountDownActionInput CountDownInput,
 		UPARAM(DisplayName = "Output") EWarriorCountDownActionOutput& CountDownOutput, FLatentActionInfo LatentInfo);
+
+	UFUNCTION(BlueprintPure, Category = "Warrior|FunctionLibrary", meta = (WorldContext = "WorldContextObject"))
+	static UWarriorGameInstance* GetWorldGameInstance(UObject* WorldContextObject);
 };
