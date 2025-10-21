@@ -4208,7 +4208,12 @@ Then, create a new blueprint animation.
 - 5, Drawing Lose Screen
   1. In `BP_SurvialGamemode`, <img width="1198" height="524" alt="Screenshot 2025-10-19 170825" src="https://github.com/user-attachments/assets/36e0a268-fb9b-446a-8638-dae94012732f" />
 
+- 6, Warrior Game Instance
+  1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/00edb9f6942eb7ed1facfdc2ec39cdfd36354227)
+  2. Create a new C++ `WarriorGameInstance` to hold the game world context.
+  3. Change the GameInstance project settings. <img width="970" height="193" alt="Screenshot 2025-10-21 095344" src="https://github.com/user-attachments/assets/02e6fadf-8e82-44b7-805f-f30238a0421a" />
 
+- 7, 
 
 
 
