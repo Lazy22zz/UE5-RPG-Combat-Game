@@ -4213,7 +4213,11 @@ Then, create a new blueprint animation.
   2. Create a new C++ `WarriorGameInstance` to hold the game world context.
   3. Change the GameInstance project settings. <img width="970" height="193" alt="Screenshot 2025-10-21 095344" src="https://github.com/user-attachments/assets/02e6fadf-8e82-44b7-805f-f30238a0421a" />
 
-- 7, 
+- 7, Get Game Level by Tag
+  1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/d9fcf6a20173dd48f37038197c8cddb1e0ea898b)
+  2. Using the Reflecting system to create a new USTRUCT `GameLevelSets` to hold `leveltag`, `level`, `bool`
+  3. Use an array to hold the new struct.
+  4. A new function to search for the right game level by matching the name.
 
 
 
