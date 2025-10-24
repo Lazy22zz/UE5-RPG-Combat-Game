@@ -4219,6 +4219,11 @@ Then, create a new blueprint animation.
   3. Use an array to hold the new struct.
   4. A new function to search for the right game level by matching the name.
 
+- 8, Open Level
+  1. In `BP_WarriorGameInstance`, add level tag and level.
+  2. <img width="1202" height="383" alt="Screenshot 2025-10-24 094434" src="https://github.com/user-attachments/assets/87850bd3-0c19-4c08-8dc8-55ae55dcd227" />
+  3. In `WBP_LoseScreen`, link the blueprint.
+  4. <img width="1126" height="351" alt="Screenshot 2025-10-24 094320" src="https://github.com/user-attachments/assets/4a1e5a3d-06e0-4c6d-b68f-b00234bdf766" />
 
 
 
