@@ -4225,6 +4225,11 @@ Then, create a new blueprint animation.
   3. In `WBP_LoseScreen`, link the blueprint.
   4. <img width="1126" height="351" alt="Screenshot 2025-10-24 094320" src="https://github.com/user-attachments/assets/4a1e5a3d-06e0-4c6d-b68f-b00234bdf766" />
 
+- 9, Toggle Input Mode
+  1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/74039abc4a048fcf51d7e4bbe148e00f6c1a2e4c)
+  2. Create an enum to identify do we are in gameplay or game ui
+  3. <img width="1225" height="279" alt="Screenshot 2025-10-24 100900" src="https://github.com/user-attachments/assets/3f5a449c-37c0-4a60-9b20-a25dca9bf76d" />
+
 
 
   
