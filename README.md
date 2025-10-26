@@ -4235,6 +4235,9 @@ Then, create a new blueprint animation.
   2. <img width="1082" height="671" alt="Screenshot 2025-10-26 135329" src="https://github.com/user-attachments/assets/f19afc34-3736-453f-b8c5-ef744feb0318" />
   3. <img width="1065" height="374" alt="Screenshot 2025-10-26 135335" src="https://github.com/user-attachments/assets/47adb777-cad9-45de-ae7c-27458289b7ce" />
 
+- 11, Drawing Win Screen
+  1. In `BP_SurvivalGamemode`, add the add screen widget.
+  2. <img width="1232" height="608" alt="Screenshot 2025-10-26 140159" src="https://github.com/user-attachments/assets/4fbb2e0b-8e15-4f54-945e-a57201b4de29" />
 
   
      
