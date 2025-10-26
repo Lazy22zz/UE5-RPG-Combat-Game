@@ -4227,9 +4227,13 @@ Then, create a new blueprint animation.
 
 - 9, Toggle Input Mode
   1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/74039abc4a048fcf51d7e4bbe148e00f6c1a2e4c)
-  2. Create an enum to identify do we are in gameplay or game ui
+  2. Create an enum to identify whether we are in gameplay or game ui
   3. <img width="1225" height="279" alt="Screenshot 2025-10-24 100900" src="https://github.com/user-attachments/assets/3f5a449c-37c0-4a60-9b20-a25dca9bf76d" />
 
+- 10, Create Win Screen Widget
+  1. Duplicate the `WBP_LoseScreenWidget`. and named as `WBP_WinScreen`
+  2. <img width="1082" height="671" alt="Screenshot 2025-10-26 135329" src="https://github.com/user-attachments/assets/f19afc34-3736-453f-b8c5-ef744feb0318" />
+  3. <img width="1065" height="374" alt="Screenshot 2025-10-26 135335" src="https://github.com/user-attachments/assets/47adb777-cad9-45de-ae7c-27458289b7ce" />
 
 
   
