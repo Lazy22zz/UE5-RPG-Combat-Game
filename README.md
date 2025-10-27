@@ -4243,3 +4243,9 @@ Then, create a new blueprint animation.
   1. Create a new `WBP_PauseScreen` based on `WarriorwidgetBase`.
   2. <img width="1878" height="1023" alt="Screenshot 2025-10-26 173101" src="https://github.com/user-attachments/assets/42793a58-bda7-4526-a95e-b705efcca570" />
   3. <img width="1065" height="772" alt="Screenshot 2025-10-26 173050" src="https://github.com/user-attachments/assets/23bb2cb8-7f67-4fe2-a827-7489cc03734b" />
+
+- 13, Drawing Pause Menu
+  1. Create a new user input `IA_PauseMenu`
+  2. Set this new input inside `IMC_Default`
+  3. In `BP_WarriorHeroCharacter`, set the pause menu function in blueprint.
+  4. <img width="1244" height="429" alt="Screenshot 2025-10-26 174155" src="https://github.com/user-attachments/assets/64724416-8576-467d-82de-58c9b38cfb4a" />
