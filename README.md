@@ -4247,5 +4247,9 @@ Then, create a new blueprint animation.
 - 13, Drawing Pause Menu
   1. Create a new user input `IA_PauseMenu`
   2. Set this new input inside `IMC_Default`
-  3. In `BP_WarriorHeroCharacter`, set the pause menu function in blueprint.
+  3. In `BP_WarriorHeroCharacter`, set the pause menu function in the blueprint.
   4. <img width="1244" height="429" alt="Screenshot 2025-10-26 174155" src="https://github.com/user-attachments/assets/64724416-8576-467d-82de-58c9b38cfb4a" />
+
+- 14, Create Main Menu Map
+
+- 
