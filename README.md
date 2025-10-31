@@ -4258,3 +4258,7 @@ Then, create a new blueprint animation.
   1. <img width="1138" height="741" alt="Screenshot 2025-10-30 105948" src="https://github.com/user-attachments/assets/16751d89-bcf8-4c20-b08b-d2df44ae7ae2" />
 
 - 17, Main Menu Animation and Logic
+
+- 18, Options Game Menu Widget
+
+- 
