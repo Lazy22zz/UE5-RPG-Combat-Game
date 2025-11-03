@@ -4262,3 +4262,7 @@ Then, create a new blueprint animation.
 - 18, Options Game Menu Widget
 
 - 19, Options Menu Logic
+
+- 20, Save Game Object
+  1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/41f0d64a0d48c7e4e7e13ca31ac8604e81d06a00)
+  2. Create a new `WarriorSaveGame` C++ based on `Save game`, using it to store the `EWarriorGameplayDifficulty`.
