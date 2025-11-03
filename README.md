@@ -4274,3 +4274,7 @@ Then, create a new blueprint animation.
   4. Using `UGameplayStatics::SaveGameToSlot` to detect wasSavedGame.
   5. In `TryLoadSavedGameDifficulty`, we check if any save game data exists in `USaveGame`, by using `UGameplayStatics::DoesSaveGameExist`.
   6. If it exists, cast the `USaveGame` to `UWarriorSaveGame* WarriorSavedGameObject ` (we need to use base to detect), and `OutSavedGameplayDifficulty = WarriorSavedGameObject->SavedCurrentGameDifficulty;`.
+
+- 22, GameModeLoadDifficultyDone
+  1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/28ca462be8aa01d0bb1a692ba7629a83597b6add)
+  2. Override the `InitGame()`, and try to save the game difficulty.
