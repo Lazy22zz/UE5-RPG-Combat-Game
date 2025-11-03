@@ -4278,3 +4278,6 @@ Then, create a new blueprint animation.
 - 22, GameModeLoadDifficultyDone
   1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/28ca462be8aa01d0bb1a692ba7629a83597b6add)
   2. Override the `InitGame()`, and try to save the game difficulty.
+
+- 23, Loading Screen
+  1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/c122be6664f430ce5d548351a40e97a0da2e1eb4)
