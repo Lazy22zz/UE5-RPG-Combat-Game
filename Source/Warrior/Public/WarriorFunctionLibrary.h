@@ -70,5 +70,5 @@ public:
 	static void SaveCurrentGameDifficulty(EWarriorGameplayDifficulty ToSaveGameDifficulty);
 
 	UFUNCTION(BlueprintCallable, Category = "Warrior|FunctionLibrary")
-	static bool TryLoadSavedGameDifficulity(EWarriorGameplayDifficulty& OutSavedGameplayDifficulity);
+	static bool TryLoadSavedGameDifficulty(EWarriorGameplayDifficulty& OutSavedGameplayDifficulity);
 };

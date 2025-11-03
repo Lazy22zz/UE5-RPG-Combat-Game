@@ -259,7 +259,7 @@ void UWarriorFunctionLibrary::SaveCurrentGameDifficulty(EWarriorGameplayDifficul
 	}
 }
 
-bool UWarriorFunctionLibrary::TryLoadSavedGameDifficulity(EWarriorGameplayDifficulty& OutSavedGameplayDifficulity)
+bool UWarriorFunctionLibrary::TryLoadSavedGameDifficulty(EWarriorGameplayDifficulty& OutSavedGameplayDifficulty)
 {
 	if (UGameplayStatics::DoesSaveGameExist(WarriorGameplayTags::GameData_SaveGame_Slot_1.GetTag().ToString(), 0))
 	{
@@ -267,7 +267,7 @@ bool UWarriorFunctionLibrary::TryLoadSavedGameDifficulity(EWarriorGameplayDiffic
 
 		if (UWarriorSaveGame* WarriorSavedGameObject = Cast<UWarriorSaveGame>(SavedGameObject))
 		{
-			OutSavedGameplayDifficulity = WarriorSavedGameObject->SavedCurrentGameDifficulty;
+			OutSavedGameplayDifficulty = WarriorSavedGameObject->SavedCurrentGameDifficulty;
 
 			Debug::Print(TEXT("Loading Successful"), FColor::Green);
 
