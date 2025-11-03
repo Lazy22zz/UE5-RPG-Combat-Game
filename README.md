@@ -4266,3 +4266,11 @@ Then, create a new blueprint animation.
 - 20, Save Game Object
   1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/41f0d64a0d48c7e4e7e13ca31ac8604e81d06a00)
   2. Create a new `WarriorSaveGame` C++ based on `Save game`, using it to store the `EWarriorGameplayDifficulty`.
+
+- 21, Load And Save Game Difficulty
+  1. [code view](https://github.com/Lazy22zz/UE5-RPG-Combat-Game/commit/7ba563bd9d15a84ec2c0d7b4a46fbb1dad7a1ba1)
+  2. In ` SaveCurrentGameDifficulty`, we create a base ` USaveGame* SaveGameObject ` to save data.
+  3. Cast ` USaveGame` to `UWarriorSaveGame` to save enum `EWarriorGameplayDifficulty`.
+  4. Using `UGameplayStatics::SaveGameToSlot` to detect wasSavedGame.
+  5. In `TryLoadSavedGameDifficulty`, we check if any save game data exists in `USaveGame`, by using `UGameplayStatics::DoesSaveGameExist`.
+  6. If it exists, cast the `USaveGame` to `UWarriorSaveGame* WarriorSavedGameObject ` (we need to use base to detect), and `OutSavedGameplayDifficulty = WarriorSavedGameObject->SavedCurrentGameDifficulty;`.
